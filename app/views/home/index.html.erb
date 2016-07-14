@@ -1,0 +1,32 @@
+<h3>hi <%=current_user.name%></h3>
+<%= render 'posts/form' %>
+<div id="activities">
+ <%= render_activities(@activities, layout: '/shared/activity') %>
+      
+<div>
+
+
+<h2>Can be followed</h2>
+重新整理才會看到按鈕生效<br>
+<%User.all.each do |user|%>
+<%if user==current_user%>
+<%else%>
+	<%=user.email%>
+	<%= render partial:'follows/form', locals: { user: user } %>
+<%end%>
+<br>
+<%end%>
+
+
+
+
+<h2>following </h2>
+<%current_user.all_follows.each do |followers|%>
+<%=User.find(followers.followable_id).email%>
+<br>
+<%end%>
+
+
+<br>
+<%= link_to "sign out", destroy_user_session_path,method: :delete  %>
+<%= render 'shared/paginate', resources: @activities %>

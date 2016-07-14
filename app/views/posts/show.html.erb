@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Attachment:</strong>
+  <%=image_tag @post.attachment, :style => "width:400px;"  %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user %>
+</p>
+
+
+<%=render 'comments/form', commentable: @post%>
+<%=render 'likes/form', likeable: @post%>
+There are <%=@post.cached_votes_up%> likes
+<br>
+
+<%@comments.each do |comm|%>
+<%=render 'comments/comment',comment: comm%>
+<%end%>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'home', home_path%>
+

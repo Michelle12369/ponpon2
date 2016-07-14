@@ -1,0 +1,6 @@
+<h1>Home#front</h1>
+<%= link_to "sign in", user_session_path %><br>
+<%= link_to "sign up", new_user_registration_path %>
+<%= render_activities(@activities, layout: '/shared/activity') %>
+     
+<%= render 'shared/paginate', resources: @activities %>

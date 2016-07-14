@@ -1,0 +1,10 @@
+
+<%= form_tag comments_path(commentable_type: commentable.class.to_s, commentable_id: commentable.id), method: :post, remote: true do %>
+    <div class="form-group">
+        <%= text_area_tag :comment_text, nil, placeholder: 'Enter Comment', class: 'form-control input-mentionable' %>
+    </div>
+    <%= submit_tag :comment, class: 'btn btn-primary' %>
+<% end %>
+
+
+<!-- Comment.create(commentable_type:"post",commentable_id:1,comment:"33") -->
