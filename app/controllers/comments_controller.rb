@@ -4,6 +4,7 @@ before_action :authenticate_user!
   respond_to :js
 
   def create
+    puts @commentable
     @comment = @commentable.comments.new do |comment|
       comment.comment = params[:comment_text]
       comment.user = current_user
