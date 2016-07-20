@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  resources :coupons
+  
   resources :posts
   resources :comments, only: [:create, :destroy]
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  
   resources :users do
+    resources :coupons
     member do
       get :followers
-
-          end
+    end
   end
 
 

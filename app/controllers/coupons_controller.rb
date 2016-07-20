@@ -1,20 +1,23 @@
 class CouponsController < ApplicationController
   before_action :set_coupon, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_user
+  before_action :authenticate_user!
   # GET /coupons
   # GET /coupons.json
   def index
-    @coupons = Coupon.all
+    @coupons = @user.coupons#Coupon.all
+
   end
 
   # GET /coupons/1
   # GET /coupons/1.json
   def show
+
   end
 
   # GET /coupons/new
   def new
-    @coupon = Coupon.new
+    @coupon = @user.coupons.build#Coupon.new
   end
 
   # GET /coupons/1/edit
@@ -24,11 +27,11 @@ class CouponsController < ApplicationController
   # POST /coupons
   # POST /coupons.json
   def create
-    @coupon = Coupon.new(coupon_params)
+    @coupon = @user.coupons.new(coupon_params)#Coupon.new(coupon_params)
 
     respond_to do |format|
       if @coupon.save
-        format.html { redirect_to @coupon, notice: 'Coupon was successfully created.' }
+        format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully created.' }
         format.json { render :show, status: :created, location: @coupon }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class CouponsController < ApplicationController
   def update
     respond_to do |format|
       if @coupon.update(coupon_params)
-        format.html { redirect_to @coupon, notice: 'Coupon was successfully updated.' }
+        format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully updated.' }
         format.json { render :show, status: :ok, location: @coupon }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class CouponsController < ApplicationController
   def destroy
     @coupon.destroy
     respond_to do |format|
-      format.html { redirect_to coupons_url, notice: 'Coupon was successfully destroyed.' }
+      format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,8 +70,13 @@ class CouponsController < ApplicationController
       @coupon = Coupon.find(params[:id])
     end
 
+    def set_user
+      @user = User.find(params[:user_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def coupon_params
-      params.fetch(:coupon, {})
+      params.require(:coupon).permit(:coupon_title)
+      #fetch(:coupon, {})
     end
 end

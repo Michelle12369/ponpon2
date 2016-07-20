@@ -56,6 +56,7 @@ group :development do
   gem 'guard-rspec', '~> 4.2.8'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem "rails-erd"
 end
 
 group :production do

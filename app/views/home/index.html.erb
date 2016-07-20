@@ -1,8 +1,9 @@
 <h3>hi <%=current_user.name%></h3>
 <%= render 'posts/form' %>
+<%= link_to "sign out", destroy_user_session_path,method: :delete  %><br>
+<%= link_to "coupon list", user_coupons_path(current_user) %>
 <div id="activities">
  <%= render_activities(@activities, layout: '/shared/activity') %>
-      
 <div>
 
 
@@ -29,5 +30,5 @@
 
 
 <br>
-<%= link_to "sign out", destroy_user_session_path,method: :delete  %>
+
 <%= render 'shared/paginate', resources: @activities %>
