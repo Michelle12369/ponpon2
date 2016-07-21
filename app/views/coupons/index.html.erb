@@ -10,9 +10,15 @@
   </thead>
 
   <tbody>
+  <tr>
+        <td>id:</td>
+        <td>title</td>
+      </tr>
     <% @coupons.each do |coupon| %>
+
       <tr>
-        <td><%=coupon.coupon_title%></td>
+      <td><%=coupon.id%>:</td>
+        <td><%=coupon.coupon_title%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
         
         <td><%= link_to 'Show',[coupon.user,coupon]%></td>
         <td><%= link_to 'Edit', edit_user_coupon_path(coupon.user,coupon) %></td>

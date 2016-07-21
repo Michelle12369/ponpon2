@@ -3,6 +3,9 @@ class CouponsController < ApplicationController
   before_action :set_user
   before_action :authenticate_user!
   load_and_authorize_resource
+
+ 
+
   # GET /coupons
   # GET /coupons.json
 
@@ -27,14 +30,13 @@ class CouponsController < ApplicationController
   end
 
   def distribute
-    receiver=User.find(params[:receiver_id])
-    @new_coupon=receiver.coupons.new(coupon_title: @coupon.coupon_title, distributors: @coupon.distributors+"_#{params[:user_id]}")
+    @new_coupon=Coupon.copy_coupon(Integer(params[:receiver_id]),@coupon)
     respond_to do |format|
-      if @new_coupon.save
+      if @new_coupon.try(:save)
         format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully distributed.' }
         format.json { render :show, status: :created, location: @coupon }
       else
-        format.html { render :new }
+        format.html { redirect_to [@coupon.user,@coupon], notice: '不能自己發給自己.' }
         format.json { render json: @coupon.errors, status: :unprocessable_entity }
       end
     end

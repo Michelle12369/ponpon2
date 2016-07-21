@@ -63,6 +63,9 @@ GEM
       mime-types (>= 1.16)
       mimemagic (>= 0.3.0)
     choice (0.2.0)
+    closure_tree (6.0.0)
+      activerecord (>= 4.1.0)
+      with_advisory_lock (>= 3.0.0)
     cloudinary (1.2.0)
       aws_cf_signer
       rest-client
@@ -277,6 +280,9 @@ GEM
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
     will_paginate (3.1.0)
+    with_advisory_lock (3.0.0)
+      activerecord (>= 3.2)
+      thread_safe
 
 PLATFORMS
   ruby
@@ -292,6 +298,7 @@ DEPENDENCIES
   byebug
   cancan
   carrierwave
+  closure_tree
   cloudinary
   coffee-rails (~> 4.1.0)
   devise
@@ -319,4 +326,4 @@ DEPENDENCIES
   will_paginate (~> 3.1.0)
 
 BUNDLED WITH
-   1.10.6
+   1.12.5

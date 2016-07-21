@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 <p>
+  <b>Coupon id:</b>
+  <%= @coupon.id %><br>
   <b>Title:</b>
   <%= @coupon.coupon_title %>
+  
 </p>
  <%= form_tag distribute_user_coupon_path do %>
     <div class="form-group">

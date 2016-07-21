@@ -2,4 +2,39 @@ class Coupon < ActiveRecord::Base
   #has_many :users,:through=>:coupon_users
   #has_many :coupon_users
   belongs_to :user
+  has_closure_tree
+  #File.open("example.dot", "w") { |f| f.write(Coupon.root.to_dot_digraph) }
+  
+  def self.copy_coupon(receiver_id,coupon)
+    if receiver_id!=coupon.user_id 
+      coupon.children.new(user:User.find(receiver_id),
+                          coupon_title:coupon.coupon_title,
+                          expiry_date: coupon.expiry_date,
+                          item: coupon.item,
+                          start_date: coupon.start_date,
+                          discount_type: coupon.discount_type,
+                          discount_ceiling_people: coupon.discount_ceiling_people,
+                          discount_ceiling_amount: coupon.discount_ceiling_amount,
+                          condition_type: coupon.condition_type,
+                          condition_content: coupon.condition_content,
+                          other_content: coupon.other_content,
+                          used: false,
+                          discount:coupon.discount
+                          computed_discount:coupon.discount
+                          )
+    end
+  end
+  
+
+#{19=>0,18=>1}
+
+  def self.calculate_discount(coupon_id,position)
+    now_coupon=Coupon.find(coupon_id)
+    puts now_coupon.computed_discount
+    puts now_coupon.discount*0.5
+    now_discount=now_coupon.computed_discount+now_coupon.discount*(0.5**position)
+    now_coupon.update(computed_discount: now_discount)
+  end 
+
+
 end

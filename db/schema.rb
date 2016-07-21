@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719143719) do
+ActiveRecord::Schema.define(version: 20160721170333) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -45,25 +45,33 @@ ActiveRecord::Schema.define(version: 20160719143719) do
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
-  create_table "coupon_users", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "coupon_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "coupon_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
   end
+
+  add_index "coupon_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "coupon_anc_desc_idx", unique: true
+  add_index "coupon_hierarchies", ["descendant_id"], name: "coupon_desc_idx"
 
   create_table "coupons", force: :cascade do |t|
     t.date     "expiry_date"
     t.float    "discount"
     t.string   "coupon_title"
-    t.string   "coupon_condition_title"
-    t.integer  "coupon_condition_rule"
-    t.string   "coupons_slogan"
-    t.string   "distributors"
-    t.integer  "coupon_numbers_of_user"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "user_id"
+    t.integer  "parent_id"
+    t.string   "item"
+    t.date     "start_date"
+    t.integer  "discount_type"
+    t.integer  "discount_ceiling_people"
+    t.float    "discount_ceiling_amount"
+    t.integer  "condition_type"
+    t.string   "condition_content"
+    t.text     "other_content"
+    t.boolean  "used"
+    t.float    "computed_discount"
   end
 
   create_table "follows", force: :cascade do |t|
