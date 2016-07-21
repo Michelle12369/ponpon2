@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708174712) do
+ActiveRecord::Schema.define(version: 20160719143719) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -44,6 +44,27 @@ ActiveRecord::Schema.define(version: 20160708174712) do
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "coupon_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "coupon_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.date     "expiry_date"
+    t.float    "discount"
+    t.string   "coupon_title"
+    t.string   "coupon_condition_title"
+    t.integer  "coupon_condition_rule"
+    t.string   "coupons_slogan"
+    t.string   "distributors"
+    t.integer  "coupon_numbers_of_user"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "user_id"
+  end
 
   create_table "follows", force: :cascade do |t|
     t.integer  "followable_id",                   null: false
@@ -92,6 +113,9 @@ ActiveRecord::Schema.define(version: 20160708174712) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "remote_avatar_url"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

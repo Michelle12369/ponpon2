@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <b>Title:</b>
+  <%= @coupon.coupon_title %>
+</p>
+<%= link_to 'Edit', edit_user_coupon_path(@user,@coupon) %> |
+<%= link_to 'Back', user_coupons_path(@coupon.user)%>
