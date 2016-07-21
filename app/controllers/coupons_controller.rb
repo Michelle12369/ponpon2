@@ -2,6 +2,7 @@ class CouponsController < ApplicationController
   before_action :set_coupon, only: [:show, :edit, :update, :destroy]
   before_action :set_user
   before_action :authenticate_user!
+ 
   # GET /coupons
   # GET /coupons.json
   def index

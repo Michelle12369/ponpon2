@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719143719) do
+ActiveRecord::Schema.define(version: 20160721040120) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 20160719143719) do
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
+  create_table "coupon_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "coupon_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "coupon_anc_desc_idx", unique: true
+  add_index "coupon_hierarchies", ["descendant_id"], name: "coupon_desc_idx"
+
   create_table "coupon_users", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "coupon_id"
@@ -64,6 +73,7 @@ ActiveRecord::Schema.define(version: 20160719143719) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "user_id"
+    t.integer  "parent_id"
   end
 
   create_table "follows", force: :cascade do |t|

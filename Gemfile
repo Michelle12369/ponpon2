@@ -74,12 +74,12 @@ gem "acts_as_follower"
 gem 'public_activity'
 gem 'will_paginate', '~> 3.1.0'
 
-gem "rails-erd"
+
 
 gem 'omniauth'
 gem 'omniauth-facebook'
 
-
+gem 'closure_tree'
 
 
 
