@@ -3,5 +3,11 @@
   <b>Title:</b>
   <%= @coupon.coupon_title %>
 </p>
+ <%= form_tag distribute_user_coupon_path do %>
+    <div class="form-group">
+        <%= text_area_tag :receiver_id %>
+    </div>
+    <%= submit_tag :coupon, class: 'btn btn-primary' %>
+<% end %>
 <%= link_to 'Edit', edit_user_coupon_path(@user,@coupon) %> |
 <%= link_to 'Back', user_coupons_path(@coupon.user)%>

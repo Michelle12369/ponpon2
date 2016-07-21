@@ -2,8 +2,10 @@ class CouponsController < ApplicationController
   before_action :set_coupon, only: [:show, :edit, :update, :destroy]
   before_action :set_user
   before_action :authenticate_user!
+  load_and_authorize_resource
   # GET /coupons
   # GET /coupons.json
+
   def index
     @coupons = @user.coupons#Coupon.all
 
@@ -12,7 +14,7 @@ class CouponsController < ApplicationController
   # GET /coupons/1
   # GET /coupons/1.json
   def show
-
+    #puts "hi this is #{params[:receiver_id]}"
   end
 
   # GET /coupons/new
@@ -22,6 +24,21 @@ class CouponsController < ApplicationController
 
   # GET /coupons/1/edit
   def edit
+  end
+
+  def distribute
+    receiver=User.find(params[:receiver_id])
+    @new_coupon=receiver.coupons.new(coupon_title: @coupon.coupon_title, distributors: @coupon.distributors+"_#{params[:user_id]}")
+    respond_to do |format|
+      if @new_coupon.save
+        format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully distributed.' }
+        format.json { render :show, status: :created, location: @coupon }
+      else
+        format.html { render :new }
+        format.json { render json: @coupon.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   # POST /coupons
@@ -72,6 +89,7 @@ class CouponsController < ApplicationController
 
     def set_user
       @user = User.find(params[:user_id])
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

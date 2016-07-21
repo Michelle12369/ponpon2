@@ -5,10 +5,14 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-	def configure_permitted_parameters
+  def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:name, :password_confirmation]
     devise_parameter_sanitizer.for(:sign_in) << [:email, :remember_me]
   end
 
   include PublicActivity::StoreController
+
+  rescue_from CanCan::AccessDenied do |exception|
+  	redirect_to root_url, :alert => exception.message
+  end
 end

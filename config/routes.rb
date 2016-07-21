@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get :followers
     end
   end
-
+  post '/users/:user_id/coupons/:id/distribute', :to => 'coupons#distribute',:as =>"distribute_user_coupon"
 
   authenticated :user do
     root to: 'home#index', as: 'home'
