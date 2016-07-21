@@ -72,7 +72,7 @@ gem 'acts_as_commentable'
 gem "acts_as_follower"
 gem 'public_activity'
 gem 'will_paginate', '~> 3.1.0'
-
+gem "rails-erd"
 
 
 
