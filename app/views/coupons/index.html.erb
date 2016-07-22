@@ -10,19 +10,15 @@
   </thead>
 
   <tbody>
-  <tr>
-        <td>id:</td>
-        <td>title</td>
-      </tr>
     <% @coupons.each do |coupon| %>
 
       <tr>
       <td><%=coupon.id%>:</td>
         <td><%=coupon.coupon_title%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        
-        <td><%= link_to 'Show',[coupon.user,coupon]%></td>
-        <td><%= link_to 'Edit', edit_user_coupon_path(coupon.user,coupon) %></td>
-        <td><%= link_to 'Destroy', user_coupon_path(coupon.user,coupon), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=(1-coupon.computed_discount)*100%>折&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><%= link_to '詳細資訊',[coupon.user,coupon]%>&nbsp;&nbsp;</td>
+        <td><%#= link_to 'Edit', edit_user_coupon_path(coupon.user,coupon) %></td>
+        <td><%= link_to '兌換', user_coupon_path(coupon.user,coupon), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,6 +26,6 @@
 
 <br>
 
-<%= link_to 'New Coupon', new_user_coupon_path %>
+<%#= link_to 'New Coupon', new_user_coupon_path %>
 <br>
 <%=link_to 'home', root_path%>

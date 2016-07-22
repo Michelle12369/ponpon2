@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     end
   end
   post '/users/:user_id/coupons/:id/distribute', :to => 'coupons#distribute',:as =>"distribute_user_coupon"
-
+  get '/users/:user_id/coupons/:id/redeem', :to => 'coupons#redeem',:as =>"redeem_user_coupon"
+  
   authenticated :user do
     root to: 'home#index', as: 'home'
   end
@@ -23,6 +24,8 @@ Rails.application.routes.draw do
   match :unfollow, to: 'follows#destroy', as: :unfollow, via: :post
   match :like, to: 'likes#create', as: :like, via: :post
   match :unlike, to: 'likes#destroy', as: :unlike, via: :post
+  
+  
   
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -19,7 +19,7 @@ class Coupon < ActiveRecord::Base
                           condition_content: coupon.condition_content,
                           other_content: coupon.other_content,
                           used: false,
-                          discount:coupon.discount
+                          discount:coupon.discount,
                           computed_discount:coupon.discount
                           )
     end
@@ -38,3 +38,7 @@ class Coupon < ActiveRecord::Base
 
 
 end
+#Coupon.create(expiry_date: "2016/8/22", discount: 0.05, coupon_title: "爺爺蛋包飯",
+#user_id: 1, item: "G排", start_date: "2016/7/22", discount_type: 2, 
+#discount_ceiling_people: 8, discount_ceiling_amount: 0.4, condition_type: 2,
+#condition_content: nil, other_content: "先來電預約", used: false, computed_discount:0.05)

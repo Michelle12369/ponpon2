@@ -11,13 +11,18 @@ class CouponsController < ApplicationController
 
   def index
     @coupons = @user.coupons#Coupon.all
-
+    
   end
 
   # GET /coupons/1
   # GET /coupons/1.json
   def show
-    #puts "hi this is #{params[:receiver_id]}"
+    if @coupon.root?
+       @distributor_name="第一張"
+    else
+      @distributor_name=@coupon.parent.user.name
+    end
+    @followers = @user.all_following
   end
 
   # GET /coupons/new
@@ -40,7 +45,10 @@ class CouponsController < ApplicationController
         format.json { render json: @coupon.errors, status: :unprocessable_entity }
       end
     end
-
+  end
+  
+  def redeem
+    @url='/users/#{params[:user_id}/coupons/#{params[:id]}'
   end
 
   # POST /coupons
