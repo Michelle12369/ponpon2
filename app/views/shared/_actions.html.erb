@@ -9,6 +9,11 @@
           <%= fa_icon 'comment' %> comment
         <% end %>
       </div>
+       <%= render 'comments/form', commentable: resource %>
+      <br>
+      <div class="comments">
+        <%= render(resource.comments.all) || render('shared/no_resource', resources: 'Comments') %>
+      </div>
     </div>
   </div>
 <% end %>

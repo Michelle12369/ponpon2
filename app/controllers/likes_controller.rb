@@ -9,7 +9,6 @@ before_action :find_likeable
 
   def destroy
     @likeable.disliked_by current_user
-    redirect_to :back
   end
 
   private

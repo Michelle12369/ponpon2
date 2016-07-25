@@ -1,3 +1,4 @@
+<div id="post-<%= @post.id %>" class="post">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -12,7 +13,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @post.user %>
+  <%= @post.user.name %>
 </p>
 
 
@@ -20,11 +21,13 @@
 <%=render 'likes/form', likeable: @post%>
 There are <%=@post.cached_votes_up%> likes
 <br>
-
+<div class="comments">
 <%@comments.each do |comm|%>
 <%=render 'comments/comment',comment: comm%>
 <%end%>
+</div>
+
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'home', home_path%>
-
+</div>

@@ -1,0 +1,4 @@
+<!--$('.links').prepend("<%#= j render('comments/comment',comment:  @comment) %>");-->
+$("#<%= @commentable_type.downcase %>-<%= @commentable.id %> .comments").append("<%=j render(@comment) %>");
+$("#<%= @commentable_type.downcase %>-<%= @commentable.id %> #comment_text").val("");
+$("#<%= @commentable_type.downcase %>-<%= @commentable.id %> .comments-count").html("<%=pluralize(@commentable.comments_count,"comment")%>");
