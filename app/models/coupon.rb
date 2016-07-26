@@ -25,6 +25,10 @@ class Coupon < ActiveRecord::Base
     end
   end
   
+def to_digraph_label
+     user.name+":"+id.to_s+":"+computed_discount.to_s
+end
+
 
 #{19=>0,18=>1}
 

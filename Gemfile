@@ -81,7 +81,8 @@ gem 'omniauth-facebook'
 gem "cancan"
 gem 'closure_tree'
 
-
+gem 'rqrcode-rails3'
+gem 'mini_magick'
 
 
 

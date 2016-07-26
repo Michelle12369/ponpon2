@@ -2,7 +2,7 @@ class CouponsController < ApplicationController
   before_action :set_coupon, only: [:show, :edit, :update, :destroy]
   before_action :set_user
   before_action :authenticate_user!
-  load_and_authorize_resource
+  load_and_authorize_resource 
 
  
 
@@ -14,6 +14,8 @@ class CouponsController < ApplicationController
     
   end
 
+
+
   # GET /coupons/1
   # GET /coupons/1.json
   def show
@@ -22,6 +24,7 @@ class CouponsController < ApplicationController
     else
       @distributor_name=@coupon.parent.user.name
     end
+
     @followers = @user.all_following
   end
 
@@ -47,8 +50,11 @@ class CouponsController < ApplicationController
     end
   end
   
+require 'rqrcode'
+
   def redeem
-    @url='/users/#{params[:user_id}/coupons/#{params[:id]}'
+    url="localhost://3000/users/#{params[:user_id]}/coupons/#{params[:id]}"
+    @qrcode = RQRCode::QRCode.new(url,:size => 4, :level => :l)
   end
 
   # POST /coupons
@@ -84,7 +90,20 @@ class CouponsController < ApplicationController
   # DELETE /coupons/1
   # DELETE /coupons/1.json
   def destroy
-    @coupon.destroy
+    ancs=@coupon.ancestor_ids
+    #anc_hash={}
+    for i in ancs
+      Coupon.calculate_discount(i,ancs.find_index(i))
+      #anc_hash[i]=ancs.find_index(i)
+    end
+
+    #anc_hash.each do |x,y|
+      #Coupon.calculate_discount(x,y)
+    #end
+
+    @coupon.update(used: true)
+
+    #@coupon.destroy
     respond_to do |format|
       format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully destroyed.' }
       format.json { head :no_content }

@@ -1,1 +1,2 @@
 $("#comment-<%= @comment.id %>").remove();
+$("#<%= @comment.commentable_type.downcase %>-<%= @comment.commentable_id %> .comments-count").html("<%=pluralize(@comment.commentable.comments_count+1,"comment")%>");

@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<table>
+<table class="table">
     <tr>
       <td><b>Coupon id</b></td>
       <td><b>標題</b></td>
@@ -12,7 +12,7 @@
       <td><%= @coupon.id %></td>
       <td><%= @coupon.coupon_title %></td>
       <td><%= @distributor_name %></td>
-      <td><%=(1-@coupon.computed_discount)*100 %>折</td>
+      <td><%=(1-@coupon.computed_discount)*10 %>折</td>
       <td>1. 每增加一人使用增加<%=(@coupon.discount)*100 %>%折扣<br>
           2. <%if  @coupon.condition_type==1%>
                 消費滿<%= @coupon.condition_content%>才可使用
@@ -36,5 +36,7 @@
     </div>
     <%= submit_tag "傳送", class: 'btn btn-primary' %>
 <% end %>
+
+<%= link_to '兌換(顧客按的)', redeem_user_coupon_path(@user,@coupon) %> 
 <%#= link_to 'Edit', edit_user_coupon_path(@user,@coupon) %> 
 <%= link_to '回列表', user_coupons_path(@coupon.user)%>
