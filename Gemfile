@@ -80,7 +80,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem "cancan"
 gem 'closure_tree'
-
+gem 'gon'
 
 
 
