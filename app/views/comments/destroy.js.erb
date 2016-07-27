@@ -1,6 +1,2 @@
 $("#comment-<%= @comment.id %>").remove();
-<<<<<<< HEAD
-$("#<%= @comment.commentable_type.downcase %>-<%= @comment.commentable_id %> .comments-count").html("<%=pluralize(@comment.commentable.comments_count+1,"comment")%>");
-=======
 $("#<%= @comment.commentable_type.downcase %>-<%=  @comment.commentable.id %> .comments-count").html("<%=pluralize( @comment.commentable.comments_count-1,"comment")%>");
->>>>>>> front
