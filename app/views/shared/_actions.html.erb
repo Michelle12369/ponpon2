@@ -6,29 +6,23 @@
       </div>
       <div class="col-xs-6 comment-<%=resource.id%>">
         <div>
-        <%#= link_to "#", class: 'btn btn-block' do %>
-          <%= fa_icon 'comment' %> comment
-        <%# end %>
+           <!--傳ror變數到js(home.js)-->
+          <%= button_tag '#', :class=>"vendor-link btn btn-block", data:{id:resource.id} do%>
+            <%= fa_icon 'comment' %> comment
+          <% end %>
         </div>
       </div>
       <div id="comment-form-<%=resource.id%>" class="comment-form">
-       <%= render 'comments/form', commentable: resource %>
-       
-      <br>
-      <div class="comments">
-        <%= render(resource.comments.all,commentable:resource) || render('shared/no_resource', resources: 'Comments') %>
-      </div>
+        <%= render 'comments/form', commentable: resource %>
+
+          <br>
+          <div class="comments">
+            <%= render(resource.comments.all,commentable:resource)%>
+          </div>
       </div>
     </div>
   </div>
 <% end %>
 
-<!--傳ror變數到js(home.js)-->
-<%= content_tag :div, class: "temp_information", data: {temp: resource.id} do %>
-<% end %>
+   
 
-<script>
-//   $(document).on("click", ".comment-<%#=resource.id%>", function(event){
-//   $("#comment-form-<%#=resource.id%>").show("slow");
-// });
-</script>

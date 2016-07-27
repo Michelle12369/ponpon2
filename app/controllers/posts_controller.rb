@@ -39,7 +39,11 @@ class PostsController < ApplicationController
 
       @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to root_path
+      @activity=@post.activities[0]
+      respond_to do |format|
+        format.js
+        format.html { redirect_to root_path }
+      end
     else
       redirect_to root_path, notice: @post.errors.full_messages.first
     end

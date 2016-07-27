@@ -19,7 +19,7 @@
         <%= link_to edit_post_path(post), class: 'btn btn-primary btn-sm' do %>
           <% fa_icon 'pencil' %>
         <% end %>
-        <%= link_to post_path(post), method: :delete, class:'btn btn-danger btn-sm', remote: remote do %>
+        <%= link_to post_path(post), method: :delete, class:'btn btn-danger btn-sm', remote: true do %>
           <% fa_icon 'trash' %>
         <% end %>
       <% end %>
