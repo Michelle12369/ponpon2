@@ -3,6 +3,7 @@ class CouponsController < ApplicationController
   before_action :set_user
   before_action :authenticate_user!
   load_and_authorize_resource 
+require 'rqrcode'
 
  
 
@@ -50,11 +51,27 @@ class CouponsController < ApplicationController
     end
   end
   
-require 'rqrcode'
-
   def redeem
-    url="localhost://3000/users/#{params[:user_id]}/coupons/#{params[:id]}"
-    @qrcode = RQRCode::QRCode.new(url,:size => 4, :level => :l)
+    url="https://pon-michelle12369.c9users.io/users/#{params[:user_id]}/coupons/#{params[:id]}"
+    url2="https://pon-michelle12369.c9users.io/"
+    @qrcode = RQRCode::QRCode.new(url,:size => 4, :level => :l)#用真的網址line才掃得到，還要真正輸出png黨存到資料庫
+    # png = @qrcode.as_png(
+    #       resize_gte_to: false,
+    #       resize_exactly_to: false,
+    #       fill: 'white',
+    #       color: 'black',
+    #       size: 120,
+    #       border_modules: 4,
+    #       module_px_size: 6,
+    #       file: 'tmp/qr.png' # path to write
+    #       )
+    #IO.write("/tmp/qr.png", png.to_s)
+    #File.open("qr.png", 'wb') { |file| file.write(png.to_s) }
+    #@p2=png.to_s.force_encoding('UTF-8')
+    #@coupon.update(qr_code: png)
+    
+   
+
   end
 
   # POST /coupons

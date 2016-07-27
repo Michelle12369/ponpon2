@@ -1,5 +1,13 @@
+<div>
 <%= raw @qrcode.as_html %>
+</div>
     <style>
+    body{
+        background-color: yellow;
+    }
+    div{
+        margin-left:30px;
+    }
     table {
         border-width: 0;
         border-style: none;
@@ -27,3 +35,4 @@
  <%#= link_to user_coupon_path(@user,@coupon), method: :delete, class: 'btn btn-danger btn-sm', remote: true %>
 
  <%= link_to "兌換(只有店家才可以按的）",[@user,@coupon], :confirm => 'Are you sure?', :method => :delete  %>
+<%#= @p2%>

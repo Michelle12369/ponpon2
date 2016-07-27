@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721170333) do
+ActiveRecord::Schema.define(version: 20160727153058) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20160721170333) do
     t.text     "other_content"
     t.boolean  "used"
     t.float    "computed_discount"
+    t.string   "qr_code"
   end
 
   create_table "follows", force: :cascade do |t|

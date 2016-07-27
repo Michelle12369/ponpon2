@@ -3,7 +3,7 @@ class Coupon < ActiveRecord::Base
   #has_many :coupon_users
   belongs_to :user
   has_closure_tree
-  #File.open("example.dot", "w") { |f| f.write(Coupon.root.to_dot_digraph) }
+  
   
   def self.copy_coupon(receiver_id,coupon)
     if receiver_id!=coupon.user_id 

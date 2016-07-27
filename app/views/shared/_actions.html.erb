@@ -13,12 +13,13 @@
         </div>
       </div>
       <div id="comment-form-<%=resource.id%>" class="comment-form">
-        <%= render 'comments/form', commentable: resource %>
-
-          <br>
-          <div class="comments">
+          <div id="comments">
             <%= render(resource.comments.all,commentable:resource)%>
           </div>
+          <%= render 'comments/form', commentable: resource %>
+      
+          
+
       </div>
     </div>
   </div>
