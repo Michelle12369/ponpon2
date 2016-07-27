@@ -78,13 +78,10 @@ gem 'will_paginate', '~> 3.1.0'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem "cancan"
+gem 'cancancan', '~> 1.10'
 gem 'closure_tree'
 
 gem 'rqrcode-rails3'
-gem 'mini_magick'
-
-
 
 
 

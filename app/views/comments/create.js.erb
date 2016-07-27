@@ -1,4 +1,6 @@
-<!--$('.links').prepend("<%#= j render('comments/comment',comment:  @comment) %>");-->
-$("#<%= @commentable_type.downcase %>-<%= @commentable.id %> .comments").hide().append("<%=j render(@comment) %>").fadeIn('slow');
+// $('.links').prepend("<%#= j render('comments/comment',comment:  @comment) %>");
+$new_comment=$("<%=j render(@comment) %>").hide();
+$("#<%= @commentable_type.downcase %>-<%= @commentable.id %> #comments").append($new_comment);
+$new_comment.fadeIn('slow');
 $("#<%= @commentable_type.downcase %>-<%= @commentable.id %> #comment_text").val("");
 $("#<%= @commentable_type.downcase %>-<%= @commentable.id %> .comments-count").html("<%=pluralize(@commentable.comments_count+1,"comment")%>");
