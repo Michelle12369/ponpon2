@@ -7,7 +7,7 @@
       <div class="col-xs-6 comment-<%=resource.id%>">
         <div>
            <!--傳ror變數到js(home.js)-->
-          <%= button_tag '#', :class=>"vendor-link btn btn-block", data:{id:resource.id} do%>
+          <%= button_tag '#', :class=>"comment-btn btn btn-block", data:{id:resource.id} do%>
             <%= fa_icon 'comment' %> comment
           <% end %>
         </div>

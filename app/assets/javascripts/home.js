@@ -1,6 +1,6 @@
 console.log("I am home.js");
-$(document).on("click", '.vendor-link', function(event) { 
+$(document).on("click", '.comment-btn', function(event) { 
      var id = $(this).data("id");
         console.log(id);
-        $("#comment-form-" + id).show("slow");
+        $("#comment-form-" + id).fadeIn("slow");
 });

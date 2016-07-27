@@ -1,2 +1,4 @@
-$("#comment-<%= @comment.id %>").remove();
+$("#comment-<%= @comment.id %>").fadeOut("slow",function(){
+    $(this).remove();
+});
 $("#<%= @comment.commentable_type.downcase %>-<%=  @comment.commentable.id %> .comments-count").html("<%=pluralize( @comment.commentable.comments_count-1,"comment")%>");
