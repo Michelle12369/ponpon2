@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   before_action :set_user, except: :front
   respond_to :html, :js
 
+
   def front
     @activities = PublicActivity::Activity.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   

@@ -3,14 +3,13 @@ class CommentsController < ApplicationController
   before_action :find_commentable, only: :create
   respond_to :js
 
+
   def create
-    
     @comment = @commentable.comments.new do |comment|
       comment.comment = params[:comment_text]
       comment.user = current_user
     end
     @comment.save
-    
   end
 
   def destroy
