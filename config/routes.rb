@@ -26,7 +26,9 @@ Rails.application.routes.draw do
   match :unlike, to: 'likes#destroy', as: :unlike, via: :post
   
   post 'pusher/auth'
-  
+
+  match '/posts/:id' => "posts#show_no_layout",via: :post
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

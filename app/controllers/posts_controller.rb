@@ -46,9 +46,7 @@ class PostsController < ApplicationController
       
       for friend in @friends
         Pusher['test_channel'+friend.id.to_s].trigger('greet', {
-          :post =>@post,
-          :user =>current_user,
-          :activity =>@activity
+          :post =>@post
         })
       end
       
@@ -60,6 +58,19 @@ class PostsController < ApplicationController
       redirect_to root_path, notice: @post.errors.full_messages.first
     end
   end
+
+
+
+def show_no_layout
+  @activity=@post.activities[0]
+
+  respond_to do |format|
+        format.js
+        format.html { redirect_to root_path }
+  end
+end
+
+
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
