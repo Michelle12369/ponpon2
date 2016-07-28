@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   match :like, to: 'likes#create', as: :like, via: :post
   match :unlike, to: 'likes#destroy', as: :unlike, via: :post
   
-  
+  post 'pusher/auth'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

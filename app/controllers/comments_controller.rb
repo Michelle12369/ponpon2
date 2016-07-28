@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_commentable, only: :create
   respond_to :js
-  include ActionController::Live
+  
 
 
   def create

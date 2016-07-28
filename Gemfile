@@ -66,6 +66,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+#socify
 gem 'devise'
 gem 'carrierwave'
 gem 'acts_as_votable', '~> 0.10.0'
@@ -75,15 +76,16 @@ gem 'public_activity'
 gem 'will_paginate', '~> 3.1.0'
 
 
-
+#facebook login & authorize & tree strutured data
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'cancancan', '~> 1.10'
 gem 'closure_tree'
 
+#qr code
 gem 'rqrcode-rails3'
 
-
+gem 'pusher'
 
 
 

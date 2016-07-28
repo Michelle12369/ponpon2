@@ -4,11 +4,54 @@
   <title>TrySocify</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
+  <script src="//js.pusher.com/2.0/pusher.min.js"></script>
+  
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="status"></div>
+  <%= yield %>
+  
+	<% if signed_in? # no notifications if you're not signed in %>
+  <script>
+// If your Heroku application is within the EU region,
+// uncomment the followling lines
+// Pusher.host = 'ws-eu.pusher.com';
+// Pusher.sockjs_host = 'sockjs-eu.pusher.com';
 
-<%= yield %>
+var pusher = new Pusher('9f9b0db2bcf535c9126b'); // uses your APP KEY
+var channel = pusher.subscribe("test_channel"+<%=current_user.id%>);
+channel.bind('greet', function(data) {
+  console.log(data);
+  var new_activity=data.post.content;
+  $("#status").append(new_activity+"<br>");
+  var data_json=JSON.stringify(data.activity);
+  console.log(data_json);
+  
+ <%#@activity=JSON.parse(data_json)%>
+  var new_activity=$("<%#=j render(partial: 'shared/activity', locals: { activity: @activity } ) %>").hide();
+$("#activities").prepend(new_activity);
+new_activity.fadeIn("slow");
 
+
+});
+
+
+
+// Some useful debug msgs
+        pusher.connection.bind('connecting', function() {
+          $('div#status').text('Connecting to Pusher...');
+        });
+        pusher.connection.bind('connected', function() {
+          $('div#status').text('Connected to Pusher!');
+        });
+        pusher.connection.bind('failed', function() {
+          $('div#status').text('Connection to Pusher failed :(');
+        });
+        channel.bind('subscription_error', function(status) {
+          $('div#status').text('Pusher subscription_error');
+        });
+  </script>
+  <%end%>
 </body>
 </html>

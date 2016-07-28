@@ -40,6 +40,18 @@ class PostsController < ApplicationController
       @post = current_user.posts.new(post_params)
     if @post.save
       @activity=@post.activities[0]
+      @user=current_user
+      @friends = @user.user_followers
+      
+      
+      for friend in @friends
+        Pusher['test_channel'+friend.id.to_s].trigger('greet', {
+          :post =>@post,
+          :user =>current_user,
+          :activity =>@activity
+        })
+      end
+      
       respond_to do |format|
         format.js
         format.html { redirect_to root_path }
