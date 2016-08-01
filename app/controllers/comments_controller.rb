@@ -13,11 +13,11 @@ class CommentsController < ApplicationController
 
       @comment.save
       
-      #@user=current_user
+      @user=current_user
       @friends = @comment.commentable.user.user_followers#@user.user_followers
-      if @friends.include?(current_user)
-        # @friends.delete(current_user)
-      end  
+       if @friends.include?(current_user)
+      #   # @friends.delete(current_user)
+       end  
       
       for friend in @friends
         Pusher['private-'+friend.id.to_s].trigger('greet', {

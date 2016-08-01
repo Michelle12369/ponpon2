@@ -45,8 +45,9 @@ channel.bind('greet', function(data) {
   
   $.ajax({
     url:'/commenters/'+data.comment.id,
-    success:function(html){ $('#activities').prepend(html);console.log(html)},
-    error: function(xhr) {alert('Ajax request 發生錯誤');console.log(xhr)}
+    success:function(html){ console.log(html);$('body').append(html);
+    },
+    error: function(xhr) {alert('Ajax request 發生錯誤');console.log(xhr);}
     //http://stackoverflow.com/questions/31143415/rendering-an-object-passed-through-pusher-in-rails
   });
 
