@@ -5,6 +5,7 @@
       <td><b>標題</b></td>
       <td><b>贈送人</b></td>
       <td><b>目前累積折數</b></td>
+      <td><b>狀態</b></td>
       <td><b>使用說明</b></td>
       <td><b>注意事項</b></td>
     </tr>
@@ -13,6 +14,14 @@
       <td><%= @coupon.coupon_title %></td>
       <td><%= @distributor_name %></td>
       <td><%=(1-@coupon.computed_discount)*10 %>折</td>
+      <td><%if @coupon.expiry_date<Date.today%>
+              已過期
+            <%elsif @coupon.used==false%>
+              未使用
+            <%elsif @coupon.used==true%>
+              已使用
+            <%end%>
+      </td>
       <td>1. 每增加一人使用增加<%=(@coupon.discount)*100 %>%折扣<br>
           2. <%if  @coupon.condition_type==1%>
                 消費滿<%= @coupon.condition_content%>才可使用

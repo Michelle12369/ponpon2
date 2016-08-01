@@ -4,8 +4,7 @@ class CouponsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource 
 require 'rqrcode'
-
- 
+require 'rqrcode_png'
 
   # GET /coupons
   # GET /coupons.json
@@ -14,8 +13,6 @@ require 'rqrcode'
     @coupons = @user.coupons#Coupon.all
     
   end
-
-
 
   # GET /coupons/1
   # GET /coupons/1.json
@@ -53,7 +50,6 @@ require 'rqrcode'
   
   def redeem
     url="https://pon-michelle12369.c9users.io/users/#{params[:user_id]}/coupons/#{params[:id]}"
-    url2="https://pon-michelle12369.c9users.io/"
     @qrcode = RQRCode::QRCode.new(url,:size => 4, :level => :l)#用真的網址line才掃得到，還要真正輸出png黨存到資料庫
     # png = @qrcode.as_png(
     #       resize_gte_to: false,
@@ -65,12 +61,22 @@ require 'rqrcode'
     #       module_px_size: 6,
     #       file: 'tmp/qr.png' # path to write
     #       )
+
     #IO.write("/tmp/qr.png", png.to_s)
     #File.open("qr.png", 'wb') { |file| file.write(png.to_s) }
     #@p2=png.to_s.force_encoding('UTF-8')
     #@coupon.update(qr_code: png)
-    
-   
+
+    png = @qrcode.to_img.resize(90, 90).save("really_cool_qr_image.png")
+    @coupon = Coupon.find(params[:id])
+    # Stream is handed closed, we need to reopen it
+    File.open("e.png","wb") do |file|
+      @coupon.qr_code = file
+    end
+
+    File.delete("e.png")
+
+   @coupon.save!
 
   end
 

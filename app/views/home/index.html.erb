@@ -1,6 +1,6 @@
 <h3>hi <%=current_user.name%></h3>
 <%= render 'posts/form' %>
-<%= link_to "sign out", destroy_user_session_path,method: :delete  %><br>
+
 <%= link_to "coupon list", user_coupons_path(current_user) %>
 <div id="activities">
  <%= render_activities(@activities, layout: '/shared/activity') %>
@@ -34,3 +34,37 @@
 
 <%= render 'shared/paginate', resources: @activities %>
 
+  <script>
+
+var pusher = new Pusher('9f9b0db2bcf535c9126b', {disableStats: true } ); // uses your APP KEY
+var channel = pusher.subscribe("private-"+<%=current_user.id%>);
+channel.bind('greet', function(data) {
+  var new_activity=data.comment;
+  console.log(new_activity);
+
+  
+  $.ajax({
+    url:'/commenters/'+data.comment.id,
+    success:function(html){ $('#activities').prepend(html);console.log(html)},
+    error: function(xhr) {alert('Ajax request 發生錯誤');console.log(xhr)}
+    //http://stackoverflow.com/questions/31143415/rendering-an-object-passed-through-pusher-in-rails
+  });
+
+});
+
+
+
+// Some useful debug msgs
+        pusher.connection.bind('connecting', function() {
+          console.log('Connecting to Pusher...');
+        });
+        pusher.connection.bind('connected', function() {
+          console.log('Connected to Pusher!');
+        });
+        pusher.connection.bind('failed', function() {
+          console.log('Connection to Pusher failed :(');
+        });
+        channel.bind('subscription_error', function(status) {
+          console.log('Pusher subscription_error');
+        });
+  </script>

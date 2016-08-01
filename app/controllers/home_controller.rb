@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
 
   def front
-    @activities = PublicActivity::Activity.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    #@activities = PublicActivity::Activity.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   
   end
 
@@ -16,6 +16,17 @@ class HomeController < ApplicationController
   
   end
 
+  def food
+
+  end
+
+  def play
+
+  end
+
+  def online
+
+  end
 
 
   private

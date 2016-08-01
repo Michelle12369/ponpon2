@@ -84,6 +84,8 @@ gem 'closure_tree'
 
 #qr code
 gem 'rqrcode-rails3'
+gem 'rqrcode_png'
+
 
 gem 'pusher'
 

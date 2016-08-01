@@ -3,7 +3,7 @@ class Coupon < ActiveRecord::Base
   #has_many :coupon_users
   belongs_to :user
   has_closure_tree
-  
+  mount_uploader :qr_code, AvatarUploader
   
   def self.copy_coupon(receiver_id,coupon)
     if receiver_id!=coupon.user_id 

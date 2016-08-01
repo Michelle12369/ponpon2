@@ -26,17 +26,6 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    # @post = Post.new(post_params) do |post|
-    #   post.user = current_user
-    # end
-    # respond_to do |format|
-    #   if @post.save
-    #   redirect_to root_path
-    # else
-    #   redirect_to root_path, notice: @post.errors.full_messages.first
-    # end
-    # end
-
       @post = current_user.posts.new(post_params)
     if @post.save
       @activity=@post.activities[0]
@@ -45,13 +34,13 @@ class PostsController < ApplicationController
       
       
       for friend in @friends
-        Pusher['test_channel'+friend.id.to_s].trigger('greet', {
+        Pusher['private-'+friend.id.to_s].trigger('greet', {
           :post =>@post
         })
       end
       
       respond_to do |format|
-        format.js
+        #format.js
         format.html { redirect_to root_path }
       end
     else
@@ -61,13 +50,10 @@ class PostsController < ApplicationController
 
 
 
-def show_no_layout
+def shownolayout
+  @post=Post.find(params[:id])
   @activity=@post.activities[0]
-
-  respond_to do |format|
-        format.js
-        format.html { redirect_to root_path }
-  end
+  render "shownolayout", layout: false
 end
 
 

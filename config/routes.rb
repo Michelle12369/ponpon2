@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+  #basic relationship settings
+
   resources :posts
   resources :comments, only: [:create, :destroy]
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
@@ -10,24 +11,36 @@ Rails.application.routes.draw do
       get :followers
     end
   end
-  post '/users/:user_id/coupons/:id/distribute', :to => 'coupons#distribute',:as =>"distribute_user_coupon"
-  get '/users/:user_id/coupons/:id/redeem', :to => 'coupons#redeem',:as =>"redeem_user_coupon"
-  
-  authenticated :user do
-    root to: 'home#index', as: 'home'
-  end
-  unauthenticated :user do
-    root 'home#front'
-  end
 
   match :follow, to: 'follows#create', as: :follow, via: :post
   match :unfollow, to: 'follows#destroy', as: :unfollow, via: :post
   match :like, to: 'likes#create', as: :like, via: :post
   match :unlike, to: 'likes#destroy', as: :unlike, via: :post
   
-  post 'pusher/auth'
+  #sign in/sign out authenication page settings 
+  authenticated :user do
+    root to: 'home#index', as: 'home'
+    get '/offical',:to=>'home#front',:as=>'offical'
+  end
+  unauthenticated :user do
+    root 'home#front'
+  end
 
-  match '/posts/:id' => "posts#show_no_layout",via: :post
+  #coupon pages settings
+  post '/users/:user_id/coupons/:id/distribute', :to => 'coupons#distribute',:as =>"distribute_user_coupon"
+  get '/users/:user_id/coupons/:id/redeem', :to => 'coupons#redeem',:as =>"redeem_user_coupon"
+  
+  
+
+  #information pages settings
+  get '/food',:to=>'home#food',:as=>"food"
+  get '/play',:to=>'home#play',:as=>"play"
+  get '/online',:to=>'home#online',:as=>"online"
+
+  #pusher settings
+  post 'pusher/auth'
+  match '/posters/:id' => "posts#shownolayout",via: :get#post
+  match '/commenters/:id' => "comments#shownolayout",via: :get#post
 
 
   # The priority is based upon order of creation: first created -> highest priority.

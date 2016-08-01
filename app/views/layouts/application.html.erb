@@ -9,48 +9,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="status"></div>
+	<nav>
+		<%= link_to "首頁", root_path %>
+		<%= link_to "一起胖", food_path %>&nbsp;
+		<%= link_to "粗乃玩", play_path %>&nbsp;
+		<%= link_to "網購優", online_path %>&nbsp;
+	<%#= link_to "商店街", _path %>
+
+		<% if signed_in? #if you're not signed in %>
+			<%= link_to "官方推薦", offical_path %>&nbsp;&nbsp;
+			<%= link_to "sign out", destroy_user_session_path,method: :delete  %><br>
+		<%else%>
+			<%= link_to "sign in", user_session_path %>
+  	<%end%>
+
+	</nav>
+
   <%= yield %>
   
-	<% if signed_in? # no notifications if you're not signed in %>
-  <script>
-// If your Heroku application is within the EU region,
-// uncomment the followling lines
-// Pusher.host = 'ws-eu.pusher.com';
-// Pusher.sockjs_host = 'sockjs-eu.pusher.com';
 
-var pusher = new Pusher('9f9b0db2bcf535c9126b'); // uses your APP KEY
-var channel = pusher.subscribe("test_channel"+<%=current_user.id%>);
-channel.bind('greet', function(data) {
-  var new_activity=data.post.content;
-  $("#status").append(new_activity+"<br>");
-
-  
-  $.ajax({
-    url:'/posts/'+data.post.id,
-    success:function(html){ $('#activities').append(html)},
-    error: function(xhr) {alert('Ajax request 發生錯誤');console.log(xhr)}
-    //http://stackoverflow.com/questions/31143415/rendering-an-object-passed-through-pusher-in-rails
-  });
-
-});
-
-
-
-// Some useful debug msgs
-        pusher.connection.bind('connecting', function() {
-          $('div#status').text('Connecting to Pusher...');
-        });
-        pusher.connection.bind('connected', function() {
-          $('div#status').text('Connected to Pusher!');
-        });
-        pusher.connection.bind('failed', function() {
-          $('div#status').text('Connection to Pusher failed :(');
-        });
-        channel.bind('subscription_error', function(status) {
-          $('div#status').text('Pusher subscription_error');
-        });
-  </script>
-  <%end%>
 </body>
 </html>
