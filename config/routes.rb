@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   #sign in/sign out authenication page settings 
   authenticated :user do
     root to: 'home#index', as: 'home'
-    get '/offical',:to=>'home#front',:as=>'offical'
+    get '/offical',:to=>'home#offical',:as=>'offical'
   end
   unauthenticated :user do
     root 'home#front'

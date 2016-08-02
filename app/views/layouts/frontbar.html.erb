@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q胖 | 累進式優惠平台</title>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application'%>
+    <script src="//js.pusher.com/2.0/pusher.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= csrf_meta_tags %>
+</head>
+
+<body>
+    <div id="mainbar">
+        <div id="main">
+        <%= link_to root_path do%>
+            <%= image_tag("nav_logo.jpg")%>
+        <%end%>
+            <ul>
+                <li><%= link_to "一起胖", food_path %></li>
+                <li><%= link_to "粗乃玩", play_path %></li>
+                <li><%= link_to "網購優", online_path %></li>
+                <li><%#= link_to "商店街", _path %></li>             
+            </ul>
+                <div id="login_button" class="log">
+                    <%= link_to "登入", user_session_path %>
+                    <%= link_to "註冊", new_user_registration_path %>
+                </div>
+        </div>
+        <div id="shape">
+			<svg id="" width="300px" height="30px">
+			<path fill="white" d="M 0 0
+								  C 50 1 80 19 150 20 
+								  C 220 19 250 1 300 0">
+			</path>
+			</svg>
+		</div>
+    </div>
+    <div class="container">                              
+        <%= yield %>
+    </div>      
+</body>
+
+</html>

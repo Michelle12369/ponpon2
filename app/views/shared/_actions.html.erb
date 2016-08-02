@@ -8,7 +8,7 @@
         <div>
            <!--傳ror變數到js(home.js)-->
           <%= button_tag '#', :class=>"comment-btn btn btn-block", data:{id:resource.id} do%>
-            <%= fa_icon 'comment' %> comment
+            <%= fa_icon 'comment' %> <%=resource.comments_count%>
           <% end %>
         </div>
       </div>

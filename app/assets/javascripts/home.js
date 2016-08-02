@@ -4,4 +4,3 @@ $(document).on("click", '.comment-btn', function(event) {
         console.log(id);
         $("#comment-form-" + id).fadeIn("slow");
 });
-

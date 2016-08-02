@@ -29,18 +29,9 @@ class PostsController < ApplicationController
       @post = current_user.posts.new(post_params)
     if @post.save
       @activity=@post.activities[0]
-      @user=current_user
-      @friends = @user.user_followers
-      
-      
-      for friend in @friends
-        Pusher['private-'+friend.id.to_s].trigger('greet', {
-          :post =>@post
-        })
-      end
       
       respond_to do |format|
-        #format.js
+        format.js
         format.html { redirect_to root_path }
       end
     else

@@ -1,3 +1,40 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.background-white{
+	background-color:white;
+	padding:10px;
+	border-radius:3px;
+	border:solid lightgray 1px;
+	margin-bottom:10px;
+}
+
+#post-form{
+	#post{
+		margin-bottom:0px;
+		.post-button{
+			background-color:$bar-word-color;
+			border:none;
+			border-radius:3px;
+			color:#666;
+			padding:8px;
+		}
+
+	}
+}
+
+.avatar{
+	width:50px;
+	border:solid lightgray 1px; 
+
+}
+.name{
+		margin-bottom:0px;
+	}
+.created-at{
+	color:gray;
+}
+.text{
+	padding-left:1%;
+	border-left:solid 3px $bar-word-color;
+}

@@ -1,4 +1,4 @@
-<%= form_for @post do |f|%>
+<%= form_for @post,remote:true, authenticity_token: true do |f|%>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -12,20 +12,19 @@
   <% end %>
 
   <div class="form-group">
-      <h4>Update Status</h4>
-      <%= f.text_area :content, class: 'form-control input-mentionable',id: "input-post", autofocus: true, placeholder: 'What\'s up?' %>
-    </div>
-    <div id="img-preview" class="form-group hidden">
+      <h4>優惠訊息分享</h4>
+      <%= f.text_area :content, class: 'form-control input-mentionable',id: "input-post", autofocus: true, placeholder: '分享好康給你的朋友吧！' %>
+  </div>
+
+  <div id="img-preview" class="form-group hidden">
       <img src="" alt="Preview">
-    </div>
-    <div class="form-group ">
+  </div>
+  <div class="form-group" id="attachment">
       <%= f.file_field :attachment %>
   </div>
-    </div>
-    <div class="form-group">
+    
+  <div class="form-group" id="post">
+      <%= f.submit '發佈', class: 'post-button'%>
+  </div>
 
-      <%= f.submit 'Post', class: 'btn btn-primary'%>
-    </div>
- 
 <% end %>
-<!-- ,remote:true, authenticity_token: true  -->

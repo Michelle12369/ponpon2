@@ -1,5 +1,5 @@
 class CouponsController < ApplicationController
-  before_action :set_coupon, only: [:show, :edit, :update, :destroy]
+  before_action :set_coupon, only: [:show, :edit, :update, :destroy,:redeem]
   before_action :set_user
   before_action :authenticate_user!
   load_and_authorize_resource 
@@ -37,6 +37,16 @@ require 'rqrcode_png'
 
   def distribute
     @new_coupon=Coupon.copy_coupon(Integer(params[:receiver_id]),@coupon)
+    url="https://pon-michelle12369.c9users.io/users/#{params[:user_id]}/coupons/#{params[:id]}"
+    @qrcode = RQRCode::QRCode.new(url,:size => 4, :level => :l)#用真的網址line才掃得到，還要真正輸出png黨存到資料庫
+    tmp_path = Rails.root.join("qrcode.png")
+    png = @qrcode.to_img.resize(150, 150).save(tmp_path)
+    # Stream is handed closed, we need to reopen it
+    File.open(png.path) do |file|
+      @new_coupon.qr_code = file
+    end
+    File.delete(png.path)
+
     respond_to do |format|
       if @new_coupon.try(:save)
         format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully distributed.' }
@@ -49,34 +59,6 @@ require 'rqrcode_png'
   end
   
   def redeem
-    url="https://pon-michelle12369.c9users.io/users/#{params[:user_id]}/coupons/#{params[:id]}"
-    @qrcode = RQRCode::QRCode.new(url,:size => 4, :level => :l)#用真的網址line才掃得到，還要真正輸出png黨存到資料庫
-    # png = @qrcode.as_png(
-    #       resize_gte_to: false,
-    #       resize_exactly_to: false,
-    #       fill: 'white',
-    #       color: 'black',
-    #       size: 120,
-    #       border_modules: 4,
-    #       module_px_size: 6,
-    #       file: 'tmp/qr.png' # path to write
-    #       )
-
-    #IO.write("/tmp/qr.png", png.to_s)
-    #File.open("qr.png", 'wb') { |file| file.write(png.to_s) }
-    #@p2=png.to_s.force_encoding('UTF-8')
-    #@coupon.update(qr_code: png)
-
-    png = @qrcode.to_img.resize(90, 90).save("really_cool_qr_image.png")
-    @coupon = Coupon.find(params[:id])
-    # Stream is handed closed, we need to reopen it
-    File.open("e.png","wb") do |file|
-      @coupon.qr_code = file
-    end
-
-    File.delete("e.png")
-
-   @coupon.save!
 
   end
 
@@ -84,7 +66,7 @@ require 'rqrcode_png'
   # POST /coupons.json
   def create
     @coupon = @user.coupons.new(coupon_params)#Coupon.new(coupon_params)
-
+    
     respond_to do |format|
       if @coupon.save
         format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully created.' }
@@ -114,21 +96,15 @@ require 'rqrcode_png'
   # DELETE /coupons/1.json
   def destroy
     ancs=@coupon.ancestor_ids
-    #anc_hash={}
     for i in ancs
       Coupon.calculate_discount(i,ancs.find_index(i))
-      #anc_hash[i]=ancs.find_index(i)
     end
-
-    #anc_hash.each do |x,y|
-      #Coupon.calculate_discount(x,y)
-    #end
 
     @coupon.update(used: true)
 
     #@coupon.destroy
     respond_to do |format|
-      format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully destroyed.' }
+      format.html { redirect_to [@coupon.user,@coupon], notice: '優惠卷已兌換' }
       format.json { head :no_content }
     end
   end

@@ -1,26 +1,31 @@
-<div class="info">
-  <%= render 'shared/avatar', user: post.user %>
-  <h4 class="name"><%= link_to post.user.name, user_path(post.user) %></h4>
-  <span class="action">created a <%= link_to 'post', post %></span>
+<div class="info row">
+  <%= link_to user_path(post.user),class:"col-xs-2" do %>
+    <%= image_tag post.user.avatar.url || 'avatar.jpg', class: 'avatar'%>
+  <% end %>
+  <div class="col-xs-10">
+    <h4 class="name">
+      <%= link_to post.user.name, user_path(post.user) %>
+    </h4>
+    <%= render 'shared/created_at', activity: post %>
+  </div>
 </div>
 <div class="content">
-  <span class="text"><%= post.content%></span>
+  <%#= render 'shared/created_at', activity: post %>
+<br> 
+  <p class="text"><%= post.content%></p>
   <% if post.attachment.present? %>
     <div class="attachment">
-      <%= image_tag post.attachment, :style => "width:200px;" %>
+      <%= image_tag post.attachment, :style => "width:80%;" %>
     </div>
   <% end %>
-  <%= render 'shared/created_at', activity: post %>
   <div class="points">
-    <span class="like-count"><%= pluralize(post.cached_votes_up, 'like') %></span>
-    <span class="comments-count"><%= pluralize(post.comments_count, 'comment') %></span>
     <div class="pull-right">
       <% if belongs_to_user?(post) %>
         <%= link_to edit_post_path(post), class: 'btn btn-primary btn-sm' do %>
           <% fa_icon 'pencil' %>
         <% end %>
         <%= link_to post_path(post), method: :delete, class:'btn btn-danger btn-sm', remote: true,data: { confirm: 'Are you sure you want to delete this item?'} do %>
-          <% fa_icon 'trash' %>
+          <% fa_icon 'remove' %>
         <% end %>
       <% end %>
     </div>
