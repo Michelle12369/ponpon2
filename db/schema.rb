@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727153058) do
+ActiveRecord::Schema.define(version: 20160803182433) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20160727153058) do
     t.boolean  "used"
     t.float    "computed_discount"
     t.string   "qr_code"
+    t.string   "coupon_pic"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -124,7 +125,6 @@ ActiveRecord::Schema.define(version: 20160727153058) do
     t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
-    t.string   "remote_avatar_url"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

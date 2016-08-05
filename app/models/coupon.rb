@@ -4,6 +4,7 @@ class Coupon < ActiveRecord::Base
   belongs_to :user
   has_closure_tree
   mount_uploader :qr_code, AvatarUploader
+  mount_uploader :coupon_pic, AvatarUploader
   
   def self.copy_coupon(receiver_id,coupon)
     if receiver_id!=coupon.user_id 
@@ -20,7 +21,8 @@ class Coupon < ActiveRecord::Base
                           other_content: coupon.other_content,
                           used: false,
                           discount:coupon.discount,
-                          computed_discount:coupon.discount
+                          computed_discount:coupon.discount,
+                          coupon_pic:coupon.coupon_pic
                           )
     end
   end

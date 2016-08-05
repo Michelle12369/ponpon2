@@ -42,6 +42,10 @@ Rails.application.routes.draw do
   match '/posters/:id' => "posts#shownolayout",via: :get#post
   match '/commenters/:id' => "comments#shownolayout",via: :get#post
 
+  #coupon 列表
+  get '/users/:user_id/coupons-used',:to=>'coupons#used',:as=>"user_coupons_used"
+  get '/users/:user_id/coupons-notuse',:to=>'coupons#notuse',:as=>"user_coupons_notuse"
+  get '/users/:user_id/coupons-overdue',:to=>'coupons#overdue',:as=>"user_coupons_overdue"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

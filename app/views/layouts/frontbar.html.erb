@@ -14,13 +14,13 @@
     <div id="mainbar">
         <div id="main">
         <%= link_to root_path do%>
-            <%= image_tag("nav_logo.jpg")%>
+            <%= image_tag("nav_logo_4.png")%>
         <%end%>
             <ul>
                 <li><%= link_to "一起胖", food_path %></li>
                 <li><%= link_to "粗乃玩", play_path %></li>
                 <li><%= link_to "網購優", online_path %></li>
-                <li><%#= link_to "商店街", _path %></li>             
+                <li><%= link_to "商店街",online_path %></li>             
             </ul>
                 <div id="login_button" class="log">
                     <%= link_to "登入", user_session_path %>

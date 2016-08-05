@@ -19,12 +19,14 @@
   <div id="img-preview" class="form-group hidden">
       <img src="" alt="Preview">
   </div>
-  <div class="form-group" id="attachment">
+  <div class="row">
+  <div class="form-group col-xs-9" id="attachment">
       <%= f.file_field :attachment %>
   </div>
     
-  <div class="form-group" id="post">
-      <%= f.submit '發佈', class: 'post-button'%>
+  <div class="form-group col-xs-3" id="post">
+      <%= f.submit '發佈', class: 'btn btn-sm btn-outline-warning pull-right'%>
   </div>
+</div>
 
 <% end %>

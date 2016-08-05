@@ -1,15 +1,37 @@
+$bar-bgcolor: white;
+$bar-font-size: 16px;
+$bar-word-color:#f9ed69;//#F7C103;
+$background-with-color:rgba(198, 156, 109, 0.1);//rgb(228,220,214);背景橘
+$background-color:#f5f5f5;//灰
+$orange:rgb(240,138,93);//真的橘
+
+///////////////////////////////////
+//亂寫覆蓋顏色
+.btn-outline-warning{
+  color:$orange;
+  border-color:$orange;
+}
+.bg-warning{
+  background-color:$orange !important;
+
+}
+a.bg-warning:hover{
+    background-color:$orange !important;
+  }
+
+//////////////////////////////////////
 body {
-  background-color: #f5f5f5;//#fafafa
+  background-color: $background-color;//#fafafa
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 18px;
 
 }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 18px;
 }
 
@@ -27,7 +49,7 @@ a {
   }
 
   &:hover {
-    //color: #fff;
+    color: gray;
     //background-color: #000;
     text-decoration: none;
   }
@@ -35,7 +57,7 @@ a {
 
 
 div {
-  &.field, &.actions {
+  &.field {
     margin-bottom: 10px;
   }
 }
@@ -70,15 +92,14 @@ div {
   }
 
   ul li {
-    font-size: 12px;
+    font-size: 14px;
     list-style: square;
   }
 }
 
-.container{
+body{
   margin-top: 80px;
 }
-
 
 
 /****************************************/
@@ -86,9 +107,7 @@ div {
 /****************************************/
 /******* bar基本設定  *******/
 
-$bar-bgcolor: white;
-$bar-font-size: 16px;
-$bar-word-color:#f9ed69;
+
 //只有front的bar
 #mainbar {
     position: fixed;
@@ -144,41 +163,53 @@ $bar-word-color:#f9ed69;
 .navbar{
         background-color:white;
         box-shadow: 2px 2px 2px rgba(20%,20%,40%,0.3);
-        a{
-            padding:0px;
-            }
-        #navbar-brand{
-            margin-left:4%;
+        padding-top:0;
+        padding-bottom:0px;        
 
-            .bar-logo{
+
+        #navbar-brand .bar-logo{
                 width:130px;
-                margin-top:5%;
-
             }
-        }    
+
 }
-@media screen and (min-width:768px){
+ .dropdown-menu{
+          box-shadow: 2px 2px 2px rgba(20%,20%,40%,0.2);
+        }
+
     
         #nav-choice{
-            margin-left:calc(( 100% - 700px ) / 2 );
+          .nav-item:nth-child(1){
+            margin-left:calc(( 100% - 670px ) / 2 );
+          }
+          li{
+                height:50px;
+          }
+          .active{
+              border-bottom:solid $orange 5px;
+          }
+          a{
+            padding-top:0.9rem;
+            padding-bottom:1rem;
+            // height: 100%;
+            margin:auto 0;
+            // text-align: center;
+            // vertical-align:middle;
+          }
         }
-        .navbar-right{
-            margin-right: 2%;
+
+        .pull-md-right{
             li{
                 height:50px;
                 a{
                 padding:0px;
                 }
-               
             }
-            #hi{
-                padding-top:8%;
-            }
-            .settings{
-                padding-left:2px;
-                padding-top:17px;
+            #settings{
+                padding-top:14px;
+                margin-left:0px;
                 i{
                     color:gray;
+                     font-size: 1.5em;
                 }
                 .dropdown-menu li{
                     height:30px;
@@ -190,8 +221,37 @@ $bar-word-color:#f9ed69;
                 }
             }
         }
-
+ @media screen and (max-width:768px){
+  #nav-choice{
+    .nav-item:nth-child(1){
+      margin-left:0;
     }
+    li{
+      height:30px;
+      a{
+        padding-top:0.3rem;
+        padding-bottom:0.4rem;
+      }
+    }
+    .active{
+      border-left:solid $orange 5px;
+      border-bottom:none;
+      padding-left:0.4rem;
+      margin-left:-0.6rem;
+    }
+  }
+    .navbar .navbar-nav>.nav-item {
+        float: none;
+        margin-left: .1rem;
+    }
+    .navbar .navbar-nav {
+        float:none !important;
+    }
+    .navbar .collapse.in, .navbar .collapsing  {
+        clear:both;
+    }
+
+}
 
 
 

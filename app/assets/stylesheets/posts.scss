@@ -3,17 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .background-white{
 	background-color:white;
-	padding:10px;
+	// padding:10px;
 	border-radius:3px;
 	border:solid lightgray 1px;
 	margin-bottom:10px;
+	padding-top:10px;
+}
+.lightgray{
+	color:lightgray;
 }
 
 #post-form{
 	#post{
-		margin-bottom:0px;
+		// margin-bottom:0px;
 		.post-button{
-			background-color:$bar-word-color;
+			background-color:$orange;
 			border:none;
 			border-radius:3px;
 			color:#666;
@@ -22,19 +26,63 @@
 
 	}
 }
+.post-without-comment{
+	.avatar{
+		width:50px;
+		border:solid lightgray 1px; 
 
-.avatar{
-	width:50px;
-	border:solid lightgray 1px; 
-
-}
-.name{
-		margin-bottom:0px;
 	}
-.created-at{
-	color:gray;
+	.name-and-time{
+		// padding-left:0px;
+		.name{
+				margin-bottom:0px;
+			}
+	}
+	// .created-at{
+	// 	color:gray;
+	// }
+	.text{
+		padding-left:1%;
+		border-left:solid 3px $orange;
+	}
+
+	@media screen and (max-width:768px) and ( min-width:360px){
+		.activity-post{
+			.name-and-time{
+				padding-left:0px;
+				// margin-left:10px;
+			}
+		}
+	}
+
 }
-.text{
-	padding-left:1%;
-	border-left:solid 3px $bar-word-color;
+/////////////////////////////////////////////////
+.actions{
+	background-color:$background-with-color;
+	.comment-in-post{
+		padding:5px 0px;
+		.avatar{
+			width:30px;
+			border:solid lightgray 1px; 
+
+		}
+
+	}
+	.comment-info{
+		padding:5px 0;
+		background-color:white;
+		border-top:solid lightgray 1px;
+		border-bottom:solid lightgray 1px;
+	}
+
+	.comment-form{
+		padding-top:10px;
+	}
+
 }
+
+
+
+
+
+

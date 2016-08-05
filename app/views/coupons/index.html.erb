@@ -1,41 +1,15 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Coupons</h1>
+  <div class="m-b-1">
+    <%= link_to "可使用", user_coupons_notuse_path(current_user),remote:true,class:"nav-link bg-warning notuse filter p-x-1" %>|
+    <%= link_to "已使用", user_coupons_used_path(current_user),remote:true,class:"nav-link used filter p-x-1"%>|
+    <%= link_to "已過期", user_coupons_overdue_path(current_user),remote:true,class:"nav-link overdue filter p-x-1" %>
+  </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <td><b>Coupon id</b></td>
-      <td><b>標題</b></td>
-      <td><b>折數</b></td>
-      <td><b>狀態</b></td>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="card-columns coupons">
     <% @coupons.each do |coupon| %>
+      <%=render "coupons/coupon",coupon: coupon%>
+    <%end%>
+  </div>
 
-      <tr>
-      <td><%=coupon.id%></td>
-        <td><%=coupon.coupon_title%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td><%=(1-coupon.computed_discount)*10%>折&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td><%if coupon.expiry_date<Date.today%>
-              已過期
-            <%elsif coupon.used==false%>
-              未使用
-            <%elsif coupon.used==true%>
-              已使用
-            <%end%>
-        </td>
-        <td><%= link_to '詳細資訊',[coupon.user,coupon]%>&nbsp;&nbsp;</td>
-        <td><%#= link_to 'Edit', edit_user_coupon_path(coupon.user,coupon) %></td>
-        <td><%= link_to '兌換(顧客按的)', redeem_user_coupon_path(@user,coupon) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%#= link_to 'New Coupon', new_user_coupon_path %>
-<br>
+            
+      

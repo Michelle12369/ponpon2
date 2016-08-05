@@ -1,27 +1,38 @@
 <% if user_signed_in? %>
-  <div class="actions">
-    <div class="row">
-      <div class="col-xs-6 like">
-        <%= render 'likes/form', likeable: resource %>
+  <div class="actions container-fluid">
+    <div class="row comment-info">
+      <div class="col-xs-6">
+        <span class="like-count"><%= fa_icon 'heart'%><%=resource.cached_votes_up%></span>
+        <span class="comments-count"><%= fa_icon 'comment'%><%=resource.comments_count%></span>
       </div>
+
       <div class="col-xs-6 comment-<%=resource.id%>">
-        <div>
-           <!--傳ror變數到js(home.js)-->
-          <%= button_tag '#', :class=>"comment-btn btn btn-block", data:{id:resource.id} do%>
-            <%= fa_icon 'comment' %> <%=resource.comments_count%>
-          <% end %>
-        </div>
-      </div>
-      <div id="comment-form-<%=resource.id%>" class="comment-form">
-          <div id="comments">
-            <%= render(resource.comments.all,commentable:resource)%>
-          </div>
-          <%= render 'comments/form', commentable: resource %>
       
-          
+           <!--傳ror變數到js(home.js)-->
+           
+          <%= link_to "#", method: :post,:class=>"load-more pull-right", data:{id:resource.id}, remote: true do%>
+            查看更多留言<%#= render(resource.comments.offset(4).all,commentable:resource)%>
+          <%end%>
 
       </div>
     </div>
+    
+    <div id="post-<%=resource.id%>-comments">
+      <%= render(resource.comments.last(4),commentable:resource)%>
+    </div>
+
+      <div id="comment-form-<%=resource.id%>" class="comment-form">
+          <div class="row">
+            <span class="like"><%= render 'likes/form', likeable: resource %></span>
+
+            <%= render 'comments/form', commentable: resource %>
+          </div>
+      </div>
+
+
+
+
+   
   </div>
 <% end %>
 

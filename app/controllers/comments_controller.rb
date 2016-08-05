@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
 
       @comment.save
       
+      #pusher
       @user=current_user
       @friends = @comment.commentable.user.followers#@user.user_followers
        if @friends.include?(current_user)
@@ -28,6 +29,7 @@ class CommentsController < ApplicationController
           :comment =>@comment
         })
       end
+      #pusher end
 
       respond_to do |format|
         format.js
@@ -43,6 +45,9 @@ class CommentsController < ApplicationController
     @commentable=@comment.commentable
     render "shownolayout", layout: false
   end
+
+
+
 
   def destroy
     @comment = current_user.comments.find(params[:id])

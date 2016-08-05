@@ -11,42 +11,41 @@
 </head>
 
 <body>
+<div class="container-fluid">
     <nav class="navbar navbar-fixed-top">
-     <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-               <i class="glyphicon glyphicon-menu-hamburger"></i>
+            <button type="button" class="navbar-toggler hidden-md-up pull-xs-right" data-toggle="collapse" data-target="#myNavbar"  aria-controls="#myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+              &#9776;
             </button>
             <%= link_to root_path, class:"navbar-brand",id: "navbar-brand" do%>
-                <%= image_tag "nav_logo.jpg", class: "bar-logo"%>
+                <%= image_tag "nav_logo_4.png", class: "bar-logo"%>
             <%end%>
-        </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
+                <div class="collapse navbar-toggleable-sm" id="myNavbar">
                     <ul class="nav navbar-nav" id="nav-choice">
-                            <li class="nav-item"><%= link_to "一起胖", food_path %></li>
-                            <li class="nav-item"><%= link_to "粗乃玩", play_path %></li>
-                            <li class="nav-item"><%= link_to "網購優", online_path %></li>
-                            <li class="nav-item"><%#= link_to "商店街", _path %></li>
+                            <li class="nav-item <%= active_class('/food') %>"><%= link_to "一起胖", food_path,class: "nav-link" %></li>
+                            <li class="nav-item <%= active_class('/play') %>"><%= link_to "粗乃玩", play_path ,class: "nav-link" %></li>
+                            <li class="nav-item <%= active_class('/online') %>"><%= link_to "網購優", online_path ,class: "nav-link" %></li>
+                            <li class="nav-item <%= active_class('/online') %>"><%= link_to "商店街",online_path,class: "nav-link"%></li>
 
                         <% if signed_in?%>
-                            <li class="nav-item"><%= link_to "官方推薦", offical_path %></li>
-                            <li class="nav-item"><%= link_to "我的優惠卷列表", user_coupons_path(current_user) %></li>
+                            <li class="nav-item <%= active_class('/offical') %>"><%= link_to "官方推薦", offical_path,class: "nav-link"  %></li>
+                            <li class="nav-item <%= active_class(user_coupons_path(current_user)) %>"><%= link_to "我的優惠卷列表", user_coupons_path(current_user),class: "nav-link"  %></li>
                     </ul>
-                    		<ul class="nav navbar-nav navbar-right">
+                    		<ul class="nav navbar-nav pull-md-right">
                         		<li class="nav-item" id="hi">
-                                    <%= link_to user_path(current_user) do %>
+                                    <%= link_to user_path(current_user),class: "nav-link"  do %>
                         			<%=image_tag current_user.avatar.url, class: "photo-sticker"%>
                         			<span id="greeting">Hi,<%=current_user.name%></span>
                         		<%end%>
                                 </li>
-                                <li class="nav-item dropdown settings">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <li class="nav-item dropdown" id="settings">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="glyphicon glyphicon-chevron-down"></i>
                                     </a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><%= link_to "登出", destroy_user_session_path,method: :delete  %></li>
-                                        <li><%= link_to '修改密碼', edit_user_registration_path %></li>
-                                        <li><a href="#">使用說明</a></li>
+                                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                        <li><%= link_to "登出", destroy_user_session_path,method: :delete,class: "nav-link"   %></li>
+                                        <li><%= link_to '修改密碼', edit_user_registration_path,class: "nav-link"  %></li>
+                                        <div class="dropdown-divider"></div>
+                                        <li><a href="#" class="nav-link">使用說明</a></li>
                                     </ul>
                                 </li>
                             </ul>    
@@ -55,14 +54,13 @@
 
                     <%else%>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item settings"><%= link_to "登入", user_session_path %></li>
-                    <li class="nav-item settings"><%= link_to "註冊", new_user_registration_path %></li>
+                <ul class="nav navbar-nav pull-md-right">
+                    <li class="nav-item settings"><%= link_to "登入", user_session_path,class: "nav-link"  %></li>
+                    <li class="nav-item settings"><%= link_to "註冊", new_user_registration_path,class: "nav-link"  %></li>
                 </ul>
                     <%end%>
-    </div>
     </nav>
-
+</div>
 
     <div class="container">
         <div class="row">

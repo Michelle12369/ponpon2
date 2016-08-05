@@ -10,9 +10,37 @@ require 'rqrcode_png'
   # GET /coupons.json
 
   def index
-    @coupons = @user.coupons#Coupon.all
-    
+    @coupons = @user.coupons.where("used = ? AND expiry_date > ?",false,Time.zone.today)#Coupon.all
   end
+
+  def notuse
+    @coupons = @user.coupons.where("used = ? AND expiry_date > ?",false,Time.zone.today)
+    @class="notuse"
+    respond_to do |format|
+      format.js {render "used.js.erb"}
+      #format.html {render "index"}
+    end
+  end
+
+  def used
+    @coupons = @user.coupons.where("used = ?",true)
+    @class="used"
+    respond_to do |format|
+      format.js 
+      #format.html {render "index"}
+    end
+  end
+
+  def overdue
+    @coupons =@user.coupons.where("expiry_date < ?",Time.zone.today)
+    @class="overdue"
+    respond_to do |format|
+      format.js {render "used.js.erb"}
+      #format.html {render "index"}
+    end
+
+  end
+
 
   # GET /coupons/1
   # GET /coupons/1.json
@@ -122,7 +150,7 @@ require 'rqrcode_png'
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coupon_params
-      params.require(:coupon).permit(:coupon_title)
+      params.require(:coupon).permit(:coupon_title,:coupon_pic)
       #fetch(:coupon, {})
     end
 end

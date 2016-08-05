@@ -1,0 +1,6 @@
+$(".coupons").html("");
+$(".filter").removeClass("bg-warning");
+<% @coupons.each do |coupon| %>
+	$(".coupons").append("<%=j render 'coupons/coupon',coupon: coupon%>");
+<%end%>
+$(".<%=@class%>").addClass("bg-warning");
