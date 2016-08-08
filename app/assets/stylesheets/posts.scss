@@ -4,7 +4,7 @@
 .background-white{
 	background-color:white;
 	// padding:10px;
-	border-radius:3px;
+	border-radius:0.2rem;
 	border:solid lightgray 1px;
 	margin-bottom:10px;
 	padding-top:10px;
@@ -27,7 +27,11 @@
 	}
 }
 .post-without-comment{
+
 	.avatar{
+		@media screen and (max-width:439px){
+			width:35px;
+		}
 		width:50px;
 		border:solid lightgray 1px; 
 
@@ -62,6 +66,9 @@
 	.comment-in-post{
 		padding:5px 0px;
 		.avatar{
+			@media screen and (max-width:439px){
+				width:25px;
+			}
 			width:30px;
 			border:solid lightgray 1px; 
 

@@ -24,14 +24,14 @@ body {
   background-color: $background-color;//#fafafa
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 0.9rem;//14px;
   line-height: 18px;
 
 }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 0.9rem;//14px;
   line-height: 18px;
 }
 
@@ -92,7 +92,7 @@ div {
   }
 
   ul li {
-    font-size: 14px;
+    font-size: 0.9rem;//14px;
     list-style: square;
   }
 }
