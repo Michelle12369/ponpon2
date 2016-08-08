@@ -17,6 +17,8 @@ class HomeController < ApplicationController
 
   def food
 
+
+
   end
 
   def play

@@ -2,7 +2,7 @@ class CouponsController < ApplicationController
   before_action :set_coupon, only: [:show, :edit, :update, :destroy,:redeem]
   before_action :set_user
   before_action :authenticate_user!
-  load_and_authorize_resource 
+  authorize_resource 
 require 'rqrcode'
 require 'rqrcode_png'
 
@@ -10,11 +10,11 @@ require 'rqrcode_png'
   # GET /coupons.json
 
   def index
-    @coupons = @user.coupons.where("used = ? AND expiry_date > ?",false,Time.zone.today)#Coupon.all
+    @coupon = @user.coupons.where("used = ? AND expiry_date > ?",false,Time.zone.today)#Coupon.all
   end
 
   def notuse
-    @coupons = @user.coupons.where("used = ? AND expiry_date > ?",false,Time.zone.today)
+    @coupon = @user.coupons.where("used = ? AND expiry_date > ?",false,Time.zone.today)
     @class="notuse"
     respond_to do |format|
       format.js {render "used.js.erb"}
@@ -23,7 +23,7 @@ require 'rqrcode_png'
   end
 
   def used
-    @coupons = @user.coupons.where("used = ?",true)
+    @coupon = @user.coupons.where("used = ?",true)
     @class="used"
     respond_to do |format|
       format.js 
@@ -32,7 +32,7 @@ require 'rqrcode_png'
   end
 
   def overdue
-    @coupons =@user.coupons.where("expiry_date < ?",Time.zone.today)
+    @coupon =@user.coupons.where("expiry_date < ?",Time.zone.today)
     @class="overdue"
     respond_to do |format|
       format.js {render "used.js.erb"}

@@ -22,14 +22,13 @@
             <%end%>
                 <div class="collapse navbar-toggleable-sm" id="myNavbar">
                     <ul class="nav navbar-nav" id="nav-choice">
-                            <li class="nav-item <%= active_class('/food') %>"><%= link_to "一起胖", food_path,class: "nav-link" %></li>
-                            <li class="nav-item <%= active_class('/play') %>"><%= link_to "粗乃玩", play_path ,class: "nav-link" %></li>
-                            <li class="nav-item <%= active_class('/online') %>"><%= link_to "網購優", online_path ,class: "nav-link" %></li>
+                            
+                        <% if signed_in?%>
+                            <li class="nav-item <%= active_class('/offical') %>"><%= link_to "Q胖推薦", offical_path,class: "nav-link"  %></li>
+                            <li class="nav-item <%= active_class('/') %>"><%= link_to "優惠動態", root_path,class: "nav-link"  %></li>
+                            <li class="nav-item <%= active_class(user_coupons_path(current_user)) %>"><%= link_to "我的優惠卷列表", user_coupons_path(current_user),class: "nav-link"  %></li>
                             <li class="nav-item <%= active_class('/online') %>"><%= link_to "商店街",online_path,class: "nav-link"%></li>
 
-                        <% if signed_in?%>
-                            <li class="nav-item <%= active_class('/offical') %>"><%= link_to "官方推薦", offical_path,class: "nav-link"  %></li>
-                            <li class="nav-item <%= active_class(user_coupons_path(current_user)) %>"><%= link_to "我的優惠卷列表", user_coupons_path(current_user),class: "nav-link"  %></li>
                     </ul>
                     		<ul class="nav navbar-nav pull-md-right">
                         		<li class="nav-item" id="hi">
@@ -54,6 +53,12 @@
 
 
                     <%else%>
+
+                    <li class="nav-item <%= active_class('/food') %>"><%= link_to "一起胖", food_path,class: "nav-link" %></li>
+                    <li class="nav-item <%= active_class('/play') %>"><%= link_to "粗乃玩", play_path ,class: "nav-link" %></li>
+                    <li class="nav-item <%= active_class('/online') %>"><%= link_to "網購優", online_path ,class: "nav-link" %></li>
+                    <li class="nav-item <%= active_class('/online') %>"><%= link_to "商店街",online_path,class: "nav-link"%></li>
+
                 </ul>
                 <ul class="nav navbar-nav pull-md-right">
                     <li class="nav-item settings"><%= link_to "登入", user_session_path,class: "nav-link"  %></li>
@@ -62,7 +67,8 @@
                     <%end%>
     </nav>
 </div>
-
+<p><%= notice %></p>
+<p><%= alert %></p>
     <div class="container">
         <div class="row">
             <%= yield %>
