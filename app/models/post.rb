@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
+  belongs_to :store
   mount_uploader :attachment, AvatarUploader
 
   acts_as_votable
@@ -10,6 +11,6 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :content
   validates_presence_of :user
-
+  #validates_presence_of :store
 
 end

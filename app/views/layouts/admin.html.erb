@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q胖 | 累進式優惠平台</title>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application'%>
+    <script src="//js.pusher.com/2.0/pusher.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <%= csrf_meta_tags %>
+</head>
+
+<body>
+<p><%= alert %></p>
+<%= link_to "Q胖資訊公告", admin_home_path %>
+<%#= link_to "社群經營", admin_home_path %>
+<%= link_to "店家主頁設定",admin_store_path(@current_store) %>
+<%= link_to "優惠卷發放設定", admin_store_coupons_path(@current_store) %>
+<%= link_to "數據資料庫", admin_operating_data_path(@current_store) %>
+
+    <div class="container">
+        <div class="row">
+            <%= yield %>
+        </div>
+    </div>      
+</body>
+
+</html>

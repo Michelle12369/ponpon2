@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803182433) do
+ActiveRecord::Schema.define(version: 20160809112742) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -24,11 +23,10 @@ ActiveRecord::Schema.define(version: 20160803182433) do
     t.string   "recipient_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
+    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
+    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
   end
-
-  add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
-  add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
-  add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
 
   create_table "comments", force: :cascade do |t|
     t.string   "title",            limit: 50, default: ""
@@ -39,20 +37,18 @@ ActiveRecord::Schema.define(version: 20160803182433) do
     t.string   "role",                        default: "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["commentable_id"], name: "index_comments_on_commentable_id"
+    t.index ["commentable_type"], name: "index_comments_on_commentable_type"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
-
-  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
-  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "coupon_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
     t.integer "descendant_id", null: false
     t.integer "generations",   null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "coupon_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "coupon_desc_idx"
   end
-
-  add_index "coupon_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "coupon_anc_desc_idx", unique: true
-  add_index "coupon_hierarchies", ["descendant_id"], name: "coupon_desc_idx"
 
   create_table "coupons", force: :cascade do |t|
     t.date     "expiry_date"
@@ -74,6 +70,7 @@ ActiveRecord::Schema.define(version: 20160803182433) do
     t.float    "computed_discount"
     t.string   "qr_code"
     t.string   "coupon_pic"
+    t.integer  "store_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -84,10 +81,9 @@ ActiveRecord::Schema.define(version: 20160803182433) do
     t.boolean  "blocked",         default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["followable_id", "followable_type"], name: "fk_followables"
+    t.index ["follower_id", "follower_type"], name: "fk_follows"
   end
-
-  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
-  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
 
   create_table "posts", force: :cascade do |t|
     t.string   "attachment"
@@ -97,11 +93,36 @@ ActiveRecord::Schema.define(version: 20160803182433) do
     t.datetime "updated_at",                  null: false
     t.integer  "cached_votes_up", default: 0
     t.integer  "comments_count",  default: 0
+    t.integer  "store_id"
+    t.index ["cached_votes_up"], name: "index_posts_on_cached_votes_up"
+    t.index ["comments_count"], name: "index_posts_on_comments_count"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  add_index "posts", ["cached_votes_up"], name: "index_posts_on_cached_votes_up"
-  add_index "posts", ["comments_count"], name: "index_posts_on_comments_count"
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+  create_table "store_users", force: :cascade do |t|
+    t.integer  "store_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["store_id"], name: "index_store_users_on_store_id"
+    t.index ["user_id"], name: "index_store_users_on_user_id"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string   "store_phone"
+    t.string   "store_address"
+    t.string   "store_name"
+    t.string   "store_keeper_name"
+    t.string   "store_keeper_phone"
+    t.string   "store_email"
+    t.string   "store_about_string"
+    t.string   "store_location"
+    t.text     "store_time"
+    t.text     "store_rule"
+    t.string   "store_photo"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   default: "", null: false
@@ -125,11 +146,12 @@ ActiveRecord::Schema.define(version: 20160803182433) do
     t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
+    t.integer  "role"
+    t.string   "remote_avatar_url"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "votes", force: :cascade do |t|
     t.integer  "votable_id"
@@ -141,9 +163,8 @@ ActiveRecord::Schema.define(version: 20160803182433) do
     t.integer  "vote_weight"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
-
-  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
 
 end

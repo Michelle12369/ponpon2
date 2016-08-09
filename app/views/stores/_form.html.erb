@@ -1,0 +1,72 @@
+<%= form_for(store) do |f| %>
+  <% if store.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
+
+      <ul>
+      <% store.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :store_phone %>
+    <%= f.text_field :store_phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :store_address %>
+    <%= f.text_field :store_address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :store_name %>
+    <%= f.text_field :store_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :store_keeper_name %>
+    <%= f.text_field :store_keeper_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :store_keeper_phone %>
+    <%= f.text_field :store_keeper_phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :store_email %>
+    <%= f.text_field :store_email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :store_about_string %>
+    <%= f.text_field :store_about_string %>
+  </div>
+
+  <div class="field">
+    <%= f.label :store_location %>
+    <%= f.text_field :store_location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :store_time %>
+    <%= f.text_area :store_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :store_rule %>
+    <%= f.text_area :store_rule %>
+  </div>
+
+  <div class="field">
+    <%= f.label :store_photo %>
+    <%= f.text_field :store_photo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

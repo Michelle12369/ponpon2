@@ -27,13 +27,13 @@
                             <li class="nav-item <%= active_class('/offical') %>"><%= link_to "Q胖推薦", offical_path,class: "nav-link"  %></li>
                             <li class="nav-item <%= active_class('/') %>"><%= link_to "優惠動態", root_path,class: "nav-link"  %></li>
                             <li class="nav-item <%= active_class(user_coupons_path(current_user)) %>"><%= link_to "我的優惠卷列表", user_coupons_path(current_user),class: "nav-link"  %></li>
-                            <li class="nav-item <%= active_class('/online') %>"><%= link_to "商店街",online_path,class: "nav-link"%></li>
+                            <li class="nav-item <%= active_class('/stores') %>"><%= link_to "商店街",stores_path,class: "nav-link"%></li>
 
                     </ul>
                     		<ul class="nav navbar-nav pull-md-right">
                         		<li class="nav-item" id="hi">
                                     <%= link_to user_path(current_user),class: "nav-link"  do %>
-                            			<%=image_tag current_user.avatar.url, class: "photo-sticker"%>
+                            			<%=image_tag current_user.avatar.url || 'avatar.jpg', class: "photo-sticker"%>
                             			<span id="greeting">Hi,<%=current_user.name%></span>
                         		    <%end%>
                                 </li>

@@ -1,9 +1,10 @@
 class HomeController < ApplicationController
   before_action :set_user, except: :front
   respond_to :html, :js
-  layout "frontbar", :only => :front
+  
 
   def front
+    render :layout => "frontbar"
     #@activities = PublicActivity::Activity.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   
   end
@@ -32,6 +33,12 @@ class HomeController < ApplicationController
   def offical
 
   end  
+
+
+  def admin_landing
+    render :layout => "nobar"
+     
+  end 
 
   private
   def set_user

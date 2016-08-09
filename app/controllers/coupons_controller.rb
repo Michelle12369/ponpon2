@@ -2,7 +2,7 @@ class CouponsController < ApplicationController
   before_action :set_coupon, only: [:show, :edit, :update, :destroy,:redeem]
   before_action :set_user
   before_action :authenticate_user!
-  authorize_resource 
+  load_and_authorize_resource
 require 'rqrcode'
 require 'rqrcode_png'
 
@@ -45,8 +45,8 @@ require 'rqrcode_png'
   # GET /coupons/1
   # GET /coupons/1.json
   def show
-    if @coupon.root?
-       @distributor_name="第一張"
+    if @coupon.parent.root?
+       @distributor_name="店家發行"
     else
       @distributor_name=@coupon.parent.user.name
     end

@@ -2,6 +2,8 @@ class Coupon < ActiveRecord::Base
   #has_many :users,:through=>:coupon_users
   #has_many :coupon_users
   belongs_to :user
+  belongs_to :store
+
   has_closure_tree
   mount_uploader :qr_code, AvatarUploader
   mount_uploader :coupon_pic, AvatarUploader
@@ -41,7 +43,6 @@ end
     now_discount=now_coupon.computed_discount+now_coupon.discount*(0.5**position)
     now_coupon.update(computed_discount: now_discount)
   end 
-
 
 end
 #Coupon.create(expiry_date: "2016/8/22", discount: 0.05, coupon_title: "爺爺蛋包飯",

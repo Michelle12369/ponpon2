@@ -7,6 +7,9 @@
           <%=coupon.coupon_title%>
         </h6>
         <p class="card-text">
+          <%=coupon.store.store_name%>
+        </p>
+        <p class="card-text">
           <%=(1-coupon.computed_discount)*10%>折
         </p>
       </div>

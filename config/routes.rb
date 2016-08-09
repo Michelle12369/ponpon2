@@ -1,7 +1,31 @@
 Rails.application.routes.draw do
+
+  namespace :admin do
+    resources :stores
+  end
+  # resources :stores do
+  #   resources :coupons
+  #   member do
+  #     get :followers
+  #   end
+  # end
+
+  namespace :admin do
+    
+    root to: 'home#index', as: 'home'
+    get '/:store_id/operating-data',:to=>'home#operating_data',:as=>"operating-data"
+    #resources :coupons
+      resources :stores do
+        resources :coupons
+        member do
+          get :followers
+        end
+    end
+  end
   #basic relationship settings
 
   resources :posts
+  resources :stores
   resources :comments, only: [:create, :destroy]
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   
@@ -36,6 +60,8 @@ Rails.application.routes.draw do
   get '/food',:to=>'home#food',:as=>"food"
   get '/play',:to=>'home#play',:as=>"play"
   get '/online',:to=>'home#online',:as=>"online"
+  get '/admin-landing',:to=>'home#admin_landing',:as=>"admin-landing"
+
 
   #pusher settings
   post 'pusher/auth'
