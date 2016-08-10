@@ -12,12 +12,15 @@
 </head>
 
 <body>
-<p><%= alert %></p>
+<p><%= notice %></p>
+<%= link_to "登出", admin_sign_out_path,method: :delete,class: "nav-link"%>
+<%= link_to "切換為個人", root_path,class: "nav-link"%>
 <%= link_to "Q胖資訊公告", admin_home_path %>
 <%#= link_to "社群經營", admin_home_path %>
-<%= link_to "店家主頁設定",admin_store_path(@current_store) %>
+<%= link_to "店家主頁設定",edit_admin_store_path(@current_store) %>
 <%= link_to "優惠卷發放設定", admin_store_coupons_path(@current_store) %>
 <%= link_to "數據資料庫", admin_operating_data_path(@current_store) %>
+
 
     <div class="container">
         <div class="row">

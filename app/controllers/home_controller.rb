@@ -33,13 +33,6 @@ class HomeController < ApplicationController
   def offical
 
   end  
-
-
-  def admin_landing
-    render :layout => "nobar"
-     
-  end 
-
   private
   def set_user
     @user = current_user

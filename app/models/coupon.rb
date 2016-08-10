@@ -26,6 +26,8 @@ class Coupon < ActiveRecord::Base
                           computed_discount:coupon.discount,
                           coupon_pic:coupon.coupon_pic
                           )
+      # now_discount=now_coupon.computed_discount+0.01*(0.5**position)
+      # now_coupon.update(computed_discount: now_discount)
     end
   end
   

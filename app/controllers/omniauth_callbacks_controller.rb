@@ -5,12 +5,16 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     logger.debug "Article: #{request.env["omniauth.auth"]}"
 
     if @user.persisted?
-      sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
+        sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
     else
       session["devise.facebook_data"] = request.env["omniauth.auth"]
       puts @user.errors.messages
-      redirect_to new_user_registration_url
+      if @user.admin?
+        redirect_to admin_sign_up_path
+      else
+        redirect_to new_user_registration_url
+      end
     end
   end
 

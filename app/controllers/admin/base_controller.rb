@@ -6,14 +6,14 @@ class Admin::BaseController < ApplicationController
 
 
 
-	def current_store
-    	#current_user ? current_user.stores : nil
-    	@current_store||=current_user.try(:stores).first.id#還要再改成有分店的
-  	end
+
 
 
 	private
 	def verify_admin
-	  redirect_to admin_landing_path unless current_user.try(:admin?)
+	  redirect_to admin_front_path unless current_user.try(:admin?)
 	end
+	def current_store
+    	@current_store||=current_user.try(:stores).first#還要再改成有分店的
+  	end
 end
