@@ -33,8 +33,12 @@ class HomeController < ApplicationController
   def offical
 
   end  
+
+
   private
+
   def set_user
     @user = current_user
   end
+  
 end

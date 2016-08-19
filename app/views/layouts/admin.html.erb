@@ -3,9 +3,9 @@
 
 <head>
     <title>Q胖 | 累進式優惠平台</title>
-    <%= stylesheet_link_tag    'application', media: 'all'%>
-    <%= javascript_include_tag 'application'%>
-    <script src="//js.pusher.com/2.0/pusher.min.js"></script>
+    <%= stylesheet_link_tag    'admin', media: 'all'%>
+    <%= javascript_include_tag 'admin'%>
+<!--     <script src="//js.pusher.com/2.0/pusher.min.js"></script> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <%= csrf_meta_tags %>
@@ -21,9 +21,11 @@
 <%= link_to "優惠卷發放設定", admin_store_coupons_path(@current_store) %>
 <%= link_to "數據資料庫", admin_operating_data_path(@current_store) %>
 
-
+<p><%= notice %></p>
+<p><%= alert %></p>
     <div class="container">
         <div class="row">
+        
             <%= yield %>
         </div>
     </div>      

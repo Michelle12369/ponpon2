@@ -10,14 +10,16 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
-
  */
 
 // @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
 @import "jquery.atwho";
+@import "jquery.Jcrop";
 @import "scaffolds";
 @import "home";
 @import "posts";
+@import "devise";
 @import "coupons";
+@import "stores";

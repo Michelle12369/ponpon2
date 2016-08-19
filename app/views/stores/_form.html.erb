@@ -1,4 +1,4 @@
-<%= form_for(store) do |f| %>
+<%= form_for store, :remote => true do |f| %>
   <% if store.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+
+  <div class="field">
+    <%= f.label :store_name %>
+    <%= f.text_field :store_name %>
+  </div>
+
   <div class="field">
     <%= f.label :store_phone %>
     <%= f.text_field :store_phone %>
@@ -22,8 +28,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :store_name %>
-    <%= f.text_field :store_name %>
+    <%= f.label :store_type %>
+    <%= f.text_field :store_type%>
   </div>
 
   <div class="field">
@@ -41,30 +47,6 @@
     <%= f.text_field :store_email %>
   </div>
 
-  <div class="field">
-    <%= f.label :store_about_string %>
-    <%= f.text_field :store_about_string %>
-  </div>
-
-  <div class="field">
-    <%= f.label :store_location %>
-    <%= f.text_field :store_location %>
-  </div>
-
-  <div class="field">
-    <%= f.label :store_time %>
-    <%= f.text_area :store_time %>
-  </div>
-
-  <div class="field">
-    <%= f.label :store_rule %>
-    <%= f.text_area :store_rule %>
-  </div>
-
-  <div class="field">
-    <%= f.label :store_photo %>
-    <%= f.text_field :store_photo %>
-  </div>
 
   <div class="actions">
     <%= f.submit %>

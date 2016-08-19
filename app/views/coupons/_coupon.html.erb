@@ -1,7 +1,7 @@
 <%= link_to [coupon.user,coupon] do%>
   <div id="coupon-<%=coupon.id%>" class="card">
-    <div class="p-x-50">
-      <%=image_tag coupon.coupon_pic || 'avatar.jpg', class: 'card-img-top m-t-50'%>
+    <div>
+      <%=image_tag coupon.coupon_pic || 'avatar.jpg', class: 'card-img-top'%>
       <div class="card-block">
         <h6 class="card-title">
           <%=coupon.coupon_title%>

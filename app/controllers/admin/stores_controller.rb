@@ -1,5 +1,5 @@
 class Admin::StoresController < Admin::BaseController
-  #before_action :set_admin_store, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin_store, only: [:show, :edit, :update, :destroy]
 
   # # GET /admin/stores
   # # GET /admin/stores.json
@@ -42,7 +42,14 @@ class Admin::StoresController < Admin::BaseController
   def update
     respond_to do |format|
       if @admin_store.update(admin_store_params)
-        format.html { redirect_to @admin_store, notice: 'Store was successfully updated.' }
+        format.html { 
+          if params[:admin_store][:store_cover_photo].present?
+            render :crop  ## Render the view for cropping
+          else
+            redirect_to edit_admin_store_path, notice: 'Store was successfully updated.'
+          end 
+        }
+
         format.json { render :show, status: :ok, location: @admin_store }
       else
         format.html { render :edit }
@@ -63,12 +70,12 @@ class Admin::StoresController < Admin::BaseController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def set_admin_store
-    #   @admin_store = Admin::Store.find(params[:id])
-    # end
+    def set_admin_store
+      @admin_store = Admin::Store.find(params[:id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_store_params
-      params.fetch(:admin_store, {})
+      params.require(:admin_store).permit(:crop_x,:crop_y,:crop_w,:crop_h,:store_phone, :store_address, :store_name, :store_keeper_name, :store_keeper_phone, :store_email, :store_about, :store_type, :store_time, :store_rule, {store_photo:[]},:store_cover_photo)
     end
 end

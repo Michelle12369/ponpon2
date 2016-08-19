@@ -8,7 +8,12 @@ class Coupon < ActiveRecord::Base
   mount_uploader :qr_code, AvatarUploader
   mount_uploader :coupon_pic, AvatarUploader
   
+  require 'rqrcode'
+  require 'rqrcode_png'
+
   def self.copy_coupon(receiver_id,coupon)
+
+
     if receiver_id!=coupon.user_id 
       coupon.children.new(user:User.find(receiver_id),
                           coupon_title:coupon.coupon_title,
@@ -24,10 +29,9 @@ class Coupon < ActiveRecord::Base
                           used: false,
                           discount:coupon.discount,
                           computed_discount:coupon.discount,
-                          coupon_pic:coupon.coupon_pic
+                          coupon_pic:coupon.coupon_pic,
+                          store_id:coupon.store_id
                           )
-      # now_discount=now_coupon.computed_discount+0.01*(0.5**position)
-      # now_coupon.update(computed_discount: now_discount)
     end
   end
   

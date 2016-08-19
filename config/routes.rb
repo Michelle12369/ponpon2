@@ -29,12 +29,12 @@ Rails.application.routes.draw do
 
   #basic relationship settings
   resources :posts
-  resources :stores
+  resources :stores,:except => [:edit,:destroy]
   resources :comments, only: [:create, :destroy]
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks",:registrations => 'registrations' }
   
   resources :users do
-    resources :coupons
+    resources :coupons,:except => :edit
     member do
       get :followers
     end
@@ -82,6 +82,6 @@ Rails.application.routes.draw do
 
   #admin landing pages
   get '/admin-landing',:to=> 'pages#admin_landing',:as=>"admin_front"
-
-
+  get '/contract',:to=> 'pages#contract',:as=>"contract"
+  get '/complete',:to=> 'pages#complete_apply',:as=>"complete"
 end

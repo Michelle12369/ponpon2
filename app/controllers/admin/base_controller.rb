@@ -1,5 +1,5 @@
 class Admin::BaseController < ApplicationController
-	before_filter :verify_admin
+	before_action :verify_admin
 	before_action :current_store
 	layout "admin"
 

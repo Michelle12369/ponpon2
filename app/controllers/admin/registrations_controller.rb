@@ -1,4 +1,5 @@
 class Admin::RegistrationsController < Devise::RegistrationsController
+  layout "nobar"
 # before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
 
@@ -48,15 +49,16 @@ class Admin::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-  # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    #super(resource)
-    admin_home_path
-  end
+  # # The path used after sign up.
+  # def after_sign_up_path_for(resource)
+  #   #super(resource)
+  #   puts "hihihihi"+resource.to_s
+  #   sign_in_and_redirect admin_front_path
+  # end
 
   # The path used after sign up for inactive accounts.
-  def after_inactive_sign_up_path_for(resource)
-    #super(resource)
-    admin_front_path
-  end
+  # def after_inactive_sign_up_path_for(resource)
+  #   #super(resource)
+  #   admin_front_path
+  # end
 end

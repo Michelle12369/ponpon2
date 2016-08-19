@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Admin Coupons</h1>
-
 <table>
   <thead>
     <tr>
@@ -16,7 +14,6 @@
       <td><%= admin_coupon.coupon_title %></td>
       
         <td><%= link_to 'Show', admin_store_coupon_path(admin_coupon.store,admin_coupon) %></td>
-        <td><%= link_to 'Edit', edit_admin_store_coupon_path(admin_coupon.store,admin_coupon) %></td>
         <td><%= link_to 'Destroy', admin_store_coupon_path(admin_coupon.store,admin_coupon), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

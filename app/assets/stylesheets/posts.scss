@@ -3,54 +3,58 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .background-white{
 	background-color:white;
-	// padding:10px;
 	border-radius:0.2rem;
 	border:solid lightgray 1px;
 	margin-bottom:10px;
 	padding-top:10px;
 }
-.lightgray{
-	color:lightgray;
-}
 
 #post-form{
 	#post{
-		// margin-bottom:0px;
 		.post-button{
 			background-color:$orange;
-			border:none;
-			border-radius:3px;
-			color:#666;
-			padding:8px;
+			color:white;
+			font-weight: 300;
 		}
-
 	}
 }
-.post-without-comment{
 
+.post-without-comment{
 	.avatar{
-		@media screen and (max-width:439px){
-			width:35px;
-		}
-		width:50px;
+		width:45px;
 		border:solid lightgray 1px; 
 
 	}
 	.name-and-time{
-		// padding-left:0px;
+		padding-top:3px;
 		.name{
 				margin-bottom:0px;
+				font-weight:500;
+				font-size:1.1rem;
+				
 			}
 	}
-	// .created-at{
-	// 	color:gray;
-	// }
 	.text{
-		padding-left:1%;
+		padding-left:7px;
 		border-left:solid 3px $orange;
+		font-weight: normal;
+		font-size: 1rem;
+		color: #666;
 	}
+}
+@media screen and (max-width:439px){
+	.post-without-comment{
+		.avatar{
+			width:35px;
+		}
+		.name-and-time{
+			padding-top:0;
+		}
 
-	@media screen and (max-width:768px) and ( min-width:360px){
+	}
+}
+@media screen and (max-width:768px) and ( min-width:360px){
+	.post-without-comment{
 		.activity-post{
 			.name-and-time{
 				padding-left:0px;
@@ -58,10 +62,9 @@
 			}
 		}
 	}
-
 }
 /////////////////////////////////////////////////
-.actions{
+.comment-actions{
 	background-color:$background-with-color;
 	.comment-in-post{
 		padding:5px 0px;
@@ -84,9 +87,23 @@
 
 	.comment-form{
 		padding-top:10px;
+		.like{
+			.liked-orange{
+				color:$orange;
+			}
+			.liked-gray{
+				color:lightgray;
+			}
+			.liked{
+				border:none;
+				background-color:transparent;
+				font-size: 1.6rem;
+			}
+		}
 	}
 
 }
+
 
 
 

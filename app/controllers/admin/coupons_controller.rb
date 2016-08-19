@@ -14,7 +14,7 @@ class Admin::CouponsController < Admin::BaseController
 
   # GET /admin/coupons/new
   def new
-    @admin_coupon = @store.coupons.new
+    @admin_coupon = @store.coupons.build
   end
 
   # GET /admin/coupons/1/edit
@@ -28,7 +28,7 @@ class Admin::CouponsController < Admin::BaseController
 
     respond_to do |format|
       if @admin_coupon.save
-        format.html { redirect_to @admin_coupon, notice: 'Coupon was successfully created.' }
+        format.html { redirect_to [@admin_coupon.store,@admin_coupon], notice: 'Coupon was successfully created.' }
         format.json { render :show, status: :created, location: @admin_coupon }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::CouponsController < Admin::BaseController
   def update
     respond_to do |format|
       if @admin_coupon.update(admin_coupon_params)
-        format.html { redirect_to @admin_coupon, notice: 'Coupon was successfully updated.' }
+        format.html { redirect_to [@admin_coupon.store,@admin_coupon], notice: 'Coupon was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_coupon }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class Admin::CouponsController < Admin::BaseController
   def destroy
     @admin_coupon.destroy
     respond_to do |format|
-      format.html { redirect_to admin_coupons_url, notice: 'Coupon was successfully destroyed.' }
+      format.html { redirect_to admin_store_coupons_path, notice: 'Coupon was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -74,6 +74,6 @@ class Admin::CouponsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_coupon_params
-      params.require(:admin_coupon).permit(:coupon_title,:coupon_pic)
+      params.require(:coupon).permit(:coupon_title,:coupon_pic)
     end
 end

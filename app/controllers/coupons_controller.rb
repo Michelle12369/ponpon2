@@ -1,10 +1,11 @@
 class CouponsController < ApplicationController
-  before_action :set_coupon, only: [:show, :edit, :update, :destroy,:redeem]
+  before_action :set_coupon, only: [:show,:redeem,:destroy]#,:edit, :update, ]
   before_action :set_user
   before_action :authenticate_user!
   load_and_authorize_resource
-require 'rqrcode'
-require 'rqrcode_png'
+  # after_save :qrcode
+# require 'rqrcode'
+# require 'rqrcode_png'
 
   # GET /coupons
   # GET /coupons.json
@@ -38,7 +39,6 @@ require 'rqrcode_png'
       format.js {render "used.js.erb"}
       #format.html {render "index"}
     end
-
   end
 
 
@@ -51,32 +51,25 @@ require 'rqrcode_png'
       @distributor_name=@coupon.parent.user.name
     end
 
-    @followers = @user.all_following
+    @followers = @user.followers
   end
 
   # GET /coupons/new
-  def new
-    @coupon = @user.coupons.build#Coupon.new
-  end
+  # def new
+  #   @coupon = @user.coupons.build#Coupon.new
+  # end
 
   # GET /coupons/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   def distribute
-    @new_coupon=Coupon.copy_coupon(Integer(params[:receiver_id]),@coupon)
-    url="https://pon-michelle12369.c9users.io/users/#{params[:user_id]}/coupons/#{params[:id]}"
-    @qrcode = RQRCode::QRCode.new(url,:size => 4, :level => :l)#用真的網址line才掃得到，還要真正輸出png黨存到資料庫
-    tmp_path = Rails.root.join("qrcode.png")
-    png = @qrcode.to_img.resize(150, 150).save(tmp_path)
-    # Stream is handed closed, we need to reopen it
-    File.open(png.path) do |file|
-      @new_coupon.qr_code = file
-    end
-    File.delete(png.path)
+    receiver_id=Integer(params[:receiver_id])
+    @new_coupon=Coupon.copy_coupon(receiver_id,@coupon)
 
     respond_to do |format|
       if @new_coupon.try(:save)
+        qrcode(receiver_id,@new_coupon)
         format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully distributed.' }
         format.json { render :show, status: :created, location: @coupon }
       else
@@ -92,33 +85,33 @@ require 'rqrcode_png'
 
   # POST /coupons
   # POST /coupons.json
-  def create
-    @coupon = @user.coupons.new(coupon_params)#Coupon.new(coupon_params)
+  # def create
+  #   @coupon = @user.coupons.new(coupon_params)#Coupon.new(coupon_params)
     
-    respond_to do |format|
-      if @coupon.save
-        format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully created.' }
-        format.json { render :show, status: :created, location: @coupon }
-      else
-        format.html { render :new }
-        format.json { render json: @coupon.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @coupon.save
+  #       format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully created.' }
+  #       format.json { render :show, status: :created, location: @coupon }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @coupon.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /coupons/1
   # PATCH/PUT /coupons/1.json
-  def update
-    respond_to do |format|
-      if @coupon.update(coupon_params)
-        format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully updated.' }
-        format.json { render :show, status: :ok, location: @coupon }
-      else
-        format.html { render :edit }
-        format.json { render json: @coupon.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @coupon.update(coupon_params)
+  #       format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @coupon }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @coupon.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /coupons/1
   # DELETE /coupons/1.json
@@ -145,7 +138,6 @@ require 'rqrcode_png'
 
     def set_user
       @user = User.find(params[:user_id])
-      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -153,4 +145,17 @@ require 'rqrcode_png'
       params.require(:coupon).permit(:coupon_title,:coupon_pic)
       #fetch(:coupon, {})
     end
+
+    def qrcode(receiver_id,new_coupon)
+      url="https://pon-michelle12369.c9users.io/users/#{receiver_id}/coupons/#{new_coupon.id}"
+      @qrcode = RQRCode::QRCode.new(url,:size => 4, :level => :l)#用真的網址line才掃得到，還要真正輸出png黨存到資料庫
+      tmp_path = Rails.root.join("qrcode.png")
+      png = @qrcode.to_img.resize(150, 150).save(tmp_path)
+      # Stream is handed closed, we need to reopen it
+      File.open(png.path) do |file|
+        new_coupon.update(qr_code:file)
+      end
+      File.delete(png.path)
+    end
+
 end

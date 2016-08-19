@@ -1,0 +1,31 @@
+.devise-box{
+	padding:30px 10%;
+	text-align: center;
+	width:65%;
+	margin:auto;
+	h5{
+		color:$orange;
+		font-weight: normal;
+	}
+	.devise-form{
+		text-align: left;
+		.devise-input{
+			border:solid lightgray 1px;
+		}
+		.devise-btn{	
+			border:none;
+			background-color: $orange;
+			color:white;	
+		}
+		.devise-normal{
+			width:100%;
+			padding: 0.5rem;
+			border-radius:0.2rem;
+		}
+		.or{
+			text-align: center;
+			margin:0.5rem 0;
+			color:#666;
+		}
+	}
+}

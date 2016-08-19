@@ -1,6 +1,32 @@
-<h1>Editing Admin Coupon</h1>
+<h1>修改coupon</h1>
 
-<%= render 'form', admin_coupon: @admin_coupon %>
+<%= form_for [@admin_coupon.store,@admin_coupon], url: admin_store_coupon_path do |f| %>
+  <% if @admin_coupon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_coupon.errors.count, "error") %> prohibited this admin_coupon from being saved:</h2>
 
-<%= link_to 'Show', @admin_coupon %> |
-<%= link_to 'Back', admin_coupons_path %>
+      <ul>
+      <% @admin_coupon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+<div class="field">
+    <%= f.label :coupon_title %><br />
+    <%= f.text_field :coupon_title %>
+  </div>
+  <div class="field">
+    <%= f.label :coupon_pic %><br />
+    <%= f.file_field :coupon_pic %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', admin_store_coupon_path(@admin_coupon.store,@admin_coupon) %> |
+<%= link_to 'Back', admin_store_coupons_path %>

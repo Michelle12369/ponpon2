@@ -10,7 +10,7 @@
     <%= csrf_meta_tags %>
 </head>
 
-<body>
+<body style="margin-top:110px;">
     <div id="mainbar">
         <div id="main">
         <%= link_to root_path do%>
@@ -20,7 +20,7 @@
                 <li><%= link_to "一起胖", food_path %></li>
                 <li><%= link_to "粗乃玩", play_path %></li>
                 <li><%= link_to "網購優", online_path %></li>
-                <li><%= link_to "商店街",online_path %></li>             
+                <li><%= link_to "商店街", stores_path %></li>             
             </ul>
                 <div id="login_button" class="log">
                     <%= link_to "登入", user_session_path %>

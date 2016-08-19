@@ -1,0 +1,18 @@
+<h1>Crop Avatar</h1>
+
+<%#for i in @admin_store.store_photo%>
+	<%= image_tag @admin_store.store_cover_photo.url, id: "cropbox"%>
+	<h4>Preview</h4>
+	<div style="width:300px; height:240px; overflow:hidden">
+	  <%= image_tag @admin_store.store_cover_photo.url, :id => "preview" %><%#{@admin_store.store_photo.index(i)}%>
+	</div>
+<%#end%>
+
+<%= form_for @admin_store do |f| %>
+  <% %w[x y w h].each do |attribute| %>
+    <%= f.hidden_field "crop_#{attribute}" %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit "Crop" %>
+  </div>
+<% end %>

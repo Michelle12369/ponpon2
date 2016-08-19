@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
-  <div class="actions container-fluid">
+  <div class="actions container-fluid comment-actions">
     <div class="row comment-info">
       <div class="col-xs-6">
-        <span class="like-count"><%= fa_icon 'heart'%><%=resource.cached_votes_up%></span>
-        <span class="comments-count"><%= fa_icon 'comment'%><%=resource.comments_count%></span>
+        <span class="like-count text-muted"><%#= fa_icon 'heart'%><%=resource.cached_votes_up%>個讚</span>
+        <span class="comments-count text-muted"><%#= fa_icon 'comment'%><%=resource.comments_count%>則留言</span>
       </div>
 
       <div class="col-xs-6 comment-<%=resource.id%>">

@@ -12,11 +12,17 @@
   <% end %>
   <div class="field">
     店家介紹<br />
-    <%= f.text_area :store_about_string %>
+    <%= f.text_area :store_about %>
   </div>
+
+   <div class="field">
+    店家類型<br />
+    <%= f.text_field :store_type %>
+  </div>
+
   <div class="field">
     位置資訊<br />
-    <%= f.text_field :store_location %>
+    <%= f.text_field :store_address %>
   </div>
   <div class="field">
     電話<br />
@@ -27,8 +33,13 @@
     <%= f.text_area :store_time %>
   </div>
   <div class="field">
+    封面照片上傳<br />
+    <%= f.file_field :store_cover_photo%>
+  </div>
+
+  <div class="field">
     照片上傳<br />
-    <%= f.file_field :store_photo %>
+    <%= f.file_field :store_photo, multiple: true %>
   </div>
   <div class="field">
     店內一般規定<br />

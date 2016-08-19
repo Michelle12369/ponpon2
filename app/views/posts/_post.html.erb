@@ -8,9 +8,9 @@
         <% end %>
       </div>
       <div class="name-and-time col-xs-10">
-        <h5 class="name">
+        <h6 class="name">
           <%= link_to post.user.name, user_path(post.user) %>
-        </h5>
+        </h6>
         <%= render 'shared/created_at', activity: post %>
       </div>
     </div>
@@ -26,7 +26,7 @@
               <li><%= link_to edit_post_path(post), class: 'btn btn-sm' do %>
               <%# fa_icon 'pencil',class:"edit-post-button"  %>編輯貼文
               <% end %></li>
-              <li><%= link_to post_path(post), method: :delete, class:'btn btn-sm', remote: true,data: { confirm: 'Are you sure you want to delete this item?'} do %>
+              <li><%= link_to post_path(post), method: :delete, class:'btn btn-sm', remote: true,data: { confirm: '確定刪除此貼文'} do %>
               <%# fa_icon 'remove'%>刪除貼文
               <% end %></li>
             </ul>

@@ -46,7 +46,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  # gem 'sqlite3'
   gem "rspec-rails"
 end
 
@@ -64,8 +64,9 @@ group :development do
   gem "rspec-rails"
 end
 
-group :production do
   gem 'pg'
+group :production do
+
   gem 'unicorn'
   gem 'cloudinary'
   gem 'rails_12factor'
@@ -73,7 +74,8 @@ end
 
 #socify
 gem 'devise'
-gem 'carrierwave'
+gem 'rmagick'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'acts_as_commentable'
 gem "acts_as_follower"
@@ -93,7 +95,6 @@ gem 'rqrcode_png'
 
 
 gem 'pusher'
-
 
 
 

@@ -1,1 +1,0 @@
-json.partial! "admin_coupons/admin_coupon", admin_coupon: @admin_coupon

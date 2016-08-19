@@ -3,4 +3,4 @@ $new_comment=$("<%=j render(@comment) %>").hide();
 $("#<%= @commentable_type.downcase %>-<%= @commentable.id %> #post-<%= @commentable.id %>-comments").append($new_comment);
 $new_comment.fadeIn('slow');
 $("#<%= @commentable_type.downcase %>-<%= @commentable.id %> #comment_text").val("");
-$("#<%= @commentable_type.downcase %>-<%= @commentable.id %> .comments-count").html('<%= fa_icon "comment"%><%=@comment.commentable.comments_count%>');
+$("#<%= @commentable_type.downcase %>-<%= @commentable.id %> .comments-count").html('<%=@comment.commentable.comments_count%>則留言');

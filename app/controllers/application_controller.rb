@@ -4,17 +4,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
  
 def after_sign_in_path_for(resource)
-  if resource.is_a?(User) && resource.admin? &&  request.referer == admin_sign_in_url
+  if resource.is_a?(User) && resource.admin? && request.referer.split("/")[3]=="admin"
     admin_home_path
-  elsif resource.is_a?(User) && request.referer == admin_sign_in_url
-  #    admin_home_path
+  elsif resource.is_a?(User)  && resource.user? && request.referer.split("/")[3]=="admin"
+    admin_front_path
   else
-    super
+    super(resource)
   end
 end
+
+
 def after_sign_out_path_for(resource)
   puts request.referer.split("/")[3] 
-   if request.referer.split("/")[3] === "admin" #怕有可能會有些不是第三個/
+   if request.referer.split("/")[3]=="admin" || request.referer.split("/")[3]=="admin-landing" #怕有可能會有些不是第三個/
      admin_front_path
   else
     super
@@ -22,7 +24,7 @@ def after_sign_out_path_for(resource)
 end
 
 
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,keys: [:name, :password_confirmation])

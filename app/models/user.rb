@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :cover, AvatarUploader
 
+  
   has_many :coupons#,:through=>:coupon_users
   #has_many :coupon_users
 
