@@ -6,7 +6,7 @@ module PagesHelper
 	         concat link_to "登出", admin_sign_out_path,method: :delete
 
 	    elsif signed_in?&&current_user.user?&&current_user.stores.first.try(:store_status)=="pending"
-	    	"您的申請正在審核中"
+	    	concat "您的申請正在審核中"
 	        concat link_to "登出", admin_sign_out_path,method: :delete
 	        concat " "
 	        concat link_to "回到個人頁面", root_path

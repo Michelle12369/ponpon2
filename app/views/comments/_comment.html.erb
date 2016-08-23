@@ -1,26 +1,26 @@
-<div class="comment-in-post row">
-  <div id="comment-<%= comment.id %>">
-    <div class="info">
+<!-- <div class="comment-in-post row"> -->
+  <div id="comment-<%= comment.id %>" class=" comment-in-post row">
+    <div class="comment-user-info m-l-1">
       <%#= render 'shared/avatar', user: comment.user %>
-      <%= link_to user_path(comment.user),class:"col-xs-1" do %>
+      <%= link_to user_path(comment.user),class:"d-inline-block" do %>
         <%= image_tag comment.user.avatar.url || 'avatar.jpg', class: 'avatar'%>
       <% end %>
-      <p class="name  col-xs-2"><%= link_to comment.user.name, user_path(comment.user) %></p>
+      
     </div>
-    <div class="content ">
-      <!-- <div class="row"> -->
-        <span class="text col-xs-8 text-justify"><%= comment.comment %></span>
-      <!-- </div> -->
-      <div class="col-xs-1">
+
+    <div class="content">
+      <p class="d-inline-block name"><%= link_to comment.user.name, user_path(comment.user) %></p>
+        <span class="text-justify comment-content-comment"><%= comment.comment %></span>
+    </div>
+
+    <div class="p-r-1 comment-delete">
         <% if belongs_to_user?(comment) %>
           <%= link_to comment_path(comment), method: :delete, remote: true,data: { confirm:"是否刪除留言"},class:"close" do %>
-            <span aria-hidden="true" style="font-size:0.5rem;">&times;</span>
-            <%# fa_icon 'remove',class:"lightgray" %>
+            <span aria-hidden="true">&times;</span>
           <% end %>
         <% end %>
-      </div>
     </div>
     <br>
     <!-- <hr> -->
   </div>
-</div>
+<!-- </div> -->

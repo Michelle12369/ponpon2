@@ -1,0 +1,219 @@
+
+body {
+    margin-top: 60px;
+}
+
+
+/****************************************/
+/**************  bar  *******************/
+/****************************************/
+/******* bar基本設定  *******/
+
+//只有front的bar
+#mainbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2;
+    #main {
+        background-color: white;
+        text-align: center;
+        img {
+            height: 50px;
+        }
+        ul {
+            margin: 0;
+            padding: 0 0 10px 0;
+            li {
+                display: inline;
+                padding: 0 2%;
+            }
+        }
+        .log {
+            position: absolute;
+            top: 30%;
+            right: 3%;
+        }
+        a {
+            // font-weight: 300;
+            font-size: 1rem;
+        }
+    }
+    #shape {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:543px) {
+    #mainbar {
+        a {
+            font-size: 0.9rem !important;
+        }
+        #shape {
+            display: none;
+        }
+        #main {
+            .log {
+                position: relative;
+                right: 0;
+                top: 0;
+                a {
+                    padding: 0 2%;
+                }
+            }
+        }
+    }
+}
+
+////////////////////////////
+///////其餘的bar/////////////
+///////////////////////////
+.navbar {
+    background-color: white;
+    box-shadow: 2px 2px 2px rgba(20%, 20%, 40%, 0.3);
+    padding-top: 0;
+    padding-bottom: 0px;
+    #navbar-brand .bar-logo {
+        width: 130px;
+        margin-left: 20px;
+    }
+    #nav-choice {
+        .first-nav {
+            margin-left: calc((( 100% - 332px) / 2) - 166px);
+        }
+        .first-nav-not-sign {
+            margin-left: calc((( 100% - 240px) / 2) - 166px);
+        }
+        li {
+            height: 50px;
+        }
+        .active {
+            border-bottom: solid $orange 5px;
+        }
+        a {
+            padding-top: 0.9rem;
+            font-size: 1rem;
+            // font-weight: 300;
+        }
+    }
+    .hr {
+        display: none;
+    }
+    .pull-md-right {
+        margin-right: 20px;
+        li {
+            height: 50px;
+            .photo-sticker {
+                height: 35px;
+                border: solid 1px lightgray;
+            }
+            #greeting {
+                border-right: solid;
+                border-width: 2px;
+                padding-right: 5px;
+                font-size: 1rem;
+                // font-weight: 300;
+            }
+        }
+        #settings {
+            padding-top: 0.8rem;
+            margin-left: 0px;
+            .triangle {
+                color: #666;
+                font-size: 1.1rem;
+            }
+            .dropdown-menu {
+                margin-top: -2px;
+                box-shadow: 2px 2px 2px rgba(20%, 20%, 40%, 0.2);
+                li {
+                    height: 25px;
+                    padding-left: 15px;
+                    a {
+                        font-size: 0.9rem;
+                        // font-weight:300;
+                    }
+                }
+            }
+        }
+        .settings a {
+            padding-top: 0.95rem;
+            font-size: 1rem;
+            // font-weight:300;
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+    .navbar {
+        #navbar-brand .bar-logo {
+            margin-left: 0px;
+        }
+        #nav-choice {
+            .first-nav-not-sign,
+            .first-nav {
+                margin-left: 0;
+            }
+            li {
+                height: 30px;
+                a {
+                    padding-top: 0.3rem;
+                    padding-bottom: 0.4rem;
+                    font-size: 0.9rem;
+                    // font-weight: 300;
+                }
+            }
+            .active {
+                border-left: solid $orange 5px;
+                border-bottom: none;
+                padding-left: 0.4rem;
+                margin-left: -0.6rem;
+            }
+        }
+        .hr {
+            display: block;
+        }
+        .pull-md-right {
+            li #greeting {
+                border-right: none;
+                .hi {
+                    display: none;
+                }
+            }
+            #settings {
+                display: inline;
+                .triangle {
+                    display: none;
+                }
+                .dropdown-menu {
+                    box-shadow: none;
+                    display: block;
+                    position: relative;
+                    border: none;
+                    li {
+                        padding-left: 0px;
+                        height: 30px;
+                    }
+                }
+            }
+            .settings {
+                height: 30px;
+                a {
+                    padding-top: 0.3rem;
+                    font-size: 0.9rem;
+                    // font-weight:300;
+                }
+            }
+        }
+    }
+    .navbar .navbar-nav>.nav-item {
+        float: none;
+        margin-left: .1rem;
+    }
+    .navbar .navbar-nav {
+        float: none !important;
+    }
+    .navbar .collapse.in,
+    .navbar .collapsing {
+        clear: both;
+    }
+}

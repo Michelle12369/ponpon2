@@ -1,6 +1,6 @@
 
 <%= form_tag comments_path(commentable_type: commentable.class.to_s, commentable_id: commentable.id), method: :post, remote: true do %>
-    <div class="form-group col-xs-11">
+    <div class="form-group col-xs-11 comment-form-input">
         <%= text_field_tag :comment_text, nil, placeholder: '留言...', class: 'form-control input-mentionable' %>
     </div>
     <!-- <div class="col-xs-2"> -->

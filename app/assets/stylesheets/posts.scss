@@ -30,9 +30,7 @@
 		.name{
 				margin-bottom:0px;
 				font-weight:500;
-				font-size:1.1rem;
-				
-			}
+		}
 	}
 	.text{
 		padding-left:7px;
@@ -67,22 +65,45 @@
 .comment-actions{
 	background-color:$background-with-color;
 	.comment-in-post{
+		display: flex;
 		padding:5px 0px;
+		font-size: 0.8rem;
 		.avatar{
-			@media screen and (max-width:439px){
-				width:25px;
-			}
 			width:30px;
 			border:solid lightgray 1px; 
-
 		}
-
 	}
+
 	.comment-info{
 		padding:5px 0;
 		background-color:white;
 		border-top:solid lightgray 1px;
 		border-bottom:solid lightgray 1px;
+		font-size: 0.8rem;
+	}
+
+	.comment-user-info{
+		flex:none;
+		margin-right: 0.5rem;
+	}
+
+	.content{
+		flex:10 ;
+		.name{
+			margin-bottom: 0;
+			vertical-align: top;
+			a{
+				font-weight: 600;
+				font-size: 0.8rem;
+			}
+		}
+
+	}
+	.comment-delete{
+		flex:1;
+		.close span{
+			font-size: 0.6rem;
+		}
 	}
 
 	.comment-form{
@@ -104,7 +125,19 @@
 
 }
 
-
+@media screen and (max-width:439px){
+	.comment-actions .comment-in-post .avatar{
+		width:25px;
+	}
+	.like .liked{
+		font-size: 1.5rem !important;
+	}
+}
+@media screen and (max-width:400px) {
+	.comment-form-input{
+		width: 88%;
+	}
+}
 
 
 

@@ -21,12 +21,12 @@
       <%= render(resource.comments.last(4),commentable:resource)%>
     </div>
 
-      <div id="comment-form-<%=resource.id%>" class="comment-form">
-          <div class="row">
+      <div id="comment-form-<%=resource.id%>" class="comment-form row">
+          <!-- <div class="row"> -->
             <span class="like"><%= render 'likes/form', likeable: resource %></span>
 
             <%= render 'comments/form', commentable: resource %>
-          </div>
+          <!-- </div> -->
       </div>
 
 
