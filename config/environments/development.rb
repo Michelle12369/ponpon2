@@ -56,8 +56,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :letter_opener
   
-  require 'pusher'
-  Pusher.app_id = '230048'
-  Pusher.key = '9f9b0db2bcf535c9126b'
-  Pusher.secret = "fe3f46b2a69156aa1e83"
+  # require 'pusher'
+  # Pusher.app_id = '230048'
+  # Pusher.key = '9f9b0db2bcf535c9126b'
+  # Pusher.secret = "fe3f46b2a69156aa1e83"
 end

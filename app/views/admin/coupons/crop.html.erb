@@ -1,0 +1,20 @@
+<%= javascript_include_tag "admin/coupons" %>
+
+<h5>裁切封面相片</h5>
+
+<%#for i in @admin_store.store_photo%>
+	<%= image_tag @admin_coupon.coupon_pic.url, id: "cropbox"%>
+	<h4>Preview</h4>
+	<div style="width:300px; height:240px; overflow:hidden">
+	  <%= image_tag @admin_coupon.coupon_pic.url, :id => "preview" %><%#{@admin_store.store_photo.index(i)}%>
+	</div>
+<%#end%>
+
+<%= form_for [@admin_coupon.store,@admin_coupon] do |f| %>
+  <% %w[x y w h].each do |attribute| %>
+    <%= f.hidden_field "crop_#{attribute}" %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit "確定裁切" %>
+  </div>
+<% end %>

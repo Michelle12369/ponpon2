@@ -11,3 +11,5 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
  Rails.application.config.assets.precompile += %w( admin.css.scss )
  Rails.application.config.assets.precompile += %w( admin.js )
+ Rails.application.config.assets.precompile += %w( admin/coupons.coffee )
+ Rails.application.config.assets.precompile += %w( admin/stores.coffee )

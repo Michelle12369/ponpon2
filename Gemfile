@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
+gem 'jquery-ui-rails'
 # Used to implement at.js for auto complete mentions/emojis
 gem 'jquery-atwho-rails'
 
@@ -94,7 +94,7 @@ gem 'rqrcode-rails3'
 gem 'rqrcode_png'
 
 
-gem 'pusher'
+# gem 'pusher'
 
 
 

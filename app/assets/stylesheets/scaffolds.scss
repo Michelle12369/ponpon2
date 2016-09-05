@@ -3,6 +3,11 @@ $yellow:#f9ed69; //#F7C103;
 $background-with-color:rgba(198, 156, 109, 0.1); //rgb(228,220,214);背景橘
 $background-color:#f5f5f5; //灰 //#fafafa
 $orange:rgb(240, 138, 93); //真的橘
+$admin-brown:rgb(135,123,115);
+$admin-dark-brown:rgb(108,98,92);
+$admin-black:rgb(55,55,55);
+$admin-dark-black:rgb(44,44,44);
+$admin-sub-item-color:rgb(33,33,33);
 //////////////////////////////////////
 body {
     background-color: $background-color;
@@ -37,6 +42,9 @@ a {
     &:hover {
         color: #000;
         text-decoration: none;
+    }
+    &:focus{
+         text-decoration: none;
     }
 }
 

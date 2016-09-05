@@ -1,0 +1,29 @@
+<%= form_for([admin_item.store , admin_item], url: admin_url) do |f| %>
+  <% if admin_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admin_item.errors.count, "error") %> prohibited this admin_item from being saved:</h2>
+
+      <ul>
+      <% admin_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :item_price %><br />
+    <%= f.text_field :item_price %>
+  </div>
+  <div class="field">
+    <%= f.label :item_name %><br />
+    <%= f.text_field :item_name %>
+  </div>
+  <div class="field">
+    <%= f.label :item_about %><br />
+    <%= f.text_area :item_about %>
+  </div>
+  <div class="actions">
+    <%= f.submit "確定" %>
+  </div>
+<% end %>

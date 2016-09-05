@@ -33,6 +33,12 @@ class User < ActiveRecord::Base
       user.remote_avatar_url = auth.info.image.gsub('http://','https://') # assuming the user model has an image
       user.provider = auth.provider
       user.uid = auth.uid
+      user.gender=auth.extra.raw_info.gender
+      user.birthday=auth.extra.raw_info.birthday
+      user.age=(Date.today - user.birthday).to_i / 365
+      if auth.extra.raw_info.location.present?
+        user.location=auth.extra.raw_info.location.name
+      end
     end
   end
 

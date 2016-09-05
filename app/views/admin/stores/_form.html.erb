@@ -10,8 +10,26 @@
       </ul>
     </div>
   <% end %>
+
+  <h5>商家簡介</h5>
   <div class="field">
-    店家介紹<br />
+    商店名稱<br />
+    <%= f.text_area :store_name %>
+  </div>
+
+  <div class="field">
+    聯絡電話<br />
+    <%= f.text_field :store_phone %>
+  </div>
+
+  <div class="field">
+    商家位置:<br />
+    <%=f.select :store_city, options_for_select(@city_array)%>
+    <%=f.text_field :store_address %>
+  </div>
+
+  <div class="field">
+    簡介<br />
     <%= f.text_area :store_about %>
   </div>
 
@@ -21,17 +39,10 @@
   </div>
 
   <div class="field">
-    位置資訊<br />
-    <%= f.text_field :store_address %>
-  </div>
-  <div class="field">
-    電話<br />
-    <%= f.text_field :store_phone %>
-  </div>
-  <div class="field">
     營業時間<br />
     <%= f.text_area :store_time %>
   </div>
+
   <div class="field">
     封面照片上傳<br />
     <%= f.file_field :store_cover_photo%>

@@ -1,20 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<table>
+<h5>優惠卷發放管理</h5>
+<table class="table">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <td>優惠卷標題</td>
+      <td>截止日期</td>
+      <td>狀態</td>
+      <td>使用張數</td>
+      <td>發放張數/發送張數上限</td>
     </tr>
   </thead>
 
   <tbody>
     <% @admin_coupons.each do |admin_coupon| %>
     <tr>
-      <td><%= admin_coupon.id %></td>
       <td><%= admin_coupon.coupon_title %></td>
-      
-        <td><%= link_to 'Show', admin_store_coupon_path(admin_coupon.store,admin_coupon) %></td>
-        <td><%= link_to 'Destroy', admin_store_coupon_path(admin_coupon.store,admin_coupon), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= admin_coupon.expiry_date %></td>
+      <td><%= admin_coupon_status(admin_coupon) %></td>
+      <td><%= admin_coupon.descendants.where("used=?",true).size%></td>
+      <td><%= admin_coupon.descendants.size%>/<%= admin_coupon.admin_coupon_limit%></td>
+        <td><%=send_or_delete(admin_coupon)%></td>
+        <td><%= link_to '詳細資訊', admin_store_coupon_path(admin_coupon.store,admin_coupon) %></td>
       </tr>
     <% end %>
   </tbody>

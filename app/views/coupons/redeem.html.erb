@@ -1,3 +1,2 @@
-<%= link_to "兌換(只有店家才可以按的）",[@user,@coupon], :confirm => 'Are you sure?', :method => :delete  %>
 <%=image_tag @coupon.qr_code%>
 <%= link_to '回列表', user_coupons_path(@coupon.user)%>

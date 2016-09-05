@@ -1,0 +1,37 @@
+<h5>篩選推廣優惠卷</h5>
+目前推廣優惠卷數：<%=@coupon.descendants.size%><br>
+由商家推廣優惠卷數：<%=@coupon.children.size%><br>
+由顧客推廣優惠卷數：<%=@coupon.descendants.size-@coupon.children.size%>
+<br/>
+<h5>發放條件</h5>
+<%=form_for [@current_store,@coupon,@search] , url:admin_store_coupon_searches_path do |f|%>
+	<div class="field">
+    性別<br />
+    <%= f.select :gender,"<option value='male'>男性</option><option value='female'>女性</option>".html_safe %>
+  </div>
+  <div class="field">
+    地區<br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    年齡區間<br />
+    <%= f.text_field :min_age %>～
+    <%= f.text_field :max_age %>
+  </div>
+  <div class="field">
+    粉專關係條件<br />
+    
+    <%=f.radio_button 'relation', 0,:checked=>true%>
+    <%=f.label :relation, "有追蹤粉專"%><br>
+    
+    <%=f.radio_button 'relation',1%>
+    <%=f.label :relation, "沒有追蹤粉專"%><br>
+    
+    <%=f.radio_button 'relation', 2%>
+    <%=f.label :relation, "所有人"%><br>
+  </div>
+  <div class="actions">
+    <%= f.submit "篩選" %>
+  </div>
+<% end %>
+<%= link_to "返回", admin_store_coupons_path(@current_store) %>

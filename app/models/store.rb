@@ -1,7 +1,8 @@
-class Store < ApplicationRecord
+class Store < ActiveRecord::Base
 	has_many :coupons
 	acts_as_followable
 	has_many :posts
+	has_many :items
 	# mount_uploaders :store_photo, AvatarUploader
 	# crop_uploaded :store_photo
 
@@ -9,10 +10,12 @@ class Store < ApplicationRecord
 	has_many :store_users
 	validates_presence_of :store_phone, :store_address, :store_name, :store_keeper_name, :store_keeper_phone, :store_email, :store_type
 
+	enum fee_type: [:plan_a,:plan_b,:plan_c]
 	enum store_status: [:passed,:pending,:rejected]
 	after_initialize :set_default_store, :if => :new_record?
 	def set_default_store
     	self.store_status ||= :pending
+    	self.fee_type ||= :plan_a
   	end
 
 

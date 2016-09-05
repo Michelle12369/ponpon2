@@ -1,11 +1,9 @@
 class CouponsController < ApplicationController
-  before_action :set_coupon, only: [:show,:redeem,:destroy]#,:edit, :update, ]
-  before_action :set_user
+  before_action :set_coupon, only: [:show,:redeem,:destroy,:distribute,:take]
+  before_action :set_user,except: :take
   before_action :authenticate_user!
-  load_and_authorize_resource
-  # after_save :qrcode
-# require 'rqrcode'
-# require 'rqrcode_png'
+  before_action :verify_coupon_notuse,only: [:distribute,:redeem]
+  # load_and_authorize_resource
 
   # GET /coupons
   # GET /coupons.json
@@ -33,7 +31,7 @@ class CouponsController < ApplicationController
   end
 
   def overdue
-    @coupon =@user.coupons.where("expiry_date < ?",Time.zone.today)
+    @coupon =@user.coupons.where("used = ? AND expiry_date < ?",false,Time.zone.today)
     @class="overdue"
     respond_to do |format|
       format.js {render "used.js.erb"}
@@ -45,13 +43,11 @@ class CouponsController < ApplicationController
   # GET /coupons/1
   # GET /coupons/1.json
   def show
-    if @coupon.parent.root?
-       @distributor_name="店家發行"
-    else
-      @distributor_name=@coupon.parent.user.name
-    end
-
-    @followers = @user.followers
+    # have_coupon_user=User.joins(:coupons).where(coupons: {id:@coupon.descendant_ids })
+    user_following=@user.following_users
+    user_followed_by=@user.followers
+    @friends=(user_following+user_followed_by).uniq
+    @friends_array=@friends.pluck(:name,:id)
   end
 
   # GET /coupons/new
@@ -64,23 +60,22 @@ class CouponsController < ApplicationController
   # end
 
   def distribute
-    receiver_id=Integer(params[:receiver_id])
+    receiver_id=Integer(params[:receiver_id]) if params[:receiver_id]!=nil
+    receiver_id||=params[:user_id]
     @new_coupon=Coupon.copy_coupon(receiver_id,@coupon)
-
+    Coupon.qrcode(receiver_id,@new_coupon)
     respond_to do |format|
-      if @new_coupon.try(:save)
-        qrcode(receiver_id,@new_coupon)
-        format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully distributed.' }
+        format.html { redirect_to user_coupons_path(@user), notice: 'Coupon was successfully distributed.' }
         format.json { render :show, status: :created, location: @coupon }
-      else
-        format.html { redirect_to [@coupon.user,@coupon], notice: '不能自己發給自己.' }
-        format.json { render json: @coupon.errors, status: :unprocessable_entity }
-      end
     end
   end
   
   def redeem
 
+  end
+
+  def take
+    @store=Store.find(params[:store_id])
   end
 
   # POST /coupons
@@ -115,20 +110,20 @@ class CouponsController < ApplicationController
 
   # DELETE /coupons/1
   # DELETE /coupons/1.json
-  def destroy
-    ancs=@coupon.ancestor_ids
-    for i in ancs
-      Coupon.calculate_discount(i,ancs.find_index(i))
-    end
+  # def destroy
+  #   ancs=@coupon.ancestor_ids
+  #   for i in ancs
+  #     Coupon.calculate_discount(i,ancs.find_index(i))
+  #   end
 
-    @coupon.update(used: true)
+  #   @coupon.update(used: true)
 
-    #@coupon.destroy
-    respond_to do |format|
-      format.html { redirect_to [@coupon.user,@coupon], notice: '優惠卷已兌換' }
-      format.json { head :no_content }
-    end
-  end
+  #   #@coupon.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to [@coupon.user,@coupon], notice: '優惠卷已兌換' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -140,22 +135,13 @@ class CouponsController < ApplicationController
       @user = User.find(params[:user_id])
     end
 
+    def verify_coupon_notuse
+      redirect_to user_coupon_path unless @coupon.used==false&&@coupon.expiry_date>=Date.today
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def coupon_params
       params.require(:coupon).permit(:coupon_title,:coupon_pic)
       #fetch(:coupon, {})
-    end
-
-    def qrcode(receiver_id,new_coupon)
-      url="https://pon-michelle12369.c9users.io/users/#{receiver_id}/coupons/#{new_coupon.id}"
-      @qrcode = RQRCode::QRCode.new(url,:size => 4, :level => :l)#用真的網址line才掃得到，還要真正輸出png黨存到資料庫
-      tmp_path = Rails.root.join("qrcode.png")
-      png = @qrcode.to_img.resize(150, 150).save(tmp_path)
-      # Stream is handed closed, we need to reopen it
-      File.open(png.path) do |file|
-        new_coupon.update(qr_code:file)
-      end
-      File.delete(png.path)
     end
 
 end

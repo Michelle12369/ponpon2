@@ -19,22 +19,36 @@ Rails.application.routes.draw do
 
     root to: 'home#index', as: 'home'
     get '/:store_id/operating-data',:to=>'home#operating_data',:as=>"operating-data"
-      resources :stores do
-        resources :coupons
-        member do
-          get :followers
-        end
+    post '/stores/:store_id/coupons/:id/distribute/send',:to=>'coupons#admin_send',:as=>"send"
+    get '/stores/:store_id/coupons/:id/confirm',:to=>'coupons#admin_confirm',:as=>"confirm"
+    post '/stores/:store_id/coupons/:id/redeem',:to=>'coupons#admin_redeem',:as=>"redeem"
+    # get '/stores/:store_id/coupons/:id/qrcode',:to=>'coupons#admin_qrcode',:as=>"qrcode"
+
+    resources :stores do
+      resources :items
+      resources :coupons,:except => [:edit,:destroy] do
+        resources :searches,only:[:new,:create,:show]
+      end
+      member do
+        get :followers
+      end
     end
   end
+
+
+
+
 
   #basic relationship settings
   resources :posts
   resources :stores,:except => [:edit,:destroy]
+
+  # resources :items
   resources :comments, only: [:create, :destroy]
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks",:registrations => 'registrations' }
   
   resources :users do
-    resources :coupons,:except => :edit
+    resources :coupons,:except => [:edit,:destroy]
     member do
       get :followers
     end
@@ -60,8 +74,7 @@ Rails.application.routes.draw do
   #coupon pages settings
   post '/users/:user_id/coupons/:id/distribute', :to => 'coupons#distribute',:as =>"distribute_user_coupon"
   get '/users/:user_id/coupons/:id/redeem', :to => 'coupons#redeem',:as =>"redeem_user_coupon"
-  
-  
+  get '/stores/:store_id/coupons/:id/take',:to=>'coupons#take',:as=>"take"
 
   #information pages settings
   get '/food',:to=>'home#food',:as=>"food"
@@ -70,14 +83,15 @@ Rails.application.routes.draw do
 
 
   #pusher settings
-  post 'pusher/auth'
-  match '/posters/:id' => "posts#shownolayout",via: :get#post
-  match '/commenters/:id' => "comments#shownolayout",via: :get#post
+  # post 'pusher/auth'
+  # match '/posters/:id' => "posts#shownolayout",via: :get#post
+  # match '/commenters/:id' => "comments#shownolayout",via: :get#post
 
   #coupon 列表
   get '/users/:user_id/coupons-used',:to=>'coupons#used',:as=>"user_coupons_used"
   get '/users/:user_id/coupons-notuse',:to=>'coupons#notuse',:as=>"user_coupons_notuse"
   get '/users/:user_id/coupons-overdue',:to=>'coupons#overdue',:as=>"user_coupons_overdue"
+
 
 
   #admin landing pages

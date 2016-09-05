@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817064826) do
+ActiveRecord::Schema.define(version: 20160904092932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20160817064826) do
     t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
     t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
+  end
+
+  create_table "admin_searches", force: :cascade do |t|
+    t.string   "location"
+    t.string   "gender"
+    t.integer  "relation"
+    t.integer  "max_age"
+    t.integer  "min_age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -66,14 +76,13 @@ ActiveRecord::Schema.define(version: 20160817064826) do
     t.integer  "discount_type"
     t.integer  "discount_ceiling_people"
     t.float    "discount_ceiling_amount"
-    t.integer  "condition_type"
-    t.string   "condition_content"
     t.text     "other_content"
     t.boolean  "used"
     t.float    "computed_discount"
     t.string   "qr_code"
     t.string   "coupon_pic"
     t.integer  "store_id"
+    t.integer  "admin_coupon_limit"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -86,6 +95,17 @@ ActiveRecord::Schema.define(version: 20160817064826) do
     t.datetime "updated_at"
     t.index ["followable_id", "followable_type"], name: "fk_followables", using: :btree
     t.index ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "item_price"
+    t.string   "item_name"
+    t.text     "item_about"
+    t.integer  "store_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "item_type"
+    t.index ["store_id"], name: "index_items_on_store_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
@@ -127,6 +147,8 @@ ActiveRecord::Schema.define(version: 20160817064826) do
     t.datetime "updated_at",         null: false
     t.integer  "store_status"
     t.string   "store_cover_photo"
+    t.string   "store_city"
+    t.integer  "fee_type"
   end
 
   create_table "users", force: :cascade do |t|
@@ -153,6 +175,10 @@ ActiveRecord::Schema.define(version: 20160817064826) do
     t.string   "uid"
     t.integer  "role"
     t.string   "remote_avatar_url"
+    t.string   "gender"
+    t.date     "birthday"
+    t.integer  "age"
+    t.string   "location"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

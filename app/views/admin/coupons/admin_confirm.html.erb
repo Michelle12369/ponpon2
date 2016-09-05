@@ -1,0 +1,7 @@
+<h1>hi</h1>
+<%=@admin_coupon.user.name%>
+<%=@admin_coupon.computed_discount%>
+商品單價：
+總價：
+<br>	
+<%= link_to "兌換(只有店家才可以按的）",admin_redeem_path(@store,@admin_coupon), :confirm => '確認兌換?', :method => :post  %>

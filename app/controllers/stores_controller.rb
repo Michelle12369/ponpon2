@@ -14,6 +14,7 @@ class StoresController < ApplicationController
   # # GET /stores/1.json
   def show
      @admin_store_pic = Admin::Store.find(params[:id])
+     @coupons=Admin::Store.find(params[:id]).coupons.roots
   end
 
   # GET /stores/new

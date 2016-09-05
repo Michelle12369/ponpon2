@@ -14,21 +14,21 @@ class CommentsController < ApplicationController
       @comment.save
       
       #pusher
-      @user=current_user
-      @friends = @comment.commentable.user.followers#@user.user_followers
-       if @friends.include?(current_user)
-          @friends.delete(current_user)
-       end
-       if !@friends.include?(@comment.commentable.user) 
-          @friends.push(@comment.commentable.user)
-        end
+      # @user=current_user
+      # @friends = @comment.commentable.user.followers#@user.user_followers
+      #  if @friends.include?(current_user)
+      #     @friends.delete(current_user)
+      #  end
+      #  if !@friends.include?(@comment.commentable.user) 
+      #     @friends.push(@comment.commentable.user)
+      #   end
 
       
-      for friend in @friends
-        Pusher['private-'+friend.id.to_s].trigger('greet', {
-          :comment =>@comment
-        })
-      end
+      # for friend in @friends
+      #   Pusher['private-'+friend.id.to_s].trigger('greet', {
+      #     :comment =>@comment
+      #   })
+      # end
       #pusher end
 
       respond_to do |format|
@@ -39,12 +39,12 @@ class CommentsController < ApplicationController
 
   end
 
-  def shownolayout
-    @comment=Comment.find(params[:id])
-    @commentable_type=@comment.commentable_type
-    @commentable=@comment.commentable
-    render "shownolayout", layout: false
-  end
+  # def shownolayout
+  #   @comment=Comment.find(params[:id])
+  #   @commentable_type=@comment.commentable_type
+  #   @commentable=@comment.commentable
+  #   render "shownolayout", layout: false
+  # end
 
 
 

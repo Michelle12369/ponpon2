@@ -41,11 +41,11 @@ class PostsController < ApplicationController
 
 
 
-def shownolayout
-  @post=Post.find(params[:id])
-  @activity=@post.activities[0]
-  render "shownolayout", layout: false
-end
+# def shownolayout
+#   @post=Post.find(params[:id])
+#   @activity=@post.activities[0]
+#   render "shownolayout", layout: false
+# end
 
 
 

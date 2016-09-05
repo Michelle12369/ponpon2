@@ -3,47 +3,21 @@
     <tr>
       <td><b>Coupon id</b></td>
       <td><b>標題</b></td>
-      <!-- <td><b>贈送人</b></td> -->
-      <td><b>目前累積折數</b></td>
       <td><b>狀態</b></td>
-      <td><b>使用說明</b></td>
       <td><b>注意事項</b></td>
+      <td><b>照片</b></td>
+      <td><b>商品</b></td>
+      <td><b>qrcode</b></td>
     </tr>
     <tr>
       <td><%= @admin_coupon.id %></td>
       <td><%= @admin_coupon.coupon_title %></td>
-      <!-- <td><%#= @distributor_name %></td> -->
-      <td><%=(1-@admin_coupon.computed_discount)*10 %>折</td>
-      <td><%if @admin_coupon.expiry_date<Date.today%>
-              已過期
-            <%elsif @admin_coupon.used==false%>
-              未使用
-            <%elsif @admin_coupon.used==true%>
-              已使用
-            <%end%>
-      </td>
-      <td>1. 每增加一人使用增加<%=(@admin_coupon.discount)*100 %>%折扣<br>
-          2. <%if  @admin_coupon.condition_type==1%>
-                消費滿<%= @admin_coupon .condition_content%>才可使用
-             <%elsif  @admin_coupon.condition_type==2%>
-                凡來店消費即享本折價卷優惠
-              <%elsif  @admin_coupon.condition_type==3%>
-                特定對象如:<%= @admin_coupon.condition_content%>才可使用
-              <%else%>
-                
-              <%end%>  
-      </td>
+      <td><%=admin_coupon_status(@admin_coupon)%></td>
       <td><%=@admin_coupon.other_content%></td>
+      <td><%=image_tag @admin_coupon.coupon_pic.thumb.url%></td>
+      <td><%=@admin_coupon.item%></td>
+      <td><%=image_tag @admin_coupon.qr_code.url||'avatar.jpg'%></td>
     </tr>
 </table> 
-發送此優惠卷:
-
- <%#= form_tag distribute_user_coupon_path do %>
-    <div class="form-group">
-      <%# follows_array = @followers.map { |follower| [follower.name, follower.id] } %>
-      <%#= select_tag(:receiver_id,options_for_select(follows_array))%>
-    </div>
-    <%#= submit_tag "傳送", class: 'btn btn-primary' %>
-<%# end %>
-<%= link_to 'Edit', edit_admin_store_coupon_path(@admin_coupon) %> |
+<%=send_or_delete(@admin_coupon)%>
 <%= link_to 'Back', admin_store_coupons_path %>

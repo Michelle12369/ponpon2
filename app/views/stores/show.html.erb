@@ -45,6 +45,18 @@
   <%= @store.store_rule %>
 </p>
 
+<p>
+  <strong>優惠卷:</strong><br>
+  <% @coupons.each do |coupon| %>
+    <%=coupon.coupon_title%>
+    <%=coupon.other_content%>
+    <%=coupon.computed_discount*10%>開始計算
+    <br>
+  <%end%>
+  
+</p>
+
+
 
 
 

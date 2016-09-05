@@ -64,3 +64,42 @@
 - 完成devise樣式
 - 修正部分post的樣式
 - 利用helper 去寫admin-landing link的邏輯
+
+8/20
+- 完成post po文部分樣式
+- comment若英文很長中間沒有空格還是會超出去
+
+8/23 
+- 刪除git上database.yml
+- admindevelopment合併到master
+- 開始寫admin bar
+
+8/24
+- 完成admin bar
+- 開始load資料進admin
+- admin store和coupon使用crop（單一頁面的js，production有可能出問題）
+
+8/25
+- 新增item的table
+- admin::item controller中，有一些是require(:admin_item)，有些事require(:item)，不知道為什麼
+- 店家資訊設定完成query
+
+8/26
+- 完成一半篩選優惠卷發放者
+
+8/30
+- 完成篩選優惠卷發放者
+
+9/3
+- 商家下篩選條件後能夠發放（不會發放到已經有優惠卷的使用者）
+
+9/4
+- 使用者發放優惠卷篩選朋友包含有追蹤自己和自己追蹤的人（沒有扣除已經有優惠卷的人）
+- 新增優惠卷時增加最多發放幾張和初始優惠折數、店家收費方案（三種plan_a、plan_b、plan_c，搭配優惠卷給多少折扣）
+- 店家方案搭配的折扣數還未完成
+
+9/5
+- 店家產生優惠卷
+- 使用者兌換優惠卷時不刪除本張優惠卷但更新狀態(且兌換後顧客兌換網頁消失）
+
+

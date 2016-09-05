@@ -1,0 +1,12 @@
+<%=@search.search_users(@current_store,@coupon).size%>
+<%@search.search_users(@current_store,@coupon).each do |s|%>
+  <%=s.name%>
+<%end%>
+<%=form_tag admin_send_path(@current_store,@coupon),:method=>:post do%>
+選擇數量
+<%=text_field_tag :people%>
+<%= hidden_field_tag :range,@search.search_users(@current_store,@coupon).map(&:id)%>
+<%= submit_tag "發送" %>
+<%end%>
+
+<%= link_to "返回", new_admin_store_coupon_search_path %>

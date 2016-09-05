@@ -1,4 +1,4 @@
-<h1>New Admin Coupon</h1>
+<h5>新增優惠卷</h5>
 
 <%= form_for [@admin_coupon.store,@admin_coupon], url: admin_store_coupons_path do |f| %>
   <% if @admin_coupon.errors.any? %>
@@ -22,12 +22,29 @@
     <%= f.file_field :coupon_pic %>
   </div>
   <div class="field">
+    <%= f.label :item %><br />
+    <% item_array = @admin_coupon.store.items.map { |item| [item.item_name, item.item_name] } %>
+    <%= f.select :item, options_for_select(item_array) %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br />
+    <%= f.text_field :start_date %>
+  </div>
+  <div class="field">
     <%= f.label :expiry_date %><br />
-    <%= f.file_field :expiry_date %>
+    <%= f.text_field :expiry_date %>
+  </div>
+  <div class="field">
+    <%= f.label :computed_discount %><br />
+    <%= f.text_field :computed_discount %>
+  </div>
+  <div class="field">
+    <%= f.label :admin_coupon_limit %><br />
+    <%= f.text_field :admin_coupon_limit %>
   </div>
   <div class="field">
     <%= f.label :other_content %><br />
-    <%= f.file_field :other_content %>
+    <%= f.text_field :other_content %>
   </div>
 
   <div class="actions">

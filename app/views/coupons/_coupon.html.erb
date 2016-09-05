@@ -1,7 +1,7 @@
 <%= link_to [coupon.user,coupon] do%>
   <div id="coupon-<%=coupon.id%>" class="card">
     <div>
-      <%=image_tag coupon.coupon_pic || 'avatar.jpg', class: 'card-img-top'%>
+      <%=image_tag coupon.root.coupon_pic || 'avatar.jpg', class: 'card-img-top'%>
       <div class="card-block">
         <h6 class="card-title">
           <%=coupon.coupon_title%>
@@ -10,7 +10,7 @@
           <%=coupon.store.store_name%>
         </p>
         <p class="card-text">
-          <%=(1-coupon.computed_discount)*10%>折
+          <%=coupon.computed_discount*10%>折
         </p>
       </div>
     </div>  

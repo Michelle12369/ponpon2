@@ -16,3 +16,7 @@
     <%= f.submit "Crop" %>
   </div>
 <% end %>
+
+<% content_for :javascript do %>
+  <%= javascript_include_tag "admin/stores" %>
+<% end %> 
