@@ -1,0 +1,18 @@
+<% if @current_store.liked? likeable %>
+<!-- 橘 -->
+  <%= form_tag admin_unlike_path(likeable_type: likeable.class.to_s, likeable_id: likeable.id), method: :post, remote: true,class:"col-xs-1" do %>
+    <% button_tag class: 'liked-orange liked p-l-0' do %>
+      <%#= fa_icon 'heart',class:"bg-warning"#style:"color:#f9ed69" %>
+      <%= fa_icon 'heart' %>
+    <% end %>
+  <% end %>
+<% else %>
+<!-- 灰 -->
+  <%= form_tag admin_like_path(likeable_type: likeable.class.to_s, likeable_id: likeable.id), remote: true,class:" col-xs-1" do %>
+    <% button_tag class: "liked-gray liked p-l-0" do %>
+      <%= fa_icon 'heart'%>
+      <%#= fa_icon 'heart'%>
+    <% end %>
+  <% end %>
+<% end %>
+

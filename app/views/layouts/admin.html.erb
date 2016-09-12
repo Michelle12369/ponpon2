@@ -18,7 +18,7 @@
     <%#= link_to admin_home_path,class:"admin_logo" do%>
       <%#= image_tag "nav_logo_4.png" ,style:"width:130px;"%>
     <%#end%>
-    <div style="font-size:1.5rem; padding-left:1rem; position:fixed; padding-top:1rem;" class="admin-logo">Qoupon</div>
+    <div style="font-size:1.5rem; padding-left:3.5rem; position:fixed; padding-top:1rem;" class="admin-logo">Qoupon</div>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-fixed">
       <button type="button" id="toggle-button">
@@ -70,8 +70,8 @@
       <li class="store-info">
           <%=image_tag @current_admin_store.store_cover_photo.thumb.url || 'avatar.jpg', class: "photo-sticker-lg"%>
           <div class="store-info-word">
-            <%=@current_store.store_name%><br>
-            <%=@current_store.followers_count%>人追蹤
+            <%=@current_store.store_name%>
+            <p><%=@current_store.followers_count%>人追蹤</p>
           </div>
       </li>
       <li class="nav-item <%= active_class('/admin') %>">
@@ -94,15 +94,15 @@
       </li>
       <li class="nav-item ">
         <%#= link_to "Q胖資訊公告", admin_home_path,class: "nav-link" %>
-        <a href="#" class="nav-link show-sub-item <%= active_admin_class("/","/") %>">
+        <a href="#" class="nav-link show-sub-item <%= active_admin_class(admin_posts_path,analysis_admin_posts_path) %>">
           社群經營
           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right icon"></i>
           </span>
         </a>
         <span class="sub-left-bar-item">
-          <a href="#" class="nav-link">粉絲專頁</a>
-          <a href="#" class="nav-link">粉絲數據</a>
+          <%= link_to "粉絲專頁", admin_posts_path,class: "nav-link" %>
+          <%= link_to "粉絲數據", analysis_admin_posts_path,class: "nav-link" %>
         </span>
       </li>
       <li class="nav-item">

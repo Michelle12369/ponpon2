@@ -1,0 +1,24 @@
+// Place all the styles related to the admin/posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.square{
+	padding:10px;
+	h6{
+		border-bottom:1px solid lightgray;
+		margin-bottom:5px;
+		padding-bottom:5px;
+	}
+	.crop{
+		display: inline-block;
+		width:30%;
+		height:65px;
+		overflow: hidden;//http://stackoverflow.com/questions/493296/css-display-an-image-resized-and-cropped
+		margin: 10px 1% 0 1%;
+		.photo-square-pic{
+			width:120%;
+			height:120%;
+			margin: -10% 0 0 -10%;
+		}
+	}
+	
+}

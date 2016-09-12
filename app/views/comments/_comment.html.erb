@@ -1,15 +1,13 @@
 <!-- <div class="comment-in-post row"> -->
   <div id="comment-<%= comment.id %>" class=" comment-in-post row">
     <div class="comment-user-info m-l-1">
-      <%#= render 'shared/avatar', user: comment.user %>
-      <%= link_to user_path(comment.user),class:"d-inline-block" do %>
-        <%= image_tag comment.user.avatar.url || 'avatar.jpg', class: 'avatar'%>
-      <% end %>
-      
+      <%=pic_store_or_user?(comment,comment.user)%>
     </div>
 
     <div class="content">
-      <p class="d-inline-block name"><%= link_to comment.user.name, user_path(comment.user) %></p>
+      <p class="d-inline-block name">
+        <%=name_store_or_user?(comment,comment.user)%>
+      </p>
         <span class="text-justify comment-content-comment"><%= comment.comment %></span>
     </div>
 

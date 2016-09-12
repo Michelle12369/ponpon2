@@ -3,11 +3,12 @@ class CouponsController < ApplicationController
   before_action :set_user,except: :take
   before_action :authenticate_user!
   before_action :verify_coupon_notuse,only: [:distribute,:redeem]
+  before_action :verify_admin_coupon_limit,only: [:take]
+  before_action :verify_admin_coupon_taken,only: [:take]
   # load_and_authorize_resource
 
   # GET /coupons
   # GET /coupons.json
-
   def index
     @coupon = @user.coupons.where("used = ? AND expiry_date > ?",false,Time.zone.today)#Coupon.all
   end
@@ -17,7 +18,6 @@ class CouponsController < ApplicationController
     @class="notuse"
     respond_to do |format|
       format.js {render "used.js.erb"}
-      #format.html {render "index"}
     end
   end
 
@@ -26,7 +26,6 @@ class CouponsController < ApplicationController
     @class="used"
     respond_to do |format|
       format.js 
-      #format.html {render "index"}
     end
   end
 
@@ -35,7 +34,6 @@ class CouponsController < ApplicationController
     @class="overdue"
     respond_to do |format|
       format.js {render "used.js.erb"}
-      #format.html {render "index"}
     end
   end
 
@@ -43,24 +41,17 @@ class CouponsController < ApplicationController
   # GET /coupons/1
   # GET /coupons/1.json
   def show
-    # have_coupon_user=User.joins(:coupons).where(coupons: {id:@coupon.descendant_ids })
+    # have_coupon_user=User.joins(:coupons).where(coupons: {id:@coupon.root.descendant_ids })
     user_following=@user.following_users
     user_followed_by=@user.followers
     @friends=(user_following+user_followed_by).uniq
+    @friends.delete(@coupon.parent.user) if !@coupon.parent.user.nil?
     @friends_array=@friends.pluck(:name,:id)
   end
 
-  # GET /coupons/new
-  # def new
-  #   @coupon = @user.coupons.build#Coupon.new
-  # end
-
-  # GET /coupons/1/edit
-  # def edit
-  # end
-
+  #顧客發送優惠卷給其他顧客
   def distribute
-    receiver_id=Integer(params[:receiver_id]) if params[:receiver_id]!=nil
+    receiver_id=Integer(params[:receiver_id]) if !params[:receiver_id].nil?
     receiver_id||=params[:user_id]
     @new_coupon=Coupon.copy_coupon(receiver_id,@coupon)
     Coupon.qrcode(receiver_id,@new_coupon)
@@ -70,60 +61,18 @@ class CouponsController < ApplicationController
     end
   end
   
+  #顧客要兌換優惠卷的頁面（有qrcode那頁）
   def redeem
 
   end
 
+  #顧客用qrcode掃描店家優惠卷後跳出頁面
   def take
     @store=Store.find(params[:store_id])
   end
 
-  # POST /coupons
-  # POST /coupons.json
-  # def create
-  #   @coupon = @user.coupons.new(coupon_params)#Coupon.new(coupon_params)
-    
-  #   respond_to do |format|
-  #     if @coupon.save
-  #       format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully created.' }
-  #       format.json { render :show, status: :created, location: @coupon }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @coupon.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
 
-  # PATCH/PUT /coupons/1
-  # PATCH/PUT /coupons/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @coupon.update(coupon_params)
-  #       format.html { redirect_to [@coupon.user,@coupon], notice: 'Coupon was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @coupon }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @coupon.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
 
-  # DELETE /coupons/1
-  # DELETE /coupons/1.json
-  # def destroy
-  #   ancs=@coupon.ancestor_ids
-  #   for i in ancs
-  #     Coupon.calculate_discount(i,ancs.find_index(i))
-  #   end
-
-  #   @coupon.update(used: true)
-
-  #   #@coupon.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to [@coupon.user,@coupon], notice: '優惠卷已兌換' }
-  #     format.json { head :no_content }
-  #   end
-  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -138,10 +87,20 @@ class CouponsController < ApplicationController
     def verify_coupon_notuse
       redirect_to user_coupon_path unless @coupon.used==false&&@coupon.expiry_date>=Date.today
     end
+
+    def verify_admin_coupon_limit
+      redirect_to user_coupons_path(current_user),notice:"店家優惠卷已發放完畢，若想領取請向店家反應" unless @coupon.admin_coupon_limit>@coupon.descendants.size
+    end
+
+    def verify_admin_coupon_taken
+      if User.joins(:coupons).where(coupons: {id:@coupon.child_ids }).include?(current_user)&&@coupon.children.where(user:current_user).where("used=? and expiry_date>=?",false,Date.today).present?
+        redirect_to user_coupons_path(current_user),notice:"已經向店家領取過此優惠卷"
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def coupon_params
       params.require(:coupon).permit(:coupon_title,:coupon_pic)
-      #fetch(:coupon, {})
     end
 
 end

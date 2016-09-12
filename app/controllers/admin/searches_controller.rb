@@ -1,6 +1,7 @@
 class Admin::SearchesController < Admin::BaseController
 	before_action :set_coupon
 	before_action :verify_admin_coupon_notuse
+	before_action :verify_admin_coupon_limit
 
 	def new
 		@search=Admin::Search.new
@@ -24,4 +25,9 @@ class Admin::SearchesController < Admin::BaseController
     def verify_admin_coupon_notuse
       redirect_to admin_store_coupons_path unless @coupon.expiry_date>=Date.today&&@coupon.root?
     end
+
+    def verify_admin_coupon_limit
+      redirect_to admin_store_coupons_path,notice:"店家優惠卷已發放完畢" unless @coupon.admin_coupon_limit>@coupon.descendants.size
+    end
+
 end

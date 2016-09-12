@@ -1,0 +1,31 @@
+<%= form_for(@admin_post) do |f| %>
+  <% if @admin_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_post.errors.count, "error") %> prohibited this admin_post from being saved:</h2>
+
+      <ul>
+      <% @admin_post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="form-group">
+      <h6>分享訊息給粉絲</h6>
+      <%= f.text_area :content, class: 'form-control input-mentionable',id: "input-post", autofocus: true, placeholder: '留個言吧！' %>
+  </div>
+  
+  <div id="img-preview" class="form-group hidden">
+      <img src="" alt="Preview">
+  </div>
+  <div class="row">
+    <div class="form-group col-xs-9" id="attachment">
+        <%= f.file_field :attachment %>
+    </div>
+      
+    <div class="form-group col-xs-3" id="post">
+        <%= f.submit '發佈', class: 'btn pull-right post-button btn-sm'%>
+    </div>
+  </div>
+<% end %>

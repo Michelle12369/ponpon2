@@ -7,3 +7,4 @@
 //= require bootstrap
 //= require bindWithDelay
 //= require ./admin/base
+//= require ./user/posts

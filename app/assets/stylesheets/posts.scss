@@ -40,6 +40,14 @@
 		color: #666;
 	}
 }
+.content{
+	.post-attachment{
+		// @if image-width("icons/home/folder.png")<image-height("icons/home/folder.png")
+			// height:392px;
+		// @else
+		width:100%;
+	}
+}
 @media screen and (max-width:439px){
 	.post-without-comment{
 		.avatar{
@@ -120,6 +128,9 @@
 				background-color:transparent;
 				font-size: 1.6rem;
 			}
+		}
+		input[name=comment_text]:focus{
+			padding:8px 12px;
 		}
 	}
 

@@ -3,6 +3,26 @@ module ApplicationHelper
     resource.user == current_user
   end
 
+  def belongs_to_store?(resource)
+    resource.store == @current_store
+  end
+
+  def name_store_or_user?(resource,role)
+    if role.nil?
+      link_to resource.store.store_name, stores_path(resource.store)
+    else
+      link_to resource.user.name, user_path(resource.user)
+    end
+  end
+
+  def pic_store_or_user?(resource,role)
+    if role.nil?
+      render 'shared/store_cover_photo', store: resource.store
+    else
+      render 'shared/avatar', user: resource.user 
+    end
+  end
+
   def active_class(name)
    current_page?(name) ? 'active' : ''
   end

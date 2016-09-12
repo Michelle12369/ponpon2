@@ -34,11 +34,11 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.gender=auth.extra.raw_info.gender
-      user.birthday=auth.extra.raw_info.birthday
-      user.age=(Date.today - user.birthday).to_i / 365
-      if auth.extra.raw_info.location.present?
-        user.location=auth.extra.raw_info.location.name
-      end
+      if auth.extra.raw_info.birthday.present?
+        user.birthday=Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y')  
+        user.age=(Date.today - user.birthday).to_i / 365 
+      end 
+      user.location=auth.extra.raw_info.location.name if auth.extra.raw_info.location.present?
     end
   end
 

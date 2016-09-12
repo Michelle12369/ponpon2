@@ -1,0 +1,4 @@
+var new_activity=$("<%=j render(partial: 'shared/activity', locals: { activity: @admin_activity } ) %>").hide();
+$("#activities").prepend(new_activity);
+new_activity.fadeIn("slow");
+$("#input-post").val("");

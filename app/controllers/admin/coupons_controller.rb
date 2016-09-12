@@ -2,11 +2,13 @@ class Admin::CouponsController < Admin::BaseController
   before_action :set_admin_coupon, only: [ :edit, :destroy,:admin_send,:admin_confirm,:admin_redeem]
   before_action :set_store
   before_action :verify_admin_coupon_notuse,only: [:admin_send]
+  before_action :verify_admin_coupon_limit,only: [:admin_send]
   before_action :verify_user_coupon_notuse,only: [:admin_confirm,:admin_redeem]
+
   # GET /admin/coupons
   # GET /admin/coupons.json
   def index
-    @admin_coupons = @store.coupons.roots#Admin::Coupon.all
+    @admin_coupons = @store.coupons.roots.order(created_at: :desc)#Admin::Coupon.all
   end
 
   # GET /admin/coupons/1
@@ -129,6 +131,10 @@ class Admin::CouponsController < Admin::BaseController
 
     def verify_user_coupon_notuse
       redirect_to admin_store_coupons_path, alert: '顧客的優惠卷已被兌換或已過期，無法再兌換一次' unless @admin_coupon.used==false&&@admin_coupon.expiry_date>=Date.today
+    end
+
+    def verify_admin_coupon_limit
+      redirect_to admin_store_coupons_path,notice:"店家優惠卷已發放完畢" unless @admin_coupon.admin_coupon_limit>@admin_coupon.descendants.size
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

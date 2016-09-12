@@ -19,7 +19,7 @@
     }
     .active {
         background-color:$admin-dark-black;
-        border-left:solid 3px $admin-brown;
+        border-left:solid 3px $orange;
         color: white !important;
         a{
             color: white !important;
@@ -33,7 +33,7 @@
 .main-header {
     z-index: 1000;
     position: fixed;
-    background-color: $admin-brown;
+    background-color: $admin-main-header;
     width: 100%;
     top: 0;
     height: 50px;
@@ -76,6 +76,7 @@
 }
 
 .navbar-fixed-left {
+    z-index: 1000;
     width: 200px;
     position: fixed;
     border-radius: 0;
@@ -84,19 +85,26 @@
     padding:0;
     background-color: $admin-black;  
     .store-info{
-        display: flex;
-        padding: 20px 10px 50px 10px;
+        padding: 20px 20px 0px 15px;
+
         .photo-sticker-lg {
-        flex:1;
-        height: 40px;
-        border: solid 1px #666;
-        border-radius: 2px;
-        vertical-align: top;
-        margin-right: 10px;
+            display: block;
+            width: 160px;
+            border: solid 1px #666;
+            border-radius: 2px;
+            vertical-align: top;
+            margin: auto;
         }
         .store-info-word{
-            flex:2;
+            margin-top: 10px;
             font-size: 1rem;
+            // text-align: center;
+            border-bottom:1px solid gray;
+            padding-bottom:10px;
+            p{
+                margin:0;
+                font-size:0.8rem;
+            }
         }
     }
     .nav-item {
@@ -132,7 +140,7 @@
         display:block;
         width:100% !important;
         text-align: center;
-        background-color:$admin-dark-brown !important;
+        // background-color:$admin-dark-brown !important;
     }
     .navbar-fixed{
         top:50px;
@@ -140,7 +148,7 @@
         #toggle-button{
             display: inline-block;
             border:none;
-            background-color:$admin-brown;
+            background-color:$admin-main-header;
             font-size: 1rem;
             color:white;
             padding:7px 7px 7px 0;

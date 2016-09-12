@@ -33,7 +33,6 @@ class Coupon < ActiveRecord::Base
                           used: false,
                           discount:coupon.discount,
                           computed_discount:coupon.root.computed_discount,
-                          # coupon_pic:coupon.coupon_pic,
                           store_id:coupon.store_id
                           )
     end
@@ -59,7 +58,7 @@ class Coupon < ActiveRecord::Base
   #{19=>0,18=>1}
   def self.calculate_discount(coupon_id,position)
     now_coupon=Coupon.find(coupon_id)
-    if now_coupon.root?
+    if now_coupon.root?||now_coupon.used==true||now_coupon.expiry_date<=Date.today||now_coupon.computed_discount<=now_coupon.discount_ceiling_amount#若coupon是root或是已使用或是已過期就不更新或是折數已達上限
 
     else 
       puts now_coupon.computed_discount

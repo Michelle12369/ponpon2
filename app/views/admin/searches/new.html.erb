@@ -15,8 +15,8 @@
   </div>
   <div class="field">
     年齡區間<br />
-    <%= f.text_field :min_age %>～
-    <%= f.text_field :max_age %>
+    <%= f.number_field :min_age,:value=>18 %>～
+    <%= f.number_field :max_age,:value=>60 %>
   </div>
   <div class="field">
     粉專關係條件<br />

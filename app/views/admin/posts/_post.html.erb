@@ -1,0 +1,45 @@
+<div class="post-without-comment container-fluid">
+  <div class="info row">
+    <div class="col-xs-10">
+      <div class="row">
+        <div class="col-xs-2">
+          <%= render 'shared/store_cover_photo', store: post.store %>
+        </div>
+        <div class="name-and-time col-xs-10">
+          <h6 class="name">
+            <%= link_to post.store.store_name, stores_path(post.store) %>
+          </h6>
+          <%= render 'shared/created_at', activity: post %>
+        </div>
+      </div>
+    </div>
+    <div class="text-xs-right col-xs-2">
+      <% if belongs_to_store?(post) %>
+        <div class="btn-group">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <i class="glyphicon glyphicon-chevron-down" style="color:lightgray; "></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><%= link_to edit_admin_post_path(post), class: 'btn btn-sm' do %>
+            <%# fa_icon 'pencil',class:"edit-post-button"  %>編輯貼文
+            <% end %></li>
+            <li><%= link_to admin_post_path(post), method: :delete, class:'btn btn-sm', remote: true,data: { confirm: '確定刪除此貼文'} do %>
+            <%# fa_icon 'remove'%>刪除貼文
+            <% end %></li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="content">
+    <br> 
+    <p class="text"><%= post.content%></p>
+    <% if post.attachment.present? %>
+      <div class="attachment">
+        <%= image_tag post.attachment,class:"m-b-2 post-attachment"%>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= render 'admin/shared/actions', resource: post %>

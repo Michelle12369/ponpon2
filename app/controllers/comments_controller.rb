@@ -10,44 +10,12 @@ class CommentsController < ApplicationController
       comment.comment = params[:comment_text]
       comment.user = current_user
     end
-
       @comment.save
-      
-      #pusher
-      # @user=current_user
-      # @friends = @comment.commentable.user.followers#@user.user_followers
-      #  if @friends.include?(current_user)
-      #     @friends.delete(current_user)
-      #  end
-      #  if !@friends.include?(@comment.commentable.user) 
-      #     @friends.push(@comment.commentable.user)
-      #   end
-
-      
-      # for friend in @friends
-      #   Pusher['private-'+friend.id.to_s].trigger('greet', {
-      #     :comment =>@comment
-      #   })
-      # end
-      #pusher end
-
       respond_to do |format|
         format.js
         format.html { redirect_to root_path }
       end
-    
-
   end
-
-  # def shownolayout
-  #   @comment=Comment.find(params[:id])
-  #   @commentable_type=@comment.commentable_type
-  #   @commentable=@comment.commentable
-  #   render "shownolayout", layout: false
-  # end
-
-
-
 
   def destroy
     @comment = current_user.comments.find(params[:id])

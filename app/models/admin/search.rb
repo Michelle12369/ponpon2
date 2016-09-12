@@ -25,7 +25,7 @@ class Admin::Search < ActiveRecord::Base
 			users=User.where("gender = ? ",gender)
 		end
 
-		have_coupon_user=User.joins(:coupons).where(coupons: {id:coupon.descendant_ids,used: false })
+		have_coupon_user=User.joins(:coupons).where(coupons: {id:coupon.descendant_ids,used: false }).where("expiry_date>=?",Date.today)
 
 
 		if relation==0	

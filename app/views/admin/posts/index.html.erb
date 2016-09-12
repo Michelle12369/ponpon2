@@ -1,0 +1,32 @@
+  
+<div class="col-md-8">
+  <div id="post-form" class="background-white container-fluid">
+    <%= render 'admin/posts/form' %><!--圖片直接po在post非admin::post-->
+  </div>
+
+  <div id="activities">
+   <%= render_activities(@admin_posts, layout: '/shared/activity') %>
+  </div>
+
+  <%= render 'shared/paginate', resources: @admin_posts %>
+</div>
+<div class="col-md-4">
+	<div class="square background-white">
+		<h6>
+			關於
+			<%= link_to edit_admin_store_path(@current_store),class:"pull-xs-right" do%>
+				<% fa_icon 'pencil'%>
+			<%end%>	
+		</h6>
+		<%=simple_format(@current_store.store_about)%>	
+	</div>	
+	<div class="square background-white">
+		<h6>相片</h6>
+		<%if @admin_pics.empty?%>
+			<%= render('shared/no_resource', resources: '相片') %>
+		<%else%>
+		 <%= render_activities(@admin_posts,layout:'/admin/posts/photo')%>
+		<%end%>
+	</div>
+
+</div>

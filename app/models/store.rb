@@ -2,9 +2,11 @@ class Store < ActiveRecord::Base
 	has_many :coupons
 	acts_as_followable
 	has_many :posts
+	has_many :comments
 	has_many :items
 	# mount_uploaders :store_photo, AvatarUploader
 	# crop_uploaded :store_photo
+	acts_as_voter
 
 	has_many :users ,:through =>:store_users
 	has_many :store_users

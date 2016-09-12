@@ -3,13 +3,11 @@
   <div class="col-xs-10">
     <div class="row">
       <div class="col-xs-2">
-        <%= link_to user_path(post.user) do %>
-          <%= image_tag post.user.avatar.url || 'avatar.jpg', class: 'avatar'%>
-        <% end %>
+        <%=pic_store_or_user?(post,post.user)%>
       </div>
       <div class="name-and-time col-xs-10">
         <h6 class="name">
-          <%= link_to post.user.name, user_path(post.user) %>
+          <%=name_store_or_user?(post,post.user)%>
         </h6>
         <%= render 'shared/created_at', activity: post %>
       </div>
@@ -38,10 +36,10 @@
 
   <div class="content">
     <br> 
-    <p class="text"><%= post.content%></p>
+    <%= simple_format(post.content, class: 'text')%>
     <% if post.attachment.present? %>
       <div class="attachment">
-        <%= image_tag post.attachment,class:"m-b-2", :style => "width:80%;" %>
+        <%= image_tag post.attachment,class:"m-b-2 post-attachment"%>
       </div>
     <% end %>
   </div>

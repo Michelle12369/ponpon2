@@ -1,0 +1,36 @@
+<% if user_signed_in? %>
+  <div class="actions container-fluid comment-actions">
+    <div class="row comment-info">
+      <div class="col-xs-6">
+        <span class="like-count text-muted"><%#= fa_icon 'heart'%><%=resource.cached_votes_up%>個讚</span>
+        <span class="comments-count text-muted"><%#= fa_icon 'comment'%><%=resource.comments_count%>則留言</span>
+      </div>
+
+      <div class="col-xs-6 comment-<%=resource.id%>">
+      
+           <!--傳ror變數到js(home.js)-->
+          <%= link_to "#", method: :post,:class=>"load-more pull-right", data:{id:resource.id}, remote: true do%>
+            查看更多留言<%#= render(resource.comments.offset(4).all,commentable:resource)%>
+          <%end%>
+      </div>
+    </div>
+    
+    <div id="post-<%=resource.id%>-comments">
+      <%= render(resource.comments.last(4),commentable:resource)%>
+    </div>
+
+      <div id="comment-form-<%=resource.id%>" class="comment-form row">
+            <span class="like">
+              <%= render 'admin/likes/form', likeable: resource %></span>
+              <%= render 'admin/comments/form', commentable: resource %>
+      </div>
+
+
+
+
+   
+  </div>
+<% end %>
+
+   
+

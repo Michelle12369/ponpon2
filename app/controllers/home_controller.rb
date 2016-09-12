@@ -11,9 +11,13 @@ class HomeController < ApplicationController
 
   def index
     @post = Post.new
-    @friends = @user.all_following.unshift(@user)
-    #@followers = User.all
-    @activities = PublicActivity::Activity.where(owner_id: @friends).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    # @friends = @user.all_following.unshift(@user)
+    @following_user=@user.following_users.to_a.unshift(@user)
+    activity_user=PublicActivity::Activity.where(owner_id: @following_user,owner_type:"User")
+    @following_store=@user.following_stores
+    activity_store=PublicActivity::Activity.where(owner_id: @following_store,owner_type:"Store")
+    @activities=activity_store.or(activity_user).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    # @activities = PublicActivity::Activity.where(owner_id: @friends).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
   def food

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   #admin panel
   namespace :admin do
     devise_scope :user do
@@ -24,7 +25,16 @@ Rails.application.routes.draw do
     post '/stores/:store_id/coupons/:id/redeem',:to=>'coupons#admin_redeem',:as=>"redeem"
     # get '/stores/:store_id/coupons/:id/qrcode',:to=>'coupons#admin_qrcode',:as=>"qrcode"
 
-    resources :stores do
+    resources :posts do
+        collection do
+        get 'analysis'
+      end
+    end
+    resources :comments, only: [:create, :destroy]
+    match :like, to: 'likes#create', as: :like, via: :post
+    match :unlike, to: 'likes#destroy', as: :unlike, via: :post
+    
+    resources :stores do  
       resources :items
       resources :coupons,:except => [:edit,:destroy] do
         resources :searches,only:[:new,:create,:show]
@@ -40,7 +50,7 @@ Rails.application.routes.draw do
 
 
   #basic relationship settings
-  resources :posts
+  resources :posts,except: :index
   resources :stores,:except => [:edit,:destroy]
 
   # resources :items

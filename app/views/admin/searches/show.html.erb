@@ -4,7 +4,7 @@
 <%end%>
 <%=form_tag admin_send_path(@current_store,@coupon),:method=>:post do%>
 選擇數量
-<%=text_field_tag :people%>
+<%=number_field_tag :people, 0 ,class:"people-amount",min: 0, max: min_between_coupon_and_search(@search.search_users(@current_store,@coupon).size,@coupon.admin_coupon_limit)%>
 <%= hidden_field_tag :range,@search.search_users(@current_store,@coupon).map(&:id)%>
 <%= submit_tag "發送" %>
 <%end%>

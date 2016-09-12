@@ -11,9 +11,6 @@ class Admin::Coupon < Coupon
 		else	
 			Admin::Coupon.create_coupon(coupon,0.03)
 		end
-	end
-
-	def self.create_coupon(coupon,discount)
 		#店家qrcode
 		url="https://pon-michelle12369.c9users.io/stores/#{store.id}/coupons/#{coupon.id}/take"
 		@qrcode = RQRCode::QRCode.new(url,:size => 4, :level => :l)#用真的網址line才掃得到
@@ -24,6 +21,10 @@ class Admin::Coupon < Coupon
 		  coupon.update(qr_code:file)
 		end
 		File.delete(png.path)
+	end
+
+	def self.create_coupon(coupon,discount)
+
 		#店家折數計算
 	 	default_discount=coupon.computed_discount
 		discount_ceiling_people=((1.2-default_discount)/discount).round

@@ -1,0 +1,24 @@
+<!-- <div class="comment-in-post row"> -->
+  <div id="comment-<%= comment.id %>" class=" comment-in-post row">
+    <div class="comment-user-info m-l-1">
+      <%=pic_store_or_user?(comment,comment.user)%>
+    </div>
+
+    <div class="content">
+      <p class="d-inline-block name">
+        <%=name_store_or_user?(comment,comment.user)%>
+      </p>
+      <span class="text-justify comment-content-comment"><%= comment.comment %></span>
+    </div>
+
+    <div class="p-r-1 comment-delete">
+        <% if belongs_to_store?(comment) %>
+          <%= link_to admin_comment_path(comment), method: :delete, remote: true,data: { confirm:"是否刪除留言"},class:"close" do %>
+            <span aria-hidden="true">&times;</span>
+          <% end %>
+        <% end %>
+    </div>
+    <br>
+    <!-- <hr> -->
+  </div>
+<!-- </div> -->
