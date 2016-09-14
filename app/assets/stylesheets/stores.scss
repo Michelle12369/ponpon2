@@ -46,3 +46,130 @@
 		margin:auto;
 	}
 }
+
+
+
+
+#title{
+	h1{
+		font-size: 20pt;
+		display: inline-block;
+		width:35%;
+	}
+	#title-con{
+		display: inline-block;
+		width:64%;
+		margin: 3% 0 0 0;
+		text-align: right;
+		.circle{
+			background-color:rgb(229,229,229);
+			border-radius:100%;
+		    display: inline-block;
+		    width: 25px;
+		    padding:2px 0 2px 9px;
+		    text-align: left;
+		    color: rgb(172,172,172);
+		}
+		.border{
+			border:1px solid rgb(229,229,229);
+			margin: 0 -6px 4px -5px;
+			display: inline-block;
+			width: 120px;
+		}
+		#circle1{
+			background-color:rgb(240,138,93);
+			color: white;
+		}
+	}
+	ul{
+		list-style-type: none;
+		text-align: right;
+		margin:0 0 5% 0;
+		padding:0;
+		li{
+			display: inline-block;
+		}
+		li:nth-child(1){
+			width:120px;
+		}
+		li:nth-child(2){
+			width:140px;
+		}
+		li:nth-child(3){
+			width:120px;
+		}
+	}
+}
+#contact-part{
+	padding:15px 20px 15px 30px;
+	border:1px solid rgb(235,235,235);
+	//控制按鈕大小顏色 
+	.next{
+		width:100px;
+		color: white;
+		background-color:#f08a5d;
+		border:0;
+		border-radius:8px;
+	}
+	.bottom{
+		a{
+			text-decoration:none;
+			color: inherit;
+			span{
+				border:1px solid black;
+				border-radius:100%;
+				padding:0 7px 2px 6px;
+			}
+		}
+	}
+}
+
+
+button:focus{
+	outline:none;
+}
+input:focus{
+	outline:none;
+}
+
+@media screen and (min-width: 990px){
+	.container{
+		margin-right:15%;
+		margin-left: 15%;
+	}
+}
+@media screen and (max-width: 544px){
+	.container{
+		#title{
+			text-align: center;
+			h1{
+				width:100%;
+			}
+			ul{
+				text-align: center;
+				li:nth-child(n){
+					width:75px;
+					padding-left:4px;
+				}
+			}
+			#title-con{
+				width: 100%;
+				text-align: center;
+				.border{
+					width: 60px;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
