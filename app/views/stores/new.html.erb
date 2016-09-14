@@ -1,5 +1,87 @@
+<div id='title'>
+    <h1>申請會員流程</h1>
+    <div id='title-con'>
+        <div class="circle" id="circle1">1</div>
+        <div class="border" id="border2"></div>
+        <div class="circle" id="circle2">2</div>
+        <div class="border" id="border3"></div>
+        <div class="circle" id="circle3">3</div>
+    </div>
+    <ul>
+        <li>合作條款</li>
+        <li>填寫資料</li>
+        <li>審核</li>
+    </ul>
+</div>
+
+        <div class="row" id="contact-part">
+            <div class="col-xs-12 col-sm-6">
+                <h3 class="text-xs-center text-sm-left">商家資料</h3>
+
+                <div class="text-xs-center text-sm-left" id="new_store">
+					<%= render 'form', store: @store %>
+				</div>
+
+<!-- 
+                <div class="text-xs-center text-sm-left information">
+                    <div>
+                        <span>店名：</span>
+                        <input type="" name="">
+                    </div>
+                    <div>
+                        <span>電話：</span>
+                        <input type="" name="">
+                    </div>
+                    <div>
+                        <span>地址：</span>
+                        <input type="" name="">
+                    </div>
+                    <div>
+                        <span>分類：</span>
+                        <input type="" name="">
+                    </div>
+                </div>
+-->
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <h3 class="text-xs-center text-sm-left">聯絡資訊</h3>
+                <div class="text-xs-center text-sm-left information">
+                    <div>
+                        <span>姓名：</span>
+                        <input type="" name="">
+                    </div>
+                    <div>
+                        <span>電話：</span>
+                        <input type="" name="">
+                    </div>
+                    <div>
+                        <span>信箱：</span>
+                        <input type="" name="">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 上一頁 ＋ 按鈕  -->
+            <div class="col-xs-12 bottom">
+                <div class="col-xs-6 col-sm-3">
+                    <a class='pull-xs-right pull-sm-left'>
+                        <p>
+                            <span>&lt;</span>
+                            <%= link_to '上一頁', admin_front_path %>
+                        </p>
+                    </a>
+                </div>
+                <div class="col-xs-6 pull-sm-right">
+                    <a class="p-l-2 pull-sm-right" href="signUp3.html">
+                        <input type="submit" class="next" value="繼續">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
 <h1>填寫詳細資料</h1>
 <div id="new_store">
-<%= render 'form', store: @store %>
 </div>
-<%= link_to '返回', admin_front_path %>
