@@ -1,2 +1,14 @@
 <%=1.week.ago.to_date%>~<%=Date.today%><br>
 本週新增追蹤人數：<%=@week_followers.size%>
+本週貼文按讚數：<%#=Post.last.votes_for.up.by_type(User).where('created_at>=?',1.week.ago)%>
+<%=ActsAsVotable::Vote.where('created_at>?',1.week.ago).size%>
+<%Post.all.each do |x|%>
+<%=x.votes_for.up.by_type(User).where('created_at>=?',1.week.ago).size%>
+<%end%>
+
+貼文按讚數、貼文留言數、（分享數)
+按讚留言年齡、性別、地區
+追蹤年齡性別地區
+（分享）
+瀏覽商家頁面數、瀏覽商家粉絲專頁數（停留時間）
+
