@@ -1,3 +1,38 @@
-服務同意規範
+<!-- 服務同意規範 -->
 
-<%= link_to "建立店家",complete_path%>
+<%#= link_to "建立店家",new_store_path%>
+
+<div id='title'>
+    <h1>申請會員流程</h1>
+    <div id='title-con'>
+        <div class="circle circle1">1</div>
+        <div class="border"></div>
+        <div class="circle">2</div>
+        <div class="border"></div>
+        <div class="circle">3</div>
+    </div>
+    <ul>
+        <li>合作條款</li>
+        <li>填寫資料</li>
+        <li>審核</li>
+    </ul>
+</div>
+
+<div class="row" id="contact-part">
+    <div>
+        <iframe class="contract-content-bgcolor" src="<%=contract_content_path%>" width="100%" height="600px" frameborder="0" scrolling="yes"></iframe>
+    </div>
+    <!-- 要怎麼改呢 -->
+<!--     
+	<form action='signUp2.html' onsubmit="return checkForm(this);">
+        <p class="text-xs-center m-t-1 m-b-1"><input type="checkbox" required name="terms"> 我已詳細閱讀此<u>合作條款</u>，並同意條款內容。</p>
+        <p class="text-xs-center pull-sm-right"><input type="submit" class="next" value="建立帳戶"></p>
+    </form> 
+-->
+    <div class="text-xs-center text-sm-right">
+    <%=form_tag new_store_path ,method: :get do%>
+    	<p class="text-xs-center m-t-1 m-b-1"><input type="checkbox" required name="terms"> 我已詳細閱讀此<u>合作條款</u>，並同意條款內容。</p>
+    	<%= submit_tag '建立帳戶',class:"next" %>
+    </div>
+    <%end%>	
+</div>

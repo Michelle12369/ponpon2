@@ -12,7 +12,7 @@ module PagesHelper
 	        concat link_to "回到個人頁面", root_path
 
 	    elsif signed_in?&&current_user.user?
-	    	concat link_to "申請成為店家", new_store_path
+	    	concat link_to "申請成為店家", contract_path
 	    	concat " "
 	    	concat link_to "登出", admin_sign_out_path,method: :delete
 	    	concat " "

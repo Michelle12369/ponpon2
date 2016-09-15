@@ -1,0 +1,22 @@
+.nobar-body{
+	margin:0;
+}
+.nobar{
+	background-color:rgb(54,54,54);
+	color: rgb(196,196,196);
+	padding:15px 5%;
+	font-size:20pt;
+	.nobar-orange{
+		color: rgb(189,125,87);
+	}
+	.nobar-index{
+		font-size: 16pt;
+	}
+}
+
+@media screen and (min-width: 990px){
+	.nobar-container{
+		margin-right:15%;
+		margin-left: 15%;
+	}
+}

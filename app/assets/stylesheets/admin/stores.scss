@@ -1,3 +1,29 @@
 // Place all the styles related to the admin/stores controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.store-info-block{
+	background-color:white;
+	padding:20px;
+	margin:35px 0;
+	box-shadow:4px 4px 6px rgba(20%,20%,40%,0.5);
+	h5{
+		padding-bottom:6px;
+		border-bottom:2px solid rgb(139,124,105);
+		margin-bottom: 13px;
+	}
+	.store-info{
+		width:100px;
+		display:inline-block;
+	}
+}
+
+.store-info-save{
+	color: white;
+	border:0;
+	// border:0 1px 1px 0;
+	border-radius:8px;
+	padding: 5px 8px;
+	margin: 0 10px;
+	background-color:#f08a5d;
+}

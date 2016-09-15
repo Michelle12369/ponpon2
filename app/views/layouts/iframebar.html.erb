@@ -11,23 +11,8 @@
     <%= csrf_meta_tags %>
 </head>
 
-<body class="nobar-body">
-<b>
-    <p class="nobar">
-        <span class="nobar-orange">Q</span>oupon
-        <%= link_to admin_front_path do%>
-            <span class="pull-right nobar-index">首頁</span>
-        <%end%>
-    </p>
-</b>
-<div class="container nobar-container">
-        <div class="row">
-        <p><%= notice %></p>
-        <p><%= alert %></p>
-
-            <%= yield %>
-        </div>
-    </div>      
+<body class="m-t-0">
+    <%= yield %>   
 </body>
 
 </html>
