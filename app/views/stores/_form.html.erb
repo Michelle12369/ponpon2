@@ -1,4 +1,4 @@
-<%= form_for store, :remote => true do |f| %>
+<%= form_for store do |f| %>
   <% if store.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
@@ -12,43 +12,68 @@
   <% end %>
 
 
-  <div class="field">
-    <%= f.label :store_name %>
-    <%= f.text_field :store_name %>
+<div class="col-xs-12 col-sm-6">
+  <h3 class="text-xs-center text-sm-left p-t-2">商家資料</h3>
+  <div class="p-l-1 p-t-1">
+    <div class="field">
+      <%#= f.label :store_name %>
+      <span>店名：</span>
+      <%= f.text_field :store_name %>
+    </div>
+    <div class="field">
+      <span>電話：</span>
+      <%= f.text_field :store_phone %>
+    </div>
+    <div class="field">
+      <span>地址：</span> 
+      <%= f.text_field :store_address %>
+    </div>
+    <div class="field">
+      <span>分類：</span>
+      <%= f.text_field :store_type%>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :store_phone %>
-    <%= f.text_field :store_phone %>
+<div class="col-xs-12 col-sm-6">
+  <h3 class="text-xs-center text-sm-left p-t-2">聯絡資訊</h3>
+  <div class="p-l-1 p-t-1">
+    <div class="field">
+      <span>姓名：</span>
+      <%= f.text_field :store_keeper_name %>
+    </div>
+    <div class="field">
+     <span>電話：</span>
+      <%= f.text_field :store_keeper_phone %>
+    </div>
+    <div class="field">
+      <span>信箱：</span>
+      <%= f.text_field :store_email %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :store_address %>
-    <%= f.text_field :store_address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :store_type %>
-    <%= f.text_field :store_type%>
-  </div>
-
-  <div class="field">
-    <%= f.label :store_keeper_name %>
-    <%= f.text_field :store_keeper_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :store_keeper_phone %>
-    <%= f.text_field :store_keeper_phone %>
-  </div>
-
-  <div class="field">
-    <%= f.label :store_email %>
-    <%= f.text_field :store_email %>
-  </div>
+</div>
 
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+<!-- 上一頁 ＋ 按鈕  -->
+<div class="col-xs-12 bottom p-t-1">
+    <div class="col-xs-6 col-sm-3 p-l-0">
+        <span class='pull-xs-left'>
+            <p>
+                <%= link_to contract_path do%>
+                  <span>&lt;</span> 上一頁
+                <%end%>
+            </p>
+        </span>
+    </div>
+    <div class="col-xs-6 pull-sm-right p-r-0">
+        <div class="p-l-2 pull-sm-right text-xs-right actions">
+            <%#= link_to complete_path%>
+            <%= f.submit "繼續" ,class:"next" %>
+            <!-- <input type="submit" class="next" value="繼續"> -->
+        </div>
+    </div>
+</div>
+
+
 <% end %>

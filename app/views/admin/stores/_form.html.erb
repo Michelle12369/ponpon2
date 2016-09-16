@@ -11,53 +11,58 @@
     </div>
   <% end %>
 
-  <h5>商家簡介</h5>
-  <div class="field">
-    商店名稱<br />
-    <%= f.text_area :store_name %>
+  <div class="store-info-block">
+    <h5>商家簡介</h5>
+    <div class="field p-l-3">
+      <div class="store-info">商店名稱：</div>
+      <%= f.text_field :store_name %>
+    </div>
+    <div class="field p-l-3">
+      <div class="store-info">店家類型:</div>
+      <%= f.text_field :store_type %>
+    </div>
+    <div class="field p-l-3">
+      <div class="store-info">簡介：</div>
+      <%= f.text_area :store_about %>
+    </div>
   </div>
 
-  <div class="field">
-    聯絡電話<br />
-    <%= f.text_field :store_phone %>
+  <div class="store-info-block">
+    <h5>商家資訊</h5>
+    <div class="field p-l-3">
+      <div class="store-info">聯絡電話:</div>
+      <%= f.text_field :store_phone %>
+    </div>
+
+    <div class="field p-l-3">
+      <div class="store-info">商家位置:</div>
+      <%=f.select :store_city, options_for_select(@city_array)%>
+      <%=f.text_field :store_address %>
+    </div>
+    <div class="field p-l-3">
+      <div class="store-info">營業時間:</div>
+      <%= f.text_area :store_time %>
+    </div>
+    <div class="field p-l-3">
+      <div class="store-info">店內一般規定:</div>
+      <%= f.text_area :store_rule %>
+    </div>
   </div>
 
-  <div class="field">
-    商家位置:<br />
-    <%=f.select :store_city, options_for_select(@city_array)%>
-    <%=f.text_field :store_address %>
+  <div class="store-info-block">
+    <h5>商家照片</h5>
+    <div class="field p-l-3">
+      <div class="store-info">封面照片上傳</div>
+      <%= f.file_field :store_cover_photo%>
+    </div>
+    <div class="field p-l-3">
+      <div class="store-info">照片上傳</div>
+      <%= f.file_field :store_photo, multiple: true %>
+    </div>
   </div>
 
-  <div class="field">
-    簡介<br />
-    <%= f.text_area :store_about %>
+  <div class="actions text-xs-right p-b-2">
+    <%= f.submit '儲存資訊', :class=> 'store-info-save' %>
   </div>
 
-   <div class="field">
-    店家類型<br />
-    <%= f.text_field :store_type %>
-  </div>
-
-  <div class="field">
-    營業時間<br />
-    <%= f.text_area :store_time %>
-  </div>
-
-  <div class="field">
-    封面照片上傳<br />
-    <%= f.file_field :store_cover_photo%>
-  </div>
-
-  <div class="field">
-    照片上傳<br />
-    <%= f.file_field :store_photo, multiple: true %>
-  </div>
-  <div class="field">
-    店內一般規定<br />
-    <%= f.text_area :store_rule %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit '儲存資訊'%>
-  </div>
 <% end %>
