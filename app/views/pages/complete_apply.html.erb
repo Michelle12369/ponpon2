@@ -1,4 +1,34 @@
-恭喜您，您的資料已經進入審核程序！
-在此期間你可以：
-<%= link_to "使用一般帳戶", home_path %>
-<%= link_to "了解店家端Q胖", admin_front_path %>
+<div id='title'>
+    <h1>申請會員流程</h1>
+    <div id='title-con'>
+        <div class="circle circle1">1</div>
+        <div class="border border2"></div>
+        <div class="circle circle2">2</div>
+        <div class="border border3"></div>
+        <div class="circle circle3">3</div>
+    </div>
+    <ul>
+        <li>合作條款</li>
+        <li>填寫資料</li>
+        <li>審核</li>
+    </ul>
+</div>
+
+
+
+<div class="text-xs-center pass-content">
+	<%= image_tag("pass.png", class:'pass') %>
+	<h4>恭喜你！</h4>
+	<h5>你的資料已進入審核階段！</h5>
+	<hr>
+	<div>
+	<p>作業將會進行2～3天，審查後即可使用完整商家功能</p>
+	<p>在此時間內，你可以：</p>
+	</div>
+	<div>
+		<%#= link_to "了解店家端Qoupon", admin_front_path ,class:'m-t-1 complete-back-to-personal complete_button_1' %>
+		<%#= link_to "了解店家端Qoupon", admin_front_path ,class:'m-t-1 complete-back-to-personal complete_button_1' %>
+	    <%= button_to "了解店家端Qoupon", admin_front_path ,class:'m-t-1 complete-back-to-personal complete_button_1',method: :get%>
+	    <%= button_to "使用一般帳戶", home_path ,class:'m-t-1 complete-back-to-personal complete_button_2',method: :get%>
+	</div>
+</div>

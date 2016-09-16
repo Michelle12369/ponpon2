@@ -11,4 +11,10 @@ class PagesController < ApplicationController
  	def complete_apply
 
  	end
+ 	def contract_content
+ 		render :layout => "iframebar"
+ 	end
+ 	def faq
+ 		render :layout => "application"
+ 	end
 end

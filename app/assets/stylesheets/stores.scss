@@ -50,6 +50,9 @@
 
 
 
+
+
+// 店家申請頁面
 #title{
 	h1{
 		font-size: 20pt;
@@ -76,8 +79,23 @@
 			display: inline-block;
 			width: 120px;
 		}
-		#circle1{
+		.circle1{
 			background-color:rgb(240,138,93);
+			color: white;
+		}
+
+		.border2{
+			border-color:#f08a5d;
+		}
+		.circle2{
+			background-color: rgb(247,220,119);
+			color: white;
+		}
+		.border3{
+			border-color:rgb(247,220,119);;
+		}
+		.circle3{
+			background-color:rgb(92,168,157);
 			color: white;
 		}
 	}
@@ -103,6 +121,8 @@
 #contact-part{
 	padding:15px 20px 15px 30px;
 	border:1px solid rgb(235,235,235);
+	
+	
 	//控制按鈕大小顏色 
 	.next{
 		width:100px;
@@ -111,6 +131,7 @@
 		border:0;
 		border-radius:8px;
 	}
+
 	.bottom{
 		a{
 			text-decoration:none;
@@ -118,9 +139,46 @@
 			span{
 				border:1px solid black;
 				border-radius:100%;
-				padding:0 7px 2px 6px;
+				padding:0 6px 2px 5px;
 			}
 		}
+	}
+}
+.pass-content{
+	padding:15px 20px 15px 30px;
+	border:1px solid rgb(235,235,235);
+	.pass{
+		padding: 5% 0 5% 0;
+		width:15%;
+	}
+	hr{
+		width:70px;
+		border-top:3px solid #f08a5d;
+		margin:30px auto;
+	}
+	div{
+		margin:30px 0;
+		p{
+			margin:0;
+		}
+	}
+	.button_to{
+		display: inline-block;
+	}
+	.complete-back-to-personal{
+		color: white;
+		border:0;
+		// border:0 1px 1px 0;
+		border-radius:8px;
+		height: 50px;
+		width:170px;
+		margin: 0 10px;
+	}
+	.complete_button_1{
+		background-color:#f08a5d;
+	}
+	.complete_button_2{
+		background-color:rgb(102,102,102);
 	}
 }
 
@@ -128,14 +186,11 @@
 button:focus{
 	outline:none;
 }
-input:focus{
-	outline:none;
-}
 
 @media screen and (min-width: 990px){
 	.container{
-		margin-right:15%;
-		margin-left: 15%;
+		// margin-right:15%;
+		// margin-left: 15%;
 	}
 }
 @media screen and (max-width: 544px){
@@ -163,10 +218,10 @@ input:focus{
 	}
 }
 
-
-
-
-
+// 合約iframe
+.contract-content-bgcolor{
+	background-color:white;
+}
 
 
 

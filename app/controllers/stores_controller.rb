@@ -35,12 +35,12 @@ class StoresController < ApplicationController
 
     respond_to do |format|
       if @store.save
-        format.html { redirect_to contract_path, notice: 'Store was successfully created.' }
+        format.html { redirect_to complete_apply_path, notice: 'Store was successfully created.' }
         #format.json { render :show, status: :created, location: @store }
-        format.js { render :js => "window.location.href='"+contract_path+"'"}
+        format.js 
       else
         format.html { render :new }
-        #format.json { render json: @store.errors, status: :unprocessable_entity }
+        # format.json { render json: @store.errors, status: :unprocessable_entity }
         format.js { render :action => 'create_fail' }
       end
     end

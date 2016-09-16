@@ -102,10 +102,13 @@ Rails.application.routes.draw do
   get '/users/:user_id/coupons-notuse',:to=>'coupons#notuse',:as=>"user_coupons_notuse"
   get '/users/:user_id/coupons-overdue',:to=>'coupons#overdue',:as=>"user_coupons_overdue"
 
-
-
   #admin landing pages
   get '/admin-landing',:to=> 'pages#admin_landing',:as=>"admin_front"
   get '/contract',:to=> 'pages#contract',:as=>"contract"
-  get '/complete',:to=> 'pages#complete_apply',:as=>"complete"
+  get '/complete',:to=> 'pages#complete_apply',:as=>"complete_apply"
+  get '/contract-content',:to=>'pages#contract_content',:as=>"contract_content"
+
+  #static page
+  get '/faq',:to=>'pages#faq',:as=>"faq"
+
 end
