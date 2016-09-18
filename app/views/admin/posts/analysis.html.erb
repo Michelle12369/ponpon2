@@ -1,14 +1,51 @@
-<%=1.week.ago.to_date%>~<%=Date.today%><br>
-本週新增追蹤人數：<%=@week_followers.size%>
-本週貼文按讚數：<%#=Post.last.votes_for.up.by_type(User).where('created_at>=?',1.week.ago)%>
-<%=ActsAsVotable::Vote.where('created_at>?',1.week.ago).size%>
-<%Post.all.each do |x|%>
-<%=x.votes_for.up.by_type(User).where('created_at>=?',1.week.ago).size%>
-<%end%>
+<%=@last_last_sunday%>~<%= @last_sunday%><br>
+上週新增追蹤人數：<%=@week_followers%>
+上週貼文按讚數：<%#=Post.last.votes_for.up.by_type(User).where('created_at>=?',1.week.ago)%>
+<%=ActsAsVotable::Vote.where('created_at>?',1.week.ago).size%><br>
 
-貼文按讚數、貼文留言數、（分享數)
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>發布日期</td>
+      <td>貼文</td>
+      <td>按讚數</td>
+      <td>留言數</td>
+      <td>分享數</td>
+    </tr>
+  </thead>
+  <tbody>
+    <%@store_posts.each do |x|%>
+      <tr>
+        <td><%=x.created_at.to_date%></td>
+        <td><%=truncate(x.content.html_safe,length:33)%></td>
+        <td><%#=x.votes_for.up.by_type(User).where('created_at>=?',1.week.ago).size%></td>
+        <td><%=x.comments.size%></td>
+        <td></td>
+      </tr>
+    <%end%>
+    <tr>
+      <td colspan="2">總計</td>
+      <td></td> 
+      <td></td> 
+      <td></td> 
+    </tr>
+  </tbody>
+</table>
+（分享數)
 按讚留言年齡、性別、地區
 追蹤年齡性別地區
 （分享）
 瀏覽商家頁面數、瀏覽商家粉絲專頁數（停留時間）
 
+<div id="container-chart-location" style="max-width: 500px; height: 400px; margin: 0 auto"></div>
+<div id="container-chart-gender" style="max-width: 500px; height: 400px; margin: 0 auto"></div>
+<div id="container-chart-age" style="max-width: 500px; height: 400px; margin: 0 auto"></div>
+
+<% content_for :javascript do %>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <%=render "analysis_diagram",type:"location",type_chi:"地區",xaxis:@locationxaxis,like_comment:@location,share:@location,follow:@location%>
+  <%=render "analysis_diagram",type:"gender",type_chi:"性別",xaxis:@genderxaxis,like_comment:@gender,share:@gender,follow:@gender%>
+  <%=render "analysis_diagram",type:"age",type_chi:"年齡",xaxis:@agexaxis,like_comment:@ages,share:@ages,follow:@ages%>
+<%end%>

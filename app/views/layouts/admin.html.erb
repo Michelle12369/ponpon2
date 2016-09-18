@@ -80,8 +80,11 @@
       <li class="nav-item <%= active_class( admin_store_coupons_path(@current_store)) %>">
         <%= link_to "優惠卷發放管理", admin_store_coupons_path(@current_store),class: "nav-link" %>
       </li>
+      <li class="nav-item <%= active_class(admin_operating_data_path(@current_store)) %>">
+          <%= link_to "優惠卷數據資料庫", admin_operating_data_path(@current_store),class: "nav-link" %>
+      </li>
       <li class="nav-item ">
-        <a href="#" class="nav-link show-sub-item <%= active_admin_class(edit_admin_store_path(@current_store),admin_store_items_path(@current_store)) %>">
+        <a class="nav-link show-sub-item <%= active_admin_class(edit_admin_store_path(@current_store),admin_store_items_path(@current_store)) %>">
           店家資訊設定
           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right icon"></i>
@@ -94,7 +97,7 @@
       </li>
       <li class="nav-item ">
         <%#= link_to "Q胖資訊公告", admin_home_path,class: "nav-link" %>
-        <a href="#" class="nav-link show-sub-item <%= active_admin_class(admin_posts_path,analysis_admin_posts_path) %>">
+        <a class="nav-link show-sub-item <%= active_admin_class(admin_posts_path,analysis_admin_posts_path) %>">
           社群經營
           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right icon"></i>
@@ -105,18 +108,7 @@
           <%= link_to "粉絲數據", analysis_admin_posts_path,class: "nav-link" %>
         </span>
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link show-sub-item <%= active_admin_class(admin_operating_data_path(@current_store),"/") %>">
-          數據資料庫
-          <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right icon"></i>
-          </span>
-        </a>
-        <span class="sub-left-bar-item">
-          <%= link_to "優惠卷轉換率", admin_operating_data_path(@current_store),class: "nav-link" %>
-          <%= link_to "互動分析", admin_operating_data_path(@current_store),class: "nav-link" %>
-        </span>
-      </li>
+
     </ul>
 </div>
 
@@ -129,6 +121,7 @@
             <%= yield %>
         </div>
     </div> 
+    
     <%= yield :javascript %>     
 </body>
 
