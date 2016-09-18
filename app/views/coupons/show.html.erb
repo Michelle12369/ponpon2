@@ -1,4 +1,4 @@
-<table class="table">
+<!-- <table class="table">
     <tr>
       <td><b>Coupon id</b></td>
       <td><b>標題</b></td>
@@ -12,12 +12,12 @@
       <td><%= @coupon.id %></td>
       <td><%= @coupon.coupon_title %></td>
       <td><%= distributor(@coupon)%></td>
-      <td><%=@coupon.computed_discount*10 %>折</td>
+      <td><%#=@coupon.computed_discount*10 %>折</td>
       <td><%= coupon_status(@coupon)%></td>
-      <td>1. 每增加一人使用增加<%=(@coupon.discount)*100 %>%折扣</td>
+      <td>1. 每增加一人使用增加<%#=(@coupon.discount)*100 %>%折扣</td>
       <td><%=@coupon.other_content%></td>
     </tr>
-</table>
+</table> -->
 
 <!-- 改的 -->
 <div class="container coupon-width">
@@ -30,13 +30,17 @@
         <h1><%= @coupon.coupon_title %></h1>
         <div>
           <p>文山區 <span>Next Door 鄰居家</span></p>
-          <p>贈送人：<span>人頭</span></p>
+          <p>贈送人：<%= distributor(@coupon)%></p>
           <p>目前折扣：<%=@coupon.computed_discount*10 %>折</p>
-          <p id='money'>$100</p>
+          <p>狀態：<%= coupon_status(@coupon)%></p>
+          <p class="m-t-1 m-b-1" id='money'>$100</p>
           <div>
             <button>分享</button>
             <button>發送</button>
-            <button>兌換</button>
+            <%if coupon_status(@coupon)=="可使用"%>
+              <!-- <button>兌換</button> -->
+              <%= link_to '兌換', redeem_user_coupon_path(@user,@coupon) %> 
+            <%end%>
           </div>
         </div>
       </div>

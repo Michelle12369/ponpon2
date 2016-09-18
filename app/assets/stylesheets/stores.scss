@@ -119,9 +119,12 @@
 	}
 }
 #contact-part{
-	padding:15px 20px 15px 30px;
+	padding:15px 20px 15px 20px;
 	border:1px solid rgb(235,235,235);
 	
+	@media screen and (max-width: 591px){
+		margin:0;
+	}
 	
 	//控制按鈕大小顏色 
 	.next{
@@ -129,7 +132,7 @@
 		color: white;
 		background-color:#f08a5d;
 		border:0;
-		border-radius:8px;
+		border-radius:0.2rem;
 	}
 
 	.bottom{
@@ -169,7 +172,7 @@
 		color: white;
 		border:0;
 		// border:0 1px 1px 0;
-		border-radius:8px;
+		border-radius:0.2rem;
 		height: 50px;
 		width:170px;
 		margin: 0 10px;

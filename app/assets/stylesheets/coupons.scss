@@ -84,7 +84,8 @@
 			div{
 				text-align: center;
 				margin:0;
-				button{
+				button,a{
+					display: inline-block;
 					border:1px solid $orange;
 					margin: 0 1%;
 					width: 30%;

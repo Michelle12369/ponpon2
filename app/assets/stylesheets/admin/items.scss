@@ -1,3 +1,25 @@
 // Place all the styles related to the admin/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.store-new-item-title{
+	padding-bottom:6px;
+	border-bottom:2px solid rgb(139,124,105);
+	margin-bottom: 13px;
+}
+.store-new-item{
+	// displa
+	width:30%;
+}
+.store-new-item-input{
+	width:70%;
+}
+.store-new-item-button{
+	color: white;
+	border:0;
+	border-radius:0.2rem;
+	width:60px;
+	padding: 5px 8px;
+	margin: 0 10px;
+	background-color:#f08a5d;
+}
