@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<table class="table">
+<!-- <table class="table">
     <tr>
       <td><b>Coupon id</b></td>
       <td><b>標題</b></td>
@@ -16,8 +16,52 @@
       <td><%=@admin_coupon.other_content%></td>
       <td><%=image_tag @admin_coupon.coupon_pic.thumb.url%></td>
       <td><%=@admin_coupon.item%></td>
-      <td><%=image_tag @admin_coupon.qr_code.url||'avatar.jpg'%></td>
+      <td><%#=image_tag @admin_coupon.qr_code.url||'avatar.jpg'%></td>
     </tr>
-</table> 
-<%=send_or_delete(@admin_coupon)%>
-<%= link_to 'Back', admin_store_coupons_path %>
+</table>
+ -->
+
+<div class="coupon-show">
+    <h5>優惠券詳細資訊</h5>
+    <div class="coupon-show-bg">
+    <div class="coupon-show-second">
+      <!-- <p>Coupon照片</p> -->
+      <%=image_tag @admin_coupon.coupon_pic.thumb.url%>
+    </div>
+    <div class="coupon-show-first p-l-1">
+      <table>
+        <tr>
+          <td><b>Coupon id</b></td>
+          <td><%= @admin_coupon.id %></td>
+        </tr>
+        <tr>
+          <td><b>優惠券標題</b></td>
+          <td><%= @admin_coupon.coupon_title %></td>
+        </tr>
+        <tr>
+          <td><b>優惠券狀態</b></td>
+          <td><%=admin_coupon_status(@admin_coupon)%></td>
+        </tr>
+        <tr>
+          <td><b>注意事項</b></td>
+          <td><%=@admin_coupon.other_content%></td>
+        </tr>
+        <tr>
+          <td><b>商品</b></td>
+          <td><%=@admin_coupon.item%></td>
+        </tr>
+        <tr>
+          <td><b>QR Code</b></td>
+          <td><%=image_tag @admin_coupon.qr_code.url||'avatar.jpg'%></td>
+        </tr>
+      </table>
+    </div>
+    
+    </div>
+    <div class="text-xs-right">
+      <%=send_or_delete(@admin_coupon) %>
+      <%= link_to 'Back', admin_store_coupons_path %>
+    </div>
+</div>
+
+
