@@ -22,8 +22,6 @@ class HomeController < ApplicationController
 
   def food
 
-
-
   end
 
   def play
@@ -37,6 +35,13 @@ class HomeController < ApplicationController
   def offical
 
   end  
+
+  def search_user
+    if params[:search].present?
+      @results=User.where("name LIKE ?","%#{params[:search]}%")
+      @results_store=Admin::Store.where("store_name LIKE ? and store_status=?","%#{params[:search]}%",0)
+    end
+  end
 
 
   private

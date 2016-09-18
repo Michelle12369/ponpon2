@@ -90,7 +90,7 @@ Rails.application.routes.draw do
   get '/food',:to=>'home#food',:as=>"food"
   get '/play',:to=>'home#play',:as=>"play"
   get '/online',:to=>'home#online',:as=>"online"
-
+  get '/search',:to=>'home#search_user',:as=>"search_user"
 
   #pusher settings
   # post 'pusher/auth'

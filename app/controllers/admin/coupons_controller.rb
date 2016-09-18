@@ -104,9 +104,12 @@ class Admin::CouponsController < Admin::BaseController
   #店家掃描qrcode後跳出頁面裡面的兌換按鈕
   def admin_redeem
     ancs=@admin_coupon.ancestor_ids
-    for i in ancs
-      Coupon.calculate_discount(i,ancs.find_index(i))
-    end
+    ancs.each_with_index do |anc,index|
+      Coupon.calculate_discount(anc,index)
+    end  
+    # for i in ancs
+    #   Coupon.calculate_discount(i,ancs.find_index(i))
+    # end
 
     @admin_coupon.update(used: true)
     respond_to do |format|

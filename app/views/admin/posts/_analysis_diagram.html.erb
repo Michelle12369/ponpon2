@@ -1,0 +1,56 @@
+<script type="text/javascript">
+$(function () {
+		// Load the fonts
+  Highcharts.createElement('link', {
+     href: 'https://fonts.googleapis.com/css?family=Signika:400,700',
+     rel: 'stylesheet',
+     type: 'text/css'
+  }, null, document.getElementsByTagName('head')[0]);
+
+  Highcharts.theme = {
+     colors: ["#f08a5d", "#F7C103", "#B83B5E", "#7798BF", "#aaeeee"]
+  };
+    // Apply the theme
+    Highcharts.setOptions(Highcharts.theme);
+
+
+    $('#container-chart-<%=type%>').highcharts({
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: '當週<%=type_chi%>分析'
+        },
+        subtitle: {
+            text: <%=@last_last_sunday%>+"~"+<%=@last_sunday%>
+        },
+        xAxis: {
+            categories: <%= xaxis.to_json.html_safe%>
+        },
+        yAxis: {
+            title: {
+                text: '數量'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+             },
+        series: [{
+            name: '按讚留言',
+            data: <%=like_comment.to_json.html_safe%>
+        }, {
+            name: '分享',
+            data: <%=share.to_json.html_safe%>
+        }, {
+            name: '追蹤',
+            data: <%=follow.to_json.html_safe%>
+        }]
+    });
+});
+
+</script>
