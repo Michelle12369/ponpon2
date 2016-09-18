@@ -13,15 +13,15 @@
 
   <div class="store-info-block">
     <h5>商家簡介</h5>
-    <div class="field p-l-3">
+    <div class="field p-l-2">
       <div class="store-info">商店名稱：</div>
       <%= f.text_field :store_name %>
     </div>
-    <div class="field p-l-3">
+    <div class="field p-l-2">
       <div class="store-info">店家類型:</div>
       <%= f.text_field :store_type %>
     </div>
-    <div class="field p-l-3">
+    <div class="field p-l-2">
       <div class="store-info">簡介：</div>
       <%= f.text_area :store_about %>
     </div>
@@ -29,21 +29,21 @@
 
   <div class="store-info-block">
     <h5>商家資訊</h5>
-    <div class="field p-l-3">
+    <div class="field p-l-2">
       <div class="store-info">聯絡電話:</div>
       <%= f.text_field :store_phone %>
     </div>
 
-    <div class="field p-l-3">
+    <div class="field p-l-2">
       <div class="store-info">商家位置:</div>
-      <%=f.select :store_city, options_for_select(@city_array)%>
-      <%=f.text_field :store_address %>
+      <%=f.select :store_city, options_for_select(@city_array),{},{ :class => 'store-info-city' }%>
+      <%=f.text_field :store_address ,{ :class => 'store-info-address' } %>
     </div>
-    <div class="field p-l-3">
+    <div class="field p-l-2">
       <div class="store-info">營業時間:</div>
       <%= f.text_area :store_time %>
     </div>
-    <div class="field p-l-3">
+    <div class="field p-l-2">
       <div class="store-info">店內一般規定:</div>
       <%= f.text_area :store_rule %>
     </div>
@@ -51,11 +51,11 @@
 
   <div class="store-info-block">
     <h5>商家照片</h5>
-    <div class="field p-l-3">
+    <div class="field p-l-2">
       <div class="store-info">封面照片上傳</div>
       <%= f.file_field :store_cover_photo%>
     </div>
-    <div class="field p-l-3">
+    <div class="field p-l-2">
       <div class="store-info">照片上傳</div>
       <%= f.file_field :store_photo, multiple: true %>
     </div>

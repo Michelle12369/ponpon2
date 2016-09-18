@@ -1,5 +1,9 @@
-<h5>新增商品</h5>
-
-<%= render 'form', admin_item: @admin_item, admin_url: admin_store_items_path %>
-
-<%= link_to 'Back', admin_store_items_path %>
+<div class="m-t-3">
+	<h5 class="store-new-item-title">新增商品</h5>
+	<div class="m-l-2">
+		<%= render 'form', admin_item: @admin_item, admin_url: admin_store_items_path %>
+		<div class="text-xs-right m-t-1">
+			<%= button_to 'Back', admin_store_items_path ,:class => "store-new-item-button" ,method: :get %>
+		</div>
+	</div>
+</div>

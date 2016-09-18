@@ -6,3 +6,88 @@
 .admin-new-coupon{
 	border-bottom:2px solid black;
 }
+
+.coupon-new{
+	color: white;
+	border:0;
+	border-radius:0.2rem;
+	padding: 5px 8px;
+	margin: 0 10px;
+	background-color:#f08a5d;
+}
+.coupon-new:visited{
+	color:white;
+}
+
+.coupon-new-table{
+	margin-top:20px;
+	thead{
+		background-color:#5a5a5a;
+		color: white;
+	}
+	tbody{
+		tr:nth-child(odd){
+			background-color:rgb(223,223,223);
+		}
+		tr:nth-child(even){
+			background-color:rgb(254,254,254);
+		}
+	}
+}
+
+
+// admin/coupon/show.html.erb
+.coupon-show{
+	// border:solid 1px black;
+	.coupon-show-bg{
+		background-color:white;
+		padding:20px;
+		margin:35px 0;
+		margin-left: 20px;
+		box-shadow:4px 4px 6px rgba(20%,20%,40%,0.5);
+		// margin:auto 0;
+	}
+	.coupon-show-first{
+		display: inline-block;
+		width: 50%;
+		td{
+			vertical-align: top;
+		}
+		td:nth-child(1){
+			width: 100px;
+		}
+	}
+	.coupon-show-second{
+		display: inline-block;
+		text-align: center;
+		width: 49%;
+		vertical-align:top;
+		img{
+			width: 100%;
+		}
+	}
+	@media screen and (max-width: 991px){
+		.coupon-show-bg{
+			margin:0 5px 20px 0;
+		}
+		.coupon-show-second{
+			width: 100%;
+		}
+		.coupon-show-first{
+			margin-top: 13px;
+			width: 100%;
+		}
+	}
+	a{
+		color: white;
+		border:0;
+		border-radius:0.2rem;
+		padding: 5px 8px;
+		margin: 0 10px;
+		background-color:#f08a5d;
+	}
+}
+
+
+
+

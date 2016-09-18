@@ -1,3 +1,36 @@
 // Place all the styles related to the admin/searchers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.coupon-recommand{
+	background-color:white;
+	padding:20px;
+	margin:35px 0;
+	box-shadow:4px 4px 6px rgba(20%,20%,40%,0.5);
+	.coupon-recommand-save{
+		color: white;
+		border:0;
+		border-radius:0.2rem;
+		padding: 5px 8px;
+		margin: 0 10px;
+		background-color:#f08a5d;
+	}
+	.coupon-recommand-save:nth-child(1){
+		background-color:rgb(102,102,102);
+	}
+	.coupon-recommand-save:visited{
+		color:white;
+	}
+	.coupon-recommand-year{
+		width:50px;
+	}
+	@media screen and (max-width: 410px){
+		.coupon-recommand-fans{
+			margin-top: 10px;
+			span{
+			display: block;
+			margin-left: 40px;
+			}
+		}
+	}
+}

@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$store-info : 100px;
+$store-info-input: 100%;
+
 .store-info-block{
 	background-color:white;
 	padding:20px;
@@ -13,16 +16,34 @@
 		margin-bottom: 13px;
 	}
 	.store-info{
-		width:100px;
+		width:20%;
 		display:inline-block;
+	}
+	input, textarea{
+		width: 75%;
+	}
+	.store-info-city{
+		width: 20%;
+	}
+	.store-info-address{
+		width: 55%;
+	}
+	@media screen and (max-width: 430px){
+		.store-info{
+			width: 100%;
+		}
+		input, textarea, select,.store-info-city ,.store-info-address{
+			margin-top: 5px;
+			margin-left: 10%;
+			width: 80%
+		}
 	}
 }
 
 .store-info-save{
 	color: white;
 	border:0;
-	// border:0 1px 1px 0;
-	border-radius:8px;
+	border-radius:0.2rem;
 	padding: 5px 8px;
 	margin: 0 10px;
 	background-color:#f08a5d;

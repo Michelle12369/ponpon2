@@ -1,5 +1,8 @@
-<h5>優惠卷發放管理</h5>
-<table class="table">
+<h5 class="coupon-new-title">優惠卷發放管理</h5>
+<div class="text-xs-right">
+  <%= link_to '新增優惠券', new_admin_store_coupon_path, :class=> 'coupon-new' %>
+</div>
+<table class="table coupon-new-table">
   <thead>
     <tr>
       <td>優惠卷標題</td>
@@ -7,6 +10,8 @@
       <td>狀態</td>
       <td>使用張數</td>
       <td>發放張數/發送張數上限</td>
+      <td></td>
+      <td></td>
     </tr>
   </thead>
 
@@ -27,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Admin Coupon', new_admin_store_coupon_path %>
+

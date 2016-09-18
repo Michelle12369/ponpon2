@@ -17,7 +17,7 @@ $(document).ready(function(){
 		})
 	}
 
-	$('li:nth-child(odd)').click(function(){
+	$('.faq > ul > li:nth-child(odd)').click(function(){
 		$(this).next().slideToggle('fast');
 	})
 
