@@ -96,9 +96,6 @@ body {
             // font-weight: 300;
         }
     }
-    .hr {
-        display: none;
-    }
     .pull-md-right {
         margin-right: 20px;
         li {
@@ -114,6 +111,13 @@ body {
                 font-size: 1rem;
                 // font-weight: 300;
             }
+        }
+        .nav-search{
+            padding-top:16px;
+            vertical-align: middle;
+        }
+        .nav-search-small-glass{
+            text-align: right;
         }
         #settings {
             padding-top: 0.8rem;
@@ -146,7 +150,27 @@ body {
 }
     .search-friend{
         width:100%;
+        height: 50px;
         background-color:lightgray;
+        display: none;
+        position:fixed;
+        top:50px;
+        right:0;
+        left:0;
+        text-align: center;
+        padding:5px 0 5px 0;
+        z-index:2;
+        padding-top:13px;
+        .search-friend-blank{
+            width: 40%;
+            margin-right: 10px;
+        }
+        .search-friend-button{
+            background-color:#7B7B7B;
+            color: white;
+            border:0;
+            border-radius:0.2rem;
+        }
     }
 
 @media screen and (max-width:767px) {

@@ -7,7 +7,9 @@
 	border-bottom:2px solid black;
 }
 
-.coupon-new{
+
+// admin/coupon/index.html.erb 
+.coupon-control{
 	color: white;
 	border:0;
 	border-radius:0.2rem;
@@ -15,25 +17,71 @@
 	margin: 0 10px;
 	background-color:#f08a5d;
 }
-.coupon-new:visited{
+.coupon-control:visited{
 	color:white;
 }
 
-.coupon-new-table{
+.coupon-control-table{
 	margin-top:20px;
 	thead{
 		background-color:#5a5a5a;
 		color: white;
+		text-align: center;
 	}
 	tbody{
+		text-align: center;
 		tr:nth-child(odd){
 			background-color:rgb(223,223,223);
 		}
 		tr:nth-child(even){
 			background-color:rgb(254,254,254);
 		}
+		td{
+			vertical-align: middle;
+		}
+	}
+	td:nth-child(6){
+		padding-right:2px;
+	}
+	td:nth-child(7){
+		padding-right:5px;
+		padding-left:0px;
+	}
+	@media screen and (max-width: 370px){
+		td:nth-child(2){
+			display: none;
+		}
 	}
 }
+
+.coupon-control-table-button{
+	text-align:center;
+	a{
+		display:inline-block;
+		width:40px;
+		padding:5px 0;
+		border-radius:0.2rem;
+		// font-size: 12px;
+		color:white;
+	}
+	.coupon-control-table-button-send{
+		background-color:#f08a5d;
+	}
+	.coupon-control-table-button-delete{
+		background-color:#666666;
+	}
+}
+.coupon-control-table-button-info{
+	text-align:center;
+	a{
+		display: inline-block;
+		background-color:white;
+		padding:5px 5px;
+		border:1px solid rgb(180,180,180);
+		border-radius:0.2rem;
+	}
+}
+
 
 
 // admin/coupon/show.html.erb

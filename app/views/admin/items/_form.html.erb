@@ -22,13 +22,18 @@
     <%#= f.label :item_price %>
     <%= f.text_field :item_price ,class:'store-new-item-input' %>
   </div>
-  
+  <div class="field">
+    <span class="store-new-item">商品類型：</span>
+    <%#= f.label :item_about %>
+    <%= f.text_field :item_type ,class:'store-new-item-input' %>
+  </div>
   <div class="field">
     <span class="store-new-item">商品介紹：</span>
     <%#= f.label :item_about %>
     <%= f.text_area :item_about ,class:'store-new-item-input' %>
   </div>
+  
   <div class="actions text-xs-right">
-    <%= f.submit "儲存", class:'store-new-item-button' %>
+    <%= f.submit "儲存", class:'store-new-item-button d-inline-block' %>
   </div>
 <% end %>

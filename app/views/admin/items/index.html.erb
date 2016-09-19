@@ -6,6 +6,7 @@
       <td>價格</td>
       <td>商品名稱</td>
       <td>商品介紹</td>
+      <td>類型</td>
       <td>編輯/刪除</td>
     </tr>
   </thead>
@@ -16,13 +17,50 @@
         <td><%=admin_item.item_price%></td>
         <td><%=admin_item.item_name%></td>
         <td><%=admin_item.item_about%></td>
+        <td><%=admin_item.item_type%></td>
         <td><%= link_to '編輯', edit_admin_store_item_path(admin_item.store,admin_item) %>
         <%= link_to '刪除',admin_store_item_path(admin_item.store,admin_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<div class="text-xs-center">
+<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">新增商品</button>
+</div>
 <br>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">新增商品</h4>
+      </div>
+      <div class="modal-body">
+        <div class="m-l-2">
+          <%= render 'form', admin_item: @admin_item, admin_url: admin_store_items_path %>
+          <div class="text-xs-right m-t-1">
+            <%#= button_to 'Back', admin_store_items_path ,:class => "store-new-item-button" ,method: :get %>
+          </div>
+        </div>
+      </div>
+<!--       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
 
-<%= link_to 'New Admin Item', new_admin_store_item_path %>
+
+<!-- <br>
+<div class="m-t-3">
+  <h5 class="store-new-item-title">新增商品</h5>
+  <div class="m-l-2">
+    <%#= render 'form', admin_item: @admin_item, admin_url: admin_store_items_path %>
+    <div class="text-xs-right m-t-1">
+      <%#= button_to 'Back', admin_store_items_path ,:class => "store-new-item-button" ,method: :get %>
+    </div>
+  </div>
+</div> -->
