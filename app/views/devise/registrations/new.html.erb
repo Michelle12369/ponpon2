@@ -14,7 +14,18 @@
         <%= f.label :email,"信箱" %><br />
         <%= f.email_field :email, class:"devise-input devise-normal"  %>
       </div>
-
+      <div class="field">
+        <%= f.label :birthday,"生日" %><br />
+        <%= f.email_field :birthday, class:"devise-input devise-normal"  %>
+      </div>
+      <div class="field">
+        <%= f.label :location,"居住縣市" %><br />
+        <%= f.email_field :location, class:"devise-input devise-normal"  %>
+      </div>
+      <div class="field">
+        <%= f.label :gender,"性別" %><br />
+        <%= f.email_field :gender, class:"devise-input devise-normal"  %>
+      </div>
       <div class="field">
         <%= f.label :password,"密碼" %>
         <% if @minimum_password_length %>

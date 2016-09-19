@@ -3,10 +3,10 @@
     <%#= render 'shared/user_info' %>
   </div>
   <div class="col-lg-6 well">
-    <h3>Followers</h3>
+    <h3>粉絲</h3>
     <hr>
     <div id="followers">
-      <%= render(@followers) || render('shared/no_resource', resources: 'Followers')  %>
+      <%= render(@followers) || render('shared/no_resource', resources: '粉絲')  %>
     </div>
     <%= render 'shared/paginate', resources: @followers %>
   </div>
@@ -15,4 +15,4 @@
   </div>
 </div>
 
-<%= link_to "home", root_path %><br>
+<%= link_to "home", root_path %>

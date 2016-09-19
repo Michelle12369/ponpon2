@@ -1,14 +1,13 @@
 <div class="col-md-2 col-lg-3">
   <%=render 'shared/avatar', user: current_user%>
-  <%=current_user.name%>
-  <p>共<%=current_user.followers_count%>人追蹤</p> 
-  <p>正在追蹤<%=current_user.following_users_count%>人</p> 
+  <%= link_to current_user.name, current_user %>
+  <%= link_to followers_user_path(current_user) do%><%=current_user.followers_count%>位粉絲<%end%> 
+  <%= link_to friends_user_path(current_user) do%>追蹤<%=current_user.following_users_count%>人<%end%>
   <h6>關於我</h6>
   <%= link_to edit_user_path(current_user),class:"pull-xs-right" do%>
     <% fa_icon 'pencil'%>
   <%end%> 
   <%=current_user.about%>     
-
 </div>
 
 <div class="col-md-8 col-lg-6">
@@ -19,15 +18,16 @@
   <div id="activities">
    <%= render_activities(@activities, layout: '/shared/activity') %>
   </div>
-  	<%#= render(@followers) || render('shared/no_resource', resources: 'Followers')  %>
 
   <%= render 'shared/paginate', resources: @activities %>
 </div>
 <div class="col-md-2 col-lg-3">
 <h6>喜歡的商家</h6>
   <%@like_stores.each do |store|%>
-    <%=image_tag store.store_cover_photo,class:"avatar"%>
-    <%=store.store_name%>
+    <%= link_to  store_path(store) do %>
+      <%=image_tag store.store_cover_photo.thumb.url,class:"avatar"%>
+      <%=store.store_name%>
+    <%end%>
   <%end%>
 </div>
 

@@ -6,16 +6,32 @@
 				<%=user.name%>
 			<%end%>
 			<%if user!=current_user%>
-				<%=render "follows/form",user:user%>
+				<%=render "follows/form",user:user %>
 			<%end%>
 		</div>
 	<%end%>
 	<%@results_store.each do |store|%>
-		<%= link_to store_path(store),class: "nav-link"  do %>
-			<%=image_tag store.store_cover_photo || 'avatar.jpg', class: "photo-sticker",style:"width:50px;"%>
-			<%=store.store_name%>
-		<%end%>
+		<div id="store-<%= store.id %>">
+			<%= link_to store_path(store),class: "nav-link"  do%>
+				<%=image_tag store.store_cover_photo || 'avatar.jpg', class: "photo-sticker",style:"width:50px;"%>
+				<%=store.store_name%><%= render 'follows/store_form', store: store %>
+			<%end%>
+		</div>
 	<%end%>
 <%else%>
 	<p>找不到相關資料</p>
 <%end%>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>

@@ -36,7 +36,7 @@
 
     <div class="field p-l-2">
       <div class="store-info">商家位置:</div>
-      <%=f.select :store_city, options_for_select(@city_array),{},{ :class => 'store-info-city' }%>
+      <%=f.select :store_city, options_for_select(@city_array,f.object.store_city),{},{ :class => 'store-info-city' }%>
       <%=f.text_field :store_address ,{ :class => 'store-info-address' } %>
     </div>
     <div class="field p-l-2">

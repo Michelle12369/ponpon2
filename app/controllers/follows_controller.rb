@@ -3,8 +3,13 @@ class FollowsController < ApplicationController
   respond_to :js
 
   def create
-    @user = User.find(params[:user_id])
-    current_user.follow(@user)
+    if !params[:user_id].nil?
+      @user = User.find(params[:user_id]) 
+      current_user.follow(@user) 
+    else
+      @store=Store.find(params[:store_id])
+      current_user.follow(@store)
+    end
     respond_to do |format|
         format.js
         format.html { redirect_to root_path }
@@ -12,8 +17,13 @@ class FollowsController < ApplicationController
   end
 
   def destroy
+    if !params[:user_id].nil?
     @user = User.find(params[:user_id])
     current_user.stop_following(@user)
+    else
+      @store=Store.find(params[:store_id])
+      current_user.stop_following(@store)
+    end
     respond_to do |format|
         format.js
         format.html { redirect_to root_path }

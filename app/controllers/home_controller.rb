@@ -18,7 +18,7 @@ class HomeController < ApplicationController
     activity_store=PublicActivity::Activity.where(owner_id: @following_store,owner_type:"Store")
     @activities=activity_store.or(activity_user).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     # @activities = PublicActivity::Activity.where(owner_id: @friends).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
-    @like_stores=Admin::Store.find(current_user.following_stores.ids)
+    @like_stores=Admin::Store.find(current_user.following_stores.ids.last(5))
   end
 
   def food
@@ -39,9 +39,10 @@ class HomeController < ApplicationController
 
   def search_user
     if params[:search].present?
-      @results=User.where("name LIKE ?","%#{params[:search]}%")
-      @results_store=Admin::Store.where("store_name LIKE ? and store_status=?","%#{params[:search]}%",0)
+      @results=User.where("name LIKE ?","%#{params[:search]}%").paginate(page: params[:page], per_page: 10)
+      @results_store=Admin::Store.where("store_name LIKE ? and store_status=?","%#{params[:search]}%",0).paginate(page: params[:page], per_page: 10)
     end
+    
   end
 
 

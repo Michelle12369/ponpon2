@@ -1,5 +1,5 @@
 <div>
-  <h5>跪求聖謙大大，輸入優惠券名稱（用跪的</h5>
+  <h5><%=@coupon.coupon_title%></h5>
   <div class="coupon-recommand">
     <h5 class="m-b-2">篩選推廣優惠卷</h5>
     <p>目前推廣優惠卷數： <%=@coupon.descendants.size%></p>
@@ -11,7 +11,7 @@
   <%=form_for [@current_store,@coupon,@search] , url:admin_store_coupon_searches_path do |f|%>
   	<div class="field">
       性別：
-      <%= f.select :gender,"<option value='male'>男性</option><option value='female'>女性</option>".html_safe %>
+      <%= f.select :gender,"<option value='male'>男性</option><option value='female'>女性</option>".html_safe,{}, class: 'form-control'%>
     </div>
     <div class="field">
       地區：
