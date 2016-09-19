@@ -1,0 +1,11 @@
+<div id="store-<%= store.id %>" class="row">
+  <div class="col-lg-8">
+    <%= render 'shared/store_cover_photo', store: store %>
+    <h5 class="name"><%= link_to store.store_name, store %></h5>
+  </div>
+  <div class="col-lg-4">
+    <div class="follow">
+      <%= render 'follows/store_form', store: store %>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,5 @@
+<%if @user.present?%>
 $("#user-<%= @user.id %> .follow").html("<%=j render('follows/form', user: @user) %>");
+<%else%>
+$("#store-<%= @store.id %> .follow").html("<%=j render('follows/store_form', store: @store) %>");
+<%end%>

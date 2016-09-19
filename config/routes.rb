@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       end
       member do
         get :followers
+
       end
     end
   end
@@ -61,6 +62,8 @@ Rails.application.routes.draw do
     resources :coupons,:except => [:edit,:destroy]
     member do
       get :followers
+      get :friends
+      get :stores
     end
   end
 

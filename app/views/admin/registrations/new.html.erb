@@ -4,32 +4,42 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :name,"user name" %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.label :name,"名字"%><br />
+    <%= f.text_field :name, class:""  %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :email,"信箱" %><br />
+    <%= f.email_field :email, class:""  %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday,"生日" %><br />
+    <%= f.email_field :birthday, class:""  %>
+  </div>
+  <div class="field">
+    <%= f.label :location,"居住縣市" %><br />
+    <%= f.email_field :location, class:""  %>
+  </div>
+  <div class="field">
+    <%= f.label :gender,"性別" %><br />
+    <%= f.email_field :gender, class:""  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password,"密碼"  %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(長度至少為<%= @minimum_password_length %>碼)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", class:"" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.label :password_confirmation,"再次確認密碼"  %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class:""   %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "註冊",class:"devise-btn devise-normal" %>
   </div>
 <% end %>
 

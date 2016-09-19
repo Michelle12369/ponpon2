@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @activities = PublicActivity::Activity.where(owner: @user).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @post_size= PublicActivity::Activity.where(owner: @user).order(created_at: :desc).size
   end
 
   def edit
@@ -32,6 +33,10 @@ class UsersController < ApplicationController
 
   def followers
     @followers = @user.user_followers.paginate(page: params[:page])
+  end
+
+  def stores
+    @like_stores=@user.following_stores.paginate(page:params[:page])
   end
 
   def mentionable

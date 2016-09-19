@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-lg-3">
+    <%#= render 'shared/user_info' %>
+  </div>
+  <div class="col-lg-6 well">
+    <h3>喜愛店家</h3>
+    <hr>
+    <div id="followers">
+
+      <%= render partial:'users/store', collection: @like_stores,as: :store || render('shared/no_resource', resources: '喜愛商家')  %>
+    </div>
+    <%= render 'shared/paginate', resources: @like_stores %>
+  </div>
+  <div class="col-lg-3">
+    
+  </div>
+</div>
