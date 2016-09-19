@@ -1,10 +1,21 @@
 <%= render 'shared/cover', user: @user %>
 <br>
 <div id="user-<%= @user.id %>" class="row">
-  <div class="col-lg-3">
-    <%#= render 'shared/user_info' %>
-  </div>
+  <div class="col-lg-2"></div>
   <div class="col-lg-6">
+    <div class="user-info">
+      <%=image_tag @user.avatar.url|| 'avatar.jpg',style:"width:100px;"%>
+      <h5><%=@user.name%></h5>
+      <%=@user.about%>
+      <% if is_current_user?(@user) %>
+        <%= link_to '編輯個人檔案', edit_user_path(@user) %>
+      <%end%>
+     
+      <%if !is_current_user?(@user)%>
+        <%=render "follows/form",user:@user%>
+      <%end%>
+    </div>
+
     <div id="activities">
       <% if @activities.empty? %>
         <div class="well">
@@ -16,11 +27,10 @@
     </div>
     <%= render 'shared/paginate', resources: @activities %>
   </div>
-  <div class="col-lg-3">
+  <div class="col-lg-4">
     <% if is_current_user?(@user) %>
       <div class="well">
         <ul class="nav nav-pills nav-stacked">
-          <li><%= link_to 'Edit Profile', edit_user_path(@user) %></li>
           <li><%= link_to 'Change password', edit_user_registration_path %></li>
           
           <li><%= link_to 'Followers', followers_user_path(@user) %></li>
