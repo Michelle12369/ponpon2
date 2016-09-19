@@ -105,3 +105,28 @@ input[type=submit]:focus{
     border:none !important;
 }
 
+// 橘框白底按鈕
+.orange-btn{
+    background-color:white;
+    color:#f08a5d;
+    border:1px solid #f08a5d;
+}
+
+//admin-btn
+.admin-btn-orange{
+    color: white;
+    border:0;
+    border-radius:0.2rem;
+    padding: 5px 8px;
+    margin: 0 10px;
+    background-color:#f08a5d;
+}
+.admin-btn-grey{
+    color: white;
+    border:0;
+    border-radius:0.2rem;
+    padding: 5px 8px;
+    margin: 0 10px;
+    background-color:rgb(102,102,102);
+}
+
