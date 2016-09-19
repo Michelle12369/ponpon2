@@ -1,60 +1,62 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Store name:</strong>
-  <%= @store.store_name %>
-</p>
-
-<p>
-  <strong>Store type:</strong>
-  <%= @store.store_type%>
-</p>
-
-
-<p>
-  <strong>Store address:</strong>
-  <%= @store.store_address %>
-</p>
-
-
-<p>
-  <strong>Store photo:</strong>
+<div class="text-xs-center col-xs-12 p-b-2 p-l-0 p-r-0 cou-store-bgpic">
   <%for i in @admin_store_pic.store_photo%>
-    <%=image_tag i.url%>
+    <%=image_tag i.url, class: 'w-100'%>
   <%end%>
-</p>
+</div>
 
 <p>
-  <strong>Store about string:</strong>
-  <%= @store.store_about %>
+  <h4 class="m-b-0"><strong><%= @store.store_name %></strong></h4>
 </p>
-
-<p>
-  <strong>Store time:</strong>
-  <%= @store.store_time %>
-</p>
-
-<p>
-  <strong>Store phone:</strong>
-  <%= @store.store_phone %>
-</p>
+<div class="p-b-2">
+  <strong><%= @store.store_type%> </strong>
+  <strong><%= @store.store_address %></strong>
+</div>
 
 
-<p>
-  <strong>Store rule:</strong>
-  <%= @store.store_rule %>
-</p>
+<p>粉絲數、店家大頭貼、優惠券數</p>
 
-<p>
-  <strong>優惠卷:</strong><br>
+<div class="col-sm-12">
+  <p><strong>簡介：</strong><%= @store.store_about %></p>
+</div>
+<div class="col-sm-6">
+  <p>
+    <%= image_tag 'cou_clock.png' , class:'cou-icon' %>
+    <%= @store.store_time %>
+  </p>
+</div>
+<div class="col-sm-6">
+  <p>
+    <%= image_tag 'cou_tel.png' , class:'cou-icon' %>
+    <%= @store.store_phone %>
+  </p>
+</div>
+<div class="col-sm-6">
+  <p>
+    <%= image_tag 'cou_gps.png' , class:'cou-icon' %>
+    <%= @store.store_address %>
+  </p>
+</div>
+<div class="col-sm-6">
+  <p>
+    <%= image_tag 'cou_star.png' , class:'cou-icon' %>
+    <%= @store.store_rule %>
+  </p>
+</div>
+
+<div class="col-sm-12 cou-info-coupon p-t-2 m-t-3">
+  <h6 class="m-t-2 m-b-2">優惠卷</h6>
   <% @coupons.each do |coupon| %>
-    <%=coupon.coupon_title%>
-    <%=coupon.other_content%>
-    <%=coupon.computed_discount*10%>開始計算
-    <br>
+    <div class="cou-info-detail">
+      <p class="cou-info-detail-title"><%=coupon.coupon_title%></p>
+      <div class="cou-info-detail-content">
+        <p><%=coupon.other_content%></p>
+        <p><%=coupon.computed_discount*10%>折開始計算</p>
+      </div>
+    </div>
   <%end%>
-  
-</p>
+</div>
 
 
 

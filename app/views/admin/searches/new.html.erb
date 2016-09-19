@@ -1,50 +1,50 @@
 <div>
   <h5>跪求聖謙大大，輸入優惠券名稱（用跪的</h5>
-  <div class="coupon-recommand">
+  <div class="background-white p-t-1 p-l-1 m-t-2 ">
     <h5 class="m-b-2">篩選推廣優惠卷</h5>
     <p>目前推廣優惠卷數： <%=@coupon.descendants.size%></p>
     <p>由商家推廣優惠卷數： <%=@coupon.children.size%></p>
     <p>由顧客推廣優惠卷數： <%=@coupon.descendants.size-@coupon.children.size%></p>
   </div>
-  <div class="coupon-recommand">
-  <h5 class="m-b-2">設定篩選條件</h5>
+  
   <%=form_for [@current_store,@coupon,@search] , url:admin_store_coupon_searches_path do |f|%>
-  	<div class="field">
-      性別：
-      <%= f.select :gender,"<option value='male'>男性</option><option value='female'>女性</option>".html_safe %>
-    </div>
-    <div class="field">
-      地區：
-      <%= f.text_field :location %>
-    </div>
-    <div class="field">
-      年齡區間
-      <%= f.number_field :min_age,:value=>18, :class=>'coupon-recommand-year' %>～
-      <%= f.number_field :max_age,:value=>60, :class=>'coupon-recommand-year' %>
-    </div>
-    <div class="field">
-      粉專關係條件：
-      <span class="coupon-recommand-fans">
-        <span class="m-t-1">
-          <%=f.radio_button 'relation', 0,:checked=>true%>
-          <%=f.label :relation, "有追蹤粉專"%>
+  	<div class="background-white p-t-1 p-l-1 p-b-1 coupon-recommand">
+      <h5 class="m-b-2">設定篩選條件</h5>
+      <div class="field">
+        性別：
+        <%= f.select :gender,"<option value='male'>男性</option><option value='female'>女性</option>".html_safe %>
+      </div>
+      <div class="field">
+        地區：
+        <%= f.text_field :location %>
+      </div>
+      <div class="field">
+        年齡區間
+        <%= f.number_field :min_age,:value=>18, :class=>'coupon-recommand-year' %>～
+        <%= f.number_field :max_age,:value=>60, :class=>'coupon-recommand-year' %>
+      </div>
+      <div class="field">
+        粉專關係條件：
+        <span class="coupon-recommand-fans">
+          <span class="m-t-1">
+            <%=f.radio_button 'relation', 0,:checked=>true%>
+            <%=f.label :relation, "有追蹤粉專"%>
+          </span>
+          <span>
+            <%=f.radio_button 'relation',1%>
+            <%=f.label :relation, "沒有追蹤粉專"%>
+          </span>
+          <span>
+            <%=f.radio_button 'relation', 2%>
+            <%=f.label :relation, "所有人"%>
+          </span>
         </span>
-        <span>
-          <%=f.radio_button 'relation',1%>
-          <%=f.label :relation, "沒有追蹤粉專"%>
-        </span>
-        <span>
-          <%=f.radio_button 'relation', 2%>
-          <%=f.label :relation, "所有人"%>
-        </span>
-      </span>
+      </div>
     </div>
     <div class="actions text-xs-right">
-      <!-- 這可以移進來嗎？ -->
-      <%= link_to "返回", admin_store_coupons_path(@current_store) ,:class=> 'coupon-recommand-save coupon-recommand-save2'%>
-      <%= f.submit "篩選" ,:class=> 'coupon-recommand-save coupon-recommand-save2'%>
+      <%= f.submit "篩選" ,:class=> 'admin-btn-orange'%>
+      <%= link_to "返回", admin_store_coupons_path(@current_store) ,:class=> 'admin-btn-grey coupon-recommand-save'%>
     </div>
   <% end %>
-  <%#= link_to "返回", admin_store_coupons_path(@current_store) %>
-  </div>
+
 </div>

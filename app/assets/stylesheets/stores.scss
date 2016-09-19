@@ -226,8 +226,39 @@ button:focus{
 	background-color:white;
 }
 
-
-
+// stores/show.html.erb
+.cou-store-bgpic{
+	margin-top:-25px;
+	img{
+		height:70vh;
+	}
+}
+.cou-icon{
+	width:30px;
+}
+.cou-info-coupon{
+	border-top:2px solid lightgray;
+	display:block;
+	h6{
+		font-size: 20pt;
+	}
+	.cou-info-detail{
+		border-radius:0.2rem;
+		border:1px solid lightgray;
+		padding-left:20px;
+		padding-bottom:10px;
+		margin-bottom:10px;
+		background-color:white;
+		.cou-info-detail-title{
+			border-left:15px solid #f08a5d;
+			padding: 10px 0 10px 20px;
+			font-size: 14pt;
+		}
+		.cou-info-detail-content{
+			padding-left:15px;
+		}
+	}
+}
 
 
 

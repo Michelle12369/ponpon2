@@ -32,7 +32,7 @@
                     </ul>
                     		<ul class="nav navbar-nav pull-md-right">
                                 <li class="nav-item nav-search" id='test'>
-                                    <a><%= fa_icon 'search',class:"d-inline-block nav-search-glass"%> </a>
+                                    <a href="javascript: void(0)"><%= fa_icon 'search',class:"d-inline-block nav-search-glass"%> </a>
                                 </li>
                         		<li class="nav-item" id="hi">
                                     
@@ -57,7 +57,7 @@
                 </nav>
                  <div class="search-friend">
                     <%=form_tag search_user_path, method: :get do%>
-                        <%=text_field_tag :search,nil, :placeholder => '輸入朋友名稱',class:'search-friend-blank' %>
+                        <%=text_field_tag :search,nil, :placeholder => '輸入關鍵字',class:'search-friend-blank' %>
                         <%=submit_tag "搜尋",:class=>'search-friend-button'%>
                         <!-- <span><button>X</button></span> -->
                     <%end%>
@@ -87,7 +87,9 @@
             <%= yield %>
         </div>
     </div>
-    footer      
+    
+
+    
 </body>
 
 </html>

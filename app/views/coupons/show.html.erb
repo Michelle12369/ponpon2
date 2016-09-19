@@ -1,7 +1,7 @@
 <div class="container coupon-width">
   <div class="row">
       <div class="col-sm-6" id="coupon-pic">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"><ol class="carousel-indicators"><%@store.store_photo.each_with_index do |pic,index|%><li data-target="#carousel-example-generic" data-slide-to="<%=index%>" class="<%=coupon_carousel_active(index)%>"></li><%end%></ol><div class="carousel-inner" role="listbox"><%@store.store_photo.each_with_index do |pic,index|%><div class="carousel-item <%=coupon_carousel_active(index)%>"><%=image_tag pic,style:"height:236px;"%></div><%end%></div><a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"><ol class="carousel-indicators"><%@store.store_photo.each_with_index do |pic,index|%><li data-target="#carousel-example-generic" data-slide-to="<%=index%>" class="<%=coupon_carousel_active(index)%>"></li><%end%></ol><div class="carousel-inner" role="listbox"><%@store.store_photo.each_with_index do |pic,index|%><div class="carousel-item <%=coupon_carousel_active(index)%>"><div class="text-xs-center coupon-many-pic"><%=image_tag pic,style:"height:236px;"%></div></div><%end%></div><a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
             <span class="icon-prev" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a><a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
@@ -23,7 +23,6 @@
           <div>
             <%if coupon_status(@coupon)=="可使用"%>
               <button type="button" data-toggle="modal" data-target="#send-Modal">發送</button>
-              <button type="button" data-toggle="modal" data-target="#redeem-Modal">兌換</button>
               <button type="button" data-toggle="modal" data-target=".bd-example-modal-sm">兌換</button>
 
             <%end%>
@@ -63,7 +62,7 @@
         <%if coupon_status(@coupon)=="可使用"%>
           <%= form_tag distribute_user_coupon_path do %>
             <div class="form-group">
-              <%= select_tag(:receiver_id,options_for_select(@friends_array))%>
+              <%= select_tag :receiver_id,options_for_select(@friends_array),class:"form-control"%>
             </div>
       </div>
       <div class="modal-footer">
@@ -75,40 +74,23 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal fade" id="redeem-Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h6 class="modal-title">QR Code</h6>
-      </div>
-      <div class="modal-body text-xs-center">
-        <%if coupon_status(@coupon)=="可使用"%>
-          <%=image_tag @coupon.qr_code%>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 <!--  -->
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-sm modal-width">
     <div class="modal-content">
-     
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close p-r-1 p-t-1" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-         <h5>QR code</h5>
-        <%if coupon_status(@coupon)=="可使用"%>
-          <%=image_tag @coupon.qr_code%>
-        <% end %>
-        <button class="btn">下載儲存此QR code</button>
+        <div class="text-xs-left p-t-2 p-b-2 qrcode-modal">
+          <h5>QR code</h5>
+          <%if coupon_status(@coupon)=="可使用"%>
+            <%=image_tag @coupon.qr_code, class:"qrcode" %>
+          <% end %>
+          <div>
+            <button class="orange-btn">下載儲存此QRCode</button>
+          </div>
+        </div>
     </div>
   </div>
 </div>
