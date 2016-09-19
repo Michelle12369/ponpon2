@@ -53,7 +53,7 @@
 		}
 	}
 }
-
+// admin/coupon/index.html.erb
 .coupon-control-table-button{
 	text-align:center;
 	a{
@@ -61,18 +61,22 @@
 		width:40px;
 		padding:5px 0;
 		border-radius:0.2rem;
-		// font-size: 12px;
-		color:white;
+		
 	}
 	.coupon-control-table-button-send{
 		background-color:#f08a5d;
+		color:white;
 	}
 	.coupon-control-table-button-delete{
-		background-color:#666666;
+		border:1px solid #f08a5d;
+		background-color:white;
+		// background-color:#666666;
+		color: #f08a5d;
 	}
 }
 .coupon-control-table-button-info{
 	text-align:center;
+	width:58px;
 	a{
 		display: inline-block;
 		background-color:white;
