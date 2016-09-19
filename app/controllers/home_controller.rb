@@ -18,6 +18,7 @@ class HomeController < ApplicationController
     activity_store=PublicActivity::Activity.where(owner_id: @following_store,owner_type:"Store")
     @activities=activity_store.or(activity_user).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     # @activities = PublicActivity::Activity.where(owner_id: @friends).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @like_stores=Admin::Store.find(current_user.following_stores.ids)
   end
 
   def food

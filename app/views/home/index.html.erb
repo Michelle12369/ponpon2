@@ -1,5 +1,14 @@
 <div class="col-md-2 col-lg-3">
-安安
+  <%=render 'shared/avatar', user: current_user%>
+  <%=current_user.name%>
+  <p>共<%=current_user.followers_count%>人追蹤</p> 
+  <p>正在追蹤<%=current_user.following_users_count%>人</p> 
+  <h6>關於我</h6>
+  <%= link_to edit_user_path(current_user),class:"pull-xs-right" do%>
+    <% fa_icon 'pencil'%>
+  <%end%> 
+  <%=current_user.about%>     
+
 </div>
 
 <div class="col-md-8 col-lg-6">
@@ -15,7 +24,11 @@
   <%= render 'shared/paginate', resources: @activities %>
 </div>
 <div class="col-md-2 col-lg-3">
-安安
+<h6>喜歡的商家</h6>
+  <%@like_stores.each do |store|%>
+    <%=image_tag store.store_cover_photo,class:"avatar"%>
+    <%=store.store_name%>
+  <%end%>
 </div>
 
 

@@ -1,8 +1,8 @@
 class CouponsController < ApplicationController
-  before_action :set_coupon, only: [:show,:redeem,:destroy,:distribute,:take]
+  before_action :set_coupon, only: [:show,:destroy,:distribute,:take]
   before_action :set_user,except: :take
   before_action :authenticate_user!
-  before_action :verify_coupon_notuse,only: [:distribute,:redeem]
+  before_action :verify_coupon_notuse,only: [:distribute]
   before_action :verify_admin_coupon_limit,only: [:take]
   before_action :verify_admin_coupon_taken,only: [:take]
   # load_and_authorize_resource
@@ -47,6 +47,8 @@ class CouponsController < ApplicationController
     @friends=(user_following+user_followed_by).uniq
     @friends.delete(@coupon.parent.user) if !@coupon.parent.user.nil?
     @friends_array=@friends.pluck(:name,:id)
+    store=@coupon.store_id
+    @store=Admin::Store.find(store)
   end
 
   #顧客發送優惠卷給其他顧客
@@ -62,9 +64,9 @@ class CouponsController < ApplicationController
   end
   
   #顧客要兌換優惠卷的頁面（有qrcode那頁）
-  def redeem
+  # def redeem
 
-  end
+  # end
 
   #顧客用qrcode掃描店家優惠卷後跳出頁面
   def take
