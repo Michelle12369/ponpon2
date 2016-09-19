@@ -5,6 +5,7 @@ class Admin::ItemsController < Admin::BaseController
   # GET /admin/items.json
   def index
     @admin_items = @store.items.all
+    @admin_item =  @store.items.build
   end
 
   # GET /admin/items/1
@@ -14,7 +15,7 @@ class Admin::ItemsController < Admin::BaseController
 
   # GET /admin/items/new
   def new
-    @admin_item =  @store.items.build
+    # @admin_item =  @store.items.build
   end
 
   # GET /admin/items/1/edit
@@ -78,7 +79,7 @@ class Admin::ItemsController < Admin::BaseController
 
     #無法理解為什麼無法用admin_item
     def item_params
-      params.require(:item).permit(:item_price,:item_name,:item_about)
+      params.require(:item).permit(:item_price,:item_name,:item_about,:item_type)
     end
 
 end

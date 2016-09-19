@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     match :unlike, to: 'likes#destroy', as: :unlike, via: :post
     
     resources :stores do  
-      resources :items
+      resources :items,except: :new
       resources :coupons,:except => [:edit,:destroy] do
         resources :searches,only:[:new,:create,:show]
       end

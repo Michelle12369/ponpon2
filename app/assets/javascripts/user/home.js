@@ -10,3 +10,11 @@
 	
 
 // });
+
+$(document).ready(function(){
+
+	$('.nav-search-glass').click(function(){
+		$('.search-friend').slideToggle("fast");
+	});
+
+});

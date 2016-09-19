@@ -1,15 +1,15 @@
-<h5 class="coupon-new-title">優惠卷發放管理</h5>
+<h5 class="coupon-control-title">優惠卷發放管理</h5>
 <div class="text-xs-right">
-  <%= link_to '新增優惠券', new_admin_store_coupon_path, :class=> 'coupon-new' %>
+  <%= link_to '新增優惠券', new_admin_store_coupon_path, :class=> 'coupon-control' %>
 </div>
-<table class="table coupon-new-table">
+<table class="table coupon-control-table">
   <thead>
     <tr>
       <td>優惠卷標題</td>
       <td>截止日期</td>
       <td>狀態</td>
       <td>使用張數</td>
-      <td>發放張數/發送張數上限</td>
+      <td>發放張數/總發送數</td>
       <td></td>
       <td></td>
     </tr>
@@ -23,8 +23,8 @@
       <td><%= admin_coupon_status(admin_coupon) %></td>
       <td><%= admin_coupon.descendants.where("used=?",true).size%></td>
       <td><%= admin_coupon.descendants.size%>/<%= admin_coupon.admin_coupon_limit%></td>
-        <td><%=send_or_delete(admin_coupon)%></td>
-        <td><%= link_to '詳細資訊', admin_store_coupon_path(admin_coupon.store,admin_coupon) %></td>
+        <td class='coupon-control-table-button'><%= send_or_delete(admin_coupon)%></td>
+        <td class='coupon-control-table-button-info'><%= link_to '詳細資訊', admin_store_coupon_path(admin_coupon.store,admin_coupon) %></td>
       </tr>
     <% end %>
   </tbody>

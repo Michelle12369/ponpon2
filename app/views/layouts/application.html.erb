@@ -14,6 +14,7 @@
 <body>
 <div class="container-fluid">
     <nav class="navbar navbar-fixed-top">
+            <!-- <a class="m-r-0"><%#= fa_icon 'search',class:"d-inline-block nav-search-glass nav-search-small-glass"%> </a> -->
             <button type="button" class="navbar-toggler hidden-md-up pull-xs-right" data-toggle="collapse" data-target="#myNavbar"  aria-controls="#myNavbar" aria-expanded="false" aria-label="Toggle navigation">
               &#9776;
             </button>
@@ -29,10 +30,9 @@
                             <li class="nav-item <%= active_class('/stores') %>"><%= link_to "商店街",stores_path,class: "nav-link"%></li>
 
                     </ul>
-                    <hr class="hr">
                     		<ul class="nav navbar-nav pull-md-right">
-                                <li class="nav-item">
-                                    <a><%= fa_icon 'search',class:"d-inline-block"%> </a>
+                                <li class="nav-item nav-search" id='test'>
+                                    <a><%= fa_icon 'search',class:"d-inline-block nav-search-glass"%> </a>
                                 </li>
                         		<li class="nav-item" id="hi">
                                     
@@ -53,11 +53,13 @@
                                 </li>
                             </ul>    
                 </div>
+
                 </nav>
-                <div class="search-friend">
+                 <div class="search-friend">
                     <%=form_tag search_user_path, method: :get do%>
-                        <%=text_field_tag :search%>
-                        <%=submit_tag "搜尋"%>
+                        <%=text_field_tag :search,nil, :placeholder => '輸入朋友名稱',class:'search-friend-blank' %>
+                        <%=submit_tag "搜尋",:class=>'search-friend-button'%>
+                        <!-- <span><button>X</button></span> -->
                     <%end%>
                 </div>
 
