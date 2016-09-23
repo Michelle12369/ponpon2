@@ -10,4 +10,127 @@
 //     display: none;
 // }
 
+// home/index.html.erb
+// 個人介紹
+.home-self{
+	padding:0;
+	.home-block{
+		padding:10px 15px;
+	}
+	.home-self-name{
+		width: 58%;
+		display: inline-block;
+		// padding:0;
+		padding-top:15px;
+	}
+	img{
+		vertical-align:top;
+		width: 40%;
+		border-radius:0.2rem;
+	}
+}
 
+// 喜歡的店家
+.home-like-store{
+	padding-bottom:10px;
+	.home-like-eachStore{
+		padding-left:3px;
+		margin:3px 0;
+		border-left:3px solid #f08a5d;
+	}
+}
+
+@media screen and (max-width: 991px){
+	.home-self{
+		.home-self-name{
+			width: 100%;
+			padding-top: 10px;
+		}
+		img{
+			width: 100%;
+		}
+	}
+	.home-like-store{
+		// text-align: center;
+		.home-like-eachStore{
+			border:0;
+		}
+		span{
+			display: block;
+		}
+	}
+}
+@media screen and (max-width: 768px){
+	.home-self, .home-like-store{
+		display: none;
+	}
+}
+
+
+// devise/regitrations/edit.html.erb
+.person-block{
+	border:1px solid lightgrey;
+	padding:0;
+	background-color:white;
+	border-radius:0.2rem;
+	.person-block1{
+		 padding:0;
+	}
+	ul{
+		padding:0;
+		li{
+			list-style-type:none;
+			font-size: 18px;
+			padding:20px 0 20px 30px;
+		}
+
+		.person-noactive:hover{
+			border-left: 3px solid lightgrey;
+		}
+		.person-active{
+			border-left:3px solid $orange;
+		}
+	}
+
+	
+	.person-block-info{
+		border-left:1px solid lightgrey;
+		padding-top:20px;
+		div{
+			padding:auto 0;
+			// vertical-align: middle;
+		}
+		.person-info-button{
+			background-color:$orange;
+			color:white;
+			border-radius:0.2rem;
+		}
+	}
+	@media screen and (max-width:767px){
+		ul{
+			li{
+				display: inline-block;
+				padding:10px 0 0 0;
+			}
+			li:nth-child(1){
+				padding-left:15px;
+				padding-right:10px;
+			}
+			.person-active{
+				border-left:0;
+			}
+			.person-noactive:hover{
+				border-left:0;
+			}
+		}
+		.person-block-info{
+			border-left:0;
+		}
+	}
+}
+
+@media screen and (min-width: 991px){
+	.margin-10{
+		padding:0 10%;
+	}
+}
