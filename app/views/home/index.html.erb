@@ -1,13 +1,30 @@
-<div class="col-md-2 col-lg-3">
-  <%=render 'shared/avatar', user: current_user%>
-  <%= link_to current_user.name, current_user %>
-  <%= link_to followers_user_path(current_user) do%><%=current_user.followers_count%>位粉絲<%end%> 
-  <%= link_to friends_user_path(current_user) do%>追蹤<%=current_user.following_users_count%>人<%end%>
-  <h6>關於我</h6>
-  <%= link_to edit_user_path(current_user),class:"pull-xs-right" do%>
-    <% fa_icon 'pencil'%>
-  <%end%> 
-  <%=current_user.about%>     
+<div class="home-content">
+<div class="col-md-2 col-lg-3 home-self">
+  <div class=" background-white home-block">
+    <%=render 'shared/avatar', user: current_user%>
+      <div class="home-self-name">
+        <h5><%= link_to current_user.name, current_user %></h5>
+        <div>
+        <%= link_to followers_user_path(current_user) do%>
+          <%=current_user.followers_count%>位粉絲
+        <%end%>
+        </div>
+        <div>
+        <%= link_to friends_user_path(current_user) do%>
+          追蹤<%=current_user.following_users_count%>人
+        <%end%>
+        </div>
+      </div>
+  </div>
+  <div class="background-white home-block">
+    <h6>關於我</h6>
+    <%= link_to edit_user_path(current_user),class:"pull-xs-right" do%>
+      <% fa_icon 'pencil'%>
+    <%end%> 
+    <%=current_user.about%>
+    <h6 class="p-t-1">追蹤朋友</h6>
+    <p>放朋友大頭貼</p>
+  </div>
 </div>
 
 <div class="col-md-8 col-lg-6">
@@ -21,16 +38,18 @@
 
   <%= render 'shared/paginate', resources: @activities %>
 </div>
-<div class="col-md-2 col-lg-3">
+<div class="col-md-2 col-lg-3 background-white home-like-store">
 <h6>喜歡的商家</h6>
   <%@like_stores.each do |store|%>
     <%= link_to  store_path(store) do %>
-      <%=image_tag store.store_cover_photo.thumb.url,class:"avatar"%>
-      <%=store.store_name%>
+      <div class="home-like-eachStore">
+        <span class="home-like-img"><%=image_tag store.store_cover_photo.thumb.url,class:"avatar"%></span>
+        <span class="home-like-name"><%=store.store_name%></span>
+      </div>
     <%end%>
   <%end%>
 </div>
-
+</div>
 
 <!--   <script>
 
