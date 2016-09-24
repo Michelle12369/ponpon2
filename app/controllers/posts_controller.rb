@@ -26,7 +26,7 @@ class PostsController < ApplicationController
         format.html { redirect_to root_path }
       end
     else
-      redirect_to root_path, notice: @post.errors.full_messages.first
+      redirect_to root_path, alert: @post.errors.full_messages.first
     end
   end
 

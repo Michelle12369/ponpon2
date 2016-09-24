@@ -1,5 +1,5 @@
 $bar-bgcolor: white;
-$yellow:#f9ed69; //#F7C103;
+$yellow:#F7C103;//#f9ed69
 $background-with-color:rgba(198, 156, 109, 0.1); //rgb(228,220,214);背景橘
 $background-color:#f5f5f5; //灰 //#fafafa
 $orange:rgb(240, 138, 93); //真的橘
@@ -128,5 +128,18 @@ input[type=submit]:focus{
     padding: 5px 8px;
     margin: 0 10px;
     background-color:rgb(102,102,102);
+}
+
+.alert-notice{
+    background-color:lightgray;
+    display: none;
+}
+.alert-alert{
+    background-color:$yellow;
+    color:white;
+    font-size: 1rem;
+}
+.space-for-notice{
+    height:60px;
 }
 

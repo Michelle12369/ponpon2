@@ -14,7 +14,8 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :name,"姓名" %>
+          <%#= f.label :name,"姓名" %>
+          <p>姓名(必填）</p>
           <%= f.text_field :name, placeholder: '請輸入全名', class: 'form-control' %>
         </div>
         <div class="form-group">
@@ -23,7 +24,7 @@
         </div>
         <div class="form-group">
           <%= f.label :location,"居住縣市" %>
-          <%= f.text_field :location, placeholder: '我們會根據你的居住地推薦優惠卷', class: 'form-control' %>
+          <%= f.select :location,  options_for_select(@city_array,f.object.location),{}, class: 'form-control' %>
         </div>
         <div class="form-group">
           <%= f.label :age,"年齡"%>
