@@ -112,6 +112,13 @@ input[type=submit]:focus{
     border:1px solid #f08a5d;
     border-radius:0.2rem;
 }
+// 橘底白字按鈕
+.orange-bg-btn{
+    background-color:$orange;
+    color: white;
+    border-radius:0.2rem;
+    border:0;
+}
 
 //admin-btn
 .admin-btn-orange{
