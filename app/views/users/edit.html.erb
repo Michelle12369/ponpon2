@@ -1,43 +1,51 @@
-<div class="row">
-  <div class="col-lg-6 col-lg-offset-3">
-    <div class="well">
-      <h5>編輯個人資料</h5>
-      <%= link_to '更改密碼', edit_user_registration_path %>
-      <%= form_for @user do |f| %>
-        <div class="form-group">
-          <%= f.label :avatar, "大頭貼" %>
-          <br>
-          <%= render 'shared/avatar', user: @user %>
-          <br>
-          <br>
-          <%= f.file_field :avatar %>
-        </div>
+<div class="row margin-10">
+  <div class="col-md-12 person-block">
+      <div class="col-md-3 person-block1">
+        <ul>
+          <li class="person-active">編輯個人檔案</li>
+          <li class="person-noactive"><%= link_to '更改密碼/刪除帳號', edit_user_registration_path %></li>
+        </ul>
+      </div>
+      <div class="col-md-9 person-block-info well">
+           <h5 class="m-b-2">編輯個人檔案</h5>
+          <%= form_for @user do |f| %>
+            <div class="form-group col-md-12">
+              <div class="col-md-3">
+                <%= f.label :avatar, "更新大頭貼" %>
+              </div>
+              <div class="col-md-9">
+                <%= render 'shared/avatar', user: @user %>
+                <%= f.file_field :avatar %>
+              </div>
+            </div>
 
-        <div class="form-group">
-          <%#= f.label :name,"姓名" %>
-          <p>姓名(必填）</p>
-          <%= f.text_field :name, placeholder: '請輸入全名', class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :about,"關於" %>
-          <%= f.text_area :about, placeholder: '用一段話介紹自己吧！', class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :location,"居住縣市" %>
-          <%= f.select :location,  options_for_select(@city_array,f.object.location),{}, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :age,"年齡"%>
-          <%= f.number_field :age, placeholder: '年紀', class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :gender,"性別" %><br>
-          <%= f.select :gender,options_for_select([['男性','male'],['女性','female']], :selected => f.object.gender),{}, class: 'form-control'%>
-        </div>
-        <div class="actions">
-          <%= submit_tag '更新個人資料', class: 'btn btn-primary' %>
-        </div>
-      <% end %>
-    </div>
+            <div class="form-group col-md-12 m-b-1">
+              <div class="col-md-3"><%= f.label :name,"姓名" %></div>
+              <div class="col-md-9"><%= f.text_field :name, placeholder: '請輸入全名', class: 'form-control' %></div>
+            </div>
+            <div class="form-group col-md-12 m-b-1">
+              <div class="col-md-3"><%= f.label :about,"關於" %></div>
+              <div class="col-md-9"><%= f.text_area :about, placeholder: '用一段話介紹自己吧！', class: 'form-control' %></div>
+            </div>
+            <div class="form-group col-md-12 m-b-1">
+              <div class="col-md-3"><%= f.label :location,"居住縣市" %></div>
+              <div class="col-md-9"><%= f.text_field :location, placeholder: '我們會根據你的居住地推薦優惠卷', class: 'form-control' %></div>
+            </div>
+            <div class="form-group col-md-12 m-b-1">
+              <div class="col-md-3"><%= f.label :age,"年齡"%></div>
+              <div class="col-md-9"><%= f.number_field :age, placeholder: '年紀', class: 'form-control' %></div>
+            </div>
+            <div class="form-group col-md-12 m-b-1">
+              <div class="col-md-3"><%= f.label :gender,"性別" %></div>
+              <div class="col-md-9"><%= f.select :gender,options_for_select([['男性','male'],['女性','female']], :selected => f.object.gender),{}, class: 'form-control'%></div>
+            </div>
+            <div class="actions text-xs-right col-md-12 p-b-2">
+              <div class="col-md-12">
+                <%= submit_tag '更新個人資料', class: 'orange-btn' %>
+              </div>
+            </div>
+          <% end %>
+      </div>
   </div>
+
 </div>

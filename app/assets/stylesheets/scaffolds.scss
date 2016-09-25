@@ -15,7 +15,7 @@ body {
     font-family: Roboto, Helvetica Neue, Helvetica, Arial, PingFang TC, 黑體-繁, Heiti TC, 蘋果儷中黑, Apple LiGothic Medium, 微軟正黑體, Microsoft JhengHei, sans-serif; //"Helvetica Neue",arial, helvetica, "微軟正黑體", sans-serif;
     font-size: 0.9rem; //14px;
     line-height: 18px;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 p,ol,ul,td {
@@ -110,6 +110,7 @@ input[type=submit]:focus{
     background-color:white;
     color:#f08a5d;
     border:1px solid #f08a5d;
+    border-radius:0.2rem;
 }
 
 //admin-btn
