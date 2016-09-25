@@ -20,11 +20,11 @@
       </div>
       <div class="field">
         <%= f.label :location,"居住縣市" %><br />
-        <%= f.email_field :location, class:"devise-input devise-normal"  %>
+        <%= f.select :location,  options_for_select(city_array,f.object.location),{}, class: 'form-control' %>
       </div>
       <div class="field">
         <%= f.label :gender,"性別" %><br />
-        <%= f.email_field :gender, class:"devise-input devise-normal"  %>
+        <%= f.select :gender,options_for_select([['男性','male'],['女性','female']], :selected => f.object.gender),{}, class: 'form-control'%>
       </div>
       <div class="field">
         <%= f.label :password,"密碼" %>

@@ -14,12 +14,16 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @city_array=["基隆市","台北市","新北市","桃園市","新竹市","新竹縣","苗栗縣","台中市","彰化縣","南投縣","雲林縣","嘉義市","嘉義縣","台南市","高雄市","屏東縣","台東縣","花蓮縣","宜蘭縣","澎湖縣","金門縣","連江縣"]
+  
   end
 
   def update
+
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to edit_user_path(@user),notice: "已成功更新使用者資料"
     else
+      flash.now[:alert]="無法更新資料"
       render :edit
     end
   end
@@ -45,12 +49,12 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :about, :avatar, :cover,
-                                 :sex, :dob, :location, :phone_number)
+    params.require(:user).permit(:name, :about, :avatar,
+                                 :gender, :age, :location)
   end
 
   def check_ownership
-    redirect_to current_user, notice: 'Not Authorized' unless @user == current_user
+    redirect_to current_user, notice: '沒有授權' unless @user == current_user
   end
 
   def set_user

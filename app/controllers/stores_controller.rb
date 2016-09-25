@@ -35,7 +35,7 @@ class StoresController < ApplicationController
 
     respond_to do |format|
       if @store.save
-        format.html { redirect_to complete_apply_path, notice: 'Store was successfully created.' }
+        format.html { redirect_to complete_apply_path }
         #format.json { render :show, status: :created, location: @store }
         format.js 
       else
