@@ -2,17 +2,15 @@
   <div class="col-lg-3">
     <%#= render 'shared/user_info' %>
   </div>
-  <div class="col-lg-6 well">
-    <h3>粉絲</h3>
-    <hr>
-    <div id="followers">
+  <div class="col-lg-6 well follow-block">
+    <h5 class="m-t-1 m-l-1">粉絲</h5>
+    <div id="followers"  class="p-l-1 p-r-1">
       <%= render(@followers) || render('shared/no_resource', resources: '粉絲')  %>
     </div>
     <%= render 'shared/paginate', resources: @followers %>
   </div>
   <div class="col-lg-3">
-    
   </div>
+  <%#= link_to "home", root_path %>  
 </div>
 
-<%= link_to "home", root_path %>
