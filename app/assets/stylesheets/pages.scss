@@ -77,3 +77,48 @@ $main-color:rgb(240,138,93);
 		width: 800px;
 	}
 }
+
+
+
+
+
+// admin-landing page
+.admin-first-block{
+    margin-top: -16px;
+    position:relative;
+    .admin-first-word{
+        position:absolute;
+        top:30%;
+        left:5%;
+        .title{
+            color: $orange;
+            font-size: 28px;
+        }
+        .subtitle{
+            color: white;
+        }
+        .subtitle1{
+            font-size: 20px;
+        }
+    }
+}
+.admin-small-word{
+    padding-top:60px;
+}
+.admin-start-qoupon{
+    background-color:$orange;
+    h5{
+        color: white;
+    }
+}
+
+
+
+.function-intro{
+    color: $orange;
+    font-size: 24px;
+}
+.function-intro-border{
+    width: 20px;
+    border-top:3px solid $orange;
+}

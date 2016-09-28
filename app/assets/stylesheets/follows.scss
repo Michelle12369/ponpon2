@@ -1,3 +1,26 @@
 // Place all the styles related to the follows controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.follow-block{
+	border:1px solid lightgrey;
+	padding:0;
+	border-radius:0.2rem;
+	background-color:white;
+}
+.follow-friend-block{
+	border-bottom:1px solid lightgrey;
+	padding:10px 0 10px 0;
+}
+.follow-friend-block:nth-child(1){
+	border-top:1px solid lightgrey;
+}
+.follow{
+	padding-top:3px;
+}
+@media screen and (min-width:768px)and(max-width:991px){
+	.follow-block{
+		margin:0 auto;
+		width: 400px;
+	}
+}

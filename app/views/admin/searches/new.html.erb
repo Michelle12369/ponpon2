@@ -1,6 +1,8 @@
 <div>
   <h5><%=@coupon.coupon_title%></h5>
-  <div class="background-white p-t-1 p-l-1 m-t-2 ">
+  <p class="m-b-0 p-l-1"><%= link_to '優惠券發放管理',admin_store_coupons_path %>/發送</p>
+  
+  <div class="background-white p-t-1 p-l-1 m-t-1 ">
     <h5 class="m-b-2">篩選推廣優惠卷</h5>
     <p>目前推廣優惠卷數： <%=@coupon.descendants.size%></p>
     <p>由商家推廣優惠卷數： <%=@coupon.children.size%></p>

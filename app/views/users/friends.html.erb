@@ -2,10 +2,9 @@
   <div class="col-lg-3">
     <%#= render 'shared/user_info' %>
   </div>
-  <div class="col-lg-6 well">
-    <h3>追蹤名單</h3>
-    <hr>
-    <div id="friends">
+  <div class="col-lg-6 well follow-block">
+    <h5 class="m-t-1 m-l-1">追蹤名單</h5>
+    <div id="friends" class="p-l-1 p-r-1">
       <%= render(@friends) || render('shared/no_resource', resources: '追蹤名單') %>
     </div>
     <%= render 'shared/paginate', resources: @friends %>

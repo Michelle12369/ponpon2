@@ -1,11 +1,11 @@
 <div class="follow d-inline-block">
   <% if store.followed_by?(current_user) %>
     <%= form_tag unfollow_path(store_id: store.id), method: :post, remote: true do %>
-      <%= button_tag 'unfollow', class: 'btn btn-primary' %>
+      <%= button_tag 'unfollow', class: 'orange-btn' %>
     <% end %>
   <% else %>
     <%= form_tag follow_path(store_id: store.id), method: :post, remote: true do %>
-      <%= button_tag 'follow', class: 'btn btn-success' %>
+      <%= button_tag 'follow', class: 'orange-bg-btn' %>
     <% end %>
   <% end %>
 </div>

@@ -1,7 +1,7 @@
 module PagesHelper
 	def render_admin_link
 	    if signed_in?&&current_user.admin?
-	         concat link_to "進入店家系統",admin_home_path,class: "nav-link" 
+	         concat link_to "進入店家系統",admin_home_path,class: "" 
 	         concat " "
 	         concat link_to "登出", admin_sign_out_path,method: :delete
 
@@ -21,6 +21,7 @@ module PagesHelper
 	   		concat link_to "登入", admin_sign_in_path
 	   		concat " "
 	   		concat link_to "註冊", admin_sign_up_path
+	   		concat "先註冊個人帳號再取得商家帳號吧"
 	    end
 	end
   

@@ -15,12 +15,15 @@
 <div class="container-fluid">
     <nav class="navbar navbar-fixed-top">
             <!-- <a class="m-r-0"><%#= fa_icon 'search',class:"d-inline-block nav-search-glass nav-search-small-glass"%> </a> -->
-            <button type="button" class="navbar-toggler hidden-md-up pull-xs-right" data-toggle="collapse" data-target="#myNavbar"  aria-controls="#myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <button type="button" class="navbar-toggler hidden-md-up pull-xs-right bar-button-small" data-toggle="collapse" data-target="#myNavbar"  aria-controls="#myNavbar" aria-expanded="false" aria-label="Toggle navigation">
               &#9776;
             </button>
             <%= link_to root_path, class:"navbar-brand",id: "navbar-brand" do%>
                 <%= image_tag "nav_logo_4.png", class: "bar-logo"%>
             <%end%>
+            <!-- 放大鏡 -->
+            <a class="short-search" href="javascript: void(0)"><%= fa_icon 'search',class:"d-inline-block nav-search-glass"%> </a>
+
                 <div class="collapse navbar-toggleable-sm" id="myNavbar">
                     <ul class="nav navbar-nav" id="nav-choice">
                         <% if signed_in?%>
@@ -31,7 +34,7 @@
 
                     </ul>
                     		<ul class="nav navbar-nav pull-md-right">
-                                <li class="nav-item nav-search" id='test'>
+                                <li class="nav-item nav-search long-search" id='test'>
                                     <a href="javascript: void(0)"><%= fa_icon 'search',class:"d-inline-block nav-search-glass"%> </a>
                                 </li>
                         		<li class="nav-item" id="hi">
