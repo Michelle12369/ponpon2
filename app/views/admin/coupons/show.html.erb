@@ -23,6 +23,7 @@
 
 <div class="coupon-show">
     <h5>優惠券詳細資訊</h5>
+    <p class="m-b-0 p-l-1"><%= link_to '優惠券發放管理',admin_store_coupons_path %>/內容</p>
     <div class="coupon-show-bg">
     <div class="coupon-show-second">
       <!-- <p>Coupon照片</p> -->
@@ -59,8 +60,8 @@
     
     </div>
     <div class="text-xs-right">
-      <%=send_or_delete(@admin_coupon) %>
-      <%= link_to 'Back', admin_store_coupons_path %>
+      <%= send_or_delete(@admin_coupon) %>
+      <%= link_to 'Back', admin_store_coupons_path, class:'btn-use' %>
     </div>
 </div>
 
