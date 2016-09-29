@@ -17,9 +17,9 @@ class Admin::PostsController < Admin::BaseController
   end
 
   # GET /admin/posts/new
-  def new
-    @admin_post = Admin::Post.new
-  end
+  # def new
+  #   @admin_post = Admin::Post.new
+  # end
 
   # GET /admin/posts/1/edit
   def edit
@@ -29,16 +29,19 @@ class Admin::PostsController < Admin::BaseController
   # POST /admin/posts.json
   def create
     @admin_post = @current_store.posts.new(admin_post_params)
-    respond_to do |format|
+    
       if @admin_post.save
-        @admin_activity=@admin_post.create_activity(:create, :owner => @current_store)
-        format.html { redirect_to admin_posts_path, notice: 'Post was successfully created.' }
-        format.js
+        respond_to do |format|
+          @admin_activity=@admin_post.create_activity(:create, :owner => @current_store)
+          format.html { redirect_to admin_posts_path, notice: '已成功張貼文章' }
+          format.js
+        end
       else
-        format.html { render :new }
-        format.json { render json: @admin_post.errors, status: :unprocessable_entity }
+        # format.html { render :new }
+        # format.json { render json: @admin_post.errors, status: :unprocessable_entity }
+         redirect_to admin_posts_path, alert: @admin_post.errors.full_messages.first
       end
-    end
+    
   end
 
   # PATCH/PUT /admin/posts/1

@@ -1,4 +1,4 @@
-<%= form_for(@admin_post) do |f| %>
+<%= form_for @admin_post ,remote:true, authenticity_token: true do |f| %>
   <% if @admin_post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@admin_post.errors.count, "error") %> prohibited this admin_post from being saved:</h2>
@@ -16,16 +16,19 @@
       <%= f.text_area :content, class: 'form-control input-mentionable',id: "input-post", autofocus: true, placeholder: '留個言吧！' %>
   </div>
   
-  <div id="img-preview" class="form-group hidden">
-      <img src="" alt="Preview">
+  <div id="img-preview" class="form-group hidden-xs-up">
+      <img src="" alt="Preview" width="100px">
   </div>
   <div class="row">
-    <div class="form-group col-xs-9" id="attachment">
+    <div class="form-group col-xs-9 hidden-xs-up" id="attachment">
         <%= f.file_field :attachment %>
     </div>
       
     <div class="form-group col-xs-3" id="post">
-        <%= f.submit '發佈', class: 'btn pull-right post-button btn-sm'%>
+      <a id="admin-post-attachment" href="javascript:void(0);" class="btn-sm orange-bg-btn">
+        <%= fa_icon 'image' %>
+      </a>
+      <%= f.submit '發佈', class: 'btn pull-right post-button btn-sm'%>
     </div>
   </div>
 <% end %>

@@ -13,6 +13,7 @@
 				<%end%>
 			</div>
 		<%end%>
+		
 		<%@results_store.each do |store|%>
 			<div id="store-<%= store.id %>" class="follow-friend-block p-l-1">
 				<%= link_to store_path(store),class: "nav-link"  do%>
@@ -22,7 +23,9 @@
 				<%end%>
 			</div>
 		<%end%>
+		<%= render 'shared/paginate', resources: @results %>
+		<%= render 'shared/paginate', resources: @results_store %>
 	<%else%>
-		<p>找不到相關資料</p>
+		<p class="m-l-1">找不到相關資料</p>
 	<%end%>
 </div>

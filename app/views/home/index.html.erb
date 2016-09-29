@@ -1,5 +1,5 @@
 <div class="home-content">
-<div class="col-md-2 col-lg-3 home-self">
+<div class="col-md-2 home-self col-lg-3">
   <div class=" background-white home-block">
     <%=render 'shared/avatar', user: current_user%>
       <div class="home-self-name">
@@ -21,9 +21,39 @@
     <%= link_to edit_user_path(current_user),class:"pull-xs-right" do%>
       <% fa_icon 'pencil'%>
     <%end%> 
-    <%=current_user.about%>
-    <h6 class="p-t-1">追蹤朋友</h6>
-    <p>放朋友大頭貼</p>
+    <%if current_user.about.present?%>
+      <%=current_user.about%>
+    <%else%>
+      <%= link_to edit_user_path(current_user) do%>
+        用一段話描述自己~
+      <%end%> 
+    <%end%>
+<!--     <h6 class="p-t-1">追蹤朋友</h6>
+    <p>放朋友大頭貼</p> -->
+  </div>
+  <div class="background-white home-block home-like-store">
+    <h6> 推薦的商家</h6>
+    <%#if @like_stores.present?%>
+      <%#%>
+      <%@commend_store.each do |store|%>
+        <%= link_to  store_path(store) do %>
+          <div class="home-like-eachStore">
+            <span class="home-like-img"><%=image_tag store.store_cover_photo.thumb.url||'avatar.jpg',class:"avatar"%></span>
+            <span class="home-like-name"><%=store.store_name%></span>
+            <span class="home-like-name"><%=store.store_about%></span>
+          </div>
+        <%end%>
+      <%end%>
+      <hr>
+<!--       <div class="text-xs-center">
+        <%#= link_to  stores_user_path(current_user) do%>
+          更多<i class="fa fa-angle-down icon"></i>
+        <%#end%>
+      </div> -->
+    <%#else%>
+      <%#=render('shared/no_resource', resources: '喜愛商家') %>
+    <%#end%>
+
   </div>
 </div>
 
@@ -33,20 +63,34 @@
   </div>
 
   <div id="activities">
-   <%= render_activities(@activities, layout: '/shared/activity') %>
+    <%if @activities.present?%>
+      <%= render_activities(@activities, layout: '/shared/activity')%>
+    <%else%>
+      <%=render "shared/initial_post"%>
+    <%end%>
   </div>
 
   <%= render 'shared/paginate', resources: @activities %>
 </div>
 <div class="col-md-2 col-lg-3 background-white home-like-store">
-<h6>喜歡的商家</h6>
-  <%@like_stores.each do |store|%>
-    <%= link_to  store_path(store) do %>
-      <div class="home-like-eachStore">
-        <span class="home-like-img"><%=image_tag store.store_cover_photo.thumb.url,class:"avatar"%></span>
-        <span class="home-like-name"><%=store.store_name%></span>
-      </div>
+  <h6>喜歡的商家</h6>
+  <%if @like_stores.present?%>
+    <%@like_stores.each do |store|%>
+      <%= link_to  store_path(store) do %>
+        <div class="home-like-eachStore">
+           <span class="home-like-img"><%=image_tag store.store_cover_photo.thumb.url||'avatar.jpg',class:"avatar"%></span>
+          <span class="home-like-name"><%=store.store_name%></span>
+        </div>
+      <%end%>
     <%end%>
+    <hr>
+    <div class="text-xs-center">
+      <%= link_to  stores_user_path(current_user) do%>
+        更多<i class="fa fa-angle-down icon"></i>
+      <%end%>
+    </div>
+  <%else%>
+    <%=render('shared/no_resource', resources: '喜愛商家') %>
   <%end%>
 </div>
 </div>
