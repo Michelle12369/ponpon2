@@ -9,20 +9,6 @@
 .filter{
 	border-radius:0.2rem;
 }
-// .m-t-50{
-// 	margin-top:0.5rem;
-// }
-// .p-x-50{
-// 	padding-left:0.5rem;
-// 	padding-right:0.5rem;
-// }
-// @media screen and (min-width:992px){
-// .coupons{
-// 	max-width:80%;
-// 	margin:0 auto;
-// }
-// }
-
 
 @mixin smalltitle(){
 	margin:3% 0;
@@ -60,7 +46,12 @@
 .coupon-many-pic{
 	background-color:black;
 }
-
+.coupon-bg{
+	background-color:white;
+	border:1px solid lightgrey;
+	border-radius:0.2rem;
+	padding:20px;
+}
 
 #coupon-content{
 	margin-bottom:3%;

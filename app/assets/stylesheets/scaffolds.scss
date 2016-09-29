@@ -124,6 +124,14 @@ input[type=submit]:focus{
     height: 30px;
     width: 120px;
 }
+.orange-sm-bg-btn{
+    background-color:$orange;
+    color: white;
+    border-radius:0.2rem;
+    border:0;
+    height: 30px;
+    width: 70px;
+}
 
 //admin-btn
 .admin-btn-orange{

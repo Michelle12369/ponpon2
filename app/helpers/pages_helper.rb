@@ -18,10 +18,10 @@ module PagesHelper
 	    	concat " "
 	    	concat link_to "回到個人頁面", root_path
 	   	else    
-	   		concat link_to "登入", admin_sign_in_path
+	   		concat link_to "登入", admin_sign_in_path,class: 'admin-sign admin-sign-in'
 	   		concat " "
-	   		concat link_to "註冊", admin_sign_up_path
-	   		concat "先註冊個人帳號再取得商家帳號吧"
+	   		concat link_to "註冊", admin_sign_up_path,class: 'admin-sign admin-sign-out'
+	   		# concat "先註冊個人帳號再取得商家帳號吧"
 	    end
 	end
   

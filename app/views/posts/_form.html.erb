@@ -20,6 +20,14 @@
       <img src="" alt="Preview" width="100px">
   </div>
   <div class="row">
+
+<!--   <div class="form-group col-xs-6" id="attachment">
+      <%#= f.file_field :attachment %>
+  </div>
+    
+  <div class="form-group col-xs-6" id="post">
+      <%#= f.submit '發文', class: 'orange-sm-bg-btn pull-xs-right'%>
+ -->
   <div class="form-group col-xs-9 hidden-xs-up" id="attachment">
       <%= f.file_field :attachment %>
   </div>
@@ -30,6 +38,7 @@
     </a>
     <%= f.submit '發文', class: 'btn pull-right post-button btn-sm'%>
   </div>
+  <!-- 'btn pull-right post-button btn-sm' -->
 </div>
 
 <% end %>

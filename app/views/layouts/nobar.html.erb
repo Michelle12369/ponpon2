@@ -16,15 +16,15 @@
     <p class="nobar">
         <span class="nobar-orange">Q</span>oupon
         <%= link_to admin_front_path do%>
-            <span class="pull-right nobar-index">首頁</span>
+            <!-- <span class="pull-right nobar-index"> -->
+            <% render_admin_link%>
+            <!-- </span> -->
         <%end%>
     </p>
 </b>
-
         <p><%= notice %></p>
         <p><%= alert %></p>
-
-            <%= yield %>   
+        <%= yield %>   
 </body>
 
 </html>
