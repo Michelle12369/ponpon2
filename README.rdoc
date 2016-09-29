@@ -1,28 +1,13 @@
-== README
+== Qoupon 線上優惠分享及回饋應用社群平台
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version:2.3.1
 
-Things you may want to cover:
+* Database : postgresql
 
-* Ruby version
+* Install Rmagick first
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Services:1. 消費者端: 方便快速蒐集優惠，透過分享優惠券推薦身旁朋友們優質產品，更進而得到更多優惠
+2. 商家端: 促使發放出去的優惠券可以發揮最大效用，讓消費者也成為店家的宣傳者，透過網站進行圖像化dashboard給商家瞭解的「階層式優惠回饋機制」下優惠券狀況，並進行策略行銷。
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+

@@ -7,9 +7,9 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/new
-  def new
-    @post = Post.new
-  end
+  # def new
+  #   @post = Post.new
+  # end
 
   # GET /posts/1/edit
   def edit

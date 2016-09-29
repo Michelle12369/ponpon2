@@ -9,14 +9,14 @@
       <div class="col-xs-6 comment-<%=resource.id%>">
       
            <!--傳ror變數到js(home.js)-->
-          <%= link_to "#", method: :post,:class=>"load-more pull-right", data:{id:resource.id}, remote: true do%>
-            查看更多留言<%#= render(resource.comments.offset(4).all,commentable:resource)%>
-          <%end%>
+          <%#= link_to "#", method: :post,:class=>"load-more pull-right", data:{id:resource.id}, remote: true do%>
+            <!-- 查看更多留言<%#= render(resource.comments.offset(4).all,commentable:resource)%> -->
+          <%#end%>
       </div>
     </div>
     
     <div id="post-<%=resource.id%>-comments">
-      <%= render(resource.comments.last(4),commentable:resource)%>
+      <%= render(resource.comments.all,commentable:resource)%>
     </div>
 
       <div id="comment-form-<%=resource.id%>" class="comment-form row">

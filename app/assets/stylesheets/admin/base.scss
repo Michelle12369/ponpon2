@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 //bar basic css 
+
+body {
+    margin-top: 30px;
+}
+
+
 .main-header,.navbar {
     color: white;
     a {

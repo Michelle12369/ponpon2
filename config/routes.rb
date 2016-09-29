@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     # post '/stores/:store_id/coupons/:id/redeem',:to=>'coupons#admin_redeem',:as=>"redeem"
     # get '/stores/:store_id/coupons/:id/qrcode',:to=>'coupons#admin_qrcode',:as=>"qrcode"
 
-    resources :posts do
+    resources :posts,except: :new do
         collection do
         get 'analysis'
       end
@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 
 
   #basic relationship settings
-  resources :posts,except: :index
+  resources :posts,except: [:index,:new]
   resources :stores,:except => [:edit,:destroy]
 
   # resources :items
