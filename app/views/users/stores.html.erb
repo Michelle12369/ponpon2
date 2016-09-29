@@ -5,8 +5,11 @@
   <div class="col-lg-6 well follow-block">
     <h5 class="m-t-1 m-l-1">喜愛店家</h5>
     <div id="followers"  class="p-l-1 p-r-1">
-
-      <%= render partial:'users/store', collection: @like_stores,as: :store || render('shared/no_resource', resources: '喜愛商家')  %>
+      <%if @like_stores.present?%>
+        <%= render partial:'users/store', collection: @like_stores,as: :store %>
+      <%else%>
+        <%=render('shared/no_resource', resources: '喜愛商家') %>
+      <%end%>
     </div>
     <%= render 'shared/paginate', resources: @like_stores %>
   </div>

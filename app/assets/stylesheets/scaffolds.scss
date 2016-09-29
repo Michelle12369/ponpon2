@@ -35,7 +35,7 @@ pre {
 }
 
 a {
-    color: #000;
+    color: #666;
     &:visited {
         color: #666;
     }
@@ -45,6 +45,7 @@ a {
     }
     &:focus{
          text-decoration: none;
+         color:#000;
     }
 }
 
@@ -145,13 +146,14 @@ input[type=submit]:focus{
 .alert-notice{
     background-color:lightgray;
     display: none;
+    padding:10px 15px;
 }
 .alert-alert{
     background-color:$yellow;
     color:white;
     font-size: 1rem;
+    padding:10px 15px;
 }
-.space-for-notice{
-    height:60px;
-}
-
+// .space-for-notice{
+//     height:30px;
+// }

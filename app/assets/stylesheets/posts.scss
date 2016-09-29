@@ -44,12 +44,14 @@
 		color: #666;
 	}
 }
+.initial-post{
+	font-size:2rem;
+	color:$orange;
+}
 .content{
 	.post-attachment{
-		// @if image-width("icons/home/folder.png")<image-height("icons/home/folder.png")
-			// height:392px;
-		// @else
-		width:100%;
+		max-height: 392px;
+		max-width:100%;
 	}
 }
 @media screen and (max-width:439px){
