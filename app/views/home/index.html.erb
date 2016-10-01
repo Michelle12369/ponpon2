@@ -1,7 +1,9 @@
 <div class="home-content">
 <div class="col-md-2 home-self col-lg-3">
   <div class=" background-white home-block">
-    <%=render 'shared/avatar', user: current_user%>
+    <span class="home-profile">
+      <%=render 'shared/avatar', user: current_user %>
+    </span>
       <div class="home-self-name">
         <h5><%= link_to current_user.name, current_user %></h5>
         <div>
@@ -17,10 +19,12 @@
       </div>
   </div>
   <div class="background-white home-block">
-    <h6>關於我</h6>
-    <%= link_to edit_user_path(current_user),class:"pull-xs-right" do%>
-      <% fa_icon 'pencil'%>
-    <%end%> 
+    <h6>
+      關於我
+      <%= link_to edit_user_path(current_user),class:"pull-xs-right" do%>
+        <% fa_icon 'pencil'%>
+      <%end%>
+    </h6>
     <%if current_user.about.present?%>
       <%=current_user.about%>
     <%else%>
@@ -28,23 +32,26 @@
         用一段話描述自己~
       <%end%> 
     <%end%>
-<!--     <h6 class="p-t-1">追蹤朋友</h6>
+<!--<h6 class="p-t-1">追蹤朋友</h6>
     <p>放朋友大頭貼</p> -->
   </div>
-  <div class="background-white home-block home-like-store">
+  <div class="background-white home-block home-recommand-store">
     <h6> 推薦的商家</h6>
     <%#if @like_stores.present?%>
       <%#%>
       <%@commend_store.each do |store|%>
         <%= link_to  store_path(store) do %>
           <div class="home-like-eachStore">
-            <span class="home-like-img"><%=image_tag store.store_cover_photo.thumb.url||'avatar.jpg',class:"avatar"%></span>
-            <span class="home-like-name"><%=store.store_name%></span>
-            <span class="home-like-name"><%=store.store_about%></span>
+            <div class="home-store-pic">
+              <%=image_tag store.store_cover_photo.thumb.url||'avatar.jpg',class:"avatar" %>
+            </div>
+            <div class="home-like-part">
+              <p class="m-b-0 home-store-about-title"><strong><%=store.store_name%></strong></p>
+              <p class="m-b-1 home-store-about"><%=store.store_about%></p>
+            </div>
           </div>
         <%end%>
       <%end%>
-      <hr>
 <!--       <div class="text-xs-center">
         <%#= link_to  stores_user_path(current_user) do%>
           更多<i class="fa fa-angle-down icon"></i>
@@ -93,7 +100,7 @@
     <%=render('shared/no_resource', resources: '喜愛商家') %>
   <%end%>
 </div>
-</div>
+<!-- </div> -->
 
 <!--   <script>
 
@@ -129,4 +136,4 @@ channel.bind('greet', function(data) {
         channel.bind('subscription_error', function(status) {
           console.log('Pusher subscription_error');
         });
-  </script> -->
+  </script>
