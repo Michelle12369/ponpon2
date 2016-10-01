@@ -64,15 +64,16 @@ div {
     background-color: $yellow;
     // display: table;
     // color:white;
+    // display: inline-block;
 }
 
 #error_explanation {
-    width: 450px;
-    border: 2px solid red;
+    width: 100%;
+    border: 2px solid $yellow;
     padding: 7px;
     padding-bottom: 0;
     margin-bottom: 20px;
-    background-color: #f0f0f0;
+    background-color: $yellow;
     h2 {
         text-align: left;
         font-weight: bold;
@@ -80,7 +81,7 @@ div {
         font-size: 12px;
         margin: -7px;
         margin-bottom: 0px;
-        background-color: #c00;
+        background-color: $yellow;
         color: #fff;
     }
     ul li {

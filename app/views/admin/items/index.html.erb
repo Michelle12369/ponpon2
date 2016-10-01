@@ -5,27 +5,33 @@
     <tr>
       <td>價格</td>
       <td>商品名稱</td>
-      <td>商品介紹</td>
       <td>類型</td>
+      <td>商品備註</td>
       <td>編輯/刪除</td>
     </tr>
   </thead>
 
   <tbody>
-    <% @admin_items.each do |admin_item| %>
-      <tr>
-        <td><%=admin_item.item_price%></td>
-        <td><%=admin_item.item_name%></td>
-        <td><%=admin_item.item_about%></td>
-        <td><%=admin_item.item_type%></td>
-        <td><%= link_to '編輯', edit_admin_store_item_path(admin_item.store,admin_item) %>
-        <%= link_to '刪除',admin_store_item_path(admin_item.store,admin_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <%if @admin_items.present?%>
+      <% @admin_items.each do |admin_item| %>
+        <tr>
+          <td><%=admin_item.item_price%></td>
+          <td><%=admin_item.item_name%></td>
+          <td><%=admin_item.item_type%></td>
+          <td><%=admin_item.item_about%></td>
+          <td><%= link_to '編輯', edit_admin_store_item_path(admin_item.store,admin_item) %>
+          <%= link_to '刪除',admin_store_item_path(admin_item.store,admin_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <%else%>
+      <tr><td colspan="5"><%=render('shared/no_resource', resources: '任何商品') %></td></tr>
+    <%end%>
   </tbody>
 </table>
+
+
 <div class="text-xs-center">
-<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">新增商品</button>
+<button type="button" class="btn orange-bg-btn btn-sm" data-toggle="modal" data-target="#myModal">新增商品</button>
 </div>
 <br>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

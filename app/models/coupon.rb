@@ -2,7 +2,7 @@ class Coupon < ActiveRecord::Base
   belongs_to :user
   belongs_to :store
   has_closure_tree
-  validates_presence_of :start_date,:coupon_pic,:item,:start_date,:expiry_date,:computed_discount,:admin_coupon_limit
+  validates_presence_of :start_date,:item,:start_date,:expiry_date,:computed_discount,:admin_coupon_limit,:coupon_title#,:coupon_pic
 
   #coupon qrcode
   mount_uploader :qr_code, AvatarUploader
@@ -33,7 +33,8 @@ class Coupon < ActiveRecord::Base
                           used: false,
                           discount:coupon.discount,
                           computed_discount:coupon.root.computed_discount,
-                          store_id:coupon.store_id
+                          store_id:coupon.store_id,
+                          admin_coupon_limit:coupon.admin_coupon_limit
                           )
     end
   end
@@ -44,7 +45,7 @@ class Coupon < ActiveRecord::Base
   def self.qrcode(receiver_id,new_coupon)
     url="https://pon-michelle12369.c9users.io/admin/stores/#{new_coupon.store.id}/coupons/#{new_coupon.id}/confirm"
     @qrcode = RQRCode::QRCode.new(url,:size => 4, :level => :l)#用真的網址line才掃得到
-    tmp_path = Rails.root.join("qrcode.png")
+    tmp_path = Rails.root.join("#{new_coupon.store.store_name}_#{new_coupon.id}.png")
     png = @qrcode.to_img.resize(150, 150).save(tmp_path)
     # Stream is handed closed, we need to reopen it
     File.open(png.path) do |file|

@@ -1,19 +1,17 @@
-<h1>Crop Avatar</h1>
+<h5>裁切店家大頭貼</h5>
+<%= image_tag @admin_store.store_cover_photo.url, id: "cropbox"%>
+<h6>預覽</h6>
+<div style="width:300px; height:240px; overflow:hidden">
+  <%= image_tag @admin_store.store_cover_photo.url, :id => "preview" %>
+</div>
 
-<%#for i in @admin_store.store_photo%>
-	<%= image_tag @admin_store.store_cover_photo.url, id: "cropbox"%>
-	<h4>Preview</h4>
-	<div style="width:300px; height:240px; overflow:hidden">
-	  <%= image_tag @admin_store.store_cover_photo.url, :id => "preview" %><%#{@admin_store.store_photo.index(i)}%>
-	</div>
-<%#end%>
 
 <%= form_for @admin_store do |f| %>
   <% %w[x y w h].each do |attribute| %>
     <%= f.hidden_field "crop_#{attribute}" %>
   <% end %>
   <div class="actions">
-    <%= f.submit "Crop" %>
+    <%= f.submit "確認裁切",class:"orange-bg-btn" %>
   </div>
 <% end %>
 

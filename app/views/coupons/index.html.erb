@@ -1,19 +1,14 @@
 
   <div class="m-b-1 col-sm-12">
     <div class="col-sm-12">
-      <%= link_to "可使用", user_coupons_notuse_path(current_user),remote:true,class:"nav-link bg-warning notuse filter p-x-1" %>|
-      <%= link_to "已使用", user_coupons_used_path(current_user),remote:true,class:"nav-link used filter p-x-1"%>|
-      <%= link_to "已過期", user_coupons_overdue_path(current_user),remote:true,class:"nav-link overdue filter p-x-1" %>
+      <%= link_to "可使用", user_coupons_notuse_path(current_user),remote:true,class:"nav-link orange-btn notuse filter" %>|
+      <%= link_to "已使用", user_coupons_used_path(current_user),remote:true,class:"nav-link used filter"%>|
+      <%= link_to "已過期", user_coupons_overdue_path(current_user),remote:true,class:"nav-link overdue filter" %>
     </div>
   </div>
 
-  <!-- <div class="card-columns coupons"> -->
-  <div class="col-md-12 col-sm-12">
-    <% @coupon.each do |coupon| %>
-      <div class="col-md-4 col-sm-6">
-      <%=render "coupons/coupon",coupon: coupon%>
-      </div>
-    <%end%>
+  <div class="coupons">
+      <% @coupon.each do |coupon| %>
+        <%=render "coupons/coupon",coupon: coupon%>
+      <%end%>
   </div>
-            
-      

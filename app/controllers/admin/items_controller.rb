@@ -29,7 +29,7 @@ class Admin::ItemsController < Admin::BaseController
 
     respond_to do |format|
       if @admin_item.save
-        format.html { redirect_to admin_store_items_path, notice: 'Item was successfully created.' }
+        format.html { redirect_to admin_store_items_path, notice: '已新增商品' }
         format.json { render :show, status: :created, location: @admin_item }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class Admin::ItemsController < Admin::BaseController
   def update
     respond_to do |format|
       if @admin_item.update(admin_item_params)
-        format.html { redirect_to admin_store_items_path, notice: 'Item was successfully updated.' }
+        format.html { redirect_to admin_store_items_path, notice: '已更新商品' }
         format.json { render :show, status: :ok, location: @admin_item }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class Admin::ItemsController < Admin::BaseController
   def destroy
     @admin_item.destroy
     respond_to do |format|
-      format.html { redirect_to admin_store_items_path, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to admin_store_items_path, notice: '已刪除商品' }
       format.json { head :no_content }
     end
   end

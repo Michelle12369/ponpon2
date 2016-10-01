@@ -50,16 +50,16 @@
         粉專關係條件：
         <span class="coupon-recommand-fans">
           <span class="m-t-1">
-            <%=f.radio_button 'relation', 0,:checked=>true%>
-            <%=f.label :relation, "有追蹤粉專"%>
+            <%=f.radio_button 'relation', 2,:checked=>true%>
+            <%=f.label :relation, "所有人"%>
           </span>
           <span>
             <%=f.radio_button 'relation',1%>
             <%=f.label :relation, "沒有追蹤粉專"%>
           </span>
           <span>
-            <%=f.radio_button 'relation', 2%>
-            <%=f.label :relation, "所有人"%>
+            <%=f.radio_button 'relation', 0%>
+            <%=f.label :relation, "有追蹤粉專"%>
           </span>
 <!-- >>>>>>> ce0213f925198b9077e5c00b7beac6969afb668c -->
         </span>

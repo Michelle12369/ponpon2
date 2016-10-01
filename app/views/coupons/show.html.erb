@@ -26,7 +26,7 @@
               <button type="button" data-toggle="modal" data-target=".bd-example-modal-sm">兌換</button>
 
             <%end%>
-             <button>分享</button>
+             <button type="button" data-toggle="modal" data-target="#myModal">分享</button>
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@
       <div>
         <h6><span>注意事項</span>：</h6>
         <ol>
-          <li><%=@coupon.other_content%></li>
+          <li><%=simple_format(@coupon.other_content)%></li>
         </ol>
       </div>
     </div>
@@ -88,9 +88,60 @@
             <%=image_tag @coupon.qr_code, class:"qrcode" %>
           <% end %>
           <div>
-            <button class="orange-btn">下載儲存此QRCode</button>
+            <!-- <button class="orange-btn">下載儲存此QRCode</button> -->
+            <button class="orange-btn"><%= link_to "下載儲存此QRCode", download_path(current_user,@coupon) %></button>
+            
           </div>
         </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">分享到你的動態時報</h4>
+      </div>
+      <div class="modal-body">
+
+            <div id="shareBtn" class="btn btn-success clearfix">Share</div>
+
+            <script>
+
+              window.fbAsyncInit = function() {
+                FB.init({
+                  appId      : '1795893413990726',
+                  xfbml      : true,
+                  version    : 'v2.7'
+                });
+              };
+
+              (function(d, s, id){
+                 var js, fjs = d.getElementsByTagName(s)[0];
+                 if (d.getElementById(id)) {return;}
+                 js = d.createElement(s); js.id = id;
+                 js.src = "//connect.facebook.net/en_US/sdk.js";
+                 fjs.parentNode.insertBefore(js, fjs);
+               }(document, 'script', 'facebook-jssdk'));
+
+            document.getElementById('shareBtn').onclick = function() {
+              FB.ui({
+                method: 'share',
+                mobile_iframe: true,
+                href: '<%=store_path(@store)%>',
+              }, function(response){});
+            }
+
+            </script>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn orange-btn">Save changes</button>
+      </div>
     </div>
   </div>
 </div>

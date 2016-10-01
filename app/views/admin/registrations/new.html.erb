@@ -16,15 +16,15 @@
   </div>
   <div class="field">
     <%= f.label :birthday,"生日" %><br />
-    <%= f.email_field :birthday, class:""  %>
+    <%= f.date_field :birthday, class:""  %>
   </div>
   <div class="field">
     <%= f.label :location,"居住縣市" %><br />
-    <%= f.email_field :location, class:""  %>
+    <%= f.select :location,  options_for_select(city_array,f.object.location),{}, class:""  %>
   </div>
   <div class="field">
     <%= f.label :gender,"性別" %><br />
-    <%= f.email_field :gender, class:""  %>
+    <%= f.select :gender,options_for_select([['男性','male'],['女性','female']], :selected => f.object.gender),{}, class:""  %>
   </div>
 
   <div class="field">

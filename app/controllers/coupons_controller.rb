@@ -1,5 +1,5 @@
 class CouponsController < ApplicationController
-  before_action :set_coupon, only: [:show,:destroy,:distribute,:take]
+  before_action :set_coupon, only: [:show,:destroy,:distribute,:take,:download]
   before_action :set_user,except: :take
   before_action :authenticate_user!
   before_action :verify_coupon_notuse,only: [:distribute]
@@ -67,6 +67,11 @@ class CouponsController < ApplicationController
   # def redeem
 
   # end
+
+  #顧客下載自己的qrcode
+  def download
+    send_file @coupon.qr_code.path, :type => 'image/jpeg', :disposition => 'attachment'
+  end
 
   #顧客用qrcode掃描店家優惠卷後跳出頁面
   def take

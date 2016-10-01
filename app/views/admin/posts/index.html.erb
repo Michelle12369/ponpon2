@@ -5,7 +5,11 @@
   </div>
 
   <div id="activities">
+  <%if @admin_posts.empty?%>
+	<%=render('shared/no_resource', resources: '貼文')%>
+  <%else%>
    <%= render_activities(@admin_posts, layout: '/shared/activity') %>
+  <%end%>
   </div>
 
   <%= render 'shared/paginate', resources: @admin_posts %>

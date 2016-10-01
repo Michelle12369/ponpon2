@@ -1,54 +1,55 @@
 <%= form_for store do |f| %>
   <% if store.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
+      <h2><%=store.errors.count %> 個欄位未填</h2>
 
-      <ul>
-      <% store.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+      <!-- <ul> -->
+      <%# store.errors.full_messages.each do |message| %>
+        <!-- <li><%#= message %></li> -->
+      <%# end %>
+      <!-- </ul> -->
     </div>
   <% end %>
 
 
 <div class="col-xs-12 col-sm-6">
-  <h3 class="text-xs-center text-sm-left p-t-2">商家資料</h3>
+  <h4 class="text-xs-center text-sm-left p-t-2">商店資料</h4>
   <div class="p-l-1 p-t-1">
     <div class="field">
       <%#= f.label :store_name %>
-      <span>店名：</span>
-      <%= f.text_field :store_name %>
+      <span>商店名稱：</span>
+      <%= f.text_field :store_name%>
     </div>
     <div class="field">
-      <span>電話：</span>
-      <%= f.text_field :store_phone %>
+      <span>商店電話：</span>
+      <%= f.telephone_field :store_phone%>
     </div>
     <div class="field">
-      <span>地址：</span> 
-      <%= f.text_field :store_address %>
+      <span>商店地址：</span> 
+      <%=f.select :store_city, options_for_select(city_array,f.object.store_city),{:class => 'store-info-city'}%>
+      <%= f.text_field :store_address%>
     </div>
     <div class="field">
-      <span>分類：</span>
-      <%= f.text_field :store_type%>
+      <span>商店類型:</span>
+      <%= f.select :store_type, options_for_select(store_type_array,f.object.store_type),{}%>
     </div>
   </div>
 </div>
 
 <div class="col-xs-12 col-sm-6">
-  <h3 class="text-xs-center text-sm-left p-t-2">聯絡資訊</h3>
+  <h4 class="text-xs-center text-sm-left p-t-2">負責人聯絡資訊</h4>
   <div class="p-l-1 p-t-1">
     <div class="field">
-      <span>姓名：</span>
-      <%= f.text_field :store_keeper_name %>
+      <span>負責人姓名：</span>
+      <%= f.text_field :store_keeper_name%>
     </div>
     <div class="field">
-     <span>電話：</span>
-      <%= f.text_field :store_keeper_phone %>
+     <span>負責人電話：</span>
+      <%= f.telephone_field :store_keeper_phone%>
     </div>
     <div class="field">
-      <span>信箱：</span>
-      <%= f.text_field :store_email %>
+      <span>負責人信箱：</span>
+      <%= f.email_field :store_email%>
     </div>
   </div>
 </div>

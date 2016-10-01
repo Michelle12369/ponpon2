@@ -3,20 +3,20 @@
 <%= form_for [@admin_coupon.store,@admin_coupon], url: admin_store_coupons_path do |f| %>
   <% if @admin_coupon.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@admin_coupon.errors.count, "error") %> prohibited this admin_coupon from being saved:</h2>
+      <h2><%= @admin_coupon.errors.count %> 個欄位未填</h2>
 
-      <ul>
-      <% @admin_coupon.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+      <!-- <ul> -->
+      <%# @admin_coupon.errors.full_messages.each do |message| %>
+        <!-- <li><%#= message %></li> -->
+      <%# end %>
+      <!-- </ul> -->
     </div>
   <% end %>
   
 <div class="field">
     <span>優惠券標題：</span>
     <%#= f.label :coupon_title %>
-    <%= f.text_field :coupon_title, class:'w-100' %>
+    <%= f.text_field :coupon_title, class: 'form-control'  %>
   </div>
   <div class="field">
     <span>優惠券圖片：</span>
@@ -24,37 +24,41 @@
     <%= f.file_field :coupon_pic %>
   </div>
   <div class="field">
-    <span>item</span>
+    <span>品項</span>
     <%#= f.label :item %>
     <% item_array = @admin_coupon.store.items.map { |item| [item.item_name, item.item_name] } %>
-    <%= f.select :item, options_for_select(item_array) %>
+    <%= f.select :item, options_for_select(item_array),{}, class: 'form-control'  %>
   </div>
   <div class="field">
-    <%= f.label :start_date %>
-    <%= f.text_field :start_date %>
-    <!-- <input type="date" id="bookdate" placeholder="2014-09-18"> -->
+    <%#= f.label :start_date %>
+    <span>起始日期:</span>
+    <%=f.date_field :start_date, class: 'form-control'  %>
   </div>
   <div class="field">
-    <%= f.label :expiry_date %>
-    <%= f.text_field :expiry_date %>
+    <%#= f.label :expiry_date %>
+    <span>有效日期:</span>
+    <%= f.date_field :expiry_date , class: 'form-control'  %>
   </div>
   <div class="field">
-    <%= f.label :computed_discount %>
-    <%= f.text_field :computed_discount %>
+    <%#= f.label :computed_discount %>
+    <span>起跳折數（由您的商品售價*此數字會成為您顧客的預設優惠，顧客的優惠卷會從此折數往下折）:</span><br>
+    <%= f.number_field :computed_discount, :step => 0.05,:value=>0.9,:within=>0.5..1, class: 'form-control'  %>
   </div>
   <div class="field">
-    <span>推廣人數：</span>
-    <%= f.label :admin_coupon_limit %>
-    <%= f.text_field :admin_coupon_limit %>
+    <span>最高推廣人數：</span>
+    <%= f.number_field :admin_coupon_limit,:value=>100, class: 'form-control'  %>
   </div>
   <div class="field">
-    <%= f.label :other_content %>
-    <%= f.text_field :other_content %>
+    <%#= f.label :other_content %>
+    <span>優惠卷注意事項：</span>
+    <%= f.text_area :other_content, class: 'form-control'  %>
   </div>
-
+  <div>
+    您與Q胖的合作方案為20%優惠回饋，故顧客累積下線每增加一人可以增加5%折扣
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "新增優惠卷" %>
   </div>
 <% end %>
 
-<%= link_to 'Back', admin_store_coupons_path %>
+<%= link_to '返回優惠卷列表', admin_store_coupons_path %>
