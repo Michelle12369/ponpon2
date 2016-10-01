@@ -15,7 +15,7 @@
 	border-radius:0.2rem;
 	padding: 5px 8px;
 	margin: 0 10px;
-	background-color:#f08a5d;
+	background-color:$orange;
 }
 .coupon-control:visited{
 	color:white;
@@ -64,14 +64,14 @@
 		
 	}
 	.coupon-control-table-button-send{
-		background-color:#f08a5d;
+		background-color:$orange;
 		color:white;
 	}
 	.coupon-control-table-button-delete{
-		border:1px solid #f08a5d;
+		border:1px solid $orange;
 		background-color:white;
 		// background-color:#666666;
-		color: #f08a5d;
+		color: $orange;
 	}
 }
 .coupon-control-table-button-info{

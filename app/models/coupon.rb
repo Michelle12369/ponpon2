@@ -2,7 +2,7 @@ class Coupon < ActiveRecord::Base
   belongs_to :user
   belongs_to :store
   has_closure_tree
-
+  validates_presence_of :start_date,:coupon_pic,:item,:start_date,:expiry_date,:computed_discount,:admin_coupon_limit
 
   #coupon qrcode
   mount_uploader :qr_code, AvatarUploader

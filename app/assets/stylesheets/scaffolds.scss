@@ -109,8 +109,8 @@ input[type=submit]:focus{
 // 橘框白底按鈕
 .orange-btn{
     background-color:white;
-    color:#f08a5d;
-    border:1px solid #f08a5d;
+    color:$orange;
+    border:1px solid $orange;
     border-radius:0.2rem;
     height: 30px;
     width: 120px;
