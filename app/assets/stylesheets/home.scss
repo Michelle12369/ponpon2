@@ -17,19 +17,40 @@
 	.home-block{
 		padding:10px 15px;
 	}
+	.home-profile{
+		img{
+			vertical-align:top;
+			width: 40%;
+			border-radius:0.2rem;
+		}
+	}
 	.home-self-name{
 		width: 58%;
 		display: inline-block;
 		// padding:0;
 		padding-top:15px;
 	}
-	img{
-		vertical-align:top;
-		width: 40%;
-		border-radius:0.2rem;
+}
+// 推薦的店家
+.home-recommand-store{
+	padding-bottom:10px;
+	.home-like-eachStore{
+		padding-left:3px;
+		margin:3px 0;
+		.home-store-pic{
+			width: 100%;
+			display: inline-block;
+			img{
+				width: 100%;
+			}
+		}
+		.home-like-part{
+			.home-store-about-title{
+				font-size: 16px;
+			}
+		}
 	}
 }
-
 // 喜歡的店家
 .home-like-store{
 	padding-bottom:10px;
@@ -37,21 +58,36 @@
 		padding-left:3px;
 		margin:3px 0;
 		border-left:3px solid $orange;
+
+		.home-store-pic{
+			width: 45px;
+			display: inline;
+		}
+		.home-like-part{
+			display: inline;
+		}
 	}
 }
 
-@media screen and (max-width: 991px){
+@media screen and (min-width:884px) and (max-width:991px){
 	.home-self{
-		.home-self-name{
-			width: 100%;
-			padding-top: 10px;
-		}
-		img{
-			width: 100%;
-		}
+		margin-left:-10%;
+		width:192px;
 	}
 	.home-like-store{
-		// text-align: center;
+		margin-right:-10%;
+		width:192px;
+	}
+}
+@media screen and (min-width:767px) and (max-width:883px){
+	//  4 28.797    //  3 21.594
+	.home-self{
+		margin-left:-3%;
+		width:141.594px;
+	}
+	.home-like-store{
+		margin-right:-3%;
+		width:141.594px;
 		.home-like-eachStore{
 			border:0;
 		}
@@ -65,6 +101,7 @@
 		display: none;
 	}
 }
+
 
 
 // devise/regitrations/edit.html.erb
