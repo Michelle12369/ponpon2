@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   
   has_many :coupons#,:through=>:coupon_users
   #has_many :coupon_users
+  # before_save :downcase_fields
+
 
  def self.from_omniauth(auth)
   	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -41,6 +43,10 @@ class User < ActiveRecord::Base
       user.location=auth.extra.raw_info.location.name if auth.extra.raw_info.location.present?
     end
   end
+
+  # def downcase_fields
+  #     self.name.downcase!
+  #  end
 
   has_many :stores ,:through =>:store_users
   has_many :store_users

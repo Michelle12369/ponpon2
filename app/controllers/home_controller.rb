@@ -40,7 +40,7 @@ class HomeController < ApplicationController
 
   def search_user
     if params[:search].present?
-      @results=User.where("name LIKE ?","%#{params[:search]}%").paginate(page: params[:page], per_page: 10)
+      @results=User.where("lower(name) LIKE ?","%#{params[:search].downcase}%").paginate(page: params[:page], per_page: 10)
       @results_store=Admin::Store.where("store_name LIKE ? and store_status=?","%#{params[:search]}%",0).paginate(page: params[:page], per_page: 10)
     end
     

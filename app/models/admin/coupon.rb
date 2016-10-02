@@ -1,5 +1,5 @@
 class Admin::Coupon < Coupon
-
+	
 	require 'rqrcode'
 	require 'rqrcode_png'
 

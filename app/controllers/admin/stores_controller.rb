@@ -19,17 +19,16 @@ class Admin::StoresController < Admin::BaseController
 
   # GET /admin/stores/1/edit
   def edit
-    @city_array=["基隆市","台北市","新北市","桃園市","新竹市","新竹縣","苗栗縣","台中市","彰化縣","南投縣","雲林縣","嘉義市","嘉義縣","台南市","高雄市","屏東縣","台東縣","花蓮縣","宜蘭縣","澎湖縣","金門縣","連江縣"]
+    #@city_array=["基隆市","台北市","新北市","桃園市","新竹市","新竹縣","苗栗縣","台中市","彰化縣","南投縣","雲林縣","嘉義市","嘉義縣","台南市","高雄市","屏東縣","台東縣","花蓮縣","宜蘭縣","澎湖縣","金門縣","連江縣"]
   end
 
   # POST /admin/stores
   # POST /admin/stores.json
   def create
     @admin_store = Admin::Store.new(admin_store_params)
-    # @admin_store.store_address=params[:city]+params[:address]
     respond_to do |format|
       if @admin_store.save
-        format.html { redirect_to @admin_store, notice: 'Store was successfully created.' }
+        format.html { redirect_to @admin_store, notice: '已創建店家資訊' }
         format.json { render :show, status: :created, location: @admin_store }
       else
         format.html { render :new }
@@ -48,7 +47,7 @@ class Admin::StoresController < Admin::BaseController
           if params[:admin_store][:store_cover_photo].present?
             render :crop  ## Render the view for cropping
           else
-            redirect_to edit_admin_store_path, notice: 'Store was successfully updated.'
+            redirect_to edit_admin_store_path, notice: '已更新店家資訊'
           end 
         }
 

@@ -88,6 +88,7 @@ Rails.application.routes.draw do
   post '/users/:user_id/coupons/:id/distribute', :to => 'coupons#distribute',:as =>"distribute_user_coupon"
   get '/users/:user_id/coupons/:id/redeem', :to => 'coupons#redeem',:as =>"redeem_user_coupon"
   get '/stores/:store_id/coupons/:id/take',:to=>'coupons#take',:as=>"take"
+  get '/users/:user_id/coupons/:id/download',:to=>'coupons#download',:as=>"download"
 
   #information pages settings
   get '/food',:to=>'home#food',:as=>"food"

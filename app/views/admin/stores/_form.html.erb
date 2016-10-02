@@ -1,13 +1,13 @@
 <%= form_for(admin_store) do |f| %>
   <% if admin_store.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(admin_store.errors.count, "error") %> prohibited this admin_store from being saved:</h2>
+      <h2><%=admin_store.errors.count %> 個欄位未填</h2>
 
-      <ul>
-      <% admin_store.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+      <!-- <ul> -->
+      <%# admin_store.errors.full_messages.each do |message| %>
+        <!-- <li><%#= message %></li> -->
+      <%# end %>
+      <!-- </ul> -->
     </div>
   <% end %>
 
@@ -18,8 +18,8 @@
       <%= f.text_field :store_name %>
     </div>
     <div class="field p-l-2">
-      <div class="store-info">店家類型:</div>
-      <%= f.text_field :store_type %>
+      <div class="store-info">商店類型:</div>
+       <%= f.select :store_type, options_for_select(store_type_array,f.object.store_type),{}%>
     </div>
     <div class="field p-l-2">
       <div class="store-info">簡介：</div>
@@ -30,13 +30,13 @@
   <div class="store-info-block">
     <h5>商家資訊</h5>
     <div class="field p-l-2">
-      <div class="store-info">聯絡電話:</div>
-      <%= f.text_field :store_phone %>
+      <div class="store-info">商店電話:</div>
+      <%= f.telephone_field :store_phone %>
     </div>
 
     <div class="field p-l-2">
-      <div class="store-info">商家位置:</div>
-      <%=f.select :store_city, options_for_select(@city_array,f.object.store_city),{},{ :class => 'store-info-city' }%>
+      <div class="store-info">商店位置:</div>
+      <%=f.select :store_city, options_for_select(city_array,f.object.store_city),{},{ :class => 'store-info-city' }%>
       <%=f.text_field :store_address ,{ :class => 'store-info-address' } %>
     </div>
     <div class="field p-l-2">
@@ -52,7 +52,7 @@
   <div class="store-info-block">
     <h5>商家照片</h5>
     <div class="field p-l-2">
-      <div class="store-info">封面照片上傳</div>
+      <div class="store-info">店家大頭貼上傳</div>
       <%= f.file_field :store_cover_photo%>
     </div>
     <div class="field p-l-2">
