@@ -171,3 +171,38 @@
 		padding:0 10%;
 	}
 }
+
+// 個人塗鴉牆
+.self-board{
+	max-width:700px;
+	margin:0 auto;
+}
+
+
+// Q胖推薦
+.part-orange-bg{
+    background-color:$background-with-color;
+}
+.part-white-bg{
+	background-color:#f5f5f5;
+	img{
+		width: 30%;
+	}
+}
+@media screen and (min-width:1px)and(max-width:991px){
+	.part-white-bg{
+		height: 270px;
+	}
+}
+@media screen and (min-width:991px)and (max-width:1200px){
+	.part-white-bg{
+		height: 283px;
+	}
+}
+@media screen and (min-width:1200px){
+	.part-white-bg{
+		height: 350px;
+	}
+}
+
+

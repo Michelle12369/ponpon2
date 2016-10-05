@@ -1,2 +1,49 @@
-<%=render 'officalpagebar'%>
-<p>內容同front</p>
+
+<%#=render 'officalpagebar'%>
+
+
+<div class="col-sm-12 text-xs-center p-b-3">
+	<%=image_tag 'cake.png', style:'width:70%;' %>
+</div>
+<div class="col-sm-12 part-orange-bg m-b-2 p-b-2 p-t-2">
+	<h5 class="text-xs-center">熱門優惠</h5>
+	<%@stores_last.each do |store|%>
+		<%=image_tag store.store_cover_photo.url||'avatar.jpg'%>
+		<%=store.store_name%>
+		<%=store.store_city%>
+		<%=store.coupons.last.root.coupon_title if store.coupons.present? %>
+	<%end%>
+</div>
+
+<div class="col-sm-12 m-b-2 p-b-2 p-t-2">
+	<h5 class="text-xs-center">最新優惠</h5>
+	<%@stores_first.each do |store|%>
+		<%=image_tag store.store_cover_photo.url||'avatar.jpg'%>
+		<%=store.store_name%>
+		<%=store.store_city%>
+		<%=store.coupons.last.root.coupon_title if store.coupons.present? %>
+	<%end%>
+</div>
+
+<div class="col-sm-12 part-orange-bg m-b-2 p-b-2 p-t-2">
+	<h5 class="text-xs-center">名人推薦</h5>
+	<div class="col-sm-6 col-md-5 offset-md-1 col-lg-4 offset-lg-2">
+	<%=image_tag 'recommand_food.jpg', class:"w-100"%>
+	</div>
+
+	<div class="col-sm-6 col-md-5 col-lg-4 p-x-0 part-white-bg">
+		<div class="text-xs-center p-t-2 p-x-0">
+			<%= image_tag 'yawen.jpg' %>
+			<h5 class="m-t-2">CORNER TEA TIME</h5>
+		</div>
+		<div class="p-x-1">
+			<hr>
+			<span>人氣部落客Yawen的口袋名單大公開！一吃就會愛上的特色餐廳</span>
+			<%= link_to "more>>", recommend_path %>
+		</div>
+	</div>
+</div>
+
+<div>
+	<h5 class="text-xs-center">多人推薦</h5>
+</div>

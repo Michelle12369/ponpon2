@@ -96,6 +96,8 @@ Rails.application.routes.draw do
   get '/online',:to=>'home#online',:as=>"online"
   get '/search',:to=>'home#search_user',:as=>"search_user"
 
+  get '/recommend',:to=>'home#recommend',:as=>"recommend"
+
   #pusher settings
   # post 'pusher/auth'
   # match '/posters/:id' => "posts#shownolayout",via: :get#post

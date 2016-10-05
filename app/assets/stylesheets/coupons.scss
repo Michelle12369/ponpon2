@@ -124,5 +124,14 @@
 	}
 }
 }
+.orange-btn-nm{
+    background-color:white;
+    color:$orange;
+    border:1px solid $orange;
+    border-radius:0.2rem;
+    a{
+    	color: $orange;
+    }
+}
 
 

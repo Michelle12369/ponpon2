@@ -35,8 +35,13 @@ class HomeController < ApplicationController
   end
 
   def offical
-
+    @stores_last=Admin::Store.includes(:coupons).where(store_status:"passed").last(6)
+    @stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(6)
   end  
+
+  def recommend
+
+  end
 
   def search_user
     if params[:search].present?

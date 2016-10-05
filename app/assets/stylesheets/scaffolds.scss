@@ -106,6 +106,12 @@ button:focus{
 input[type=submit]:focus{
     border:none !important;
 }
+// 橘字
+.orange-word{
+    color: $orange;
+}
+// 橘背景
+
 
 // 橘框白底按鈕
 .orange-btn{
@@ -114,6 +120,13 @@ input[type=submit]:focus{
     border:1px solid $orange;
     border-radius:0.2rem;
     height: 30px;
+    width: 120px;
+}
+.orange-btn-no{
+    background-color:white;
+    color:$orange;
+    border:1px solid $orange;
+    border-radius:0.2rem;
     width: 120px;
 }
 // 橘底白字按鈕
@@ -133,6 +146,7 @@ input[type=submit]:focus{
     height: 30px;
     width: 70px;
 }
+
 
 //admin-btn
 .admin-btn-orange{
