@@ -2,9 +2,24 @@
 
 <div class="text-xs-center col-xs-12 p-b-2 p-l-0 p-r-0 cou-store-bgpic">
   <%for i in @admin_store_pic.store_photo%>
-    <%=image_tag i.url, class: 'w-100'%>
+    <%=image_tag i.url, class: ''%>
   <%end%>
+
+      <div class="p-x-0" id="coupon-pic">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"><ol class="carousel-indicators"><%@store.store_photo.each_with_index do |pic,index|%><li data-target="#carousel-example-generic" data-slide-to="<%=index%>" class="<%=coupon_carousel_active(index)%>"></li><%end%></ol><div class="carousel-inner" role="listbox"><%@store.store_photo.each_with_index do |pic,index|%><div class="carousel-item <%=coupon_carousel_active(index)%>"><div class="text-xs-center coupon-many-pic"><%=image_tag i.url,style:"height:236px;"%></div></div><%end%></div><a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="icon-prev" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a><a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="icon-next" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+
 </div>
+
+
+
 
 <p>
   <h4 class="m-b-0"><strong><%= @store.store_name %></strong></h4>

@@ -129,6 +129,12 @@ input[type=submit]:focus{
     border-radius:0.2rem;
     width: 120px;
 }
+.orange-nm-btn{
+    background-color:white;
+    color:$orange;
+    border:1px solid $orange;
+    border-radius:0.2rem;
+}
 // 橘底白字按鈕
 .orange-bg-btn{
     background-color:$orange;

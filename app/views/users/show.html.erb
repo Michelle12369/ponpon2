@@ -1,4 +1,4 @@
-<div id="user-<%= @user.id %>" class="row">
+<div id="user-<%= @user.id %>">
   <div class="self-board">
       <div class="row">
           <div class="col-xs-3 col-sm-3 col-md-2 col-lg-3">
@@ -30,7 +30,7 @@
           </div>
       </div>
 
-    <div id="activities" class="row">
+    <div id="activities" class="">
       <%=show_post(@activities,@user)%>
     </div>
     <%= render 'shared/paginate', resources: @activities %>
