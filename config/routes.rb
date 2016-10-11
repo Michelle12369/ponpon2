@@ -92,8 +92,8 @@ Rails.application.routes.draw do
 
   #information pages settings
   get '/food',:to=>'home#food',:as=>"food"
-  get '/play',:to=>'home#play',:as=>"play"
-  get '/online',:to=>'home#online',:as=>"online"
+  # get '/play',:to=>'home#play',:as=>"play"
+  # get '/online',:to=>'home#online',:as=>"online"
   get '/search',:to=>'home#search_user',:as=>"search_user"
 
   get '/recommend',:to=>'home#recommend',:as=>"recommend"

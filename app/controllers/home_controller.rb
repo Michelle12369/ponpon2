@@ -4,9 +4,11 @@ class HomeController < ApplicationController
   
 
   def front
+    @stores_last=Admin::Store.includes(:coupons).where(store_status:"passed").last(6)
+    @stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(6)
     render :layout => "frontbar"
-    #@activities = PublicActivity::Activity.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
-  
+    
+    
   end
 
   def index
@@ -23,15 +25,7 @@ class HomeController < ApplicationController
   end
 
   def food
-
-  end
-
-  def play
-
-  end
-
-  def online
-
+    @coupons=Coupon.roots.includes(:store).paginate(page: params[:page], per_page: 9)
   end
 
   def offical
