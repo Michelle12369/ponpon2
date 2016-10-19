@@ -1,50 +1,69 @@
-<div id="user-<%= @user.id %>" class="row">
-  <!-- <div class="col-lg-2"></div> -->
-  <div class="col-md-6 offset-md-3">
-    
-    <div class="container m-b-1">
-      <div class="row">
-        <div class="user-info">
-          <div class="col-xs-3 col-sm-3 col-md-2 col-lg-3">
+<div id="user-<%= @user.id %>">
+  <div class="self-board">
+        <div class="self">
+          <div class="self-pic text-xs-center text-sm-left">
             <%=image_tag @user.avatar.url|| 'avatar.jpg',style:"width:100px;"%>
           </div>
 
-          <div class="col-xs-9 col-sm-9 col-md-10 col-lg-9">
-            <div class="col-xs-12 p-l-0">
-              <div class="col-xs-6 p-l-0">
-                <h5 class="user_name"><%=@user.name%></h5>
-              </div>
-<!--               <div class="col-xs-6 text-xs-right">  
-                嗚嗚嗚錯了幫我改改
-              </div> -->
+          <div class="self-content">
+            <div class="p-b-1">
+              <span class="user_name"><%=@user.name%></span>
+                <span class="p-l-1 pull-right">
+                  <% if is_current_user?(@user) %>
+                    <%= link_to '編輯個人檔案', edit_user_path(@user) %>
+                  <%else%>
+                    <%=render "follows/form",user:@user%>
+                  <%end%>
+                </span>
             </div>
-            <div class="col-xs-12 p-l-0">
-              <div class="col-xs-9 p-l-0">
-                <%=@user.about%>
-              </div>
-              <div class="col-xs-3 text-xs-right p-l-0">
-                <% if is_current_user?(@user) %>
-                  <%= link_to '編輯個人檔案', edit_user_path(@user) %>
-                <%else%>
-                  <%=render "follows/form",user:@user%>
+            <div class="self-status">
+              <p class="p-t-0">
+                <strong> <%= @post_size%> </strong>則貼文
+                <span> ｜ </span>
+                <%= link_to followers_user_path(@user) do%>
+                  <strong><%=@user.followers_count%></strong> 位粉絲
                 <%end%>
-              </div>
+                <span> ｜</span>
+                <%= link_to friends_user_path(@user) do%>
+                  追蹤 <strong><%=@user.following_users_count%></strong> 人
+                <%end%>
+                <span> ｜ </span>
+                <%= link_to stores_user_path(@user) do%>
+                  <strong><%=@user.following_stores.size%></strong> 喜愛商家
+                <%end%>
+              </p>
             </div>
-            <div class="col-xs-12 p-l-0">
-            <p class="p-t-1 follow-data"><%= link_to followers_user_path(@user) do%><%=@user.followers_count%>位粉絲<%end%><span> ｜</span>
-            <%= link_to friends_user_path(@user) do%>追蹤<%=@user.following_users_count%>人<%end%> ｜ <%= link_to stores_user_path(@user) do%><%=@user.following_stores.size%>喜愛商家<%end%> ｜ <%= @post_size%>則貼文</p>
-            </div>
-          </div> 
-        </div>
-      </div>
-    </div>
+              <span>
+                <%=@user.about%>
+              </span>
+          </div>
 
-    <div id="activities" class="row">
+          <div class="self-xs-status">
+            <hr class="m-b-1">
+            <p class="text-xs-center">
+              <strong><%= @post_size%></strong>則貼文
+              <span>|</span>
+              <%= link_to followers_user_path(@user) do%>
+                <strong><%=@user.followers_count%></strong>位粉絲
+              <%end%>
+              <span>|</span>
+              <%= link_to friends_user_path(@user) do%>
+                追蹤<strong><%=@user.following_users_count%></strong>人
+              <%end%>
+              <span>|</span>
+              <%= link_to stores_user_path(@user) do%>
+                <strong><%=@user.following_stores.size%></strong>喜愛商家
+              <%end%>
+            </p>
+          </div>
+
+
+        </div>
+
+
+    <div id="activities" class="">
       <%=show_post(@activities,@user)%>
     </div>
     <%= render 'shared/paginate', resources: @activities %>
   </div>
-<!--   <div class="col-lg-2">
-    安安
-  </div> -->
 </div>

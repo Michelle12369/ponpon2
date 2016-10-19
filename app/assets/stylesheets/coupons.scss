@@ -45,12 +45,18 @@
 }
 .coupon-many-pic{
 	background-color:black;
+	img{
+		width: 80%;
+	}
 }
 .coupon-bg{
 	background-color:white;
 	border:1px solid lightgrey;
 	border-radius:0.2rem;
 	padding:20px;
+}
+.orange-focus:hover{
+	color:$orange;
 }
 
 #coupon-content{
@@ -123,6 +129,15 @@
 		margin-left:-10px;
 	}
 }
+}
+.orange-btn-nm{
+    background-color:white;
+    color:$orange;
+    border:1px solid $orange;
+    border-radius:0.2rem;
+    a{
+    	color: $orange;
+    }
 }
 
 

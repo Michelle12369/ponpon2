@@ -18,8 +18,14 @@
             <button type="button" class="navbar-toggler hidden-md-up pull-xs-right bar-button-small" data-toggle="collapse" data-target="#myNavbar"  aria-controls="#myNavbar" aria-expanded="false" aria-label="Toggle navigation">
               &#9776;
             </button>
-            <%= link_to root_path, class:"navbar-brand",id: "navbar-brand" do%>
-                <%= image_tag "nav_logo_4.png", class: "bar-logo"%>
+            <%if signed_in?%>
+                <%= link_to offical_path, class:"navbar-brand",id: "navbar-brand" do%>
+                    <%= image_tag "nav_logo_4.png", class: "bar-logo"%>
+                <%end%>
+            <%else%>
+                <%= link_to home_path, class:"navbar-brand",id: "navbar-brand" do%>
+                    <%= image_tag "nav_logo_4.png", class: "bar-logo"%>
+                <%end%>
             <%end%>
             <!-- 放大鏡 -->
             <a class="short-search" href="javascript: void(0)"><%= fa_icon 'search',class:"d-inline-block nav-search-glass"%> </a>
@@ -27,7 +33,7 @@
                 <div class="collapse navbar-toggleable-sm" id="myNavbar">
                     <ul class="nav navbar-nav" id="nav-choice">
                         <% if signed_in?%>
-                            <li class="nav-item <%= active_class('/offical')%> first-nav"><%= link_to "Q胖推薦", offical_path,class: "nav-link"  %></li>
+                            <li class="nav-item <%= active_class('/food')%> first-nav"><%= link_to "Q胖優惠", food_path,class: "nav-link"  %></li>
                             <li class="nav-item <%= active_class('/') %>"><%= link_to "優惠動態", root_path,class: "nav-link"  %></li>
                             <li class="nav-item <%= active_class(user_coupons_path(current_user)) %>"><%= link_to "我的優惠卷列表", user_coupons_path(current_user),class: "nav-link"  %></li>
                             <li class="nav-item <%= active_class('/stores') %>"><%= link_to "商店街",stores_path,class: "nav-link"%></li>
@@ -68,10 +74,9 @@
 
 
                     <%else%>
+                    <li class="nav-item  first-nav-not-sign"%><%= link_to "Ｑ胖推薦", home_path,class: "nav-link"%></li>
+                    <li class=" <%= active_class('/food') %> nav-item"><%= link_to "Ｑ胖優惠", food_path,class: "nav-link" %></li>
 
-                    <li class=" <%= active_class('/food') %> nav-item first-nav-not-sign"><%= link_to "一起胖", food_path,class: "nav-link" %></li>
-                    <li class="nav-item <%= active_class('/play') %>"><%= link_to "粗乃玩", play_path ,class: "nav-link" %></li>
-                    <li class="nav-item <%= active_class('/online') %>"><%= link_to "網購優", online_path ,class: "nav-link" %></li>
                     <li class="nav-item <%= active_class('/stores') %>"><%= link_to "商店街",stores_path,class: "nav-link"%></li>
 
                 </ul>

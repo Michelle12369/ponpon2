@@ -227,11 +227,12 @@ button:focus{
 }
 
 // stores/show.html.erb
+.store-show{
+	max-width:800px;
+	margin:0 auto;
+}
 .cou-store-bgpic{
 	margin-top:-25px;
-	img{
-		height:70vh;
-	}
 }
 .cou-icon{
 	width:30px;

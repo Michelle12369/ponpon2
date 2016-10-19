@@ -1,63 +1,91 @@
-<p id="notice"><%= notice %></p>
+<div class="store-show">
+  <div class="text-xs-center col-xs-12 p-b-2 p-l-0 p-r-0 cou-store-bgpic">
+        <div class="p-x-0" id="coupon-pic">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+            <%@admin_store_pic.store_photo.each_with_index do |pic,index|%>
+              <li data-target="#carousel-example-generic" data-slide-to="<%=index%>" class="<%=coupon_carousel_active(index)%>"></li>
+            <%end%>
+            </ol>
+          <div class="carousel-inner" role="listbox">
+            <%@admin_store_pic.store_photo.each_with_index do |pic,index|%>
+              <div class="carousel-item <%=coupon_carousel_active(index)%>">
+                <div class="text-xs-center coupon-many-pic">
+                  <%=image_tag pic.url,style:""%>
+                </div>
+              </div>
+            <%end%>
+          </div>
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+              <span class="icon-prev" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+              <span class="icon-next" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+  </div>
 
-<div class="text-xs-center col-xs-12 p-b-2 p-l-0 p-r-0 cou-store-bgpic">
-  <%for i in @admin_store_pic.store_photo%>
-    <%=image_tag i.url, class: 'w-100'%>
-  <%end%>
-</div>
-
-<p>
-  <h4 class="m-b-0"><strong><%= @store.store_name %></strong></h4>
-</p>
-<div class="p-b-2">
-  <strong><%= @store.store_type%> </strong>
-  <strong><%= @store.store_address %></strong>
-</div>
-
-
-<p>粉絲數、店家大頭貼、優惠券數</p>
-
-<div class="col-sm-12">
-  <p><strong>簡介：</strong><%= @store.store_about %></p>
-</div>
-<div class="col-sm-6">
-  <p>
-    <%= image_tag 'cou_clock.png' , class:'cou-icon' %>
-    <%= @store.store_time %>
-  </p>
-</div>
-<div class="col-sm-6">
-  <p>
-    <%= image_tag 'cou_tel.png' , class:'cou-icon' %>
-    <%= @store.store_phone %>
-  </p>
-</div>
-<div class="col-sm-6">
-  <p>
-    <%= image_tag 'cou_gps.png' , class:'cou-icon' %>
-    <%= @store.store_address %>
-  </p>
-</div>
-<div class="col-sm-6">
-  <p>
-    <%= image_tag 'cou_star.png' , class:'cou-icon' %>
-    <%= @store.store_rule %>
-  </p>
-</div>
-
-<div class="col-sm-12 cou-info-coupon p-t-2 m-t-3">
-  <h6 class="m-t-2 m-b-2">優惠卷</h6>
-  <% @coupons.each do |coupon| %>
-    <div class="cou-info-detail">
-      <p class="cou-info-detail-title"><%=coupon.coupon_title%></p>
-      <div class="cou-info-detail-content">
-        <p><%=coupon.other_content%></p>
-        <p><%=coupon.computed_discount*10%>折開始計算</p>
+  <div class="col-md-9 col-xs-6 p-x-0">
+    <h4 class="m-b-0"><strong><%= @store.store_name %></strong></h4>
+  </div>
+  <div class="col-md-3 col-xs-6 p-x-0 text-xs-right">
+    <%if signed_in?%>
+    <div id="store-<%= @store.id %>">
+      <div class="follow p-t-0">
+        <%= render 'follows/store_form', store: @store %>
       </div>
     </div>
-  <%end%>
-</div>
+    <%end%>
+  </div>
 
+  <div class="p-b-2">
+    <strong><%= @store.store_type%> </strong>
+    <strong><%= @store.store_address %></strong>
+  </div>
+  <div class="col-sm-12">
+    <p><strong>簡介：</strong><%= @store.store_about %></p>
+  </div>
+  <div class="col-sm-6">
+    <p>
+      <%= image_tag 'cou_clock.png' , class:'cou-icon' %>
+      <%= @store.store_time %>
+    </p>
+  </div>
+  <div class="col-sm-6">
+    <p>
+      <%= image_tag 'cou_tel.png' , class:'cou-icon' %>
+      <%= @store.store_phone %>
+    </p>
+  </div>
+  <div class="col-sm-6">
+    <p>
+      <%= image_tag 'cou_gps.png' , class:'cou-icon' %>
+      <%= @store.store_address %>
+    </p>
+  </div>
+  <div class="col-sm-6">
+    <p>
+      <%= image_tag 'cou_star.png' , class:'cou-icon' %>
+      <%= @store.store_rule %>
+    </p>
+  </div>
+
+  <div class="col-sm-12 cou-info-coupon p-t-2 m-t-3">
+    <h6 class="m-t-2 m-b-2">優惠卷</h6>
+    <% @coupons.each do |coupon| %>
+      <div class="cou-info-detail">
+        <p class="cou-info-detail-title"><%=coupon.coupon_title%></p>
+        <div class="cou-info-detail-content">
+          <p><%=coupon.other_content%></p>
+          <p><%=coupon.computed_discount*10%>折開始計算</p>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>>
 
 
 

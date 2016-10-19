@@ -1,14 +1,7 @@
 <div class="container coupon-width">
   <div class="row coupon-bg">
-      <div class="col-sm-6 p-x-0" id="coupon-pic">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"><ol class="carousel-indicators"><%@store.store_photo.each_with_index do |pic,index|%><li data-target="#carousel-example-generic" data-slide-to="<%=index%>" class="<%=coupon_carousel_active(index)%>"></li><%end%></ol><div class="carousel-inner" role="listbox"><%@store.store_photo.each_with_index do |pic,index|%><div class="carousel-item <%=coupon_carousel_active(index)%>"><div class="text-xs-center coupon-many-pic"><%=image_tag pic,style:"height:236px;"%></div></div><%end%></div><a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-            <span class="icon-prev" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a><a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-            <span class="icon-next" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
+      <div class="col-sm-6 p-x-0 text-xs-center" id="coupon-pic">
+        <%=image_tag @coupon.root.coupon_pic.thumb,class:" background-white p-t-0 w-100"%>
       </div>
 
     <div class="col-sm-6" id='coupon-content'>
@@ -66,16 +59,14 @@
             </div>
       </div>
       <div class="modal-footer">
-            <%= submit_tag "傳送", class: 'btn btn-secondary' %>
+            <%= submit_tag "傳送", class: 'btn orange-btn-nm' %>
           <% end %>
          <%end%> 
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div>
+</div>
 
-
-<!--  -->
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm modal-width">
     <div class="modal-content">
@@ -87,17 +78,16 @@
           <%if coupon_status(@coupon)=="可使用"%>
             <%=image_tag @coupon.qr_code, class:"qrcode" %>
           <% end %>
-          <div>
+          <div class="text-xs-center">
             <!-- <button class="orange-btn">下載儲存此QRCode</button> -->
-            <button class="orange-btn"><%= link_to "下載儲存此QRCode", download_path(current_user,@coupon) %></button>
-            
+            <button class="orange-btn-nm"><%= link_to "下載儲存此QRCode", download_path(current_user,@coupon) %></button>
           </div>
         </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -106,9 +96,11 @@
         </button>
         <h4 class="modal-title" id="myModalLabel">分享到你的動態時報</h4>
       </div>
-      <div class="modal-body">
-            <div id="shareBtn" class="btn btn-success clearfix">Share</div>
+      <div class="modal-body text-xs-center">
+
+            <div id="shareBtn" class="orange-btn-nm btn clearfix">Share</div>
             <%= render 'posts/form' %>
+
             <script>
 
               window.fbAsyncInit = function() {
@@ -138,9 +130,9 @@
             </script>
 
       </div>
-      <div class="modal-footer">
+      <!-- <div class="modal-footer">
         <button type="button" class="btn orange-btn">Save changes</button>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

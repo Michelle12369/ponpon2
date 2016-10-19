@@ -2,6 +2,7 @@
 <div class="col-md-6 col-xs-12 follow-block">
 	<h5 class="m-t-1 m-l-1">搜尋結果</h5>
 	<%if @results.present?||@results_store.present?%>
+		<h6 class="m-l-1 m-t-1">人物</h6>
 		<%@results.each do |user|%>
 			<div id="user-<%= user.id %>" class="follow-friend-block p-l-1">
 				<%= link_to user_path(user),class: "nav-link"  do %>
@@ -9,18 +10,23 @@
 					<%=user.name%>
 				<%end%>
 				<%if user!=current_user%>
+					<span class="pull-right m-r-1">
 					<%=render "follows/form",user:user %>
+					</span>
 				<%end%>
 			</div>
 		<%end%>
 		
+		<h6 class="m-l-1 m-t-1">店家</h6>
 		<%@results_store.each do |store|%>
 			<div id="store-<%= store.id %>" class="follow-friend-block p-l-1">
 				<%= link_to store_path(store),class: "nav-link"  do%>
 						<%=image_tag store.store_cover_photo || 'avatar.jpg', class: "photo-sticker",style:"width:50px;"%>
 						<%=store.store_name%>
-						<%= render 'follows/store_form', store: store %>
 				<%end%>
+				<span class="pull-right m-r-1">
+					<%= render 'follows/store_form', store: store %>
+				</span>
 			</div>
 		<%end%>
 		<%= render 'shared/paginate', resources: @results %>
