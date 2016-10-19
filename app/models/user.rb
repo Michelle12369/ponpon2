@@ -20,11 +20,11 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
   mount_uploader :cover, AvatarUploader
-  validates_presence_of :name
+  validates_presence_of :name,:birthday
   
   has_many :coupons#,:through=>:coupon_users
   #has_many :coupon_users
-  # before_save :downcase_fields
+  before_save :compute_age
 
 
  def self.from_omniauth(auth)
@@ -38,15 +38,17 @@ class User < ActiveRecord::Base
       user.gender=auth.extra.raw_info.gender
       if auth.extra.raw_info.birthday.present?
         user.birthday=Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y')  
-        user.age=(Date.today - user.birthday).to_i / 365 
+        user.age=(Date.today - user.birthday).to_i / 365
       end 
       user.location=auth.extra.raw_info.location.name if auth.extra.raw_info.location.present?
     end
   end
 
-  # def downcase_fields
-  #     self.name.downcase!
-  #  end
+  def compute_age
+    if self.birthday.present?&&self.age.nil?
+      self.age=(Date.today - self.birthday).to_i / 365
+    end
+  end
 
   has_many :stores ,:through =>:store_users
   has_many :store_users

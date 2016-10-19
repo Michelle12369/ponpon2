@@ -15,7 +15,7 @@
       <div id='coupon-con'>
         <h5><%= @coupon.coupon_title %></h5>
         <div>
-          <p>文山區 <span><%= link_to store_path(@store) do%><%=@store.store_name%><%end%></span></p>
+          <p><%=@store.store_city%> <span><%= link_to store_path(@store) do%><%=@store.store_name%><%end%></span></p>
           <p>贈送人：<%= distributor(@coupon)%></p>
           <p>狀態：<%= coupon_status(@coupon)%></p>
           <p>商品：<%=@coupon.item%></p>
@@ -107,9 +107,8 @@
         <h4 class="modal-title" id="myModalLabel">分享到你的動態時報</h4>
       </div>
       <div class="modal-body">
-
             <div id="shareBtn" class="btn btn-success clearfix">Share</div>
-
+            <%= render 'posts/form' %>
             <script>
 
               window.fbAsyncInit = function() {
@@ -132,7 +131,7 @@
               FB.ui({
                 method: 'share',
                 mobile_iframe: true,
-                href: '<%=store_path(@store)%>',
+                href: 'localhost:3000<%=store_path(@store)%>',
               }, function(response){});
             }
 

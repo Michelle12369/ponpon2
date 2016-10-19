@@ -54,10 +54,14 @@
     <div class="field p-l-2">
       <div class="store-info">店家大頭貼上傳</div>
       <%= f.file_field :store_cover_photo%>
+      <%=image_tag @admin_store.store_cover_photo,class:"avatar"%>
     </div>
     <div class="field p-l-2">
       <div class="store-info">照片上傳</div>
       <%= f.file_field :store_photo, multiple: true %>
+      <%@admin_store.store_photo.each do |x|%>
+        <%=image_tag x.url,class:"avatar"%>
+      <%end%>
     </div>
   </div>
 

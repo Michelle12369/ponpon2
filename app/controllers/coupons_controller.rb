@@ -11,6 +11,7 @@ class CouponsController < ApplicationController
   # GET /coupons.json
   def index
     @coupon = @user.coupons.where("used = ? AND expiry_date > ?",false,Time.zone.today)#Coupon.all
+
   end
 
   def notuse
@@ -49,6 +50,7 @@ class CouponsController < ApplicationController
     @friends_array=@friends.pluck(:name,:id)
     store=@coupon.store_id
     @store=Admin::Store.find(store)
+    @post = Post.new
   end
 
   #顧客發送優惠卷給其他顧客
