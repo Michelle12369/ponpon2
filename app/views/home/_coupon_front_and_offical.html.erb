@@ -1,0 +1,72 @@
+<div class="official-max">
+<div class="col-xs-12 text-xs-center p-b-3">
+	<%=image_tag 'cake.png', style:'width:70%;' %>
+</div>
+<div class="col-xs-12 part-orange-bg m-b-2 p-b-2 p-t-2">
+	<h5 class="text-xs-center p-b-1"><strong>熱門優惠</strong></h5>
+	<%@stores_last.each do |store|%>
+		<%= link_to  store_path(store) do%>
+			<div class="col-md-4 col-sm-6 col-xs-12 text-xs-center m-b-1">
+				<div class="card">
+				<%if store.coupons.present?%>
+					<%=image_tag store.coupons.last.root.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>
+					<div class="office-bg-white card-block">
+					<p class="m-b-0 card-text"><%=store.store_name%></p>
+					<h5 class="m-b-0 card-text"><%=store.coupons.last.root.coupon_title  %></h5>
+					<p class="m-b-0 text-muted card-text"><%=store.store_city%></p>
+					</div>
+				<%end%>
+				</div>
+			</div>
+		<%end%>
+	<%end%>
+</div>
+
+<div class="col-xs-12 m-b-2 p-b-2 p-t-2">
+	<h5 class="text-xs-center p-b-1"><strong>最新優惠</strong></h5>
+	<%@stores_first.each do |store|%>
+		<%= link_to  store_path(store) do%>
+			<div class="col-md-4 col-sm-6 col-xs-12 text-xs-center m-b-1">
+				<div class="card">
+				<%if store.coupons.present?%>
+					<%=image_tag store.coupons.last.root.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>
+					<div class="office-bg-white card-block">
+					<p class="m-b-0 card-text"><%=store.store_name%></p>
+					<h5 class="m-b-0 card-text"><%=store.coupons.last.root.coupon_title  %></h5>
+					<p class="m-b-0 text-muted card-text"><%=store.store_city%></p>
+					</div>
+				<%end%>
+				</div>
+			</div>
+		<%end%>
+	<%end%>
+	<div class="col-xs-12 text-xs-center">
+		<%= link_to "查看更多", food_path,class:"orange-btn-no orange-hover d-inline-block", style:"padding:5px 0"%>
+	</div>
+</div>
+
+<div class="col-xs-12 part-orange-bg m-b-2 p-b-2 p-t-2">
+	<h5 class="text-xs-center p-b-1"><strong>名人推薦</strong></h5>
+		<div class="col-sm-6 col-md-5 offset-md-1 col-lg-4 offset-lg-2">
+		<%=image_tag 'recommand_food.jpg', class:"w-100"%>
+		</div>
+		<%= link_to recommend_path do%>
+		<div class="col-sm-6 col-md-5 col-lg-4 p-x-0 part-white-bg">
+			<div class="text-xs-center p-t-2 p-x-0">
+				<%= image_tag 'yawen.jpg' %>
+				<h5 class="m-t-1">CORNER TEA TIME</h5>
+			</div>
+			<div class="p-x-1 p-b-1">
+				<hr>
+				<span>人氣部落客Yawen的口袋名單大公開！一吃就會愛上的特色餐廳 more>></span>
+				
+			</div>
+		</div>
+		<%end%>
+</div>
+
+<div>
+	<h5 class="text-xs-center"><strong>多人推薦</strong></h5>
+</div>
+
+</div>

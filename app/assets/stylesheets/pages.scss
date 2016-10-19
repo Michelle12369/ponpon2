@@ -164,3 +164,26 @@ $main-color:rgb(240,138,93);
     }
 
 }
+
+
+// 推薦頁面
+.recommand-title{
+	color:$orange;
+}
+.recommand-writer{
+	.writer-content{
+		padding-right:0;
+		padding-left:0;
+	}
+	@media (max-width:544px){
+		.writer-content{
+			padding-left:10px;
+		}
+	}
+	.writer-name{
+		font-size: 24px;
+	}
+	.writer-new{
+		font-size: 18px;
+	}
+}

@@ -25,10 +25,17 @@
 		}
 	}
 	.home-self-name{
-		width: 58%;
+		width: 50%;
 		display: inline-block;
 		// padding:0;
-		padding-top:15px;
+		padding-top:5px;
+	}
+	@media screen and (min-width:767px) and (max-width:883px){
+		.home-profile{
+			img{
+				width: 100%;
+			}
+		}
 	}
 }
 // 推薦的店家
@@ -171,3 +178,76 @@
 		padding:0 10%;
 	}
 }
+
+// 個人塗鴉牆
+.self-board{
+	max-width:700px;
+	margin:0 auto;
+	.self{
+		margin: 0 20px 30px 20px;
+	}
+	.self-pic{
+		width: 100px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.self-content{
+		padding-top:5px;
+		padding-left:5px;
+		display: inline-block;
+	}
+	.self-xs-status{
+		display: none;
+	}	
+
+	@media screen and (max-width:460px){
+		.self-status{
+			display: none;
+		}
+		.self-xs-status{
+			display: block;
+		}
+	}
+	@media screen and (min-width:576px){
+		.self-content{
+			width: 420px;
+		}
+	}
+	@media screen and (max-width:576px){
+		.self{
+			margin: 0 10px 20px 10px;
+		}
+	}
+	@media screen and (min-width:768px){
+		.self-content{
+			width: 540px;
+		}
+	}
+}
+
+
+// Q胖推薦
+.part-orange-bg{
+    background-color:$background-with-color;
+}
+.part-white-bg{
+	background-color:#f5f5f5;
+	img{
+		width: 30%;
+	}
+}
+.office-bg-white{
+	background-color:white;
+	padding:10px 0;
+}
+.official-max{
+	max-width:900px;
+	margin:0 auto;
+}
+@media screen and (min-width:1px)and(max-width:991px){
+	.part-white-bg{
+		// height: 270px;
+	}
+}
+
+

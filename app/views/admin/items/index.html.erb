@@ -1,6 +1,10 @@
 <h5>商品資訊</h5>
 
-<table class="table">
+<div class="text-xs-right m-b-2">
+<button type="button" class="btn coupon-control btn-sm" data-toggle="modal" data-target="#myModal">新增商品</button>
+</div>
+
+<table class="table coupon-control-table">
   <thead>
     <tr>
       <td>價格</td>
@@ -30,9 +34,7 @@
 </table>
 
 
-<div class="text-xs-center">
-<button type="button" class="btn orange-bg-btn btn-sm" data-toggle="modal" data-target="#myModal">新增商品</button>
-</div>
+
 <br>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

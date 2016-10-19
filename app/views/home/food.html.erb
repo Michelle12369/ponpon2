@@ -1,6 +1,15 @@
-<% if signed_in?%>
-	<%=render 'officalpagebar'%>
+<%@coupons.each do |coupon|%>
+	<%= link_to  store_path(coupon.store) do%>
+		<div class="col-md-4 col-sm-6 col-xs-10 offset-xs-1 offset-sm-0 text-xs-center m-b-1">
+			<div class="card">
+				<%=image_tag coupon.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>
+				<div class="office-bg-white card-block">
+					<p class="m-b-0 card-text"><%=coupon.store.store_name%></p>
+					<h5 class="m-b-0 card-text"><%=coupon.coupon_title%></h5>
+					<p class="m-b-0 text-muted card-text"><%=coupon.store.store_city%></p>
+				</div>
+			</div>
+		</div>
+	<%end%>
 <%end%>
-
-
-yoyo this is food
+<%= render 'shared/paginate', resources: @coupons %>
