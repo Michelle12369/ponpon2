@@ -1,0 +1,9 @@
+development:
+  cloud_name: "dgws79ntj"
+  api_key: "465367466432226"
+  api_secret: "eQ9iYMuofjLv7oURnabi5SK5IIM"
+
+production:
+  cloud_name: "dgws79ntj"
+  api_key: "465367466432226"
+  api_secret: "eQ9iYMuofjLv7oURnabi5SK5IIM"

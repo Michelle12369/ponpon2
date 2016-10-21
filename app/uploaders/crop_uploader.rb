@@ -8,7 +8,7 @@ class CropUploader < CarrierWave::Uploader::Base
   end
   # Choose what kind of storage to use for this uploader:
   storage :file
-  # storage :fog
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -16,6 +16,9 @@ class CropUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def content_type_whitelist
+    /image\//
+  end
   # version :large do
   resize_to_limit(600,600)
   # end
