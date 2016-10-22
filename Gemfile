@@ -74,7 +74,6 @@ end
 gem 'devise'
 gem 'rmagick'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
-gem 'cloudinary'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'acts_as_commentable'
 gem "acts_as_follower"
