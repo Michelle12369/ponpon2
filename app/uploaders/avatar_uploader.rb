@@ -22,6 +22,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
     /image\//
   end
   
+  def public_id
+    return model.short_name
+  end 
+  
     resize_to_limit(600,600)
 
 
