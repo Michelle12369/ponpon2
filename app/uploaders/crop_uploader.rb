@@ -7,7 +7,7 @@ class CropUploader < CarrierWave::Uploader::Base
     include Cloudinary::CarrierWave
   end
   # Choose what kind of storage to use for this uploader:
-  #storage :file
+  storage :file
   #storage :fog
 
   # Override the directory where uploaded files will be stored.
