@@ -120,11 +120,20 @@
                }(document, 'script', 'facebook-jssdk'));
 
             document.getElementById('shareBtn').onclick = function() {
-              FB.ui({
-                method: 'share',
-                mobile_iframe: true,
-                href: 'http://www.liveqoupon.com/<%=store_path(@store)%>',
-              }, function(response){});
+              // FB.ui({
+              //   method: 'share',
+              //   mobile_iframe: true,
+              //   href: 'http://www.liveqoupon.com/<%=store_path(@store)%>',
+              //   hashtag:'#Qoupon'
+              // }, function(response){});
+              var url = "https://www.facebook.com/dialog/share"+ 
+                "?app_id=1795893413990726"+
+                "&display=popup"+
+                "&mobile_iframe=true"+
+                "&href="+encodeURIComponent(shareurl)+
+                "&redirect_uri="+"http://www.liveqoupon.com/<%=store_path(@store)%>"+
+        "&title="+"<%=@store.store_name%>"+"&description=【 幽魂聊天室 】想知道你前世死法，就來跟鬼聊天吧！";
+        location.href = url;
             }
 
             </script>
