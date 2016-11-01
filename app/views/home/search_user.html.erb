@@ -21,7 +21,7 @@
 		<%@results_store.each do |store|%>
 			<div id="store-<%= store.id %>" class="follow-friend-block p-l-1">
 				<%= link_to store_path(store),class: "nav-link"  do%>
-						<%=image_tag store.store_cover_photo || 'avatar.jpg', class: "photo-sticker",style:"width:50px;"%>
+						<%=image_tag store.store_cover_photo.thumb.url || 'avatar.jpg', class: "photo-sticker",style:"width:50px;"%>
 						<%=store.store_name%>
 				<%end%>
 				<span class="pull-right m-r-1">
