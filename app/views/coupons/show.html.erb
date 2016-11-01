@@ -131,8 +131,8 @@
                 "&display=popup"+
                 "&mobile_iframe=true"+
                 "&href="+"http://www.liveqoupon.com/<%=store_path(@store)%>"+
-                "&redirect_uri="+"http://www.liveqoupon.com/<%=store_path(@store)%>"+
-        "&title="+"<%=@store.store_name%>"+"&description=【 幽魂聊天室 】想知道你前世死法，就來跟鬼聊天吧！";
+                "&redirect_uri="+"http://www.liveqoupon.com/<%=user_coupon_path(current_user,@coupon)%>"+"&image="+"<%=image_tag @store.store_cover_photo>"+
+        "&title="+"<%=@store.store_name%>的最新優惠<%=@coupon.coupon_title%>"+"&description=【 Qoupon|Q胖 】用朋友的上一餐，找到你的下一餐！";
         location.href = url;
             }
 
