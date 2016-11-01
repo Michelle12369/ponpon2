@@ -133,6 +133,9 @@
                 "&href="+"http://www.liveqoupon.com<%=store_path(@store)%>"+"&redirect_uri="+"http://www.liveqoupon.com<%=user_coupon_path(current_user,@coupon)%>"+"&image="+"<%=@store.store_cover_photo.thumb.url%>"+"&title="+"<%=@store.store_name%>的最新優惠<%=@coupon.coupon_title%>"+"&description=【 Qoupon|Q胖 】用朋友的上一餐，找到你的下一餐！";
               location.href = url;
             }
+            $(document).ready(function(){
+               $("meta[property='og\\:image']").attr("content", "<%=@store.store_cover_photo.thumb.url%>");
+            });
 
             </script>
 
