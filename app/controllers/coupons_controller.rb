@@ -72,7 +72,7 @@ class CouponsController < ApplicationController
 
   #顧客下載自己的qrcode
   def download
-    send_file @coupon.qr_code.path, :type => 'image/jpeg', :disposition => 'attachment'
+    send_file @coupon.qr_code.url, :type => 'image/jpeg', :disposition => 'attachment'
   end
 
   #顧客用qrcode掃描店家優惠卷後跳出頁面
