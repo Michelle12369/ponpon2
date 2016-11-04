@@ -72,7 +72,12 @@ class CouponsController < ApplicationController
 
   #顧客下載自己的qrcode
   def download
-    send_file @coupon.qr_code.url, :type => 'image/jpeg', :disposition => 'attachment'
+    if Rails.env.development?
+      send_file @coupon.qr_code.url, :type => 'image/jpeg', :disposition => 'attachment'
+    end
+    if Rails.env.production?
+      Cloudinary::Utils.private_download_url self.cloudinary_id, self.format, attachment: true
+    end
   end
 
   #顧客用qrcode掃描店家優惠卷後跳出頁面
