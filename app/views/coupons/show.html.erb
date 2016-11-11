@@ -99,7 +99,7 @@
       <div class="modal-body text-xs-center">
 
             <div id="shareBtn" class="orange-btn-nm btn clearfix">Share</div>
-            <%= render 'posts/form' %>
+            <%= render 'posts/form_without_ajax' %>
 
             <script>
 
@@ -120,23 +120,13 @@
                }(document, 'script', 'facebook-jssdk'));
 
             document.getElementById('shareBtn').onclick = function() {
-              // FB.ui({
-              //   method: 'share',
-              //   mobile_iframe: true,
-              //   href: 'http://www.liveqoupon.com/<%=store_path(@store)%>',
-              //   hashtag:'#Qoupon'
-              // }, function(response){});
               var url = "https://www.facebook.com/dialog/share"+ 
                 "?app_id=1795893413990726"+
                 "&display=popup"+
                 "&mobile_iframe=true"+
-                "&href="+"http://www.liveqoupon.com<%=store_path(@store)%>"+"&redirect_uri="+"http://www.liveqoupon.com<%=user_coupon_path(current_user,@coupon)%>"+"&picture="+"<%=@coupon.root.coupon_pic.url%>"+"&title="+"<%=@store.store_name%>的最新優惠<%=@coupon.coupon_title%>"+"&description=【 Qoupon|Q胖 】用朋友的上一餐，找到你的下一餐！";
+                "&href="+"http://www.liveqoupon.com<%=store_path(@store)%>"+"&redirect_uri="+"http://www.liveqoupon.com<%=user_coupon_path(current_user,@coupon)%>"+"&picture="+"<%=@coupon.root.coupon_pic.url%>"+"&title="+"【 <%=@store.store_name%>】的最新優惠<%=@coupon.coupon_title%>"+"&description=【 Qoupon|Q胖 】用朋友的上一餐，找到你的下一餐！";
               location.href = url;
             }
-            // $(document).ready(function(){
-            //    $("head").append('<meta property="og:image" content="<%=@store.store_cover_photo.thumb.url%>">');
-            // });
-
             </script>
 
       </div>
