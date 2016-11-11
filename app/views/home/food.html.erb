@@ -1,19 +1,21 @@
 <div class="card-deck-wrapper">
-  <div class="card-deck"> 
-<%@coupons.each do |coupon|%>
-	<%= link_to  store_path(coupon.store) do%>
-		<!-- <div class="col-md-4 col-sm-6 col-xs-10 offset-xs-1 offset-sm-0 text-xs-center m-b-1"> -->
+  	<div class="card-deck"> 
+		<%@coupons.each do |coupon|%>
 			<div class="card">
-				<%=image_tag coupon.coupon_pic.thumb.url||'avatar2.jpg', class:"card-img-top" %>
-				<div class="card-block text-xs-center">
-					<p><%=coupon.store.store_name%></p>
-					<h5 class="m-b-0"><%=coupon.coupon_title%></h5>
-					<p class="text-muted"><%=coupon.store.store_city%></p>
+				<%= link_to  store_path(coupon.store) do%>
+			<!-- <div class="col-md-4 col-sm-6 col-xs-10 offset-xs-1 offset-sm-0 text-xs-center m-b-1"> -->
+				
+					<%=image_tag coupon.coupon_pic.thumb.url||'avatar2.jpg', class:"card-img-top" %>
+					<div class="card-block text-xs-center">
+						<p><%=coupon.store.store_name%></p>
+						<h5 class="m-b-0"><%=coupon.coupon_title%></h5>
+						<p class="text-muted"><%=coupon.store.store_city%></p>
+					</div>
+					<%end%>
 				</div>
-			</div>
-		<!-- </div> -->
-	<%end%>
-<%end%>
-<%= render 'shared/paginate', resources: @coupons %>
-</div>
+			<!-- </div> -->
+			
+		<%end%>
+		<%= render 'shared/paginate', resources: @coupons %>
+	</div>
 </div>
