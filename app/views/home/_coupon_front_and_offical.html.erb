@@ -4,7 +4,7 @@
 </div>
 <div class="col-xs-12 part-orange-bg m-b-2 p-b-2 p-t-2">
 	<h5 class="text-xs-center p-b-1"><strong>熱門優惠</strong></h5>
-	<div class="card-deck-wrapper">
+	<!-- <div class="card-deck-wrapper"> -->
 	  	<div class="card-deck"> 
 			<%@stores_last.each do |store|%>
 				<div class="card">
@@ -25,12 +25,12 @@
 				</div>
 			<%end%>
 		</div>
-	</div>
+	<!-- </div> -->
 </div>
 
 <div class="col-xs-12 m-b-2 p-b-2 p-t-2">
 	<h5 class="text-xs-center p-b-1"><strong>最新優惠</strong></h5>
-	<div class="card-deck-wrapper">
+	<!-- <div class="card-deck-wrapper"> -->
 	  	<div class="card-deck"> 
 			<%@stores_first.each do |store|%>
 				<div class="card">
@@ -47,7 +47,7 @@
 				</div>	
 			<%end%>
 		</div>
-	</div>
+	<!-- </div> -->
 	<div class="col-xs-12 text-xs-center">
 		<%= link_to "查看更多", food_path,class:"orange-btn-no orange-hover d-inline-block", style:"padding:5px 0"%>
 	</div>
