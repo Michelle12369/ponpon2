@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get '/:store_id/operating-data',:to=>'home#operating_data',:as=>"operating-data"
     post '/stores/:store_id/coupons/:id/distribute/send',:to=>'coupons#admin_send',:as=>"send"
     get '/stores/:store_id/coupons/:id/confirm',:to=>'coupons#admin_confirm',:as=>"confirm"
-    # post '/stores/:store_id/coupons/:id/redeem',:to=>'coupons#admin_redeem',:as=>"redeem"
+    post '/stores/:store_id/coupons/:id/redeem',:to=>'coupons#admin_redeem',:as=>"redeem"
     # get '/stores/:store_id/coupons/:id/qrcode',:to=>'coupons#admin_qrcode',:as=>"qrcode"
 
     resources :posts,except: :new do
