@@ -13,16 +13,14 @@
 </head>
 
 <body class="nobar-body">
-<b>
-    <p class="nobar">
-        <%= image_tag "nav_logo_4_dark.png", style:"width:130px;"%>
+    <div class="nobar">
         <%= link_to admin_front_path do%>
             <!-- <span class="pull-right nobar-index"> -->
-            <% render_admin_link%>
+            <%= image_tag "nav_logo_4_dark.png", style:"width:130px;"%>
             <!-- </span> -->
         <%end%>
-    </p>
-</b>
+        <% render_admin_link%>
+    </div>
         <%= yield %>   
 </body>
 
