@@ -3,8 +3,6 @@
 		<%@coupons.each do |coupon|%>
 			<div class="card">
 				<%= link_to  store_path(coupon.store) do%>
-			<!-- <div class="col-md-4 col-sm-6 col-xs-10 offset-xs-1 offset-sm-0 text-xs-center m-b-1"> -->
-				
 					<%=image_tag coupon.coupon_pic.thumb.url||'avatar2.jpg', class:"card-img-top" %>
 					<div class="card-block text-xs-center">
 						<p><%=coupon.store.store_name%></p>
@@ -13,8 +11,6 @@
 					</div>
 					<%end%>
 				</div>
-			<!-- </div> -->
-			
 		<%end%>
 		<%= render 'shared/paginate', resources: @coupons %>
 	</div>
