@@ -1,8 +1,9 @@
 <div class="col-md-3"></div>
 <div class="col-md-6 col-xs-12 follow-block">
 	<h5 class="m-t-1 m-l-1">搜尋結果</h5>
-	<%if @results.present?||@results_store.present?%>
-		<h6 class="m-l-1 m-t-1">人物</h6>
+	<hr>
+	<h6 class="m-l-1 m-t-1">人物</h6>
+	<%if @results.present?%>
 		<%@results.each do |user|%>
 			<div id="user-<%= user.id %>" class="follow-friend-block p-l-1">
 				<%= link_to user_path(user),class: "nav-link"  do %>
@@ -16,8 +17,13 @@
 				<%end%>
 			</div>
 		<%end%>
-		
-		<h6 class="m-l-1 m-t-1">店家</h6>
+	<%else%>
+		<p class="m-l-1">找不到相關資料</p>
+		<hr>
+	<%end%>	
+	
+	<h6 class="m-l-1 m-t-1">店家</h6>
+		<%if @results_store.present?%>
 		<%@results_store.each do |store|%>
 			<div id="store-<%= store.id %>" class="follow-friend-block p-l-1">
 				<%= link_to store_path(store),class: "nav-link"  do%>
