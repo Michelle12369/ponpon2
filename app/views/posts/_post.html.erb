@@ -36,7 +36,7 @@
 
   <div class="content">
     <br> 
-    <%= simple_format(post.content, class: 'text')%>
+    <%= simple_format(post.content)%>
     <% if post.attachment.present? %>
       <div class="attachment">
         <%= image_tag post.attachment.url,class:"m-b-2 post-attachment"%>
