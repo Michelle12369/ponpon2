@@ -12,7 +12,7 @@ class Admin::Coupon < Coupon
 			Admin::Coupon.create_coupon(coupon,0.03)
 		end
 		#店家qrcode
-		url="https://pon-michelle12369.c9users.io/stores/#{store.id}/coupons/#{coupon.id}/take"
+		url="http://www.liveqoupon.com/stores/#{store.id}/coupons/#{coupon.id}/take"
 		@qrcode = RQRCode::QRCode.new(url,:size => 4, :level => :l)#用真的網址line才掃得到
 		tmp_path = Rails.root.join("qrcode.png")
 		png = @qrcode.to_img.resize(150, 150).save(tmp_path)
