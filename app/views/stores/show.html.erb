@@ -10,7 +10,7 @@
           <div class="carousel-inner" role="listbox">
             <%@admin_store_pic.store_photo.each_with_index do |pic,index|%>
               <div class="carousel-item <%=coupon_carousel_active(index)%>">
-                <div class="text-xs-center coupon-many-pic">
+                <div class="text-xs-center vertical-middle">
                   <%=image_tag pic.url,style:""%>
                 </div>
               </div>
@@ -85,7 +85,7 @@
       </div>
     <%end%>
   </div>
-</div>>
+</div>
 
 
 

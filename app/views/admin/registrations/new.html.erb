@@ -1,50 +1,53 @@
 <div class="container nobar-container">
-        <div class="row">
-<h2>Sign up</h2>
+  <div class="row">
+    <div class="sign-width  background-white">
+      <h5 class="text-xs-center m-y-1">Sign up</h5>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="field">
+        <%= f.label :name,"名字"%><br>
+        <%= f.text_field :name, class:"w-100"  %>
+      </div>
 
-  <div class="field">
-    <%= f.label :name,"名字"%><br />
-    <%= f.text_field :name, class:""  %>
-  </div>
+      <div class="field">
+        <%= f.label :email,"信箱" %><br>
+        <%= f.email_field :email, class:"w-100"  %>
+      </div>
+      <div class="field">
+        <%= f.label :birthday,"生日" %><br>
+        <%= f.date_field :birthday, class:"w-100"  %>
+      </div>
+      <div class="field">
+        <%= f.label :location,"居住縣市" %><br>
+        <%= f.select :location,  options_for_select(city_array,f.object.location),{}, class:""  %>
+      </div>
+      <div class="field">
+        <%= f.label :gender,"性別" %><br>
+        <%= f.select :gender,options_for_select([['男性','male'],['女性','female']], :selected => f.object.gender),{}, class:""  %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email,"信箱" %><br />
-    <%= f.email_field :email, class:""  %>
-  </div>
-  <div class="field">
-    <%= f.label :birthday,"生日" %><br />
-    <%= f.date_field :birthday, class:""  %>
-  </div>
-  <div class="field">
-    <%= f.label :location,"居住縣市" %><br />
-    <%= f.select :location,  options_for_select(city_array,f.object.location),{}, class:""  %>
-  </div>
-  <div class="field">
-    <%= f.label :gender,"性別" %><br />
-    <%= f.select :gender,options_for_select([['男性','male'],['女性','female']], :selected => f.object.gender),{}, class:""  %>
-  </div>
+      <div class="field">
+        <%= f.label :password,"密碼"  %>
+        <% if @minimum_password_length %>
+        <em>(長度至少為<%= @minimum_password_length %>碼)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", class:"w-100" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password,"密碼"  %>
-    <% if @minimum_password_length %>
-    <em>(長度至少為<%= @minimum_password_length %>碼)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off", class:"" %>
-  </div>
+      <div class="field">
+        <%= f.label :password_confirmation,"再次確認密碼"  %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class:"w-100"   %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation,"再次確認密碼"  %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", class:""   %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "註冊",class:"devise-btn devise-normal" %>
-  </div>
-<% end %>
-
-<%= render "admin/shared/links" %>
+      <div class="actions p-t-2">
+        <%= f.submit "註冊",class:"admin-btn-grey w-100 m-x-0" %>
+      </div>
+    <% end %>
+    <p class="text-xs-center m-y-1">或是</p>
+    <div class="grey-out">
+      <%= render "admin/shared/links" %>
+    </div>
+    </div>
 </div>
 </div>
