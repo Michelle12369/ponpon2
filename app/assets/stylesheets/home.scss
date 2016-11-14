@@ -184,7 +184,7 @@
 	max-width:700px;
 	margin:0 auto;
 	.self{
-		margin: 0 20px 30px 20px;
+		padding: 0 20px 30px 20px;
 	}
 	.self-pic{
 		width: 100px;
@@ -198,8 +198,7 @@
 	}
 	.self-xs-status{
 		display: none;
-	}	
-
+	}
 	@media screen and (max-width:460px){
 		.self-status{
 			display: none;
@@ -207,15 +206,14 @@
 		.self-xs-status{
 			display: block;
 		}
+		.self{
+			padding:0;
+			margin:0;
+		}
 	}
 	@media screen and (min-width:576px){
 		.self-content{
 			width: 420px;
-		}
-	}
-	@media screen and (max-width:576px){
-		.self{
-			margin: 0 10px 20px 10px;
 		}
 	}
 	@media screen and (min-width:768px){
@@ -250,4 +248,18 @@
 	}
 }
 
+// 店家端 註冊登入頁
+.grey-out{
+	a{
+		display: block;
+		text-align: center;
+		width: 100%;
+		// margin:10px 0;
+	    color: white;
+	    border:0;
+	    border-radius:0.2rem;
+	    padding: 5px 8px;
+	    background-color:rgb(102,102,102);
+	}
+}
 

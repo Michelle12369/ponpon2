@@ -9,12 +9,14 @@
             </div>
             <ul class="spacing">
                 <li><a href="">首頁</a></li>
-                <li><a href="">我的優惠券</a></li>
+                <li><%= link_to'我的優惠券', user_coupons_path(@user) %></li>
                 <li><%= link_to'FAQ', faq_path %></li>
+
                 <li><a href="">瞭解更多</a></li>
             </ul>
-            <h5 class="spacing">聯絡我們</h5>
-            <p class="spacing">客服電話：0912-030-121 電子信箱：qoupon2016@gmail.com</p>
+            <h5 class="spacing m-b-1">聯絡我們</h5>
+            <p class="spacing">客服電話：0912-030-121</p>
+            <p class="spacing">電子信箱：qoupon2016@gmail.com</p>
             <hr>
             <copyright>&copy; 2016 Qoupon</copyright>
         </div>

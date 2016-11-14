@@ -230,9 +230,28 @@ button:focus{
 .store-show{
 	max-width:800px;
 	margin:0 auto;
+
 }
 .cou-store-bgpic{
-	margin-top:-25px;
+	img{
+		max-height: 400px;
+		max-width: 90%;
+	}
+	.vertical-middle{
+		background-color:black;
+		height: 400px;
+		line-height: 400px;
+	}
+	@media screen and (max-width:768px){
+		.vertical-middle{
+			height: 300px;
+			line-height: 300px;
+		}
+		img{
+			max-height: 300px;
+			max-width: 100%;
+		}
+	}
 }
 .cou-icon{
 	width:30px;

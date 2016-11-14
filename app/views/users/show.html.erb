@@ -10,13 +10,16 @@
               <span class="user_name"><%=@user.name%></span>
                 <span class="p-l-1 pull-right">
                   <% if is_current_user?(@user) %>
-                    <%= link_to '編輯個人檔案', edit_user_path(@user) %>
+                    <%= link_to edit_user_path(@user) do%>
+                      <i class="fa fa-pencil"></i>
+                    <%end%>
                   <%else%>
                     <%=render "follows/form",user:@user%>
                   <%end%>
                 </span>
             </div>
             <div class="self-status">
+
               <p class="p-t-0">
                 <strong> <%= @post_size%> </strong>則貼文
                 <span> ｜ </span>
@@ -41,24 +44,23 @@
           <div class="self-xs-status">
             <hr class="m-b-1">
             <p class="text-xs-center">
-              <strong><%= @post_size%></strong>則貼文
-              <span>|</span>
               <%= link_to followers_user_path(@user) do%>
-                <strong><%=@user.followers_count%></strong>位粉絲
+                <strong> <%=@user.followers_count%></strong>位粉絲 
               <%end%>
-              <span>|</span>
+              <span> | </span>
               <%= link_to friends_user_path(@user) do%>
-                追蹤<strong><%=@user.following_users_count%></strong>人
+                追蹤<strong><%=@user.following_users_count%></strong>人 
               <%end%>
-              <span>|</span>
+              <span> | </span>
               <%= link_to stores_user_path(@user) do%>
-                <strong><%=@user.following_stores.size%></strong>喜愛商家
+                <strong> <%=@user.following_stores.size%></strong>喜愛商家 
               <%end%>
             </p>
           </div>
 
 
         </div>
+
 
 
     <div id="activities" class="">
