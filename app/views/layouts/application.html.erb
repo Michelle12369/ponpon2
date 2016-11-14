@@ -5,9 +5,10 @@
     <title>Q胖 | 累進式優惠平台</title>
     <%= stylesheet_link_tag    'application', media: 'all'%>
     <%= javascript_include_tag 'application'%>
-    <script src="//js.pusher.com/2.0/pusher.min.js"></script>
+<!--     <script src="//js.pusher.com/2.0/pusher.min.js"></script> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <%=favicon_link_tag 'Qpon.png'%>
     <%= csrf_meta_tags %>
 </head>
 
@@ -96,7 +97,7 @@
                 <%if notice.present?%>
                     <div class="alert alert-notice alert-dismissible fade in" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true" style="padding-right: 10px;">&times;</span>
                         </button>
                         <%= notice %>
                     </div>   
@@ -105,7 +106,7 @@
             <%if alert.present?%>
                 <div class="alert alert-alert alert-dismissible fade in" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true" style="padding-right: 10px;">&times;</span>
                     </button>
                     <%= alert %>
                 </div>
