@@ -34,10 +34,10 @@
 
   <div class="content">
     <br> 
-    <p class="text"><%= post.content%></p>
+    <p class="text"><%=  simple_format(post.content)%></p>
     <% if post.attachment.present? %>
       <div class="attachment">
-        <%= image_tag post.attachment,class:"m-b-2 post-attachment"%>
+        <%= image_tag post.attachment.url,class:"m-b-2 post-attachment"%>
       </div>
     <% end %>
   </div>

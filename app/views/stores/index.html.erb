@@ -3,7 +3,7 @@
       <% @store.each do |admin,store|%>
           <div class="card">
             <%= link_to store do%>
-                <%=image_tag admin.store_cover_photo.thumb || 'avatar.jpg', class: "card-img-top"%>
+                <%=image_tag admin.store_cover_photo.thumb.url || 'avatar.jpg', class: "card-img-top"%>
                 <div class="card-block">
                   <p><small class="text-muted"><%= store.store_type %></small></p>
                   <h6><%= store.store_name %></h6>

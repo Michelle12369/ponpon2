@@ -29,6 +29,7 @@
       <%#= f.submit '發文', class: 'orange-sm-bg-btn pull-xs-right'%>
  -->
   <div class="form-group col-xs-4 hidden-xs-up" id="attachment">
+      <%= f.hidden_field :attachment_cache%>
       <%= f.file_field :attachment,accept:"image/*" %>
   </div>
 

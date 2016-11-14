@@ -8,22 +8,19 @@
     <!-- <script src="//js.pusher.com/2.0/pusher.min.js"></script> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <%=favicon_link_tag 'Qpon.png'%>
     <%= csrf_meta_tags %>
 </head>
 
 <body class="nobar-body">
-<b>
-    <p class="nobar">
-        <span class="nobar-orange">Q</span>oupon
+    <div class="nobar">
         <%= link_to admin_front_path do%>
             <!-- <span class="pull-right nobar-index"> -->
-            <% render_admin_link%>
+            <%= image_tag "nav_logo_4_dark.png", style:"width:130px;"%>
             <!-- </span> -->
         <%end%>
-    </p>
-</b>
-        <p><%= notice %></p>
-        <p><%= alert %></p>
+        <% render_admin_link%>
+    </div>
         <%= yield %>   
 </body>
 

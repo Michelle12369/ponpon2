@@ -8,6 +8,7 @@
 <!--     <script src="//js.pusher.com/2.0/pusher.min.js"></script> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <%=favicon_link_tag 'Qpon.png'%>
     <%= csrf_meta_tags %>
 </head>
 
@@ -15,10 +16,12 @@
 
 <header class="main-header">
     <!-- Logo -->
-    <%#= link_to admin_home_path,class:"admin_logo" do%>
-      <%#= image_tag "nav_logo_4.png" ,style:"width:130px;"%>
-    <%#end%>
-    <div style="font-size:1.5rem; padding-left:3.5rem; position:fixed; padding-top:1rem;" class="admin-logo">Qoupon</div>
+    <div style=" padding-left:25px; position:fixed; padding-top:10px;" class="admin-logo">
+      <%= link_to admin_home_path,class:"admin_logo" do%>
+        <%= image_tag "nav_logo_4_dark.png", style:"width:150px;",class:"admin_logo"%>
+      <%end%>
+    </div>
+
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-fixed">
       <button type="button" id="toggle-button">
@@ -120,7 +123,7 @@
               <%if notice.present?%>
                   <div class="alert alert-notice alert-dismissible fade in" role="alert">
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
+                              <span aria-hidden="true" style="padding-right: 10px;">&times;</span>
                       </button>
                       <%= notice %>
                   </div>   
@@ -129,7 +132,7 @@
               <%if alert.present?%>
                   <div class="alert alert-alert alert-dismissible fade in" role="alert">
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
+                              <span aria-hidden="true" style="padding-right: 10px;">&times;</span>
                       </button>
                       <%= alert %>
                   </div>

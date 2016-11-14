@@ -1,7 +1,7 @@
 <%if activity.trackable.attachment.present?%>
 <div class="crop">
 	<%= link_to admin_post_path(activity.trackable) do %>
-		<%=image_tag activity.trackable.attachment ,class:"photo-square-pic"%>
+		<%=image_tag activity.trackable.attachment.url ,class:"photo-square-pic"%>
 	<%end%>
 </div>
 <%end%>
