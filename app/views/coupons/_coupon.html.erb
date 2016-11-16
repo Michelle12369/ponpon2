@@ -1,22 +1,24 @@
-<div class="col-md-4 col-sm-6">
-<%= link_to [coupon.user,coupon] do%>
-  <div id="coupon-<%=coupon.id%>" class="card text-xs-center">
-    <!-- <div> -->
-      <%=image_tag coupon.root.coupon_pic.thumb.url || 'avatar.jpg', class: 'card-img-top'%>
-      <div class="card-block p-t-1 p-b-1">
-        <p class="card-text m-b-0">
-          <%=coupon.store.store_name%>
-        </p>
-        <h6 class="card-title m-b-0">
-          <%=coupon.coupon_title%>
-        </h6>
+<!-- <div class="col-md-4 col-sm-6"> -->
+<div id="coupon-<%=coupon.id%>" class="card text-xs-center">
+  <%= link_to [coupon.user,coupon] do%>
 
-        <p class="card-text">
-          <%=coupon.computed_discount*10%>折
-        </p>
-      </div>
-  </div>
-<%end%>
+      <!-- <div> -->
+        <%=image_tag coupon.root.coupon_pic.thumb.url || 'avatar.jpg', class: 'card-img-top'%>
+        <div class="card-block p-t-1 p-b-1">
+          <p class="card-text m-b-0">
+            <%=coupon.store.store_name%>
+          </p>
+          <h6 class="card-title m-b-0">
+            <%=coupon.coupon_title%>
+          </h6>
+
+          <p class="card-text">
+            <%=coupon.computed_discount*10%>折
+          </p>
+        </div>
+    
+  <%end%>
 </div>
+<!-- </div> -->
                   
             

@@ -48,6 +48,12 @@ a {
          color:#000;
     }
 }
+.white-hover{
+    color: white;
+    &:visited {
+        color: white;
+    }
+}
 .orange-hover{
     color: $orange;
     &:visited {
@@ -140,6 +146,22 @@ input[type=submit]:focus{
     color:$orange;
     border:1px solid $orange;
     border-radius:0.2rem;
+}
+.orange-use-btn{
+    background-color:white;
+    color:$orange;
+    border:1px solid $orange;
+    border-radius:0.2rem;
+    padding:3px 4px;
+    &:visited{
+        color: $orange;
+    }
+    &:hover{
+        color: $orange;
+    }
+    &:focus{
+        color: $orange;
+    }
 }
 // 橘底白字按鈕
 .orange-bg-btn{
