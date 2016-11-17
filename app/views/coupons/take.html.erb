@@ -1,5 +1,6 @@
-<%=@store.store_name%>
-<%=@coupon.id%>
-<%=@coupon.computed_discount*10%>折卷
-
-<%= link_to "領取優惠卷", distribute_user_coupon_path(current_user,@coupon),method: :post %>
+<div class="take">
+	<h5><%=@store.store_name%> <span> ( <%=@coupon.id%> ) </span></h5>
+	<%=image_tag @coupon.root.coupon_pic.thumb.url,class:" background-white p-t-0"%>
+	<p><span><%=@coupon.computed_discount*10%></span> 折卷</p>
+	<%= link_to "領取優惠卷", distribute_user_coupon_path(current_user,@coupon),method: :post %>
+</div>

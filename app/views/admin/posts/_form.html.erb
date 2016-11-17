@@ -19,16 +19,16 @@
   <div id="img-preview" class="form-group hidden-xs-up">
       <img src="" alt="Preview" width="100px">
   </div>
-  <div class="row">
+  <div class="row pull-right">
     <div class="form-group col-xs-9 hidden-xs-up" id="attachment">
         <%= f.file_field :attachment %>
     </div>
       
-    <div class="form-group col-xs-3" id="post">
-      <a id="admin-post-attachment" href="javascript:void(0);" class="btn-sm orange-bg-btn">
+    <div class="form-group col-xs-12" id="post">
+      <a id="admin-post-attachment" href="javascript:void(0);" class="btn-sm orange-bg-btn m-r-1">
         <%= fa_icon 'image' %>
       </a>
-      <%= f.submit '發佈', class: 'btn pull-right post-button btn-sm'%>
+      <%= f.submit '發佈', class: 'btn post-button btn-sm'%>
     </div>
   </div>
 <% end %>
