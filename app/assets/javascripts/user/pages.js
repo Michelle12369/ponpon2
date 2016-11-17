@@ -19,21 +19,21 @@ $(document).ready(function(){
 		$(this).next().slideToggle('fast');
 	})
 
-$('.pass-but').click(function(){
-	$('.now-coupon').css('display','none');
-	$('.pass-coupon').css('display','block');
-	$('.news-coupon').css('display','none');
-});
-$('.now-but').click(function(){
-	$('.now-coupon').css('display','block');
-	$('.pass-coupon').css('display','none');
-	$('.news-coupon').css('display','none');
-});
-$('.news-but').click(function(){
-	$('.now-coupon').css('display','none');
-	$('.pass-coupon').css('display','none');
-	$('.news-coupon').css('display','block');
-});
+// $('.pass-but').click(function(){
+// 	$('.now-coupon').css('display','none');
+// 	$('.pass-coupon').css('display','block');
+// 	$('.news-coupon').css('display','none');
+// });
+// $('.now-but').click(function(){
+// 	$('.now-coupon').css('display','block');
+// 	$('.pass-coupon').css('display','none');
+// 	$('.news-coupon').css('display','none');
+// });
+// $('.news-but').click(function(){
+// 	$('.now-coupon').css('display','none');
+// 	$('.pass-coupon').css('display','none');
+// 	$('.news-coupon').css('display','block');
+// });
 
 });
 
