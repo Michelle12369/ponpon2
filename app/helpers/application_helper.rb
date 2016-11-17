@@ -9,7 +9,7 @@ module ApplicationHelper
 
   def name_store_or_user?(resource,role)
     if role.nil?
-      link_to resource.store.store_name, stores_path(resource.store)
+      link_to resource.store.store_name, store_path(resource.store)
     else
       link_to resource.user.name, user_path(resource.user)
     end
