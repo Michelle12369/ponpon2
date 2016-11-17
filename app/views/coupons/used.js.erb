@@ -1,6 +1,7 @@
 $(".coupons").html("");
-$(".filter").removeClass("orange-nm-btn");
 <% @coupon.each do |coupon| %>
 	$(".coupons").append("<%=j render 'coupons/coupon',coupon: coupon%>");
 <%end%>
-$(".<%=@class%>").addClass("orange-nm-btn");
+
+$(".filter").removeClass("orange-use-btn");
+$(".<%=@class%>").addClass("orange-use-btn");

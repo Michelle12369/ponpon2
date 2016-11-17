@@ -228,7 +228,7 @@ button:focus{
 
 // stores/show.html.erb
 .store-show{
-	max-width:800px;
+	max-width:700px;
 	margin:0 auto;
 
 }
@@ -260,7 +260,19 @@ button:focus{
 	border-top:2px solid lightgray;
 	display:block;
 	h6{
-		font-size: 20pt;
+		font-size: 14pt;
+		font-weight: 200;
+		button{
+			display: inline-block;
+			text-align: center;
+			width: 120px;
+			background-color:darkgray;
+			border:0;
+			border-radius:0.2rem;
+			padding:10px 10px;
+			color: white;
+			margin-right: 20px;
+		}
 	}
 	.cou-info-detail{
 		border-radius:0.2rem;

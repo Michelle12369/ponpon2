@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	// faq頁面
 	var j = 0;
 	for( var i=1 ; i<=($('li').length) ; i++){
@@ -16,13 +15,28 @@ $(document).ready(function(){
 			// slideDown("slow");
 		})
 	}
-
 	$('.faq > ul > li:nth-child(odd)').click(function(){
 		$(this).next().slideToggle('fast');
 	})
 
+$('.pass-but').click(function(){
+	$('.now-coupon').css('display','none');
+	$('.pass-coupon').css('display','block');
+	$('.news-coupon').css('display','none');
+});
+$('.now-but').click(function(){
+	$('.now-coupon').css('display','block');
+	$('.pass-coupon').css('display','none');
+	$('.news-coupon').css('display','none');
+});
+$('.news-but').click(function(){
+	$('.now-coupon').css('display','none');
+	$('.pass-coupon').css('display','none');
+	$('.news-coupon').css('display','block');
+});
 
 });
+
 
 
 
