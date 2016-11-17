@@ -43,14 +43,16 @@ class CouponsController < ApplicationController
   # GET /coupons/1.json
   def show
     # have_coupon_user=User.joins(:coupons).where(coupons: {id:@coupon.root.descendant_ids })
-    user_following=@user.following_users
-    user_followed_by=@user.followers
-    @friends=(user_following+user_followed_by).uniq
-    @friends.delete(@coupon.parent.user) if !@coupon.parent.user.nil?
-    @friends_array=@friends.pluck(:name,:id)
     store=@coupon.store_id
     @store=Admin::Store.find(store)
-    @post = Post.new
+    if @coupon.user.present?
+      user_following=@user.following_users
+      user_followed_by=@user.followers
+      @friends=(user_following+user_followed_by).uniq
+      @friends.delete(@coupon.parent.user) if !@coupon.parent.user.nil?
+      @friends_array=@friends.pluck(:name,:id)
+      @post = Post.new
+    end
   end
 
   #顧客發送優惠卷給其他顧客

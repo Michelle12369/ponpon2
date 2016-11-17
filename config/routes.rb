@@ -59,7 +59,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks",:registrations => 'registrations' }
   
   resources :users do
-    resources :coupons,:except => [:edit,:destroy,:index]
+    # resources :coupons,:except => [:edit,:destroy,:index]
     member do
       get :followers
       get :friends
@@ -83,10 +83,16 @@ Rails.application.routes.draw do
   end
 
 
+  #coupon 列表
+  get '/coupons',:to=>'coupons#index',:as=>"coupons"
+  get '/coupons/:id',:to=>'coupons#show',:as=>"user_coupon"
+  get '/coupons-used',:to=>'coupons#used',:as=>"user_coupons_used"
+  get '/coupons-notuse',:to=>'coupons#notuse',:as=>"user_coupons_notuse"
+  get '/coupons-overdue',:to=>'coupons#overdue',:as=>"user_coupons_overdue"
 
   #coupon pages settings
   post '/users/:user_id/coupons/:id/distribute', :to => 'coupons#distribute',:as =>"distribute_user_coupon"
-  get '/users/:user_id/coupons/:id/redeem', :to => 'coupons#redeem',:as =>"redeem_user_coupon"
+  # get '/users/:user_id/coupons/:id/redeem', :to => 'coupons#redeem',:as =>"redeem_user_coupon"
   get '/stores/:store_id/coupons/:id/take',:to=>'coupons#take',:as=>"take"
   get '/users/:user_id/coupons/:id/download',:to=>'coupons#download',:as=>"download"
 
@@ -103,11 +109,6 @@ Rails.application.routes.draw do
   # match '/posters/:id' => "posts#shownolayout",via: :get#post
   # match '/commenters/:id' => "comments#shownolayout",via: :get#post
 
-  #coupon 列表
-  get '/coupons',:to=>'coupons#index',:as=>"coupons"
-  get '/coupons-used',:to=>'coupons#used',:as=>"user_coupons_used"
-  get '/coupons-notuse',:to=>'coupons#notuse',:as=>"user_coupons_notuse"
-  get '/coupons-overdue',:to=>'coupons#overdue',:as=>"user_coupons_overdue"
 
   #admin landing pages
   get '/admin-landing',:to=> 'pages#admin_landing',:as=>"admin_front"

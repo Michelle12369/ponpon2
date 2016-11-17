@@ -7,6 +7,9 @@ class Ability
       # user ||= User.new # guest user (not logged in)
       #if user.admin?
         can :manage, Coupon, :user_id => user.id
+        can :read,Coupon, :user_id => nil
+        can :take,Coupon, :user_id => nil
+        can :distribute,Coupon, :user_id => nil
       #else
         #can :read, Coupon
       #end

@@ -2,7 +2,7 @@
   	<div class="card-deck"> 
 		<%@coupons.each do |coupon|%>
 			<div class="card">
-				<%= link_to  store_path(coupon.store) do%>
+				<%= link_to  user_coupon_path(coupon) do%>
 					<%=image_tag coupon.coupon_pic.thumb.url||'avatar2.jpg', class:"card-img-top" %>
 					<div class="card-block text-xs-center">
 						<p><%=coupon.store.store_name%></p>
