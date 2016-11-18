@@ -1,6 +1,6 @@
 <!-- <div class="col-md-4 col-sm-6"> -->
 <div id="coupon-<%=coupon.id%>" class="card text-xs-center">
-  <%= link_to [coupon.user,coupon] do%>
+  <%= link_to user_coupon_path(coupon) do%>
 
       <!-- <div> -->
         <%=image_tag coupon.root.coupon_pic.thumb.url || 'avatar.jpg', class: 'card-img-top'%>

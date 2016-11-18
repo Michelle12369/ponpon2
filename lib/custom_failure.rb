@@ -1,6 +1,6 @@
 class CustomFailure < Devise::FailureApp
   def redirect_url
-    if request.referer.split("/")[3]=="admin"
+    if request.referer!=nil&&request.referer.split("/")[3]=="admin"
       admin_sign_in_path#your_path
     else
        super
