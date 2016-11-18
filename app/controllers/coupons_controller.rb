@@ -5,7 +5,7 @@ class CouponsController < ApplicationController
   before_action :verify_coupon_notuse,only: [:distribute]
   before_action :verify_admin_coupon_limit,only: [:take]
   before_action :verify_admin_coupon_taken,only: [:take]
-  # load_and_authorize_resource
+  load_and_authorize_resource
 
   # GET /coupons
   # GET /coupons.json
@@ -56,11 +56,11 @@ class CouponsController < ApplicationController
   #顧客發送優惠卷給其他顧客
   def distribute
     receiver_id=Integer(params[:receiver_id]) if !params[:receiver_id].nil?
-    receiver_id||=params[:user_id]
+    receiver_id||=current_user.id#params[:user_id]
     @new_coupon=Coupon.copy_coupon(receiver_id,@coupon)
     Coupon.qrcode(receiver_id,@new_coupon)
     respond_to do |format|
-        format.html { redirect_to user_coupons_path(@user), notice: '恭喜您已成功發送優惠卷！' }
+        format.html { redirect_to coupons_path, notice: '恭喜您已成功發送優惠卷！' }
         format.json { render :show, status: :created, location: @coupon }
     end
   end
@@ -95,7 +95,7 @@ class CouponsController < ApplicationController
     end
 
     def set_user
-      @user = User.find(params[:user_id])
+       @user = current_user#User.find(params[:user_id])
     end
 
     def verify_coupon_notuse
@@ -103,12 +103,12 @@ class CouponsController < ApplicationController
     end
 
     def verify_admin_coupon_limit
-      redirect_to user_coupons_path(current_user),alert:"店家優惠卷已發放完畢，若想領取請向店家反應" unless @coupon.admin_coupon_limit>@coupon.descendants.size
+      redirect_to coupons_path,alert:"店家優惠卷已發放完畢，若想領取請向店家反應" unless @coupon.admin_coupon_limit>@coupon.descendants.size
     end
 
     def verify_admin_coupon_taken
       if User.joins(:coupons).where(coupons: {id:@coupon.child_ids }).include?(current_user)&&@coupon.children.where(user:current_user).where("used=? and expiry_date>=?",false,Date.today).present?
-        redirect_to user_coupons_path(current_user),alert:"已經向店家領取過此優惠卷"
+        redirect_to coupons_path,alert:"已經向店家領取過此優惠卷"
       end
     end
 

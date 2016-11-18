@@ -13,12 +13,16 @@ class StoresController < ApplicationController
   # # GET /stores/1
   # # GET /stores/1.json
   def show
-     @admin_store_pic = Admin::Store.find(params[:id])
-     @coupons=Admin::Store.find(params[:id]).coupons.roots
+    @admin_store_pic = Admin::Store.find(params[:id])
+    @coupons=@admin_store_pic.coupons.roots
+    @post = Post.new
+    activity_store=PublicActivity::Activity.where(owner_id: @admin_store_pic ,owner_type:"Store")
+    @activities=activity_store.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
   # GET /stores/new
   def new
+    redirect_to admin_front_path unless current_user.role=="user"&&current_user.stores[0].nil?
     @store = Store.new
     render :layout => "nobar"
   end

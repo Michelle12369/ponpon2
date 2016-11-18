@@ -9,7 +9,7 @@ module PagesHelper
 	        concat " "
 	        concat link_to "回到個人頁面", root_path,class: 'admin-sign'
 	        concat " "
-	    	concat "您的申請正在審核中",class: 'admin-sign'
+	    	concat link_to "您的申請正在審核中",admin_front_path,class: 'admin-sign'
 	    elsif signed_in?&&current_user.user?
 	    	concat link_to "登出", admin_sign_out_path,method: :delete,class: 'admin-sign'
 	    	concat " "

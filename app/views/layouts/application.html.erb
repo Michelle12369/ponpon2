@@ -36,7 +36,7 @@
                         <% if signed_in?%>
                             <li class="nav-item <%= active_class('/food')%> first-nav"><%= link_to "Q胖優惠", food_path,class: "nav-link"  %></li>
                             <li class="nav-item <%= active_class('/') %>"><%= link_to "優惠動態", root_path,class: "nav-link"  %></li>
-                            <li class="nav-item <%= active_class(user_coupons_path(current_user)) %>"><%= link_to "我的優惠卷列表", user_coupons_path(current_user),class: "nav-link"  %></li>
+                            <li class="nav-item <%= active_class(coupons_path) %>"><%= link_to "我的優惠卷列表", coupons_path,class: "nav-link"  %></li>
                             <li class="nav-item <%= active_class('/stores') %>"><%= link_to "商店街",stores_path,class: "nav-link"%></li>
 
                     </ul>

@@ -59,7 +59,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks",:registrations => 'registrations' }
   
   resources :users do
-    resources :coupons,:except => [:edit,:destroy]
+    resources :coupons,:except => [:edit,:destroy,:index]
     member do
       get :followers
       get :friends
@@ -104,9 +104,10 @@ Rails.application.routes.draw do
   # match '/commenters/:id' => "comments#shownolayout",via: :get#post
 
   #coupon 列表
-  get '/users/:user_id/coupons-used',:to=>'coupons#used',:as=>"user_coupons_used"
-  get '/users/:user_id/coupons-notuse',:to=>'coupons#notuse',:as=>"user_coupons_notuse"
-  get '/users/:user_id/coupons-overdue',:to=>'coupons#overdue',:as=>"user_coupons_overdue"
+  get '/coupons',:to=>'coupons#index',:as=>"coupons"
+  get '/coupons-used',:to=>'coupons#used',:as=>"user_coupons_used"
+  get '/coupons-notuse',:to=>'coupons#notuse',:as=>"user_coupons_notuse"
+  get '/coupons-overdue',:to=>'coupons#overdue',:as=>"user_coupons_overdue"
 
   #admin landing pages
   get '/admin-landing',:to=> 'pages#admin_landing',:as=>"admin_front"

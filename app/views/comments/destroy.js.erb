@@ -1,4 +1,4 @@
 $("#comment-<%= @comment.id %>").fadeOut("slow",function(){
     $(this).remove();
 });
-$("#<%= @comment.commentable_type.downcase %>-<%=  @comment.commentable.id %> .comments-count").html('<%=@comment.commentable.comments_count-1%>則留言');
+$("#<%= @comment.commentable_type.downcase %>-<%=  @comment.commentable.id %> .comments-count").html('<%=@comment.commentable.comments_count%>則留言');
