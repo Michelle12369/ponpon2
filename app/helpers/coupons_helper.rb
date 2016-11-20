@@ -19,6 +19,11 @@ module CouponsHelper
 			"可使用"
 		end
 	end
+	def coupon_distributed_number(coupon)
+		if coupon.distributed_number.nil?||coupon.distributed_number<5
+			true
+		end	
+	end
 	def coupon_carousel_active(index)
 		if index==0
 			"active" 

@@ -62,7 +62,7 @@ class CouponsController < ApplicationController
     @new_coupon=Coupon.copy_coupon(receiver_id,@coupon)
     Coupon.qrcode(receiver_id,@new_coupon)
     respond_to do |format|
-        format.html { redirect_to coupons_path, notice: '恭喜您已成功發送優惠卷！' }
+        format.html { redirect_to user_coupon_path, notice: '恭喜您已成功發送優惠卷！' }
         format.json { render :show, status: :created, location: @coupon }
     end
   end

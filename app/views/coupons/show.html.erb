@@ -13,12 +13,14 @@
             <p>贈送人：<%= distributor(@coupon)%></p>
             <p>狀態：<%= coupon_status(@coupon)%></p>
             <p>商品：<%=@coupon.item%></p>
+            <p>您已發送給朋友的張數：<%=@coupon.distributed_number%></p>
             <p class="m-t-1 m-b-1" id='money'><%=@coupon.computed_discount*10 %>折</p>
             <div>
-              <%if coupon_status(@coupon)=="可使用"%>
+              <%if coupon_distributed_number(@coupon) && coupon_status(@coupon)=="可使用"%>
                 <button type="button" data-toggle="modal" data-target="#send-Modal">發送</button>
                 <button type="button" data-toggle="modal" data-target=".bd-example-modal-sm">兌換</button>
-
+              <%elsif coupon_status(@coupon)=="可使用"%>
+                <button type="button" data-toggle="modal" data-target=".bd-example-modal-sm">兌換</button>
               <%end%>
                <button type="button" data-toggle="modal" data-target="#myModal">分享</button>
             </div>
