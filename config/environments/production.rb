@@ -85,5 +85,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #production 的 compile js
-  config.assets.precompile += %w( ./admin/coupons.coffee )
+  config.assets.precompile += %w( coupons.coffee )
 end
