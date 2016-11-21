@@ -160,6 +160,34 @@
 	font-size:28px;
 }
 
+.post_form{
+	display:inline-block;
+	width:47px;
+	text-align:center;
+}
 
-
-
+.post_form_2{
+	display:inline-block;
+	width: calc( 100% - 52px );
+	.post-comment{
+		width: 97%;
+	}
+}
+.page_title{
+	display:none;
+}
+@media screen and (max-width:767px) {
+	.page_title{
+		display: block;
+		text-align:center;
+		margin-bottom:23px;
+		span{
+		font-size:16pt;
+		padding:7px;
+		border-radius:0.2rem;
+		border:1px solid lightgrey;
+		background-color:white;
+		// border-bottom:1px solid black;
+		}
+	}
+}

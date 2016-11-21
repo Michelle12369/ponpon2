@@ -89,15 +89,17 @@
       </h6>
       <!-- 現行優惠券 -->
       <div class="now-coupon">
-      <% @coupons.each do |coupon| %>
-        <div class="cou-info-detail">
-          <p class="cou-info-detail-title"><%=coupon.coupon_title%></p>
-          <div class="cou-info-detail-content">
-            <p><%=coupon.other_content%></p>
-            <p><%=coupon.computed_discount*10%>折開始計算</p>
-          </div>
-        </div>
-      <%end%>
+        <% @coupons.each do |coupon| %>
+          <%= link_to  user_coupon_path(coupon) do%>
+            <div class="cou-info-detail">
+              <p class="cou-info-detail-title"><%=coupon.coupon_title%></p>
+              <div class="cou-info-detail-content">
+                <p><%=coupon.other_content%></p>
+                <p><%=coupon.computed_discount*10%>折開始計算</p>
+              </div>
+            </div>
+          <%end%>
+        <%end%>
       </div>
     </div>
 
@@ -110,6 +112,7 @@
         <%=render('shared/no_resource', resources: '貼文') %>
       <%end%>
     </div>
+    <%= render 'shared/paginate', resources: @activities %>
   </div>
 <!-- </div> -->
 
