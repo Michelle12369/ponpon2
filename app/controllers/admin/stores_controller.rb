@@ -9,8 +9,8 @@ class Admin::StoresController < Admin::BaseController
 
   # # GET /admin/stores/1
   # # GET /admin/stores/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /admin/stores/new
   def new
