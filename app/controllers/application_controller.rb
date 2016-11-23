@@ -5,7 +5,9 @@ class ApplicationController < ActionController::Base
  before_filter :set_cache_headers
 
 def after_sign_in_path_for(resource)
-  if resource.is_a?(User) && resource.admin? && request.referer.split("/")[3]=="admin"
+  if request.referer.nil?
+    super
+  elsif resource.is_a?(User) && resource.admin? && request.referer.split("/")[3]=="admin"
     admin_home_path
   elsif resource.is_a?(User)  && resource.user? && request.referer.split("/")[3]=="admin"
     admin_front_path
