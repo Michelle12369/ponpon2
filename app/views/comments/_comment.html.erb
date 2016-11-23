@@ -1,12 +1,12 @@
 <!-- <div class="comment-in-post row"> -->
   <div id="comment-<%= comment.id %>" class=" comment-in-post row">
     <div class="comment-user-info m-l-1">
-      <%=pic_store_or_user?(comment,comment.user)%>
+      <%=pic_store_or_user?(comment,comment.user,comment.store)%>
     </div>
 
     <div class="content">
       <p class="d-inline-block name">
-        <%=name_store_or_user?(comment,comment.user)%>
+        <%=name_store_or_user?(comment,comment.user,comment.store)%>
       </p>
         <span class="text-justify comment-content-comment"><%= comment.comment %></span>
     </div>
