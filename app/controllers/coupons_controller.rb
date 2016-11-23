@@ -38,7 +38,7 @@ class CouponsController < ApplicationController
     end
   end
 
-
+#require 'will_paginate/array'
   # GET /coupons/1
   # GET /coupons/1.json
   def show
@@ -47,10 +47,10 @@ class CouponsController < ApplicationController
     @store=Admin::Store.find(store)
     if @coupon.user.present?
       user_following=@user.following_users
-      user_followed_by=@user.followers
+      user_followed_by=@user.user_followers
       @friends=(user_following+user_followed_by).uniq
-      @friends.delete(@coupon.parent.user) if !@coupon.parent.user.nil?
-      @friends_array=@friends.pluck(:name,:id)
+      @friends.delete(@coupon.parent.user) if @friends.include?@coupon.parent.user
+      @friends_array=@friends.pluck(:name,:id)#.paginate(:page =>params[:page], :per_page=> 10)
       @post = Post.new
     end
   end

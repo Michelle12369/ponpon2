@@ -58,7 +58,7 @@
           <%if coupon_status(@coupon)=="可使用"%>
             <%= form_tag distribute_user_coupon_path(current_user,@coupon) do %>
               <div class="form-group coupon-list">
-                <%= select_tag :receiver_id,options_for_select(@friends_array),class:"form-control"%>
+                <%= select_tag :receiver_id,options_for_select(@friends_array),class:"form-control",size:"4"%>
               </div>
         </div>
         <div class="modal-footer">
