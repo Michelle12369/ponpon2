@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
 	acts_as_follower
   acts_as_followable
-  has_many :posts
+  has_many :posts,dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
   mount_uploader :cover, AvatarUploader
