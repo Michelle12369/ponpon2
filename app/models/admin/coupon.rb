@@ -5,9 +5,9 @@ class Admin::Coupon < Coupon
 
 	def self.sort_coupon(coupon,store)
 		if store.fee_type=="plan_a"
-			Admin::Coupon.create_coupon(coupon,0.05)
+			Admin::Coupon.create_coupon(coupon,0.1)
 		elsif store.fee_type=="plan_b"
-			Admin::Coupon.create_coupon(coupon,0.04)
+			Admin::Coupon.create_coupon(coupon,0.05)
 		else	
 			Admin::Coupon.create_coupon(coupon,0.03)
 		end

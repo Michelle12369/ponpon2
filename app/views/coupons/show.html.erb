@@ -14,7 +14,7 @@
             <p>狀態：<%= coupon_status(@coupon)%></p>
             <p>商品：<%=@coupon.item%></p>
             <p>您已發送給朋友的張數：<%=@coupon.distributed_number%></p>
-            <p class="m-t-1 m-b-1" id='money'><%=@coupon.computed_discount*10 %>折</p>
+            <p class="m-t-1 m-b-1" id='money'><%=(@coupon.computed_discount*10.0).round(2)%>折</p>
             <div>
               <%if coupon_distributed_number(@coupon) && coupon_status(@coupon)=="可使用"%>
                 <button type="button" data-toggle="modal" data-target="#send-Modal">發送</button>
@@ -32,13 +32,22 @@
         <div>
           <h6><span>使用說明</span>：</h6>
           <ol>
+            <%if !coupon_distributed_number(@coupon)%>
+              <li>您已經發送給五位朋友，因此無法再進行發送</li>
+            <%elsif @coupon.computed_discount<=@coupon.discount_ceiling_amount%>
+              <li>您仍可以發送優惠卷，但本張優惠卷已達折數上限，因此不會再獲得更多折扣</li>
+            <%elsif @coupon.used%>
+              <li>您已使用過本張優惠卷，無法繼續使用</li>
+            <%elsif coupon_status(@coupon)=='已過期'%>
+              <li>您的優惠卷已過期，無法進一步使用</li>
+            <%end%>
             <li>每增加一人使用增加<%=(@coupon.discount)*100 %>%折扣</li>
           </ol>
         </div>
         <div>
           <h6><span>注意事項</span>：</h6>
           <ol>
-            <li><%=simple_format(@coupon.other_content)%></li>
+            <li><%= @coupon.other_content.present? ? simple_format(@coupon.other_content) : "無"%></li>
           </ol>
         </div>
       </div>

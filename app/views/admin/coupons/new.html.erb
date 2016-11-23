@@ -43,7 +43,7 @@
   <div class="field">
     <%#= f.label :computed_discount %>
     <span>起跳折數（由您的商品售價*此數字會成為您顧客的預設優惠，顧客的優惠卷會從此折數往下折）:</span><br>
-    <%= f.number_field :computed_discount, :step => 0.05,:value=>0.9,:within=>0.5..1, class: 'form-control'  %>
+    <%= f.number_field :computed_discount, :step => 0.01,:value=>0.9,:within=>0.5..1, class: 'form-control'  %>
   </div>
   <div class="field">
     <span>最高推廣人數：</span>
@@ -55,7 +55,7 @@
     <%= f.text_area :other_content, class: 'form-control'  %>
   </div>
   <div>
-    您與Q胖的合作方案為20%優惠回饋，故顧客累積下線每增加一人可以增加5%折扣
+    您與Q胖的合作方案為20%優惠回饋，故顧客累積下線每增加一人可以增加10%折扣
   </div>
   <div class="actions">
     <%= f.submit "新增優惠卷" %>
