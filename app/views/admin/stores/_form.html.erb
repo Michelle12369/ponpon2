@@ -1,5 +1,5 @@
 <%#= cloudinary_js_config %>
-<%= form_for(admin_store, :html => { multipart: true }) do |f| %>
+<%= form_for(admin_store) do |f| %>
   <% if admin_store.errors.any? %>
     <div id="error_explanation">
       <h2><%=admin_store.errors.count %> 個欄位未填</h2>
@@ -60,7 +60,7 @@
     </div>
     <div class="field p-l-2">
       <div class="store-info">照片上傳</div>
-      <%= f.file_field :store_photo, multiple: true, name: "images[]" %>
+      <%= f.file_field :store_photo, multiple: true%>
       <%#= f.hidden_field :store_photo_cache%>
       <%#= f.cl_image_upload :store_photo, multiple: true %>
       <%@admin_store.store_photo.each do |x|%>
