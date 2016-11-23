@@ -39,19 +39,19 @@
     <h6> 推薦的商家</h6>
     <%#if @like_stores.present?%>
       <%#%>
-      <%@commend_store.each do |store|%>
-        <%= link_to  store_path(store) do %>
+      <%#@commend_store.each do |store|%>
+        <%#= link_to  store_path(store) do %>
           <div class="home-like-eachStore">
             <div class="home-store-pic">
-              <%=image_tag store.store_cover_photo.thumb.url||'avatar.jpg',class:"avatar" %>
+              <%#=image_tag store.store_cover_photo.thumb.url||'avatar.jpg',class:"avatar" %>
             </div>
             <div class="home-like-part">
-              <p class="m-b-0 home-store-about-title"><strong><%=store.store_name%></strong></p>
-              <p class="m-b-1 home-store-about"><%=store.store_about%></p>
+              <p class="m-b-0 home-store-about-title"><strong><%#=store.store_name%></strong></p>
+              <p class="m-b-1 home-store-about"><%#=store.store_about%></p>
             </div>
           </div>
-        <%end%>
-      <%end%>
+        <%#end%>
+      <%#end%>
 <!--       <div class="text-xs-center">
         <%#= link_to  stores_user_path(current_user) do%>
           更多<i class="fa fa-angle-down icon"></i>
