@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
   acts_as_voter
-  has_many :comments
+  has_many :comments,dependent: :destroy
 
 	acts_as_follower
   acts_as_followable
