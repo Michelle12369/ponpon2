@@ -1,3 +1,4 @@
-<%= link_to store_path(store)  do %>
-    <%= image_tag Admin::Store.find(store).store_cover_photo.thumb.url || 'avatar.jpg', class: 'avatar'%>
+<%= link_to stores_path  do %>
+    <%#= image_tag Admin::Store.find(store).store_cover_photo.thumb.url || 'avatar.jpg', class: 'avatar'%>
+    dd
 <% end %>
