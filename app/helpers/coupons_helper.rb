@@ -2,6 +2,8 @@ module CouponsHelper
 	def distributor(coupon)
 		if coupon.root?||coupon.parent.root?
 			"店家發送"
+		elsif coupon.parent.user.nil?	
+			"已被刪除的使用者"
 		else
 			link_to user_path(coupon.parent.user) do
 				concat image_tag coupon.parent.user.avatar.url||"avatar.jpg", class: 'avatar coupon-profile-pic'

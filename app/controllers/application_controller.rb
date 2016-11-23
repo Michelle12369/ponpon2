@@ -17,7 +17,9 @@ end
 
 def after_sign_out_path_for(resource)
   # puts request.referer.split("/")[3] 
-  if request.referer.nil?||request.referer.split("/")[3]=="admin" || request.referer.split("/")[3]=="admin-landing" #怕有可能會有些不是第三個/
+  if request.referer.nil?
+    super
+  elsif request.referer.split("/")[3]=="admin" || request.referer.split("/")[3]=="admin-landing" #怕有可能會有些不是第三個/
      admin_front_path
   else
     super
