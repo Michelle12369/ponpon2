@@ -7,6 +7,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   if Rails.env.production?
     include Cloudinary::CarrierWave
+
+    def public_id
+      return model.short_name
+    end  
   end
   # Choose what kind of storage to use for this uploader:
   if Rails.env.development?
