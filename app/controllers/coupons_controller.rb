@@ -78,7 +78,7 @@ class CouponsController < ApplicationController
       send_file @coupon.qr_code.url, :type => 'image/jpeg', :disposition => 'attachment'
     end
     if Rails.env.production?
-      Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id.to_sym, @coupon.qr_code.format
+      Cloudinary::Utils.private_download_url @coupon.qr_code.public_id, @coupon.qr_code.format
     end
   end
 
