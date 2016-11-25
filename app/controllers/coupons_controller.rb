@@ -82,6 +82,7 @@ require 'open-uri'
       open('image.png', 'wb') do |file|
         file << open(Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id).read
       end
+      redirect_to user_coupon_path(@coupon)
       #url=Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id#, @coupon.qr_code.format
     end
   end
