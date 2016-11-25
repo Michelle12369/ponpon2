@@ -73,12 +73,16 @@ class CouponsController < ApplicationController
   # end
 
   #顧客下載自己的qrcode
+require 'open-uri'
   def download
     if Rails.env.development?
       send_file @coupon.qr_code.url, :type => 'image/jpeg', :disposition => 'attachment'
     end
     if Rails.env.production?
-      send_file Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id#, @coupon.qr_code.format
+      open('image.png', 'wb') do |file|
+        file << open(Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id).read
+      end
+      #url=Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id#, @coupon.qr_code.format
     end
   end
 
