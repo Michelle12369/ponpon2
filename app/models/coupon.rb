@@ -4,6 +4,12 @@ class Coupon < ActiveRecord::Base
   has_closure_tree
   validates_presence_of :item,:start_date,:expiry_date,:computed_discount,:admin_coupon_limit,:coupon_title#,:coupon_pic
 
+  before_save :default_values
+  def default_values
+    self.distributed_number ||= 0
+  end
+
+
   #coupon qrcode
   mount_uploader :qr_code, AvatarUploader
   
@@ -21,12 +27,12 @@ class Coupon < ActiveRecord::Base
   #使用者之間發送優惠卷時複製一張給自己的下線
   def self.copy_coupon(receiver_id,coupon)
     if receiver_id!=coupon.user_id 
+      coupon.update(distributed_number: coupon.distributed_number+=1)
       coupon.children.create(user:User.find(receiver_id),
                           coupon_title:coupon.coupon_title,
                           expiry_date: coupon.expiry_date,
                           item: coupon.item,
                           start_date: coupon.start_date,
-                          discount_type: coupon.discount_type,
                           discount_ceiling_people: coupon.discount_ceiling_people,
                           discount_ceiling_amount: coupon.discount_ceiling_amount,
                           other_content: coupon.other_content,
@@ -36,6 +42,7 @@ class Coupon < ActiveRecord::Base
                           store_id:coupon.store_id,
                           admin_coupon_limit:coupon.admin_coupon_limit
                           )
+      
     end
   end
   

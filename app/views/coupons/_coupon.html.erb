@@ -15,6 +15,17 @@
           <p class="card-text">
             <%=coupon.computed_discount*10%>折
           </p>
+          <p class="card-text">
+          <%#if coupon.parent.user.present?%>
+            <%#=coupon.parent.user.name%>
+          <%#elsif coupon.parent.root?%>
+            <!-- 店家發送 -->
+          <%#else%>
+            <!-- 已被刪除的使用者 -->
+          <%#end%>
+          <%=distributor(coupon)%>
+          </p>
+
         </div>
     
   <%end%>

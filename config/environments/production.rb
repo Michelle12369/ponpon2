@@ -83,4 +83,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #production 的 compile js
+  config.assets.precompile += %w( coupons.coffee )
 end
