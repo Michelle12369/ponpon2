@@ -37,7 +37,7 @@
   </div>
   <div class="background-white home-block home-recommand-store">
     <h6> 推薦的商家</h6>
-    <%#if @like_stores.present?%>
+    <%if @like_stores.present?%>
       <%#%>
       <%@commend_store.each do |store|%>
         <%= link_to  store_path(store) do %>
@@ -59,7 +59,7 @@
       </div> -->
     <%#else%>
       <%#=render('shared/no_resource', resources: '喜愛商家') %>
-    <%#end%>
+    <%end%>
 
   </div>
 </div>

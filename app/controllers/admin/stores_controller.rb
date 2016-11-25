@@ -1,5 +1,5 @@
 class Admin::StoresController < Admin::BaseController
-  before_action :set_admin_store, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin_store, only: [ :edit, :update, :destroy]
 
   # # GET /admin/stores
   # # GET /admin/stores.json

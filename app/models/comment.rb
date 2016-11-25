@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :store
 
-  validates_presence_of :comment
-  validates_presence_of :commentable
+  validates_presence_of :comment,:message=>'不能為空白'
+  validates_presence_of :commentable,:message=>'不能為空白'
   # validates_presence_of :user
 end

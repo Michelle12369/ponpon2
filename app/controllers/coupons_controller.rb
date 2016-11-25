@@ -38,7 +38,7 @@ class CouponsController < ApplicationController
     end
   end
 
-
+#require 'will_paginate/array'
   # GET /coupons/1
   # GET /coupons/1.json
   def show
@@ -47,10 +47,10 @@ class CouponsController < ApplicationController
     @store=Admin::Store.find(store)
     if @coupon.user.present?
       user_following=@user.following_users
-      user_followed_by=@user.followers
+      user_followed_by=@user.user_followers
       @friends=(user_following+user_followed_by).uniq
-      @friends.delete(@coupon.parent.user) if !@coupon.parent.user.nil?
-      @friends_array=@friends.pluck(:name,:id)
+      @friends.delete(@coupon.parent.user) if @friends.include?@coupon.parent.user
+      @friends_array=@friends.pluck(:name,:id)#.paginate(:page =>params[:page], :per_page=> 10)
       @post = Post.new
     end
   end
@@ -62,7 +62,7 @@ class CouponsController < ApplicationController
     @new_coupon=Coupon.copy_coupon(receiver_id,@coupon)
     Coupon.qrcode(receiver_id,@new_coupon)
     respond_to do |format|
-        format.html { redirect_to coupons_path, notice: '恭喜您已成功發送優惠卷！' }
+        format.html { redirect_to user_coupon_path, notice: '恭喜您已成功發送優惠卷！' }
         format.json { render :show, status: :created, location: @coupon }
     end
   end
@@ -78,7 +78,7 @@ class CouponsController < ApplicationController
       send_file @coupon.qr_code.url, :type => 'image/jpeg', :disposition => 'attachment'
     end
     if Rails.env.production?
-      Cloudinary::Utils.private_download_url self.cloudinary_id, self.format, attachment: true
+      send_file Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id#, @coupon.qr_code.format
     end
   end
 

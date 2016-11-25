@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908133406) do
+ActiveRecord::Schema.define(version: 20161120175842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20160908133406) do
     t.integer  "parent_id"
     t.string   "item"
     t.date     "start_date"
-    t.integer  "discount_type"
+    t.integer  "distributed_number"
     t.integer  "discount_ceiling_people"
     t.float    "discount_ceiling_amount"
     t.text     "other_content"

@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
   # tracked only: [:create], owner: Proc.new{ |controller, model| controller.current_user }
   # tracked only: [:create],recipient: ->(controller, model) { model && model.user }
   
-  validates_presence_of :content
+  validates_presence_of :content,:message=>'內文不能為空白'
   #validates_presence_of :user
   #validates_presence_of :store
 

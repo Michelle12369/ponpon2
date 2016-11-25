@@ -25,7 +25,7 @@ class HomeController < ApplicationController
   end
 
   def food
-    @coupons=Coupon.roots.includes(:store).paginate(page: params[:page], per_page: 9)
+    @coupons=Coupon.roots.where("expiry_date > ?",Time.zone.today).includes(:store).paginate(page: params[:page], per_page: 9)
   end
 
   def offical
