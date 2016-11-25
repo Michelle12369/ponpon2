@@ -82,7 +82,7 @@ require 'open-uri'
       url=Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id#, @coupon.qr_code.format
       data = open(url).read
       send_data data, :disposition => 'attachment', :filename=>"photo.jpg"
-      redirect_to user_coupon_path(@coupon)
+      #redirect_to user_coupon_path(@coupon)
       #url=Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id#, @coupon.qr_code.format
     end
   end
