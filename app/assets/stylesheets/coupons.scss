@@ -151,6 +151,49 @@
 }
 
 
+// store裡的coupon
+.store-coupon{
+	.coupon-store-name{
+		font-size: 24pt;
+		color: black;
+	}
+	.coupon-store-content{
+		div{
+			border-bottom:1px solid lightgrey;
+			padding: 12px 0;
+		}
+		div:nth-child(1){
+				font-size: 18pt;
+		}
+		.c{
+			color: grey;
+		}
+		.d{
+			position: absolute;
+			right: 20px;
+			top: 230px;
+			font-size: 30pt;
+			color: $orange;
+			border:0;
+		}
+	}
+	.store-sup{
+		padding-top:9px;
+		background-color: lightgrey;
+		.store-info{
+			font-size: 14pt;
+		}
+	}
+	@media screen and (max-width: 544px){
+		.coupon-store-content{
+			height: 260px;
+		}
+	}
+}
+
+
+
+
 // take.html.erb
 // http://localhost:3000/stores/2/coupons/27/take
 .take{

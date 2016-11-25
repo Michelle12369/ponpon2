@@ -138,7 +138,50 @@
   </div>
 <%else%>
 
-<h6>店家優惠卷</h6>
-<%=@store.store_name%>
-<%=@coupon.coupon_title%>
+<div class="background-white store-coupon col-xs-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+  <h5 class="p-t-1 p-b-1 coupon-store-name text-xs-center"><%=@coupon.coupon_title%></h5>
+  <hr class="p-b-1">
+  <div class="col-sm-8 p-l-0">
+    <%=image_tag @coupon.root.coupon_pic.thumb.url,class:" background-white p-t-0 w-100"%>
+  </div>
+  <div class="col-sm-4 coupon-store-content">
+    <div class="p-b-1">
+      <span>
+        <%= link_to store_path(@store) do%>
+          <%=@store.store_name%>
+        <%end%>
+      </span>
+    </div>
+    <div class="c"><span>商品：<%=@coupon.item%></span></div>
+    <div class="c"><span>狀態：<%= coupon_status(@coupon)%></span></div>
+    <div class="c"><span>地點：<%=@store.store_city%></span></div>
+    <div class="c"><span>
+      <%if @coupon.expiry_date-Date.today>0%>
+        剩餘期限：<%=(@coupon.expiry_date-Date.today).to_i+1%>天
+      <%end%>
+    </span></div>
+    <div class="d"><span><%=@coupon.computed_discount*10 %>折</span></div>
+  </div>
+
+  <div class="col-xs-12 store-sup m-y-2">
+    <div class="m-b-2 p-t-1">
+      <span class="store-info p-y-0">
+        店家訊息
+      </span>
+      <%if signed_in?%>
+        <span id="store-<%= @store.id %>">
+          <span class="follow p-t-0 pull-right">
+            <%= render 'follows/store_form', store: @store %>
+          </span>
+        </span>
+      <%end%>
+    </div>
+    <div class="c p-b-1"><span>營業時間：<%= @store.store_time %></span></div>
+    <div class="c p-b-2"><span>商家簡介：<%= @store.store_about %></span></div>
+
+  </div>
+
+</div>
+
+
 <%end%>
