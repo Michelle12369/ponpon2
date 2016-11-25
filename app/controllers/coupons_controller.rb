@@ -81,9 +81,7 @@ require 'open-uri'
     if Rails.env.production?
       url=Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id#, @coupon.qr_code.format
       data = open(url).read
-      send_data data, :disposition => 'attachment', :filename=>"photo.jpg"
-      #redirect_to user_coupon_path(@coupon)
-      #url=Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id#, @coupon.qr_code.format
+      send_data data, :disposition => 'attachment', :filename=>"#{@coupon.user.name}的#{@coupon.coupon_title}優惠卷.jpg"
     end
   end
 
