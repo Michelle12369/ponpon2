@@ -79,9 +79,9 @@ require 'open-uri'
       send_file @coupon.qr_code.url, :type => 'image/jpeg', :disposition => 'attachment'
     end
     if Rails.env.production?
-      open('image.png', 'wb') do |file|
-        file << open(Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id).read
-      end
+      url=Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id#, @coupon.qr_code.format
+      data = open(url).read
+      send_data data, :disposition => 'attachment', :filename=>"photo.jpg"
       redirect_to user_coupon_path(@coupon)
       #url=Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id#, @coupon.qr_code.format
     end
