@@ -10,32 +10,15 @@ class CouponsController < ApplicationController
   # GET /coupons
   # GET /coupons.json
   def index
-    @coupon = @user.coupons.where("used = ? AND expiry_date > ?",false,Time.zone.today)#Coupon.all
-
-  end
-
-  def notuse
-    @coupon = @user.coupons.where("used = ? AND expiry_date > ?",false,Time.zone.today)
-    @class="notuse"
-    respond_to do |format|
-      format.js {render "used.js.erb"}
-    end
+    @coupon = @user.coupons.where("used = ? AND expiry_date > ?",false,Time.zone.today).paginate(:page =>params[:page], :per_page=> 9)#Coupon.all
   end
 
   def used
-    @coupon = @user.coupons.where("used = ?",true)
-    @class="used"
-    respond_to do |format|
-      format.js 
-    end
+    @coupon = @user.coupons.where("used = ?",true).paginate(:page =>params[:page], :per_page=> 9)
   end
 
   def overdue
-    @coupon =@user.coupons.where("used = ? AND expiry_date < ?",false,Time.zone.today)
-    @class="overdue"
-    respond_to do |format|
-      format.js {render "used.js.erb"}
-    end
+    @coupon =@user.coupons.where("used = ? AND expiry_date < ?",false,Time.zone.today).paginate(:page =>params[:page], :per_page=> 9)
   end
 
 #require 'will_paginate/array'
@@ -75,11 +58,11 @@ class CouponsController < ApplicationController
   #顧客下載自己的qrcode
 require 'open-uri'
   def download
-    if Rails.env.development?
+    if Rails.env.development?#本機壞掉
       send_file @coupon.qr_code.url, :type => 'image/jpeg', :disposition => 'attachment'
     end
     if Rails.env.production?
-      url=Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id#, @coupon.qr_code.format
+      url=@coupon.qr_code.url#Cloudinary::Utils.unsigned_download_url @coupon.qr_code.public_id#, @coupon.qr_code.format
       data = open(url).read
       send_data data, :disposition => 'attachment', :filename=>"#{@coupon.user.name}的#{@coupon.coupon_title}優惠卷.jpg"
     end

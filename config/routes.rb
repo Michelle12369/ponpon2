@@ -87,7 +87,7 @@ Rails.application.routes.draw do
   get '/coupons',:to=>'coupons#index',:as=>"coupons"
   get '/coupons/:id',:to=>'coupons#show',:as=>"user_coupon"
   get '/coupons-used',:to=>'coupons#used',:as=>"user_coupons_used"
-  get '/coupons-notuse',:to=>'coupons#notuse',:as=>"user_coupons_notuse"
+  # get '/coupons-notuse',:to=>'coupons#notuse',:as=>"user_coupons_notuse"
   get '/coupons-overdue',:to=>'coupons#overdue',:as=>"user_coupons_overdue"
 
   #coupon pages settings
