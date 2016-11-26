@@ -43,7 +43,7 @@ class Admin::CouponsController < Admin::BaseController
           if params[:coupon][:coupon_pic].present?
             render :crop
           else  
-            redirect_to admin_store_coupons_path, notice: 'Coupon was successfully created.'
+            redirect_to admin_store_coupons_path, notice: '已成功新增優惠卷'
           end 
             }
         format.json { render :show, status: :created, location: @admin_coupon }
