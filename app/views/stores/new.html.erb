@@ -1,22 +1,26 @@
-<div id='title'>
-    <h1>申請會員流程</h1>
-    <div id='title-con'>
-        <div class="circle circle1">1</div>
-        <div class="border border2"></div>
-        <div class="circle circle2">2</div>
-        <div class="border" id="border3"></div>
-        <div class="circle" id="circle3">3</div>
-    </div>
-    <ul>
-        <li>合作條款</li>
-        <li>填寫資料</li>
-        <li>審核</li>
-    </ul>
-</div>
+<div class="container nobar-container">
+    <div class="row">
+        <div id='title'>
+            <h1>申請會員流程</h1>
+            <div id='title-con'>
+                <div class="circle circle1">1</div>
+                <div class="border border2"></div>
+                <div class="circle circle2">2</div>
+                <div class="border" id="border3"></div>
+                <div class="circle" id="circle3">3</div>
+            </div>
+            <ul>
+                <li>合作條款</li>
+                <li>填寫資料</li>
+                <li>審核</li>
+            </ul>
+        </div>
 
-<div class="row" id="contact-part">
-    <div class="col-xs-12 col-sm-12">
-        <div class="text-xs-center text-sm-left" id="new_store">
-			<%= render 'form', store: @store %>
-		</div>
+        <div class="row" id="contact-part">
+            <div class="col-xs-12 col-sm-12">
+                <div class="text-xs-center text-sm-left" id="new_store">
+        			<%= render 'form', store: @store %>
+        		</div>
+        </div>
+    </div>
 </div>

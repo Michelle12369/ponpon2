@@ -235,12 +235,13 @@ button:focus{
 .cou-store-bgpic{
 	img{
 		max-height: 400px;
-		max-width: 90%;
+		max-width: 100%;
 	}
 	.vertical-middle{
 		background-color:black;
-		height: 400px;
-		line-height: 400px;
+		// height: 400px;
+		line-height: 230px;
+		// line-height: 50%;
 	}
 	@media screen and (max-width:768px){
 		.vertical-middle{
@@ -262,7 +263,7 @@ button:focus{
 	h6{
 		font-size: 14pt;
 		font-weight: 200;
-		button{
+		span{
 			display: inline-block;
 			text-align: center;
 			width: 120px;

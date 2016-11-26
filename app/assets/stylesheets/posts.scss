@@ -160,6 +160,55 @@
 	font-size:28px;
 }
 
+// 留言版型
+.post_form{
+	display:inline-block;
+	width:47px;
+	text-align:center;
+}
 
+.post_form_2{
+	display:inline-block;
+	width: calc( 100% - 52px );
+	.post-comment{
+		display: inline-block;
+		width: 97%;
+	}
+	.post-btn{
+		display: none;
+	}
+	@media screen and (max-width:767px) {
+		.post-comment{
+			display: inline-block;
+			width: calc( 98% - 53px );
+		}
+		.post-btn{
+			padding-top:7px;
+			padding-bottom:7px;
+			background-color:$orange;
+			color: white;
+			display: block;
+			margin-right:10px;
+		}
+	}
+}
 
-
+// 每一頁標題
+.page_title{
+	display:none;
+}
+@media screen and (max-width:767px) {
+	.page_title{
+		display: block;
+		text-align:center;
+		margin-bottom:23px;
+		span{
+		font-size:16pt;
+		padding:7px;
+		border-radius:0.2rem;
+		border:1px solid lightgrey;
+		background-color:white;
+		// border-bottom:1px solid black;
+		}
+	}
+}

@@ -1,10 +1,10 @@
 
-<%= form_tag comments_path(commentable_type: commentable.class.to_s, commentable_id: commentable.id), method: :post, remote: true do %>
-    <div class="form-group col-xs-11 comment-form-input">
+<%= form_tag comments_path(commentable_type: commentable.class.to_s, commentable_id: commentable.id),class:'post_form_2', method: :post, remote: true do %>
+    <div class="form-group post-comment comment-form-input">
         <%= text_field_tag :comment_text, nil, placeholder: '留言...', class: 'form-control input-mentionable' %>
     </div>
     <!-- <div class="col-xs-2"> -->
-    <%#= submit_tag "留言", class: 'btn pull-right btn-outline-warning btn-sm' %>
+    <%= submit_tag "留言", class: 'btn pull-right btn-sm post-btn' %>
     <!-- </div> -->
 <% end %>
 
