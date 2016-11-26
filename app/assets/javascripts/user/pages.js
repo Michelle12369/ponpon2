@@ -35,6 +35,7 @@ $(document).ready(function(){
 // 	$('.news-coupon').css('display','block');
 // });
 
+
 });
 
 

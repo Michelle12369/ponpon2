@@ -5,7 +5,7 @@
       <!-- <div> -->
         <%=image_tag coupon.root.coupon_pic.thumb.url || 'avatar.jpg', class: 'card-img-top'%>
         <div class="card-block p-t-1 p-b-1">
-          <div class="pull-left text-xs-left col-xs-8">
+          <div class="pull-left text-xs-left col-xs-8 col-sm-7">
           <p class="card-text m-b-0">
             <%=coupon.store.store_name%>
           </p>
@@ -17,7 +17,7 @@
             <%=(coupon.computed_discount*10.0).round(2)%>折
           </p>
           </div>
-          <div class="col-xs-4 cc text-xs-center">
+          <div class="col-xs-4 col-sm-5 cc text-xs-center p-x-0">
             <!-- <p class="card-text"> -->
               <%=distributor2(coupon)%>
             <!-- </p> -->
