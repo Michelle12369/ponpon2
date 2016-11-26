@@ -19,7 +19,7 @@
     <%#else%>
       <%#=render('shared/no_resource', resources: '相關優惠卷') %>
     <%#end%>
-    <%= render @coupon, type: 1 || render('shared/no_resource', resources: '相關優惠卷')  %>
+    <%= render (@coupon) || render('shared/no_resource', resources: '相關優惠卷')  %>
   </div>
   <%= render 'shared/paginate', resources: @coupon %>
 </div>

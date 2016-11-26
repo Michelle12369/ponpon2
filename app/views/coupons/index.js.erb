@@ -1,3 +1,3 @@
-$('.coupons').append("<%= j render @coupon, type: 1 %>");
+$('.coupons').append("<%= j render (@coupon)%>");
 
 <%= render 'shared/paginate', resources: @coupon %>

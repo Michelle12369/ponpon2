@@ -1,9 +1,8 @@
 module CouponsHelper
-	def distributor(coupon,type)
-
-			if (coupon.root?||coupon.parent.root?)&&(type==1)
+	def distributor(coupon)
+			if coupon.parent.root?
 				"店家發送"
-			elsif (coupon.root?||coupon.parent.root?)&&(type==0)
+			elsif coupon.root?
 				nil
 			elsif coupon.parent.user.nil?	
 				"已被刪除的使用者"
