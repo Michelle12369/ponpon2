@@ -1,9 +1,9 @@
 module CouponsHelper
 	def distributor(coupon)
-			if coupon.parent.root?
-				"店家發送"
-			elsif coupon.root?
+			if coupon.root?
 				nil
+			elsif coupon.parent.present?&&coupon.parent.root?
+				"店家發送"
 			elsif coupon.parent.user.nil?	
 				"已被刪除的使用者"
 			else
