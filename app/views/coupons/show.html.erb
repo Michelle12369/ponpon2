@@ -67,7 +67,11 @@
           <%if coupon_status(@coupon)=="可使用"%>
             <%= form_tag distribute_user_coupon_path(current_user,@coupon) do %>
               <div class="form-group coupon-list">
-                <%= select_tag :receiver_id,options_for_select(@friends_array),class:"form-control",size:"4"%>
+                <%if @friends_array.present?%>
+                  <%= select_tag :receiver_id,options_for_select(@friends_array),class:"form-control",size:"4"%>
+                <%else%>
+                  <p>您目前還沒有朋友，趕快搜尋看看你的好友吧</p>
+                <%end%>
               </div>
         </div>
         <div class="modal-footer">
