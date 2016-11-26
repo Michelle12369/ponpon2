@@ -142,11 +142,43 @@
 		}
 	}
 }
+.or{
+	padding-top: 15px;
+
+	.or-line{
+		display: inline-block;
+		width: 47%  ;
+		border-top:1px solid lightgrey;
+		padding-top:3px;
+		// color: grey;
+	}
+	.or-word{
+		// padding-top:10px;
+		color: grey;
+	}
+}
+
+.select-unvisible{
+	overflow: scroll;
+	padding: 0;
+	option{
+		padding: 8px 20px;
+		font-size: 12pt;
+		text-align: center;
+		border-bottom: 1px solid lightgrey;
+	}
+	option::selection{
+		background-color:grey;
+	}
+	option:active{
+		background-color:grey;
+	}
+}
 
 // coupons index.html.erb
 .cou-type{
 	a{
-		padding:3px 6ㄊpx;
+		padding:3px 6px;
 	}
 }
 

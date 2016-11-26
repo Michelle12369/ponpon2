@@ -71,7 +71,7 @@
             <%= form_tag distribute_user_coupon_path(current_user,@coupon) do %>
               <div class="form-group coupon-list">
                 <%if @friends_array.present?%>
-                  <%= select_tag :receiver_id,options_for_select(@friends_array),class:"form-control",size:"4"%>
+                  <%= select_tag :receiver_id,options_for_select(@friends_array,@friends_array[0]),class:"form-control select-unvisible",size:"5"%>
                 <%else%>
                   <p>您目前還沒有朋友，趕快搜尋看看你的好友吧</p>
                 <%end%>
@@ -120,7 +120,14 @@
         </div>
         <div class="modal-body text-xs-center">
               <h6 class="">優惠分享到臉書</h6>
-              <div id="shareBtn" class="orange-btn-nm btn clearfix">Share</div>
+              <div id="shareBtn" class="orange-bg-btn btn clearfix">Share to FB</div>
+              
+              <div class="or">
+                <span class="or-line"></span>
+                <span class="or-word">or</span>
+                <span class="or-line"></span>
+              </div>
+              
               <%= render 'posts/form_without_ajax' %>
 
               <script>

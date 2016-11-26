@@ -17,3 +17,9 @@
 /tmp
 
 /config/database.yml
+
+/public/uploads/admin
+/public/uploads/coupon
+/public/uploads/post
+/public/uploads/tmp
+/public/uploads/user
