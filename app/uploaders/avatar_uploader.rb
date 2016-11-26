@@ -8,9 +8,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   if Rails.env.production?
     include Cloudinary::CarrierWave
 
-    def public_id
-      return "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    end  
+    # def public_id
+    #   return "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    # end  
   end
   # Choose what kind of storage to use for this uploader:
   if Rails.env.development?

@@ -1,16 +1,18 @@
 module CouponsHelper
 	def distributor(coupon)
-		if coupon.root?||coupon.parent.root?
-			"店家發送"
-		elsif coupon.parent.user.nil?	
-			"已被刪除的使用者"
-		else
-			link_to user_path(coupon.parent.user) do
-				concat image_tag coupon.parent.user.avatar.url||"avatar.jpg", class: 'avatar coupon-profile-pic'
-				concat " "
-				concat coupon.parent.user.name
-			end
-		end	
+			if coupon.root?
+				nil
+			elsif coupon.parent.present?&&coupon.parent.root?
+				"店家發送"
+			elsif coupon.parent.user.nil?	
+				"已被刪除的使用者"
+			else
+				link_to user_path(coupon.parent.user) do
+					concat image_tag coupon.parent.user.avatar.url||"avatar.jpg", class: 'avatar coupon-profile-pic'
+					concat " "
+					concat coupon.parent.user.name
+				end
+			end	
 	end
 	
 	def distributor2(coupon)

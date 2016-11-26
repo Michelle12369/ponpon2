@@ -14,7 +14,7 @@
           </h6>
 
           <p class="card-text">
-            <%=coupon.computed_discount*10%>折
+            <%=(coupon.computed_discount*10.0).round(2)%>折
           </p>
           </div>
           <div class="col-xs-4 cc">
