@@ -24,7 +24,6 @@ class Admin::Coupon < Coupon
 	end
 
 	def self.create_coupon(coupon,discount)
-
 		#店家折數計算
 	 	default_discount=coupon.computed_discount
 		discount_ceiling_people=((1.2-default_discount)/discount).round

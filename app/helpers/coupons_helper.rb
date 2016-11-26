@@ -19,13 +19,13 @@ module CouponsHelper
 		if coupon.root?
 			nil
 		elsif coupon.parent.present?&&coupon.parent.root?
-			concat image_tag "store.png" , class: 'distributor_store' and "店家"
+			concat image_tag "Qpon.png" , class: 'distributor_store' and "店家發送"
 #			concat "店家"
 		elsif coupon.parent.user.nil?	
 			"已被刪除的使用者"	
 		else
-			concat image_tag coupon.parent.user.avatar.url||"avatar.jpg", class: 'avatar coupon-profile-pic distributor_store' and
-			coupon.parent.user.name
+			concat image_tag coupon.parent.user.avatar.url||"avatar.jpg", class: 'avatar coupon-profile-pic distributor_store'
+			concat coupon.parent.user.name and "發送"
 		end	
 	end
 

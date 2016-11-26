@@ -50,6 +50,17 @@ class User < ActiveRecord::Base
     end
   end
 
+#給活動用，註冊即送兩張優惠卷，第一個使用者註冊時可能會錯
+  after_create :send_two_coupons
+  def send_two_coupons
+    if self.id!=1
+      new_coupon=Coupon.copy_coupon(self.id,Store.first.coupons.roots[0])
+      Coupon.qrcode(self.id,new_coupon)
+      new_coupon=Coupon.copy_coupon(self.id,Store.first.coupons.roots[1])
+      Coupon.qrcode(self.id,new_coupon)
+    end
+  end
+
   has_many :stores ,:through =>:store_users
   has_many :store_users
 end
