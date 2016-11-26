@@ -90,13 +90,16 @@
           </button>
           <div class="text-xs-left p-t-2 p-b-2 qrcode-modal">
             <h5>QR code</h5>
-            <%if coupon_status(@coupon)=="可使用"%>
+            <%if coupon_status(@coupon)=="可使用"&&@coupon.qr_code.present?%>
               <%=image_tag @coupon.qr_code.url, class:"qrcode" %>
-            <% end %>
-            <div class="text-xs-center">
+              <div class="text-xs-center">
               <!-- <button class="orange-btn">下載儲存此QRCode</button> -->
-              <button class="orange-btn-nm"><%= link_to "下載儲存此QRCode", download_path(current_user,@coupon) %></button>
-            </div>
+                <button class="orange-btn-nm"><%= link_to "下載儲存此QRCode", download_path(current_user,@coupon) %></button>
+              </div>
+            <%else%>
+              <p>基於某些原因，您無qrcode，請通知客服人員：0912-030-121 陳專員</p>
+            <% end %>
+            
           </div>
       </div>
     </div>
