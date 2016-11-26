@@ -1,12 +1,3 @@
-$(".coupons").html("");
+$('.coupons').append("<%= j render @coupon, type: 1 %>");
 
-<%if @coupon.present?%>
-	<% @coupon.each do |coupon| %>
-		$(".coupons").append("<%=j render 'coupons/coupon',coupon: coupon%>");
-	<%end%>
-<%else%>
-	 $(".coupons").append("<%=j render('shared/no_resource', resources: '相關優惠卷') %>");
-<%end%>
-
-$(".filter").removeClass("orange-use-btn");
-$(".<%=@class%>").addClass("orange-use-btn");
+<%= render 'shared/paginate', resources: @coupon %>

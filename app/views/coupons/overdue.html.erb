@@ -1,12 +1,10 @@
-<h6 class="page_title"><span>我的優惠券列表</span></h6>
-
-  <div class="m-b-1 col-sm-12">
+ <div class="m-b-1 col-sm-12">
     <div class="col-sm-12 cou-type">
-      <%= link_to "可使用", coupons_path,class:"nav-link orange-use-btn notuse filter" %>
+      <%= link_to "可使用", coupons_path,class:"nav-link notuse filter" %>
       <span>|</span>
       <%= link_to "已使用", user_coupons_used_path,class:"nav-link used filter"%>
       <span>|</span>
-      <%= link_to "已過期", user_coupons_overdue_path,class:"nav-link overdue filter" %>
+      <%= link_to "已過期", user_coupons_overdue_path,class:"nav-link overdue filter orange-use-btn" %>
     </div>
   </div>
   
@@ -18,10 +16,10 @@
         <%#end%>
         <%#= render 'shared/paginate', resources: @coupon %>
         <%#= will_paginate @coupon%>
-        <%= render (@coupon) || render('shared/no_resource', resources: '相關優惠卷')  %>
     <%#else%>
       <%#=render('shared/no_resource', resources: '相關優惠卷') %>
     <%#end%>
+    <%= render (@coupon) || render('shared/no_resource', resources: '相關優惠卷')  %>
   </div>
   <%= render 'shared/paginate', resources: @coupon %>
 </div>
