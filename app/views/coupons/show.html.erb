@@ -72,15 +72,16 @@
               <div class="form-group coupon-list">
                 <%if @friends_array.present?%>
                   <%= select_tag :receiver_id,options_for_select(@friends_array,@friends_array[0]),class:"form-control select-unvisible",size:"5"%>
+                  <div class="modal-footer">
+                    <%= submit_tag "傳送", class: 'btn orange-btn-nm' %>
+                  </div>
                 <%else%>
-                  <p>您目前還沒有朋友，趕快搜尋看看你的好友吧</p>
+                  <p>您目前還沒有可發放優惠卷的粉絲或追蹤者，趕快搜尋看看你可能認識的人吧</p>
                 <%end%>
-              </div>
-        </div>
-        <div class="modal-footer">
-              <%= submit_tag "傳送", class: 'btn orange-btn-nm' %>
+             
+            </div>
             <% end %>
-           <%end%> 
+          <%end%> 
         </div>
       </div>
     </div>
