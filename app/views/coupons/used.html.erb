@@ -1,3 +1,4 @@
+<h6 class="page_title"><span>我的優惠券列表</span></h6> 
   <div class="m-b-1 col-sm-12">
     <div class="col-sm-12 cou-type">
       <%= link_to "可使用", coupons_path,class:"nav-link notuse filter" %>
@@ -19,7 +20,11 @@
     <%#else%>
       <%#=render('shared/no_resource', resources: '相關優惠卷') %>
     <%#end%>
-    <%= render (@coupon) || render('shared/no_resource', resources: '相關優惠卷')  %>
+    <%if @coupon.present?%>
+      <%= render (@coupon) %>
+    <%else%>
+      <%=render('shared/no_resource', resources: '相關優惠卷') %>
+    <%end%>
   </div>
   <%= render 'shared/paginate', resources: @coupon %>
 </div>

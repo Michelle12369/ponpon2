@@ -1,10 +1,11 @@
 <!-- <div class="col-md-4 col-sm-6"> -->
-<div id="coupon-<%=coupon.id%>" class="card text-xs-center">
+<div id="coupon-<%=coupon.id%>" class="card">
   <%= link_to user_coupon_path(coupon) do%>
 
       <!-- <div> -->
         <%=image_tag coupon.root.coupon_pic.thumb.url || 'avatar.jpg', class: 'card-img-top'%>
         <div class="card-block p-t-1 p-b-1">
+          <div class="pull-left text-xs-left col-xs-8">
           <p class="card-text m-b-0">
             <%=coupon.store.store_name%>
           </p>
@@ -15,16 +16,12 @@
           <p class="card-text">
             <%=(coupon.computed_discount*10.0).round(2)%>折
           </p>
-          <p class="card-text">
-          <%#if coupon.parent.user.present?%>
-            <%#=coupon.parent.user.name%>
-          <%#elsif coupon.parent.root?%>
-            <!-- 店家發送 -->
-          <%#else%>
-            <!-- 已被刪除的使用者 -->
-          <%#end%>
-          <%=distributor(coupon)%>
-          </p>
+          </div>
+          <div class="col-xs-4 cc text-xs-center">
+            <!-- <p class="card-text"> -->
+              <%=distributor2(coupon)%>
+            <!-- </p> -->
+          </div>
 
         </div>
     

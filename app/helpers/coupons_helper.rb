@@ -14,6 +14,21 @@ module CouponsHelper
 				end
 			end	
 	end
+	
+	def distributor2(coupon)
+		if coupon.root?
+			nil
+		elsif coupon.parent.present?&&coupon.parent.root?
+			concat image_tag "store.png" , class: 'distributor_store' and "店家"
+#			concat "店家"
+		elsif coupon.parent.user.nil?	
+			"已被刪除的使用者"	
+		else
+			concat image_tag coupon.parent.user.avatar.url||"avatar.jpg", class: 'avatar coupon-profile-pic distributor_store' and
+			coupon.parent.user.name
+		end	
+	end
+
 	def coupon_status(coupon)
 		if coupon.used==true
 			"已使用"

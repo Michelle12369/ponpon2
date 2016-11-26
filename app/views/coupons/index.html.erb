@@ -18,10 +18,14 @@
         <%#end%>
         <%#= render 'shared/paginate', resources: @coupon %>
         <%#= will_paginate @coupon%>
-        <%= render (@coupon) || render('shared/no_resource', resources: '相關優惠卷')  %>
     <%#else%>
       <%#=render('shared/no_resource', resources: '相關優惠卷') %>
     <%#end%>
+    <%if @coupon.present?%>
+      <%= render (@coupon) %>
+    <%else%>
+      <%=render('shared/no_resource', resources: '相關優惠卷') %>
+    <%end%>
   </div>
   <%= render 'shared/paginate', resources: @coupon %>
 </div>
