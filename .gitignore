@@ -23,3 +23,5 @@
 /public/uploads/post
 /public/uploads/tmp
 /public/uploads/user
+
+.DS_Store
