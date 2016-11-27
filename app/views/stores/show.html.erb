@@ -94,7 +94,7 @@
             <div class="cou-info-detail">
               <p class="cou-info-detail-title"><%=coupon.coupon_title%></p>
               <div class="cou-info-detail-content">
-                <p><%=coupon.other_content%></p>
+                <p><%=simple_format(coupon.other_content)%></p>
                 <p><%=coupon.computed_discount*10%>折開始計算</p>
               </div>
             </div>
