@@ -32,35 +32,22 @@
         用一段話描述自己~
       <%end%> 
     <%end%>
-<!--<h6 class="p-t-1">追蹤朋友</h6>
-    <p>放朋友大頭貼</p> -->
   </div>
+
   <div class="background-white home-block home-recommand-store">
-    <h6> 推薦的商家</h6>
-    <%if @like_stores.present?%>
-      <%#%>
-      <%@commend_store.each do |store|%>
-        <%= link_to  store_path(store) do %>
+    <h6> 你可能認識的朋友</h6>
+    <%if @commend_users.present?%>
+      <%@commend_users.each do |user|%>
+        <%= link_to  user_path(user) do %>
           <div class="home-like-eachStore">
-            <div class="home-store-pic">
-              <%=image_tag store.store_cover_photo.thumb.url||'avatar.jpg',class:"avatar" %>
-            </div>
-            <div class="home-like-part">
-              <p class="m-b-0 home-store-about-title"><strong><%=store.store_name%></strong></p>
-              <p class="m-b-1 home-store-about"><%=store.store_about%></p>
-            </div>
+              <%=image_tag user.avatar.url||'avatar.jpg',class:"avatar" %>
+              <strong><%=user.name%></strong>
           </div>
         <%end%>
       <%end%>
-<!--       <div class="text-xs-center">
-        <%#= link_to  stores_user_path(current_user) do%>
-          更多<i class="fa fa-angle-down icon"></i>
-        <%#end%>
-      </div> -->
-    <%#else%>
-      <%#=render('shared/no_resource', resources: '喜愛商家') %>
+    <%else%>
+        <p>抱歉，目前無你可能認識的朋友，你可以使用搜尋功能尋找。</p>
     <%end%>
-
   </div>
 </div>
 

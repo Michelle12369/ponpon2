@@ -24,7 +24,8 @@ class HomeController < ApplicationController
     @activities=activity_store.or(activity_user).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     # @activities = PublicActivity::Activity.where(owner_id: @friends).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     @like_stores=Admin::Store.find(current_user.following_stores.ids.last(5))
-    @commend_store=Admin::Store.where(store_status:"passed").sample(2)
+    following_user_without=@user.following_users.to_a.delete(User.where(name:"蕭農橋"))
+    @commend_users=User.where.not(id:following_user_without).sample(5)
   end
 
   def food
