@@ -1,5 +1,12 @@
 <h6 class="page_title"><span>Ｑ胖優惠</span></h6>
-<p style="font-size:16px;">Ｑ胖平台所有優惠卷:</p>
+<div class="alert alert-warning help" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true" class="p-r-1">&times;</span>
+    </button>
+    <%=image_tag 'Qpon.png',class:"help-image"%>
+	Q胖小幫手：此為Q胖平台上所有店家發出的優惠卷	
+</div>   
+
 <div class="card-deck-wrapper">
   	<div class="card-deck coupons"> 
 		<%= render partial: "coupons/coupon" , collection: @coupons || render('shared/no_resource', resources: '相關優惠卷')  %>

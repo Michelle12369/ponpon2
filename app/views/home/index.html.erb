@@ -36,6 +36,7 @@
 
   <div class="background-white home-block home-recommand-store">
     <h6> 你可能認識的朋友</h6>
+    <%if @commend_users.present?%>
       <%@commend_users.each do |user|%>
         <%= link_to  user_path(user) do %>
           <div class="home-like-eachStore">
@@ -44,6 +45,9 @@
           </div>
         <%end%>
       <%end%>
+    <%else%>
+        <p>抱歉，目前無你可能認識的朋友，你可以使用搜尋功能尋找。</p>
+    <%end%>
   </div>
 </div>
 
