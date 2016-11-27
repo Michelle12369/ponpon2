@@ -15,7 +15,7 @@
     </div>
       <div class="col-xs-12 col-sm-12">
       <%= @store.store_type%> <%#= @store.store_address %>
-      / 簡介：<%= @store.store_about %>
+      / 簡介：<br><%= simple_format(@store.store_about) %>
     </div>
 
     <div class="text-xs-center col-xs-12 p-b-2 p-l-0 p-r-0 m-t-1 cou-store-bgpic">

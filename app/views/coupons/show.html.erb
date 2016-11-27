@@ -204,8 +204,8 @@
         </span>
       <%end%>
     </div>
-    <div class="c p-b-1"><span>營業時間：<%= @store.store_time %></span></div>
-    <div class="c p-b-2"><span>商家簡介：<%= @store.store_about %></span></div>
+    <div class="c p-b-1"><span>營業時間：<br><%= @store.store_time %></span></div>
+    <div class="c p-b-2"><span>商家簡介：<br><%= simple_format(@store.store_about) %></span></div>
 
   </div>
 
