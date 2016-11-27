@@ -4,8 +4,11 @@ class HomeController < ApplicationController
   
 
   def front
-    @stores_last=Admin::Store.includes(:coupons).where(store_status:"passed").last(6)
-    @stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(6)
+    #正常寫法
+    #@stores_last=Admin::Store.includes(:coupons).where(store_status:"passed").last(6)
+    #@stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(6)
+    #for 活動用
+    @coupons=Coupon.includes(:store).first(2)
     render :layout => "frontbar"
     
     
@@ -29,8 +32,11 @@ class HomeController < ApplicationController
   end
 
   def offical
-    @stores_last=Admin::Store.includes(:coupons).where(store_status:"passed").last(6)
-    @stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(6)
+  #正常寫法
+    #@stores_last=Admin::Store.includes(:coupons).where(store_status:"passed").last(6)
+    #@stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(6)
+    #for 活動用
+    @coupons=Coupon.includes(:store).first(2)
   end  
 
   def recommend
