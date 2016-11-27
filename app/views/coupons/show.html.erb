@@ -13,10 +13,10 @@
             <p>贈送人：<%= distributor(@coupon)%></p>
             <p>狀態：<%= coupon_status(@coupon)%></p>
             <p>商品：<%=@coupon.item%></p>
-            <p>您已發送給朋友的張數：<%=@coupon.distributed_number%></p>
             <%if @coupon.expiry_date-Date.today>0%>
-              <p>剩餘期限：<%=(@coupon.expiry_date-Date.today).to_i+1%>天</p>
+              <p>到期日：<%=@coupon.expiry_date%></p>
             <%end%>
+            <p>您已發送給朋友的張數：<%=@coupon.distributed_number%></p>
             <p class="m-t-1 m-b-1" id='money'><%=(@coupon.computed_discount*10.0).round(2)%>折</p>
             <div>
               <%if coupon_distributed_number(@coupon) && coupon_status(@coupon)=="可使用"%>
@@ -45,6 +45,7 @@
               <li>您的優惠卷已過期，無法進一步使用</li>
             <%end%>
             <li>每增加一人使用增加<%=(@coupon.discount)*100 %>%折扣</li>
+            <li>最多可以發放給五位好友</li>
           </ol>
         </div>
         <div>
@@ -185,7 +186,7 @@
     <div class="c"><span>地點：<%=@store.store_city%></span></div>
     <div class="c"><span>
       <%if @coupon.expiry_date-Date.today>0%>
-        剩餘期限：<%=(@coupon.expiry_date-Date.today).to_i+1%>天
+        到期日：<%=@coupon.expiry_date%>
       <%end%>
     </span></div>
     <div class="d"><span><%=@coupon.computed_discount*10 %>折</span></div>

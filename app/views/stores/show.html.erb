@@ -4,7 +4,7 @@
     <div class="col-md-6 col-xs-6 p-x-0 m-b-1">
       <h4 class="m-b-0"><strong><%= @store.store_name %></strong></h4>
     </div>
-    <div class="col-md-6 col-xs-6 p-x-0 text-xs-right">
+    <div class="col-md-6 col-xs-6 p-x-0 text-xs-right store-fan">
       <%if signed_in?%>
       <div id="store-<%= @store.id %>">
         <div class="follow p-t-0">
@@ -56,49 +56,56 @@
     </div> 
   -->
 
-    <div class="col-sm-6 col-xs-12">
+    <div class="col-xs-12">
       <p>
         <%= image_tag 'cou_clock.png' , class:'cou-icon' %>
         <%= @store.store_time %>
       </p>
     </div>
-    <div class="col-sm-6 col-xs-12">
+    <div class="col-xs-12">
       <p>
         <%= image_tag 'cou_tel.png' , class:'cou-icon' %>
         <%= @store.store_phone %>
       </p>
     </div>
-    <div class="col-sm-6 col-xs-12">
+    <div class="col-xs-12">
       <p>
         <%= image_tag 'cou_gps.png' , class:'cou-icon' %>
         <%= @store.store_address %>
       </p>
     </div>
-    <div class="col-sm-6 col-xs-12">
+    <div class="col-xs-12">
       <p>
         <%= image_tag 'cou_star.png' , class:'cou-icon' %>
         <%= @store.store_rule %>
       </p>
     </div>
 
-    <div class="col-xs-12 cou-info-coupon p-t-0 m-t-0">
+    <div class="col-xs-12 cou-info-coupon p-t-0 m-t-0 p-x-0">
       <h6 class="m-t-2 m-b-2 text-xs-center">
         <!-- <button class="now-but">優惠動態</button> -->
-        <span class="pass-but">優惠券</span>
+        <span style="border-top:solid; border-bottom: solid; border-color: lightgrey;">優惠券</span>
         <!-- <button class="news-but">過期優惠</button> -->
       </h6>
       <!-- 現行優惠券 -->
-      <div class="now-coupon">
-        <% @coupons.each do |coupon| %>
-          <%= link_to  user_coupon_path(coupon) do%>
-            <div class="cou-info-detail">
-              <p class="cou-info-detail-title"><%=coupon.coupon_title%></p>
-              <div class="cou-info-detail-content">
-                <p><%=coupon.other_content%></p>
-                <p><%=coupon.computed_discount*10%>折開始計算</p>
+      <div>
+        <%if @coupons.present?%>
+          <% @coupons.each do |coupon| %>
+            <%= link_to  user_coupon_path(coupon) do%>
+              <div class="cou-info-detail">
+                <div class="cou-info-border">
+                  <p class="cou-info-detail-title"><%=coupon.coupon_title%></p>
+                  <div class="cou-info-detail-content">
+                    <p>品名：<%=coupon.item%></p>
+                    <p>折數：<%=coupon.computed_discount*10%>折開始計算</p>
+                    <p>到期日：<%=coupon.expiry_date%></p>
+                  </div>
+                </div>
               </div>
-            </div>
+            <%end%>
           <%end%>
+        <%else%>
+          <p>目前沒有相關優惠卷</p>
         <%end%>
       </div>
     </div>
