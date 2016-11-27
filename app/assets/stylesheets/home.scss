@@ -264,10 +264,6 @@
 }
 
 
-.official-pic{
-	width:70%;
-}
-
 //Q胖小幫手
 .help{
 	.help-image{
@@ -279,6 +275,18 @@
 
 
 
-
-
+.offcial-intro{
+	.official-pic{
+		width:50%;
+		padding-bottom:30px;
+	}
+	.official-intro-tit{
+		text-align:center;
+		font-size:14pt;
+	}
+	.official-intro-con{
+		line-height: 28px;
+		padding: 0 10px;
+	}
+}
 
