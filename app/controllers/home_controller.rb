@@ -41,7 +41,8 @@ class HomeController < ApplicationController
   end  
 
   def recommend
-
+  end
+  def recommend2
   end
 
   def search_user

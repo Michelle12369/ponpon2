@@ -103,7 +103,7 @@ Rails.application.routes.draw do
   get '/search',:to=>'home#search_user',:as=>"search_user"
 
   get '/recommend',:to=>'home#recommend',:as=>"recommend"
-
+  get '/recommend2',:to=>'home#recommend2',:as=>"recommend2"
   #pusher settings
   # post 'pusher/auth'
   # match '/posters/:id' => "posts#shownolayout",via: :get#post
