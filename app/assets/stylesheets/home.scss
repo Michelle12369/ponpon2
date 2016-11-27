@@ -263,7 +263,17 @@
 	}
 }
 
-
-.official-pic{
-	width:70%;
+.offcial-intro{
+	.official-pic{
+		width:70%;
+		padding-bottom:30px;
+	}
+	.official-intro-tit{
+		text-align:center;
+		font-size:14pt;
+	}
+	.official-intro-con{
+		line-height: 28px;
+		padding: 0 10px;
+	}
 }
