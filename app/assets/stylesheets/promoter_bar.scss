@@ -265,8 +265,11 @@ body {
     }
 }
 
-
-
+@media screen and (max-width:767px) {
+    .nav-link-sm{
+        width: 100%;
+    }
+}
 
 footer{
     background-color:rgb(242,242,241);

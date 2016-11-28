@@ -157,9 +157,13 @@
 }
 
 .user_name{
-	font-size:28px;
+	font-size: 26px;
 }
-
+@media screen and (max-width:400px) {
+	.user_name{
+		font-size: 20px;
+	}
+}
 // 留言版型
 .post_form{
 	display:inline-block;
@@ -204,10 +208,10 @@
 		margin-bottom:23px;
 		span{
 		font-size:16pt;
-		padding:7px;
-		border-radius:0.2rem;
-		border:1px solid lightgrey;
-		background-color:white;
+		padding:5px;
+		// border-radius:0.2rem;
+		border-bottom:5px solid $orange;
+		// background-color:white;
 		// border-bottom:1px solid black;
 		}
 	}
