@@ -200,6 +200,9 @@
 		display: none;
 	}
 	@media screen and (max-width:460px){
+		.self-pic{
+			width: 80px;
+		}
 		.self-status{
 			display: none;
 		}
