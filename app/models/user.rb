@@ -57,8 +57,8 @@ class User < ActiveRecord::Base
       User.find(self.id).follow(Store.first)
       new_coupon=Coupon.copy_coupon(self.id,Store.first.coupons.roots[0])
       Coupon.qrcode(self.id,new_coupon)
-      new_coupon=Coupon.copy_coupon(self.id,Store.first.coupons.roots[1])
-      Coupon.qrcode(self.id,new_coupon)
+      new_coupon2=Coupon.copy_coupon(self.id,Store.first.coupons.roots[1])
+      Coupon.qrcode(self.id,new_coupon2)
     end
   end
 
