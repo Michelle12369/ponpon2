@@ -60,11 +60,13 @@
             <li>
             <%if @used_descendants.present?%>
               <%@used_descendants.each do |used_des|%>
-                <%=link_to user_path(used_des.user) do%>
-                  <%=image_tag used_des.user.avatar.url||"avatar.jpg", class: 'avatar coupon-profile-pic'%>
-                  <%=used_des.user.name%>
+                <%if used_des.user.present?%>
+                  <%=link_to user_path(used_des.user) do%>
+                    <%=image_tag used_des.user.avatar.url||"avatar.jpg", class: 'avatar coupon-profile-pic'%>
+                    <%=used_des.user.name%>
+                  <%end%>
+                  <br>
                 <%end%>
-                <br>
               <%end%>
             <%else%>
               <p>無</p>
@@ -171,11 +173,10 @@
                   "?app_id=1795893413990726"+
                   "&display=popup"+
                   "&mobile_iframe=true"+
-                  "&href="+"http://www.liveqoupon.com<%=store_path(@store)%>"+"&redirect_uri="+"http://www.liveqoupon.com<%=user_coupon_path(@coupon)%>"+"&picture="+"<%=@coupon.root.coupon_pic.url%>"+"&title="+"【 <%=@store.store_name%>】最新優惠<%=@coupon.coupon_title%>"+"&description=【 Qoupon|Q胖 】用朋友的上一餐，找到你的下一餐！";
+                  "&href="+"http://www.liveqoupon.com/"+"&redirect_uri="+"http://www.liveqoupon.com<%=user_coupon_path(@coupon)%>"+"&picture="+"<%=@coupon.root.coupon_pic.url%>"+"&title="+"【 <%=@store.store_name%>】最新優惠<%=@coupon.coupon_title%>"+"&description=【 Qoupon|Q胖 】用朋友的上一餐，找到你的下一餐！";
                 location.href = url;
               }
               </script>
-
         </div>
         <!-- <div class="modal-footer">
           <button type="button" class="btn orange-btn">Save changes</button>
