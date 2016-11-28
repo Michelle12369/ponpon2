@@ -36,6 +36,7 @@ class CouponsController < ApplicationController
       @friends_array=@friends.pluck(:name,:id)#.paginate(:page =>params[:page], :per_page=> 10)
       @post = Post.new
     end
+    @used_descendants=@coupon.descendants.where(used:true).includes(:user)
   end
 
   #顧客發送優惠卷給其他顧客

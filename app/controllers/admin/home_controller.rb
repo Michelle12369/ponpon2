@@ -1,6 +1,6 @@
 class Admin::HomeController <Admin::BaseController
 	def index
-
+		@users=User.all.order(created_at: :desc)
 	end
 
 	def operating_data

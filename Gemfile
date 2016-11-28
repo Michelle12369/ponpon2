@@ -92,8 +92,8 @@ gem 'rqrcode-rails3'
 gem 'rqrcode_png'
 
 
-# gem 'pusher'
-
+# gem seo
+gem 'seo_helper', '~> 1.0'
 
 
 
