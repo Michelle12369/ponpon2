@@ -14,7 +14,9 @@
                       <i class="fa fa-pencil"></i>
                     <%end%>
                   <%else%>
-                    <%=render "follows/form",user:@user%>
+                    <span class="button-per-form">
+                      <%=render "follows/form",user:@user%>
+                    </span>
                   <%end%>
                 </span>
             </div>
