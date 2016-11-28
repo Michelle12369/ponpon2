@@ -9,4 +9,27 @@
 
 
 <div style="height:1200px;">
+<!-- 偷看使用者 -->
+	<table class="table">
+		<thead>
+		    <tr>
+		      <th>#</th>
+		      <th>Name</th>
+		      <th>從哪裡註冊</th>
+		      <th>信箱</th>
+		      <th>註冊時間</th>
+		    </tr>
+		</thead>
+		<tbody>
+		<%@users.each do |user|%>
+		    <tr>
+		      <th scope="row"><%=user.id%></th>
+		      <td><%=user.name%></td>
+		      <td><%=user.provider%></td>
+		      <td><%=user.email%></td>
+		      <td><%=user.created_at%></td>
+		    </tr>
+		<%end%>
+		</tbody>
+	</table>
 </div>
