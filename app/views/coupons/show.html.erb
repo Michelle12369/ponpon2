@@ -54,6 +54,24 @@
             <li><%= @coupon.other_content.present? ? simple_format(@coupon.other_content) : "無"%></li>
           </ol>
         </div>
+        <div>
+          <h6><span>已使用您所發送之優惠卷的朋友</span>：</h6>
+          <ol>
+            <li>
+            <%if @used_descendants.present?%>
+              <%@used_descendants.each do |used_des|%>
+                <%=link_to user_path(used_des.user) do%>
+                  <%=image_tag used_des.user.avatar.url||"avatar.jpg", class: 'avatar coupon-profile-pic'%>
+                  <%=used_des.user.name%>
+                <%end%>
+                <br>
+              <%end%>
+            <%else%>
+              <p>無</p>
+            <%end%>
+            </li>
+          </ol>
+        </div>
       </div>
     </div>
   </div>

@@ -5,7 +5,7 @@ class StoresController < ApplicationController
   # GET /stores
   # GET /stores.json
   def index
-    @admin_stores = Admin::Store.where(:store_status => "passed")#.select("id,store_cover_photo")
+    @admin_stores = Admin::Store.where(:store_status => "passed").order(created_at: :asc)#.select("id,store_cover_photo")
     @stores=Store.where(:store_status=>"passed")
     @store=Hash[@admin_stores.zip(@stores)]
   end
