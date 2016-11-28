@@ -212,3 +212,14 @@
 		}
 	}
 }
+
+
+// 
+@media screen and (max-width:400px) {
+	.button-per-form{
+		button{
+			width: 90px;
+		}
+		padding-left:20px;
+	}
+}
