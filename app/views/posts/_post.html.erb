@@ -15,7 +15,7 @@
   </div>
     <!-- <div class="points"> -->
       <div class="text-xs-right col-xs-2">
-        <% if belongs_to_user?(post) %>
+        <% if belongs_to_user?(post)&&user_signed_in?%>
           <div class="btn-group">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               <i class="glyphicon glyphicon-chevron-down" style="color:lightgray; "></i>
