@@ -271,3 +271,19 @@
 	}
 }
 
+
+// http://localhost:3000/coupons/1
+.animate_part{
+	margin: 20px auto;
+	text-align:center;
+	.coupon{
+		width: 30px;
+	}
+	.person{
+		width: 60px;
+	}
+	.people{
+		width: 20%;
+	}
+}
+
