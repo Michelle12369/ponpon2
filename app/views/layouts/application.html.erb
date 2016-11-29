@@ -32,20 +32,20 @@
                 <%end%>
             <%end%>
             <!-- 放大鏡 -->
-            <a class="short-search" href="javascript: void(0)"><%= fa_icon 'search',class:"d-inline-block nav-search-glass"%> </a>
+            <a class="short-search" href="javascript: void(0)"><%= fa_icon 'search',class:"d-inline-block nav-search-glass nav-search-sm"%> </a>
 
                 <div class="collapse navbar-toggleable-sm" id="myNavbar">
                     <ul class="nav navbar-nav" id="nav-choice">
                         <% if signed_in?%>
-                            <li class="nav-item <%= active_class('/food')%> first-nav"><%= link_to "Q胖優惠", food_path,class: "nav-link"  %></li>
-                            <li class="nav-item <%= active_class('/') %>"><%= link_to "優惠動態", root_path,class: "nav-link"  %></li>
-                            <li class="nav-item <%= active_class(coupons_path) %>"><%= link_to "我的優惠卷列表", coupons_path,class: "nav-link"  %></li>
-                            <li class="nav-item <%= active_class('/stores') %>"><%= link_to "商店街",stores_path,class: "nav-link"%></li>
+                            <li class="nav-item <%= active_class('/food')%> first-nav nav-setheight"><%= link_to "Q胖優惠", food_path,class: "nav-link"  %></li>
+                            <li class="nav-item <%= active_class('/') %> nav-setheight"><%= link_to "優惠動態", root_path,class: "nav-link"  %></li>
+                            <li class="nav-item <%= active_class(coupons_path) %> nav-setheight"><%= link_to "我的優惠卷列表", coupons_path,class: "nav-link " %></li>
+                            <li class="nav-item <%= active_class('/stores') %>  nav-setheight"><%= link_to "商店街",stores_path,class: "nav-link"%></li>
 
                     </ul>
                     		<ul class="nav navbar-nav pull-md-right  ">
                                 <li class="nav-item nav-search long-search" id='test'>
-                                    <a href="javascript: void(0)"><%= fa_icon 'search',class:"d-inline-block nav-search-glass"%> </a>
+                                    <a href="javascript: void(0)"><%= fa_icon 'search',class:"d-inline-block nav-search-glass nav-search-bg"%> </a>
                                 </li>
                         		<li class="nav-item" id="hi">
                                     
@@ -57,7 +57,7 @@
                                 <li class="nav-item dropdown" id="settings">
                                     <a href="#" class="dropdown-toggle triangle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     </a>
-                                    <ul class="dropdown-menu dropdown-menu-right nav-link-sm" role="menu">
+                                    <ul class="dropdown-menu dropdown-menu-right nav-link-sm nav-link-word" role="menu">
                                         <li><%= link_to "登出", destroy_user_session_path,method: :delete,class: "nav-link nav-link-sm"   %></li>
                                         <li><%= link_to '修改密碼', edit_user_registration_path,class: "nav-link nav-link-sm"  %></li>
                                         <li><%= link_to '使用說明', faq_path,class: "nav-link nav-link-sm"  %></li>
