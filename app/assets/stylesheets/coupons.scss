@@ -163,6 +163,33 @@
 	}
 }
 
+.signin-title{
+	color:grey;
+	font-size:16px;
+}
+
+.or2{
+	text-align:center;
+	padding-bottom:15px;
+	.or-line{
+		display: inline-block;
+		width: 43%  ;
+		border-top:1px solid lightgrey;
+		padding-top:3px;
+		// color: grey;
+	}
+	.or-word{
+		// padding-top:10px;
+		color: grey;
+	}
+	@media screen and (max-width: 376px){
+		.or-line{
+			// display: none;
+		}
+	}
+}
+
+
 .select-unvisible{
 	overflow: scroll;
 	padding: 0;

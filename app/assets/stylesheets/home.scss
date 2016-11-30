@@ -200,7 +200,10 @@
 		display: none;
 	}
 	@media screen and (max-width:460px){
-		
+		.self-bg-status{
+			display: none;
+		}
+
 		.self-pic{
 			width: 80px;
 		}
@@ -227,6 +230,16 @@
 	.self-content{
 		width: calc( 100% - 105px );
 	}
+	@media screen and (max-width:460px){
+		.self-content{
+			width: calc( 100% - 84px );
+		}
+	}
+}
+
+.self-status-border{
+	border-right:1.5px solid grey;
+	padding-right:3px;
 }
 
 
