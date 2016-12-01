@@ -219,9 +219,12 @@
 // 
 @media screen and (max-width:400px) {
 	.button-per-form{
+		width: 100%;
+		display: block;
 		button{
-			width: 90px;
+			// width: 90%;
+			// display: block;
 		}
-		padding-left:20px;
+		// padding-left:20px;
 	}
 }
