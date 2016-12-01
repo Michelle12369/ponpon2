@@ -1,12 +1,55 @@
 <div id="user-<%= @user.id %>">
   <div class="self-board">
-        <div class="self">
+        <div class="self p-x-1">
           <div class="self-pic text-xs-center text-sm-left">
             <%=image_tag @user.avatar.url|| 'avatar.jpg',style:"width:80px;"%>
           </div>
 
           <div class="self-content">
-            <div class="p-b-1">
+
+          <div  class="self-xs-status">
+            <div class="text-xs-center">
+              <p class="text-xs-center m-b-0">
+
+                <%= link_to followers_user_path(@user) do%>
+                  <div class="d-inline-block text-xs-center self-status-border">
+                    <strong> <%=@user.followers_count%></strong>
+                    <br>粉絲人數
+                  </div>
+                <%end%>
+
+                <%= link_to friends_user_path(@user) do%>
+                  <div class="d-inline-block text-xs-center self-status-border">
+                    <strong> <%=@user.following_users_count%></strong>
+                  <br>追蹤人數
+                  </div>
+                <%end%>
+
+                <%= link_to stores_user_path(@user) do%>
+                  <div class="d-inline-block text-xs-center">
+                    <strong><%=@user.following_stores.size%></strong>
+                    <br>喜愛商家
+                  </div>
+                <%end%>
+
+              </p>
+            </div>
+            <div class="text-xs-center">
+              <% if is_current_user?(@user) %>
+                    <%= link_to edit_user_path(@user) do%>
+                      <!-- <i class="fa fa-pencil"></i> -->
+                      <div class="btn p-y-0 orange-nm-btn">編輯個人檔案</div>
+                    <%end%>
+                  <%else%>
+                    <span class="button-per-form">
+                      <%=render "follows/form",user:@user%>
+                    </span>
+                  <%end%>
+            </div>
+          </div>
+
+
+            <div class="self-bg-status">
               <span class="user_name"><%=@user.name%></span>
                 <span class="p-l-1 pull-right">
                   <% if is_current_user?(@user) %>
@@ -38,30 +81,18 @@
                 <%end%>
               </p>
             </div>
-              <span>
+              <span class="self-bg-status">
                 <%=@user.about%>
               </span>
           </div>
-
-          <div class="self-xs-status">
-            <hr class="m-b-1">
-            <p class="text-xs-center">
-              <%= link_to followers_user_path(@user) do%>
-                <strong> <%=@user.followers_count%></strong>位粉絲 
-              <%end%>
-              <span> | </span>
-              <%= link_to friends_user_path(@user) do%>
-                追蹤<strong><%=@user.following_users_count%></strong>人 
-              <%end%>
-              <span> | </span>
-              <%= link_to stores_user_path(@user) do%>
-                <strong> <%=@user.following_stores.size%></strong>喜愛商家 
-              <%end%>
-            </p>
-          </div>
-
-
         </div>
+    
+    <div class="self-xs-status p-x-2 p-y-1">
+      <div class="user_name d-block"><%=@user.name%></div>
+      <span>
+        <%=@user.about%>
+      </span>
+    </div>
 
 
 

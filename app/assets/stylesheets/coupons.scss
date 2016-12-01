@@ -163,6 +163,33 @@
 	}
 }
 
+.signin-title{
+	color:grey;
+	font-size:16px;
+}
+
+.or2{
+	text-align:center;
+	padding-bottom:15px;
+	.or-line{
+		display: inline-block;
+		width: 43%  ;
+		border-top:1px solid lightgrey;
+		padding-top:3px;
+		// color: grey;
+	}
+	.or-word{
+		// padding-top:10px;
+		color: grey;
+	}
+	@media screen and (max-width: 376px){
+		.or-line{
+			// display: none;
+		}
+	}
+}
+
+
 .select-unvisible{
 	overflow: scroll;
 	padding: 0;
@@ -273,6 +300,11 @@
 
 
 // http://localhost:3000/coupons/1
+.recursive-part{
+	padding:15px 10px 0px 10px;
+	margin:20px 0;
+	border:1px solid grey;
+}
 .animate_part{
 	margin: 20px auto;
 	text-align:center;
@@ -286,4 +318,6 @@
 		width: 20%;
 	}
 }
+
+
 

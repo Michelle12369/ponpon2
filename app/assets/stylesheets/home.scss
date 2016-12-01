@@ -192,14 +192,18 @@
 		vertical-align: top;
 	}
 	.self-content{
-		padding-top:5px;
-		padding-left:5px;
+		// padding-top:5px;
+		// padding-left:5px;
 		display: inline-block;
 	}
 	.self-xs-status{
 		display: none;
 	}
 	@media screen and (max-width:460px){
+		.self-bg-status{
+			display: none;
+		}
+
 		.self-pic{
 			width: 80px;
 		}
@@ -208,22 +212,34 @@
 		}
 		.self-xs-status{
 			display: block;
+			a{
+				padding:10px 0;
+			}
 		}
 		.self{
 			padding:0;
 			margin:0;
 		}
 	}
-	@media screen and (min-width:576px){
+	@media screen and (min-width:460px){
+		.self-name{
+			padding-bottom:30px;
+		}
+
+	}
+	.self-content{
+		width: calc( 100% - 105px );
+	}
+	@media screen and (max-width:460px){
 		.self-content{
-			width: 420px;
+			width: calc( 100% - 84px );
 		}
 	}
-	@media screen and (min-width:768px){
-		.self-content{
-			width: 540px;
-		}
-	}
+}
+
+.self-status-border{
+	border-right:1.5px solid grey;
+	padding-right:3px;
 }
 
 

@@ -1,7 +1,19 @@
-<div class="background-white devise-box">
+<div class="background-white devise-box m-b-2 sign-box">
   <div>
     <h5>註冊</h5>
     <div class="devise-form">
+      <div class="text-xs-center p-b-1 signin-title">立即成為會員，啟用更多功能</div>
+      <div class="actions">
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= button_to " #{provider.to_s.titleize} 註冊", omniauth_authorize_path(resource_name, provider),class:"devise-btn devise-normal" %><br />
+        <% end %>
+      </div>
+      <div class="or2">
+        <span class="or-line"></span>
+        <span class="or-word">或</span>
+        <span class="or-line"></span>
+      </div>
+      <!-- <div class="or p-t-0">或是</div> -->
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
@@ -40,17 +52,17 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "註冊",class:"devise-btn devise-normal" %>
+        <%= f.submit "立即註冊",class:"devise-btn devise-normal m-t-1" %>
       </div>
     <% end %>
 
-      <div class="or">或是</div>
+      
       <%#- if devise_mapping.omniauthable? %>
-      <div class="actions">
-        <%- resource_class.omniauth_providers.each do |provider| %>
-          <%= button_to "以 #{provider.to_s.titleize} 登入", omniauth_authorize_path(resource_name, provider),class:"devise-btn devise-normal" %><br />
-        <% end %>
-      </div>    
+      <!-- <div class="actions">
+        <%#- resource_class.omniauth_providers.each do |provider| %>
+          <%#= button_to "以 #{provider.to_s.titleize} 登入", omniauth_authorize_path(resource_name, provider),class:"devise-btn devise-normal" %><br />
+        <%# end %>
+      </div>  -->   
     </div>
   </div>
 </div>
