@@ -85,7 +85,7 @@
         <%= image_tag 'cou_star.png' , class:'cou-icon' %>
       </div>
       <div class="store-icon-content">
-        <%= @store.store_rule %>
+      <%= simple_format(@store.store_rule)%>
       </div>
     </div>
 
