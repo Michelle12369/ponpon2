@@ -1,4 +1,4 @@
-<h5 class="m-t-3 m-b-1 p-b-1 admin-new-coupon">新增優惠卷</h5>
+<h5 class="m-t-2 m-b-1 p-b-1 admin-new-coupon">新增優惠卷</h5>
 
 <%= form_for [@admin_coupon.store,@admin_coupon], url: admin_store_coupons_path do |f| %>
   <% if @admin_coupon.errors.any? %>
@@ -54,12 +54,13 @@
     <span>優惠卷注意事項：</span>
     <%= f.text_area :other_content, class: 'form-control'  %>
   </div>
-  <div>
+  <div class="p-b-2">
     您與Q胖的合作方案為20%優惠回饋，故顧客累積下線每增加一人可以增加10%折扣
   </div>
-  <div class="actions">
-    <%= f.submit "新增優惠卷" %>
+  <div class="actions m-b-3">
+    <%= link_to '返回優惠卷列表', admin_store_coupons_path  ,class:"orange-nm-bg-btn pull-right m-l-1",style:'color:white; padding:6px 5px;' %>
+    <%= f.submit "新增優惠卷" ,class:"orange-nm-bg-btn pull-right" %>
   </div>
 <% end %>
 
-<%= link_to '返回優惠卷列表', admin_store_coupons_path %>
+
