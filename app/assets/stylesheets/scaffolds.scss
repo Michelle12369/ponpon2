@@ -164,6 +164,13 @@ input[type=submit]:focus{
     }
 }
 // 橘底白字按鈕
+.orange-nm-bg-btn{
+    background-color:$orange;
+    color: white;
+    border-radius:0.2rem;
+    border:0;
+    height: 30px;
+}
 .orange-bg-btn{
     background-color:$orange;
     color: white;
