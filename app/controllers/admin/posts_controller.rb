@@ -83,8 +83,10 @@ class Admin::PostsController < Admin::BaseController
     @store_posts.each do |x|
       #vote
       x.votes_for.up.each do |vote|
-        cal_gender(vote.voter.gender,@gender_vote)
-        cal_age(vote.voter.age,@ages_vote)
+        if vote.voter_type=="User"
+          cal_gender(vote.voter.gender,@gender_vote)
+          cal_age(vote.voter.age,@ages_vote)
+        end
       end
       #comment
       x.comments.each do |y| 
@@ -112,7 +114,7 @@ class Admin::PostsController < Admin::BaseController
         cal_array[1]+=1
       end
     end
-    
+
     def cal_age(user_age,cal_array)
       if user_age<18
         cal_array[0]+=1
