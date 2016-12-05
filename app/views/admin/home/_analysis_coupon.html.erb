@@ -1,0 +1,53 @@
+<script type="text/javascript">
+$(function () {
+		// Load the fonts
+  Highcharts.createElement('link', {
+     href: 'https://fonts.googleapis.com/css?family=Signika:400,700',
+     rel: 'stylesheet',
+     type: 'text/css'
+  }, null, document.getElementsByTagName('head')[0]);
+
+  Highcharts.theme = {
+     colors: ["#f08a5d", "#F7C103", "#B83B5E", "#7798BF", "#aaeeee"]
+  };
+    // Apply the theme
+    Highcharts.setOptions(Highcharts.theme);
+
+
+    $('#container-chart-<%=type%>').highcharts({
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: '<%=type_chi%>分析'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: <%= xaxis.to_json.html_safe%>
+        },
+        yAxis: {
+            title: {
+                text: '數量'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+             },
+        series: [{
+            name: '發送者',
+            data: <%=sender.to_json.html_safe%>
+        }, {
+            name: '實際消費者',
+            data: <%=consumer.to_json.html_safe%>
+        }]
+    });
+});
+
+</script>

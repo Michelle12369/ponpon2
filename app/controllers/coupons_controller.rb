@@ -3,7 +3,8 @@ class CouponsController < ApplicationController
   before_action :set_user,except: :take
   before_action :authenticate_user!
   before_action :verify_coupon_notuse,only: [:distribute]
-  before_action :verify_admin_coupon_limit,only: [:take]
+  #for活動用
+  #before_action :verify_admin_coupon_limit,only: [:take,:distribute]
   before_action :verify_admin_coupon_taken,only: [:take]
   load_and_authorize_resource
 
@@ -92,7 +93,7 @@ require 'open-uri'
     end
 
     def verify_admin_coupon_limit
-      redirect_to coupons_path,alert:"店家優惠卷已發放完畢，若想領取請向店家反應" unless @coupon.admin_coupon_limit>@coupon.descendants.size
+      redirect_to coupons_path,alert:"店家優惠卷已發放完畢，若想領取請向店家反應" unless @coupon.admin_coupon_limit>@coupon.root.descendants.size
     end
 
     def verify_admin_coupon_taken

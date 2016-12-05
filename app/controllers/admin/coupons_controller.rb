@@ -2,7 +2,8 @@ class Admin::CouponsController < Admin::BaseController
   before_action :set_admin_coupon, only: [ :edit, :destroy,:admin_send,:admin_confirm,:admin_redeem]
   before_action :set_store
   before_action :verify_admin_coupon_notuse,only: [:admin_send]
-  before_action :verify_admin_coupon_limit,only: [:admin_send]
+  #for活動用
+  #before_action :verify_admin_coupon_limit,only: [:admin_send]
   before_action :verify_user_coupon_notuse,only: [:admin_confirm,:admin_redeem]
 
   # GET /admin/coupons
