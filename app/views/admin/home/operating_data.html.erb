@@ -4,7 +4,7 @@
       <td>優惠卷標題</td>
       <td>已兌換/已持有</td>
       <td>優惠卷兌換率</td>
-      <td>店家發送/顧客推廣</td>
+      <td>顧客推廣/店家發送</td>
       <td>兌換折數平均</td>
     </tr>
   </thead>
@@ -15,7 +15,7 @@
 		<td><%=coupon.coupon_title%></td>
 		<td><%=coupon.descendants.where("used=?",true).size%>/<%=coupon.descendants.size%></td>
 		<td><%=calculate_rate(coupon)%></td>
-		<td><%=coupon.children.size%>/<%=coupon.descendants.size-coupon.children.size%></td>
+		<td><%=coupon.descendants.size-coupon.children.size%>/<%=coupon.children.size%></td>
 		<td><%=discount%>折</td>
 		</tr>
 	<%end%>

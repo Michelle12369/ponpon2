@@ -41,10 +41,10 @@ $(function () {
             }
              },
         series: [{
-            name: '發送者',
+            name: '推廣的顧客',
             data: <%=sender.to_json.html_safe%>
         }, {
-            name: '實際消費者',
+            name: '已兌換者',
             data: <%=consumer.to_json.html_safe%>
         }]
     });
