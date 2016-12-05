@@ -71,51 +71,67 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def analysis
-    @last_sunday=(DateTime.now-DateTime.now.wday).to_date
-    @last_last_sunday=@last_sunday-7
-    @week_followers=Follow.recent(@last_last_sunday).where(followable_type:"Store",followable_id:@current_store).size-Follow.recent(@last_sunday).where(followable_type:"Store",followable_id:@current_store).size
-    @store_posts=Post.includes(:comments).where("store_id=? and created_at<=? and created_at>=?",@current_store,@last_sunday,@last_last_sunday).order(created_at: :desc)
-    # Comment.joins(:post).where(post: @store_posts)
+    @week_followers=Follow.where(followable_type:"Store",followable_id:@current_store)
+    @store_posts=Post.includes(:comments).where("store_id=?",@current_store).order(created_at: :desc)
     @agexaxis=["18歲以下","18~24歲","25~32歲","33~40歲","41~48歲","49~55歲","56~60歲","60歲以上"]
-    @locationxaxis=["基隆市","台北市","新北市","桃園市","新竹市","新竹縣","苗栗縣","台中市","彰化縣","南投縣","雲林縣","嘉義市","嘉義縣","台南市","高雄市","屏東縣","台東縣","花蓮縣","宜蘭縣","澎湖縣","金門縣","連江縣"]
     @genderxaxis=["男性","女性"]
-    @ages=[0,0,0,0,0,0,0,0]
-    @location=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    @gender=[0,0]
+    @ages_vote=[0,0,0,0,0,0,0,0]
+    @ages_comment=[0,0,0,0,0,0,0,0]
+    @gender_comment=[0,0]
+    @gender_vote=[0,0]
+
     @store_posts.each do |x|
+      #vote
+      x.votes_for.up.each do |vote|
+        cal_gender(vote.voter.gender,@gender_vote)
+        cal_age(vote.voter.age,@ages_vote)
+      end
+      #comment
       x.comments.each do |y| 
         if !y.user.nil?
-          user_age=y.user.age
-          user_location=y.user.location if !y.user.location.nil?
-          user_gender=y.user.gender
-            if user_age<18
-              @ages[0]+=1
-            elsif user_age<25
-              @ages[1]+=1
-            elsif user_age<33
-              @ages[2]+=1
-            elsif user_age<41
-              @ages[3]+=1
-            elsif user_age<49
-              @ages[4]+=1
-            elsif user_age<56
-              @ages[5]+=1
-            elsif user_age<60
-              @ages[6]+=1
-            else
-              @ages[7]+=1
-            end
-            if user_gender=="male"
-              @gender[0]+=1
-            else
-              @gender[1]+=1
-            end
+          cal_gender(y.user.gender,@gender_comment)
+          cal_age(y.user.age,@ages_comment)
         end
-      end  
-    end 
+      end     
+    end
+    #follow
+    @age_follow=[0,0,0,0,0,0,0,0]
+    @gender_follow=[0,0]
+    @week_followers.each do |follow|
+      cal_gender(follow.follower.gender,@gender_follow)
+      cal_age(follow.follower.age,@age_follow)
+    end
   end
 
+
   private
+    def cal_gender(user_gender,cal_array)
+      if user_gender=="male"
+        cal_array[0]+=1
+      else
+        cal_array[1]+=1
+      end
+    end
+    
+    def cal_age(user_age,cal_array)
+      if user_age<18
+        cal_array[0]+=1
+      elsif user_age<25
+        cal_array[1]+=1
+      elsif user_age<33
+        cal_array[2]+=1
+      elsif user_age<41
+        cal_array[3]+=1
+      elsif user_age<49
+        cal_array[4]+=1
+      elsif user_age<56
+        cal_array[5]+=1
+      elsif user_age<60
+        cal_array[6]+=1
+      else
+        cal_array[7]+=1
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_post
       @admin_post = Admin::Post.find(params[:id])

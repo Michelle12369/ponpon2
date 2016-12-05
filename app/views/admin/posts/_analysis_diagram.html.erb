@@ -22,7 +22,7 @@ $(function () {
             text: '當週<%=type_chi%>分析'
         },
         subtitle: {
-            text: <%=@last_last_sunday%>+"~"+<%=@last_sunday%>
+            text: "~"
         },
         xAxis: {
             categories: <%= xaxis.to_json.html_safe%>
@@ -41,11 +41,11 @@ $(function () {
             }
              },
         series: [{
-            name: '按讚留言',
-            data: <%=like_comment.to_json.html_safe%>
+            name: '按讚',
+            data: <%=like.to_json.html_safe%>
         }, {
-            name: '分享',
-            data: <%=share.to_json.html_safe%>
+            name: '留言',
+            data: <%=comment.to_json.html_safe%>
         }, {
             name: '追蹤',
             data: <%=follow.to_json.html_safe%>
