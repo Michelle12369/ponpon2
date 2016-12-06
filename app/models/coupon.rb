@@ -72,6 +72,9 @@ class Coupon < ActiveRecord::Base
       puts now_coupon.computed_discount
       puts now_coupon.discount*0.5
       now_discount=now_coupon.computed_discount-now_coupon.discount*(0.5**position)
+      if now_discount<now_coupon.discount_ceiling_amount
+        now_discount=now_coupon.discount_ceiling_amount 
+      end
       puts "安安"+now_discount.to_s
       now_coupon.update(computed_discount: now_discount)
     end
