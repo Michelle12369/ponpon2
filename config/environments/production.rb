@@ -75,6 +75,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
@@ -86,4 +87,7 @@ Rails.application.configure do
 
   #production 的 compile js
   config.assets.precompile += %w( coupons.coffee )
+
+  #設定mailer
+  config.action_mailer.default_url_options = { :host => 'www.liveqoupon.com' }
 end

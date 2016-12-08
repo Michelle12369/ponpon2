@@ -1,9 +1,11 @@
 <div class="background-white p-x-1 p-t-1 p-b-3">
-	<h5>優惠券</h5>
+	<h4>優惠券兌換</h4>
+	<%#=image_tag @admin_coupon.root.coupon_pic.url || 'avatar.jpg',class:"w-100"%>
+	<h6 class="m-t-1">優惠卷名稱：<%=@admin_coupon.coupon_title%></h6>
 	<h6>兌換者：<%=@admin_coupon.user.name%></h6>
-	<h6>兌換折數：<%=@admin_coupon.computed_discount%></h6>
-	<p class="m-y-0">商品單價：</p>
-	<p class="m-y-0">總價：</p>
+	<h6>兌換折數：<%=(@admin_coupon.computed_discount*10.0).round(2)%>折</h6>
+	<p class="m-y-0">商品單價（一個）：35 或 270</p>
+	<p class="m-y-0">折扣價格（一個）：<%=(35*@admin_coupon.computed_discount).round(4)%> 或 <%=(270*@admin_coupon.computed_discount).round(4)%></p>
 	<div class="pull-right">
 	<%= link_to "兌換",admin_redeem_path(@store,@admin_coupon), :confirm => '確認兌換?', :method => :post, class:"admin-btn-orange white-hover m-x-0"  %>
 	</div>

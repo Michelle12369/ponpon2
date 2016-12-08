@@ -2,28 +2,31 @@
   <thead>
     <tr>
       <td>優惠卷標題</td>
-      <td>已兌換</td>
-      <td>已持有</td>
+      <td>已兌換/已持有</td>
       <td>優惠卷兌換率</td>
+      <td>顧客推廣/店家發送</td>
       <td>兌換折數平均</td>
     </tr>
   </thead>
 
   <tbody>
-	<%@admin_coupons.each do |coupon|%>
+	<%@test.each do |coupon,discount|%>
 	<tr>
 		<td><%=coupon.coupon_title%></td>
-		<td><%=coupon.descendants.where("used=?",true).size%></td>
-		<td><%=coupon.descendants.size%></td>
+		<td><%=coupon.descendants.where("used=?",true).size%>/<%=coupon.descendants.size%></td>
 		<td><%=calculate_rate(coupon)%></td>
-		<td><%=@discount%></td>
+		<td><%=coupon.descendants.size-coupon.children.size%>/<%=coupon.children.size%></td>
+		<td><%=discount%>折</td>
 		</tr>
 	<%end%>
 	</tbody>
 </table>
-兌換折數平均
-、最多）
-發送者的年齡性別地區
-索取的年齡性別地區
-消費的年齡性別地區
-實際領取：線上發送 比例
+<div id="container-chart-gender" style="max-width: 500px; height: 400px; margin: 0 auto"></div>
+<div id="container-chart-age" style="max-width: 500px; height: 400px; margin: 0 auto"></div>
+
+<% content_for :javascript do %>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <%=render "analysis_coupon",type:"gender",type_chi:"性別",xaxis:@genderxaxis,sender:@gender_sender,consumer:@gender_consumer%>  
+  <%=render "analysis_coupon",type:"age",type_chi:"年齡",xaxis:@agexaxis,sender:@ages_sender,consumer:@ages_consumer%>
+<%end%>

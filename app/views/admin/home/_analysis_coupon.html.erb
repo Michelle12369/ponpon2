@@ -41,14 +41,11 @@ $(function () {
             }
              },
         series: [{
-            name: '按讚',
-            data: <%=like.to_json.html_safe%>
+            name: '推廣的顧客',
+            data: <%=sender.to_json.html_safe%>
         }, {
-            name: '留言',
-            data: <%=comment.to_json.html_safe%>
-        }, {
-            name: '追蹤',
-            data: <%=follow.to_json.html_safe%>
+            name: '已兌換者',
+            data: <%=consumer.to_json.html_safe%>
         }]
     });
 });
