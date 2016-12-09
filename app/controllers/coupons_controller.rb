@@ -11,7 +11,7 @@ class CouponsController < ApplicationController
   # GET /coupons
   # GET /coupons.json
   def index
-    @coupon = @user.coupons.where("used = ? AND expiry_date > ?",false,Time.zone.today).paginate(:page =>params[:page], :per_page=> 9)#Coupon.all
+    @coupon = @user.coupons.where("used = ? AND expiry_date >= ?",false,Time.zone.today).paginate(:page =>params[:page], :per_page=> 9)#Coupon.all
   end
 
   def used
