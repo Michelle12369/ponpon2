@@ -206,6 +206,22 @@ input[type=submit]:focus{
     margin: 0 10px;
     background-color:rgb(102,102,102);
 }
+.sign_in_fb_admin{
+    .signInFB{
+        color: white !important;
+        border:0;
+        width: 100%;
+        border-radius:0.2rem;
+        padding: 5px 8px;
+        margin: -20px 0 7px 0;
+        display: block;
+        text-align: center;
+        background-color:rgb(102,102,102);
+    }
+    .admin-none{
+        display: none;
+    }
+}
 
 .alert-notice{
     background-color:lightgray;
