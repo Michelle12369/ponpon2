@@ -2,7 +2,7 @@
 上線後新增追蹤人數：<%=@week_followers.size%>
 
 <table class="table table-striped">
-  <thead>
+  <thead  style="background-color:rgb(240, 138, 93);color:white;">
     <tr>
       <td>發布日期</td>
       <td>貼文</td>
@@ -26,14 +26,16 @@
     </tr>
   </tbody>
 </table>
-
-<div id="container-chart-gender" style="max-width: 500px; height: 400px; margin: 0 auto"></div>
-<div id="container-chart-age" style="max-width: 500px; height: 400px; margin: 0 auto"></div>
-
+<div style="text-align: center;">
+  <div id="container-chart-gender" class="analysis-box" style="max-width: 500px; height: 400px; margin: 0 auto"></div>
+  <!-- <br> -->
+  <div id="container-chart-age"  class="analysis-box" style="max-width: 500px; height: 400px; margin: 0 auto"></div>
+</div>
 <% content_for :javascript do %>
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
   <%=render "analysis_diagram",type:"gender",type_chi:"性別",xaxis:@genderxaxis,like:@gender_vote,comment:@gender_comment,follow:@gender_follow%>
+
   <%=render "analysis_diagram",type:"age",type_chi:"年齡",xaxis:@agexaxis,like:@ages_vote,comment:@ages_comment,follow:@age_follow%>
 <%end%>

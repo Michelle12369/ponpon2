@@ -14,7 +14,7 @@
 
 <body>
 
-<header class="main-header">
+<header class="main-header admin-nav-sm">
     <!-- Logo -->
     <div style=" padding-left:25px; position:fixed; padding-top:10px;" class="admin-logo">
       <%= link_to admin_home_path,class:"admin_logo" do%>
@@ -23,10 +23,17 @@
     </div>
 
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-fixed">
+    <nav class="navbar navbar-fixed admin-nav-sm">
       <button type="button" id="toggle-button">
         &#9776;
       </button>
+      
+      <div class="admin-sm-logo" style="position: absolute; top:10px; left: 50%; transform: translateX(-50%);  ">
+      <%= link_to admin_home_path,class:"admin_logo" do%>
+        <%= image_tag "nav_logo_4_dark.png", style:"width:150px;",class:"admin_logo"%>
+      <%end%>
+      </div>
+
         <ul class="nav navbar-nav d-inline-block">
           <!-- Notifications: style can be found in dropdown.less -->
           <!-- <li class="notifications-menu nav-item">
@@ -52,12 +59,12 @@
           </li> -->
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu nav-item">
-              <%=image_tag current_user.avatar.url || 'avatar.jpg', class: "photo-sticker"%>
+              <%=image_tag current_user.avatar.url || 'avatar.jpg', class: "photo-sticker "%>
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li class="nav-item triangle">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"></a>
-              <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <a href="#" class="dropdown-toggle p-y-2" data-toggle="dropdown"></a>
+              <ul class="dropdown-menu dropdown-menu-right admin-sm-set" role="menu">
                   <li><%= link_to "登出", admin_sign_out_path,method: :delete,class: "nav-link"   %></li>
                   <li><%= link_to "切換為個人", root_path,class: "nav-link"%></li>
                   <li><%= link_to "使用說明", faq_path, class:'nav-link' %></li>
@@ -72,12 +79,13 @@
 <div class="navbar navbar-fixed-left" id="navbar-fixed-left">
     <ul class="nav navbar-nav">
       <li class="store-info">
-          <%=image_tag @current_admin_store.store_cover_photo.thumb.url || 'avatar.jpg', class: "photo-sticker-lg"%>
-          <div class="store-info-word">
+          <%=image_tag @current_admin_store.store_cover_photo.thumb.url || 'avatar.jpg', class: "photo-sticker-lg admin-sm-pic"%>
+          <div class="store-info-word admin-sm-word">
             <%=@current_store.store_name%>
             <p><%=@current_store.followers_count%>人追蹤</p>
           </div>
       </li>
+      <div class="admin-sm-hr"></div>
       <li class="nav-item <%= active_class('/admin') %>">
         <%= link_to "Q胖資訊公告", admin_home_path,class: "nav-link" %>
       </li>
