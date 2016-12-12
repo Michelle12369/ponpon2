@@ -1,6 +1,8 @@
 <div class="admin-first-block m-b-3">
-	<%=image_tag 'intro-photo.png',class:'w-100'%>
-	<div class="admin-first-word">
+	<div>
+	<%=image_tag 'intro-photo.png',class:'w-100' %>
+	</div>
+	<div class="admin-first-word" id="parallax-bg3">
 		<h5 class="title">Qoupon</h5>
 		<h5 class="subtitle subtitle1">新增你專屬的</h5>
 		<h5 class="subtitle subtitle1">優惠券</h5>
@@ -8,7 +10,25 @@
 	</div>
 </div>
 
-<div class="row admin-row">
+<style type="text/css">
+	@media screen and (min-width: 560px){
+		#parallax-bg3 {
+		    z-index: 3;
+		    /*position: fixed;*/
+		    position: absolute;
+		    top:250px;
+		    /*top:10%;*/
+		    left: 50px;  
+		}
+	}
+	.fade1, .fade2, .fade3{
+		opacity: 0;
+	}
+</style>
+
+
+
+<div class="row admin-row m-b-3">
 	<div class="col-xs-12 text-xs-center">
 		<h5 class="p-b-1">QOUPON讓每個顧客成為您商店的推廣人！</h5>
 		<h6>顧客不再只是顧客，Ｑoupon重新定義您和顧客的關係！</h6>
@@ -19,7 +39,7 @@
 
 	<div class="col-xs-12 admin-content">
 		<div class="col-xs-12 col-sm-6 push-sm-6">
-			<%=image_tag "introphoto_first.png",class:'w-100'%>
+			<%=image_tag "introphoto_first.png",class:'w-100 fade1 fade'%>
 		</div>
 		<div class="col-xs-12 col-sm-6 pull-sm-6 text-sm-right admin-small-word">
 			<h5>優惠券輕鬆管理</h5>
@@ -32,12 +52,12 @@
 	
 	<div class="col-xs-12 admin-content">	
 		<div class="col-xs-12 col-sm-6 col-sm-pull-6 text-sm-right">
-			<%=image_tag "introphoto_second.png",class:'w-100'%>
+			<%=image_tag "introphoto_second.png",class:'w-100 fade2 fade'%>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-sm-push-6 admin-small-word">
 			<h5>分享社群</h5> 
 			<h5 class="p-b-2">宣傳互動零距離！</h5>
-			<p>藉由您的專屬帳號與顧客互動，拉近你與顧客的距離，串連您與顧客，累積忠實顧客。</h3>
+			<p>藉由您的專屬帳號與顧客互動，拉近你與顧客的距離，串連您與顧客，累積忠實顧客。</p>
 		</div>				
 	</div>
 
@@ -45,7 +65,7 @@
 	
 	<div  class="col-xs-12 admin-content">
 		<div class="col-xs-12 col-sm-6 push-sm-6" >
-			<%=image_tag "introphoto_third.png" ,class:'w-100'%>
+			<%=image_tag "introphoto_third.png" ,class:'w-100 fade3 fade'%>
 		</div>
 		<div class="col-xs-12 col-sm-6 pull-sm-6 text-sm-right admin-small-word"> 
 			<h5>圖像化數據</h5>
@@ -56,7 +76,8 @@
 
 </div>
 
-<div class="admin-start-qoupon text-xs-center m-t-2">
+
+<div class="admin-start-qoupon text-xs-center m-t-3">
 	<h5 class="subtitle p-b-2">現在就開始使用Qoupon吧！</h5>
 	<div class="admin-sign-btn">
 		<% render_admin_link%>
@@ -82,3 +103,45 @@
         <copyright>&copy; 2016 Qoupon</copyright>
     </div>
 </footer>
+
+
+
+
+<script>
+	var window_w = $(window).width();
+	var h = $('.fade1').height();
+	if( window_w > 560 ){
+		$(window).scroll(function() {
+			if($(window).scrollTop()> 300){
+				// $(".fade1").fadeTo( 1000 , 1);
+				$('.fade1').animate({ marginLeft : "-5%", opacity: 1 }, 1500);
+			}
+			if($(window).scrollTop()> (300 + 2 * h) ){
+				// $(".fade1").fadeTo( 1000 , 1);
+				$('.fade2').animate({ marginRight : "-5%", opacity: 1 }, 1500);
+			}
+			if($(window).scrollTop()> 300 + 3 * h){
+				// $(".fade1").fadeTo( 1000 , 1);
+				$('.fade3').animate({ marginLeft : "-5%", opacity: 1 }, 1500);
+			}
+		});
+	}
+	if( window_w <= 560 ){
+		$('.fade').css('opacity',1);
+	}
+</script>
+
+<script type="text/javascript">
+if( window_w > 560 ){
+	$(window).bind('scroll',function(e){
+	    parallaxScroll();
+	});
+}
+	function parallaxScroll(){
+	    var scrolled = $(window).scrollTop();
+	    $('.parallax-bg1').css('top',(250-(scrolled*.25))+'px');
+	    // $('#parallax-bg2').css('top',(250-(scrolled*.5))+'px');
+	    $('#parallax-bg3').css('top',(250-(scrolled*.75))+'px');
+	}
+
+</script>

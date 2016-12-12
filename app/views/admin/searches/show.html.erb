@@ -1,21 +1,27 @@
-<div">
+<div class="background-white p-x-2 p-y-2">
 
-<h5>篩選結果</h5>
+<h5 class="m-t-0 m-b-1">發放人數設定</h5>
 
 <div>總人數：<%=@search.search_users(@current_store,@coupon).size%></div>
 
-<%=form_tag admin_send_path(@current_store,@coupon),:method=>:post do%>
-選擇發放數量：
-<%=number_field_tag :people, 0 ,class:"people-amount",min: 0, max: min_between_coupon_and_search(@search.search_users(@current_store,@coupon).size,@coupon.admin_coupon_limit)%>
-<%= hidden_field_tag :range,@search.search_users(@current_store,@coupon).map(&:id)%>
-<%= submit_tag "發送",class:"orange-bg-btn" %>
-<%end%>
-
-<div class="m-t-1">
-	篩選結果：
-	<%@search.search_users(@current_store,@coupon).each do |s|%>
-  		<%=s.name%>
+<div>
+	<%=form_tag admin_send_path(@current_store,@coupon),:method=>:post do%>
+	選擇發放數量：
+	<%=number_field_tag :people, 0 ,class:"people-amount",min: 0, max: min_between_coupon_and_search(@search.search_users(@current_store,@coupon).size,@coupon.admin_coupon_limit)%>
+	<%= hidden_field_tag :range,@search.search_users(@current_store,@coupon).map(&:id)%>
+	<%= submit_tag "發送",class:"orange-bg-btn pull-right" %>
 	<%end%>
+</div>
+<hr>
+<h6 class="text-xs-center">篩選結果</h6>
+<div class="text-xs-center">
+	<div>
+		<%@search.search_users(@current_store,@coupon).each do |s|%>
+			<span class="m-b-1" style="width: 100px; display: inline-block; text-align: center;">
+	  		<%=s.name%>
+	  		</span>
+		<%end%>
+	</div>
 </div>
 
 </div>

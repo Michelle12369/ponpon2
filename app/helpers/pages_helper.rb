@@ -3,7 +3,7 @@ module PagesHelper
 	    if signed_in?&&current_user.admin?
 	    	concat link_to "登出", admin_sign_out_path,method: :delete,class: 'admin-sign'
 	    	concat " "
-	        concat link_to "進入店家系統",admin_home_path,class: 'admin-sign'
+	        concat link_to "進入系統",admin_home_path,class: 'admin-sign'
 	    elsif signed_in?&&current_user.user?&&current_user.stores.first.try(:store_status)=="pending"
 	    	concat link_to "登出", admin_sign_out_path,method: :delete,class: 'admin-sign'
 	        concat " "
