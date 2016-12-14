@@ -1,8 +1,8 @@
 
 <div class="admin-notification m-b-3">
-	<h2 class="m-b-2 text-xs-center">資訊公告區</h4>
+	<h4 class="m-b-2">資訊公告區</h4>
 
-	<h5 class="m-b-2">Qoupon快速上手</h5>
+	<h6 class="m-b-2">Qoupon快速上手</h6>
 	<div class="qoupon-step">
 		
 		<%= link_to edit_admin_store_path(@current_store) do %>
@@ -24,7 +24,7 @@
 			</div>
 		<%end%>
 	</div>
-	<h5 class="m-y-2">Qoupon 沿革</h5>
+	<h6 class="m-y-2">Qoupon 沿革</h6>
 	<div class="qoupon-hard-work">
 		
 		<div class="col-xs-12 p-x-0">
@@ -92,7 +92,7 @@
 		    <tr>
 		      <th scope="row"><%=user.id%></th>
 		      <td><%=user.name%></td>
-		      <td><%=user.provider%></td>
+		      <td><%=user.location%></td>
 		      <td><%=user.email%></td>
 		      <td><%=user.created_at%></td>
 		    </tr>

@@ -7,21 +7,21 @@
 	<!-- <div class="card-deck-wrapper"> -->
 	  	<div class="card-deck"> 
 	  	<!-- for活動用 -->
-			<%#@stores_last.each do |store|%>
-			<%@coupons.each do |coupon|%>
+			<%@stores_first.each do |store|%>
+			<%#@coupons.each do |coupon|%>
 				<div class="card">
-				<%#= link_to  store_path(store) do%>
-				<%= link_to  store_path(coupon.store) do%>
-						<%#if store.coupons.present?%>
-							<%#=image_tag store.coupons.last.root.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>
-							<%=image_tag coupon.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>	
+				<%= link_to  store_path(store) do%>
+				<%#= link_to  store_path(coupon.store) do%>
+						<%if store.coupons.present?%>
+							<%=image_tag store.coupons.last.root.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>
+							<%#=image_tag coupon.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>	
 							<div class="card-block text-xs-center">
-							<p class="m-b-0 card-text"><%#=store.store_name%><%=coupon.store.store_name%></p>
-							<h5 class="m-b-0 card-text"><%#=store.coupons.last.root.coupon_title  %><%=coupon.coupon_title  %></h5>
-							<p class="m-b-0 text-muted card-text"><%#=store.store_city%><%=coupon.store.store_city%></p>
-							</div>
-						<%#end%>
-					<!-- </div> --> 
+							<p class="m-b-0 card-text"><%=store.store_name%><%#=coupon.store.store_name%></p>
+							<h5 class="m-b-0 card-text"><%=store.coupons.last.root.coupon_title  %><%#=coupon.coupon_title  %></h5>
+							<p class="m-b-0 text-muted card-text"><%=store.store_city%><%#=coupon.store.store_city%></p>
+							<!-- </div> -->
+						<%end%>
+					</div> 
 				<%end%>
 				</div>
 			<%end%>

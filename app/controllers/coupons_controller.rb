@@ -3,8 +3,7 @@ class CouponsController < ApplicationController
   before_action :set_user,except: :take
   before_action :authenticate_user!
   before_action :verify_coupon_notuse,only: [:distribute]
-  #for活動用
-  #before_action :verify_admin_coupon_limit,only: [:take,:distribute]
+  before_action :verify_admin_coupon_limit,only: [:take,:distribute]
   before_action :verify_admin_coupon_taken,only: [:take]
   load_and_authorize_resource
 

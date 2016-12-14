@@ -2,7 +2,7 @@ class Admin::SearchesController < Admin::BaseController
 	before_action :set_coupon
 	before_action :verify_admin_coupon_notuse
 	#for活動用
-	#before_action :verify_admin_coupon_limit
+	before_action :verify_admin_coupon_limit
 
 	def new
 		@search=Admin::Search.new
