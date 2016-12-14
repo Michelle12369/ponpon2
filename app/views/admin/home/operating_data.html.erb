@@ -1,29 +1,33 @@
-<table class="table">
-  <thead>
+<h5 class="m-b-2">優惠券數據資料庫</h5>
+
+<table class="table background-white m-b-2">
+  <thead style="background-color:rgb(240, 138, 93); color: white;">
     <tr>
       <td>優惠卷標題</td>
       <td>已兌換/已持有</td>
-      <td>優惠卷兌換率</td>
       <td>顧客推廣/店家發送</td>
       <td>兌換折數平均</td>
+      <td>優惠卷兌換率</td>
     </tr>
   </thead>
 
   <tbody>
 	<%@test.each do |coupon,discount|%>
 	<tr>
-		<td><%=coupon.coupon_title%></td>
+		<td style="background-color: lightgrey;"><%=coupon.coupon_title%></td>
 		<td><%=coupon.descendants.where("used=?",true).size%>/<%=coupon.descendants.size%></td>
-		<td><%=calculate_rate(coupon)%></td>
+		
 		<td><%=coupon.descendants.size-coupon.children.size%>/<%=coupon.children.size%></td>
 		<td><%=discount%>折</td>
+    <td><%=calculate_rate(coupon)%></td>
 		</tr>
 	<%end%>
 	</tbody>
 </table>
-<div id="container-chart-gender" style="max-width: 500px; height: 400px; margin: 0 auto"></div>
-<div id="container-chart-age" style="max-width: 500px; height: 400px; margin: 0 auto"></div>
-
+<div style="text-align: center;" class="m-b-3">
+  <div id="container-chart-gender" class="analysis-box" style="max-width: 500px; height: 400px; margin: 0 auto"></div>
+  <div id="container-chart-age" class="analysis-box" style="max-width: 500px; height: 400px; margin: 0 auto"></div>
+</div>
 <% content_for :javascript do %>
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>

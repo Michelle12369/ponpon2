@@ -9,46 +9,148 @@
 }
 
 .admin-notification{
-	.admin-now{
-		width:90px;
-		font-size:24px;
-		padding:10px;
-		border: 3px solid lightgrey;
-		text-align: center;
-		margin: 0 auto;
+	h5{
+		font-size: 26px;
 	}
-	.admin-line{
-		width: 50%;
-		border-right:2px solid lightgrey;
-		height: 30px;
-	}
-	
-	// .admin-part{
-	// 	padding:20px 0;
-	// 	border-left:3px solid lightgrey;
-	// 	margin-left: 43px;
-	// 	div{
-	// 		width: 500px;
-	// 		margin-left: 30px;
+	.qoupon-step{
+		margin:0 30px;
+		.step-block{
 
-	// 	}
-	// }
-	// .admin-info{
-	// 	.admin-dot{
-	// 		display: inline-block;
-	// 		width: 15px;
-	// 		height: 15px;
-	// 		border:2px solid lightgrey;
-	// 		border-radius:100%;
-	// 		margin-top: 2px;
-	// 		margin-left: 37px;
-	// 	}
-	// 	.admin-dot-part{
-	// 		display: inline-block;
-	// 		border: 1px solid lightgrey;
-	// 		margin-left: 20px;
-	// 	}
-	// }
+			padding: 20px 20px 20px 20px;
+			border-bottom:1px solid grey;
+			border-radius:0.2rem;
+			.step-word{
+				display: inline-block;
+				width: calc( 100% - 80px );
+			}
+		}
+		.step-block:hover{
+			background-color:lightgrey;
+		}
+		.last-step{
+			border:0;
+		}
+		.step-num{
+			display: inline-block;
+			background-color:grey;
+			color: white;
+			width: 50px;
+			height: 50px;
+			text-align: center;
+			vertical-align: middle;
+			border-radius:100%;
+			padding-top:15px;
+			margin-right: 20px;
+		}
+	}
+
+	.qoupon-hard-work{
+		margin:0 20px;
+		h6{
+			font-size: 24px;
+			color: $yellow;
+			margin-bottom: 25px;
+		}
+		.admin-dot{
+			position:absolute;
+			left:50%;
+			top:6px;
+			transform: translateX(-50%);
+			width: 12px;
+			height: 12px;
+			background-color: $yellow;
+			border-radius:100%;
+		}
+		.admin-line2{
+			margin-left: calc( 50% - 0.8px );
+			border-left:1.6px solid lightgrey;
+			height: 170px;
+		}
+		.month-content{
+			// margin-left: 20px;
+			.hard-work-num{
+				display: inline-block;
+				width: 45px;
+				// color: $yellow;
+				height: 27px;
+				vertical-align: top;
+			}
+			.hard-work-word{
+				display: inline-block;
+				width: calc( 100% - 50px );
+			}
+		}
+	}
+
 }
 
+
+
+
+
+
+.analysis-box{
+	max-width: 500px; 
+	// height: 400px; 
+	// margin: 0 auto;
+	height:200px;
+	width:48%;
+	min-width:200px;
+	display:inline-block;
+	padding: 0 5px;
+}
+@media screen and (max-width: 991px){
+	.analysis-box{
+		width: 100%;
+	}
+}
+
+.admin-sm-logo{
+	display:none;
+}
+@media screen and (max-width: 576px){
+	.admin-sm-logo{
+		display: inline-block;
+	}
+	.admin-nav-sm{
+		margin-top: -50px;
+	}
+	.navbar-fixed-left{
+		margin-top: 0px;
+		a{
+			font-size: 16px;
+		}
+	}
+	.container{
+		padding-top:50px;
+	}
+	.test{
+		overflow: scroll;
+	}
+	.admin-sm-pic{
+		width: 60px !important;
+		display: inline-block !important;
+		margin: 0 !important;
+	}
+	.admin-sm-word{
+		margin-top: 7px !important;
+		display: inline-block;
+		border:0 !important;
+	}
+	.admin-sm-hr{
+		border-bottom:1px solid grey;
+		margin: 7px 10px 0 10px;
+	}
+	.admin-sm-set{
+		z-index: 20 !important;
+		padding-bottom:14px;
+			a{
+				font-size: 16px !important;
+				padding-top:21px;
+				padding-bottom:14px;
+				margin-top:7px;
+				margin-bottom:7px;
+			}
+	}
+}
 

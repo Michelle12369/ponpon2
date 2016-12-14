@@ -1,71 +1,82 @@
 
-<div class="admin-notification">
-	<h5 class="m-b-2">Qoupon資訊公告專區</h5>
-	<%= link_to edit_admin_store_path(@current_store) do %>第一步：至店家資訊設定將店家資料填寫完整，讓顧客可以看見您的詳細資訊<%end%><br>
-	<%= link_to admin_store_items_path(@current_store) do %>第二步：至店家資訊設定新增店家商品，有店家商品才能夠新增優惠卷<%end%><br>
-	<%= link_to admin_store_coupons_path(@current_store) do %>第三步：以上步驟完成後，就可以新增優惠卷啦！<%end%>
-	<p>請靜候...</p>
+<div class="admin-notification m-b-3">
+	<h2 class="m-b-2 text-xs-center">資訊公告區</h4>
 
-	<div class="admin-now">Now</div>
-	<div class="admin-line"></div>
+	<h5 class="m-b-2">Qoupon快速上手</h5>
+	<div class="qoupon-step">
+		
+		<%= link_to edit_admin_store_path(@current_store) do %>
+			<div class="step-block">
+				<span class="step-num">1</span>
+				<span class="step-word">至店家資訊設定填寫店家資料填，提供顧客您的詳細資訊</span>
+			</div>
+		<%end%>
+		<%= link_to admin_store_items_path(@current_store) do %>
+			<div class="step-block">
+				<span class="step-num">2</span>
+				<div class="step-word">至店家資訊設定新增店家商品，有店家商品才能夠新增優惠卷</div>
+			</div>
+		<%end%>
+		<%= link_to admin_store_coupons_path(@current_store) do %>
+			<div class="last-step step-block">
+				<span class="step-num">3</span>
+				<div class="step-word">以上步驟完成後，就可以新增優惠卷啦！</div>
+			</div>
+		<%end%>
+	</div>
+	<h5 class="m-y-2">Qoupon 沿革</h5>
+	<div class="qoupon-hard-work">
+		
+		<div class="col-xs-12 p-x-0">
+			<div class="col-xs-1 p-x-0">
+				<div class="admin-dot"></div>
+				<div class="admin-line2"></div>
+			</div>
+			<div class="col-xs-11">
+				<h6 >2016 12月</h6>
+				<div class="month-content">
+					<span class="hard-work-num">13日</span> <div class="hard-work-word">Qoupon官方特惠已累積<span class="orange-word">200名</span>追蹤者！</div>
+					<span class="hard-work-num">10日</span>  <div class="hard-work-word">系統全新改版</div>
+					<span class="hard-work-num">5日</span>  <div class="hard-work-word">Qoupon官方特惠已累積70名追蹤者！</div>
 
-	
-
-
-
-	<div class="m-x-3">
-		<div class="admin-outline-set">
-			Qoupon官方特惠已累積<span class="orange-word">200名</span>追蹤者！
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 p-x-0">
+			<div class="col-xs-1 p-x-0">
+				<div class="admin-dot"></div>
+				<div class="admin-line2"></div>
+			</div>
+			<div class="col-xs-11">
+				<h6 >2016 11月</h6>
+				<div class="month-content">
+					<span class="hard-work-num">28日</span>  <div class="hard-work-word">小農橋已加入Qoupon啦，在平台上開賣啦！</div>
+					<span class="hard-work-num">25日</span>  <div class="hard-work-word">Qoupon官方特惠已上線！</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 p-x-0">
+			<div class="col-xs-1 p-x-0">
+				<div class="admin-dot"></div>
+				<div class="admin-line2"></div>
+			</div>
+			<div class="col-xs-11">
+				<h6 >2016 10月</h6>
+				<div class="month-content">
+					<span class="hard-work-num">24日</span>  <div class="hard-work-word">Qoupon網頁測試</div>
+					<span class="hard-work-num">20日</span>  <div class="hard-work-word">Qoupon網頁功能完成</div>
+					<span class="hard-work-num">13日</span>  <div class="hard-work-word">Qoupon架構發想</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
-	<div class="admin-line"></div>
-	
-	<div class="m-x" style="margin: 0 150px;">
-		<div class="admin-outline-set">
-			<h5>系統全新改版</h5>
-			<p>2016.12.4</p>
-		</div>
-	</div>
-
-	<div class="admin-line"></div>
-	<div class="m-x-3">
-		<div class="admin-outline-set">
-			Qoupon官方特惠已累積70名追蹤者！
-		</div>
-	</div>
-
-	<div class="admin-line"></div>
-
-	<div class="admin-now">12月</div>
-
-	<div class="admin-line"></div>
-
-	<div class="m-x-3">
-		<div class="admin-outline-set">
-			小農橋已加入Qoupon啦，在平台上開賣啦！
-		</div>
-	</div>
-
-	<div class="admin-line"></div>
-
-	<div class="m-x-3">
-		<div class="admin-outline-set">
-			Qoupon官方特惠已上線！
-		</div>
-	</div>
-
-	<div class="admin-line"></div>
-
-	<div class="admin-now">11月</div>
-
-
 </div>
 
 
+<!-- 註冊使用者 -->
 
 <div style="height:1200px;" class="m-t-3">
-<!-- 偷看使用者 -->
+
 	<table class="table">
 		<thead>
 		    <tr>
