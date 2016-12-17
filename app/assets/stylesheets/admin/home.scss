@@ -8,82 +8,103 @@
 	border-radius:0.2rem;
 }
 
-.admin-notification{
-	h5{
-		font-size: 26px;
-	}
-	.qoupon-step{
-		margin:0 30px;
-		.step-block{
 
-			padding: 20px 20px 20px 20px;
-			border-bottom:1px solid grey;
-			border-radius:0.2rem;
-			.step-word{
-				display: inline-block;
-				width: calc( 100% - 80px );
-			}
-		}
-		.step-block:hover{
-			background-color:lightgrey;
-		}
-		.last-step{
-			border:0;
-		}
-		.step-num{
+.admin-for-new{
+	.admin-for-new-block{
+		display: inline-block;
+		width: 30%;
+		height: 170px;
+		margin: 5px 10px 20px 10px;
+		vertical-align: top;
+		position:relative;
+		span:nth-child(1){
 			display: inline-block;
-			background-color:grey;
 			color: white;
-			width: 50px;
-			height: 50px;
-			text-align: center;
+			width: 40px;
+			height: 40px;
+			// text-align: center;
+			padding-left:13px;
 			vertical-align: middle;
-			border-radius:100%;
-			padding-top:15px;
-			margin-right: 20px;
+			padding-top:11px;
+			font-size: 23px;
 		}
-	}
-
-	.qoupon-hard-work{
-		margin:0 20px;
-		h6{
-			font-size: 24px;
-			color: $yellow;
-			margin-bottom: 25px;
+		span:nth-child(2){
+			font-size: 16px;
+			// display: inline-block;
+			height: 40px;
+			vertical-align: middle;
+			padding-left:3px;
 		}
-		.admin-dot{
+		div{
+			padding:5px 20px;
+		}
+		.admin-btn{
 			position:absolute;
-			left:50%;
-			top:6px;
-			transform: translateX(-50%);
-			width: 12px;
-			height: 12px;
-			background-color: $yellow;
-			border-radius:100%;
-		}
-		.admin-line2{
-			margin-left: calc( 50% - 0.8px );
-			border-left:1.6px solid lightgrey;
-			height: 170px;
-		}
-		.month-content{
-			// margin-left: 20px;
-			.hard-work-num{
-				display: inline-block;
-				width: 45px;
-				// color: $yellow;
-				height: 27px;
-				vertical-align: top;
-			}
-			.hard-work-word{
-				display: inline-block;
-				width: calc( 100% - 50px );
-			}
+			bottom:10px;
+			right: 20px;
+			border-radius:0.2rem;
+			color: white;
+			padding:4px 5px;
 		}
 	}
-
+	.admin-for-new-1{
+		border:1px solid $orange;
+		span:nth-child(1){
+			background-color:$orange;
+		}
+		.admin-btn{
+			background-color:$orange;
+		}
+	}
+	.admin-for-new-2{
+		border:1px solid #f7dc77;
+		span:nth-child(1){
+			background-color:#f7dc77;
+		}
+		.admin-btn{
+			background-color:#f7dc77;
+		}
+	}
+	.admin-for-new-3{
+		border:1px solid #5ca89d; 
+		span:nth-child(1){
+			background-color:#5ca89d;
+		}
+		.admin-btn{
+			background-color:#5ca89d;
+		}
+	}
 }
 
+
+.admin-timeline{
+	.admin-big-issue{
+		img{
+			width: 70%;
+			// width: 50px;
+		}
+	}
+	table{
+		width: 100%;
+		td:nth-child(1){
+			width: 70px;
+			padding-left:10px;
+		}
+		td{
+			font-size: 16px;
+		}
+		tr{
+			height: 35px;
+		}
+	}
+	.admin-month{
+		background-color:lightgrey;
+		height: 55px;
+		td{
+			font-size: 22px;
+		}
+	}
+}
 
 
 
