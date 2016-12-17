@@ -10,7 +10,7 @@
 				<div class="card">
 					<%= link_to  store_path(store) do%>
 							<%if store.coupons.present?%>
-								<%=image_tag store.coupons.last.root.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>	
+								<%=image_tag store.coupons.roots.last.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>	
 								<div class="card-block text-xs-center">
 								<p class="m-b-0 card-text"><%=store.store_name%></p>
 								<h5 class="m-b-0 card-text"><%=store.coupons.last.root.coupon_title  %></h5>
@@ -35,7 +35,7 @@
 				<div class="card">
 					<%= link_to  store_path(store) do%>
 							<%if store.coupons.present?%>
-								<%=image_tag store.coupons.last.root.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>
+								<%=image_tag store.coupons.roots.last.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>
 								<div class="card-block text-xs-center">
 									<p class="m-b-0 card-text"><%=store.store_name%></p>
 									<h5 class="m-b-0 card-text"><%=store.coupons.last.root.coupon_title  %></h5>

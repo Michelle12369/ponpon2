@@ -51,16 +51,16 @@ class User < ActiveRecord::Base
   end
 
 #給活動用，註冊即送兩張優惠卷，第一個使用者註冊時可能會錯
-  # after_create :send_two_coupons
-  # def send_two_coupons
-  #   if self.id!=1
-  #     User.find(self.id).follow(Store.first)
+  after_create :send_two_coupons
+  def send_two_coupons
+    if self.id!=1
+      User.find(self.id).follow(Store.first)
   #     new_coupon=Coupon.copy_coupon(self.id,Store.first.coupons.roots[2])
   #     Coupon.qrcode(self.id,new_coupon)
   #     # new_coupon2=Coupon.copy_coupon(self.id,Store.first.coupons.roots[1])
   #     # Coupon.qrcode(self.id,new_coupon2)
-  #   end
-  # end
+    end
+  end
 
   has_many :stores ,:through =>:store_users
   has_many :store_users
