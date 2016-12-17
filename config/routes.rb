@@ -36,9 +36,7 @@ Rails.application.routes.draw do
     
     resources :stores do  
       resources :items,except: :new
-      # resources :coupons,:except => [:edit,:destroy] do
-      #for修改用
-       resources :coupons,:except => [:destroy] do
+      resources :coupons,:except => [:edit,:destroy] do
         resources :searches,only:[:new,:create,:show]
       end
       member do

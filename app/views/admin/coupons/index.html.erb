@@ -27,9 +27,6 @@
         <td><%= admin_coupon.descendants.size%>/<%= admin_coupon.admin_coupon_limit%></td>
         <td class='coupon-control-table-button'><%= send_or_delete(admin_coupon)%></td>
         <td class='coupon-control-table-button-info'><%= link_to '內容', admin_store_coupon_path(admin_coupon.store,admin_coupon) %>
-        <!-- for修改用 -->
-          <%= link_to "更改", edit_admin_store_coupon_path(admin_coupon.store,admin_coupon) %>
-        <!-- for修改用 -->
         </td>
         </tr>
       <% end %>

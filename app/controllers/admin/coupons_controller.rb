@@ -143,8 +143,6 @@ class Admin::CouponsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_coupon_params
-      #params.require(:coupon).permit(:crop_x,:crop_y,:crop_w,:crop_h,:coupon_title,:coupon_pic,:item,:start_date,:expiry_date,:other_content,:computed_discount,:admin_coupon_limit) 
-      #for修改用
-      params.require(:admin_coupon).permit(:crop_x,:crop_y,:crop_w,:crop_h,:coupon_title,:coupon_pic,:item,:start_date,:expiry_date,:other_content,:computed_discount,:admin_coupon_limit) 
+      params.require(:coupon).permit(:crop_x,:crop_y,:crop_w,:crop_h,:coupon_title,:coupon_pic,:item,:start_date,:expiry_date,:other_content,:computed_discount,:admin_coupon_limit) 
     end
 end
