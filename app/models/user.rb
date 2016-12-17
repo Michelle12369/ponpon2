@@ -55,10 +55,10 @@ class User < ActiveRecord::Base
   def send_two_coupons
     if self.id!=1
       User.find(self.id).follow(Store.first)
-      new_coupon=Coupon.copy_coupon(self.id,Store.first.coupons.roots[0])
+      new_coupon=Coupon.copy_coupon(self.id,Store.first.coupons.roots[2])
       Coupon.qrcode(self.id,new_coupon)
-      new_coupon2=Coupon.copy_coupon(self.id,Store.first.coupons.roots[1])
-      Coupon.qrcode(self.id,new_coupon2)
+      # new_coupon2=Coupon.copy_coupon(self.id,Store.first.coupons.roots[1])
+      # Coupon.qrcode(self.id,new_coupon2)
     end
   end
 
