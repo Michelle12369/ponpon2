@@ -1,4 +1,11 @@
 <h6 class="page_title"><span>我的優惠券列表</span></h6> 
+<div class="alert alert-warning help" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true" class="p-r-1">&times;</span>
+    </button>
+    <%=image_tag 'Qpon.png',class:"help-image"%>
+  Q胖小幫手：此為您已使用過的優惠卷 
+</div>  
   <div class="m-b-1 col-sm-12">
     <div class="col-sm-12 cou-type">
       <%= link_to "可使用", coupons_path,class:"nav-link notuse filter" %>
