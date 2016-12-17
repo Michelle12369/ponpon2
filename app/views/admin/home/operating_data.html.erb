@@ -10,18 +10,20 @@
       <td>優惠卷兌換率</td>
     </tr>
   </thead>
-
   <tbody>
-	<%@test.each do |coupon,discount|%>
-	<tr>
-		<td style="background-color: lightgrey;"><%=coupon.coupon_title%></td>
-		<td><%=coupon.descendants.where("used=?",true).size%>/<%=coupon.descendants.size%></td>
-		
-		<td><%=coupon.descendants.size-coupon.children.size%>/<%=coupon.children.size%></td>
-		<td><%=discount%>折</td>
-    <td><%=calculate_rate(coupon)%></td>
-		</tr>
-	<%end%>
+    <%if @test.present?%>
+    	<%@test.each do |coupon,discount|%>
+      	<tr>
+      		<td style="background-color: lightgrey;"><%=coupon.coupon_title%></td>
+      		<td><%=coupon.descendants.where("used=?",true).size%>/<%=coupon.descendants.size%></td>
+      		<td><%=coupon.descendants.size-coupon.children.size%>/<%=coupon.children.size%></td>
+      		<td><%=discount%>折</td>
+          <td><%=calculate_rate(coupon)%></td>
+    		</tr>
+    	<%end%>
+    <%else%>
+      <tr><td colspan="5" class="text-xs-center"><%=render('shared/no_resource', resources: '任何優惠卷') %></td></tr>
+    <%end%>
 	</tbody>
 </table>
 <div style="text-align: center;" class="m-b-3">

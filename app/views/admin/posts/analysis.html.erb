@@ -1,3 +1,4 @@
+<h5>粉絲專頁數據資料庫</h5>
 2016/11/28~2016/12/19<br>
 上線後新增追蹤人數：<%=@week_followers.size%>
 
@@ -11,13 +12,17 @@
     </tr>
   </thead>
   <tbody>
-    <%@store_posts.each do |x|%>
-      <tr>
-        <td><%=x.created_at.to_date%></td>
-        <td><%=truncate(x.content.html_safe,length:33)%></td>
-        <td><%=x.votes_for.up.size%></td>
-        <td><%=x.comments.size%></td>
-      </tr>
+    <%if @store_posts.present?%>
+      <%@store_posts.each do |x|%>
+        <tr>
+          <td><%=x.created_at.to_date%></td>
+          <td><%=truncate(x.content.html_safe,length:33)%></td>
+          <td><%=x.votes_for.up.size%></td>
+          <td><%=x.comments.size%></td>
+        </tr>
+      <%end%>
+    <%else%>
+      <tr><td colspan="4" class="text-xs-center"><%=render('shared/no_resource', resources: '任何貼文') %></td></tr>
     <%end%>
     <tr>
       <td colspan="2">總計</td>
