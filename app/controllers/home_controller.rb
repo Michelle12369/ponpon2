@@ -5,11 +5,11 @@ class HomeController < ApplicationController
 
   def front
     #正常寫法
-    #@stores_last=Admin::Store.includes(:coupons).where(store_status:"passed").last(6)
-    #@stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(6)
+    #@stores_last=Admin::Store.includes(:coupons).where(store_status:"passed").last(3)
+    @stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(3)
     #for活動用
-    @coupons=Coupon.includes(:store).first(2)
-    render :layout => "frontbar"
+    # @coupons=Coupon.includes(:store).first(2)
+    # render :layout => "frontbar"
     
     
   end
@@ -28,15 +28,15 @@ class HomeController < ApplicationController
   end
 
   def food
-    @coupons=Coupon.roots.where("expiry_date > ?",Time.zone.today).includes(:store).paginate(page: params[:page], per_page: 9)
+    @coupons=Coupon.roots.where("expiry_date >= ?",Time.zone.today).includes(:store).paginate(page: params[:page], per_page: 9)
   end
 
   def offical
   #正常寫法
     #@stores_last=Admin::Store.includes(:coupons).where(store_status:"passed").last(6)
-    #@stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(6)
+    @stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(3)
     #for活動用
-    @coupons=Coupon.includes(:store).first(2)
+    #@coupons=Coupon.includes(:store).first(2)
   end  
 
   def recommend

@@ -1,14 +1,12 @@
-
 <div class="admin-notification m-b-3">
 	<h4 class="m-b-2">資訊公告區</h4>
-
 	<div class="background-white p-x-1 admin-for-new">
-		<h4>新手一點通！</h4>
+		<h5>新手一點通！</h5>
 		<div class="admin-for-new-1 admin-for-new-block">
 			<span>1.</span>
 			<span>填寫店家資料</span>
 			<div class="p-t-2">
-				填寫店家資料填，提供顧客您的詳細資訊
+				填寫店家資料，提供顧客您的詳細資訊
 			</div>
 			<%= link_to'填寫資料',edit_admin_store_path(@current_store),class:'admin-btn' %>
 		</div>
@@ -31,11 +29,11 @@
 	</div>
 	<div class="background-white p-x-0 p-t-0 col-xs-12 admin-timeline">
 		<div class="col-sm-6 col-xs-12 admin-big-issue ">
-			<h4 class="m-t-1">Qoupon大事件</h4>
-				<h6>12/19(Mon) Qoupon成果發表會即將登場！</h6>
+			<h5 class="m-t-1">Qoupon大事件</h5>
 			<div class="text-xs-center m-b-2">
 				<%= image_tag "card.jpg",class:'issue-pic'%>
 			</div>
+			<h6 class="text-xs-center p-b-1">12/19(Mon) Qoupon成果發表會即將登場！</h6>
 		</div>
 		<div class="col-sm-6 col-xs-12 p-x-0">
 			<table>
@@ -63,7 +61,11 @@
 				</tr>
 				<tr>
 					<td>11/25</td>
-					<td>Qoupon官方特惠已上線！</td>
+					<td>Qoupon官方特惠已註冊！</td>
+				</tr>
+				<tr>
+					<td>11/1</td>
+					<td>Qoupon官網上線！</td>
 				</tr>
 			</table>
 		</div>
@@ -72,29 +74,3 @@
 
 
 <!-- 註冊使用者 -->
-
-<div style="height:1200px;" class="m-t-3">
-
-	<table class="table">
-		<thead>
-		    <tr>
-		      <th>#</th>
-		      <th>Name</th>
-		      <th>從哪裡註冊</th>
-		      <th>信箱</th>
-		      <th>註冊時間</th>
-		    </tr>
-		</thead>
-		<tbody>
-		<%@users.each do |user|%>
-		    <tr>
-		      <th scope="row"><%=user.id%></th>
-		      <td><%=user.name%></td>
-		      <td><%=user.provider%></td>
-		      <td><%=user.email%></td>
-		      <td><%=user.created_at%></td>
-		    </tr>
-		<%end%>
-		</tbody>
-	</table>
-</div>

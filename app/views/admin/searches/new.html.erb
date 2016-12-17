@@ -10,27 +10,6 @@
   </div>
   
   <%=form_for [@current_store,@coupon,@search] , url:admin_store_coupon_searches_path do |f|%>
-<!-- <<<<<<< HEAD -->
-<!--   	<div class="field">
-      性別：
-      <%#= f.select :gender,"<option value='male'>男性</option><option value='female'>女性</option>".html_safe,{}, class: 'form-control'%>
-    </div>
-    <div class="field">
-      地區：
-      <%#= f.text_field :location %>
-    </div>
-    <div class="field">
-      年齡區間
-      <%#= f.number_field :min_age,:value=>18, :class=>'coupon-recommand-year' %>～
-      <%#= f.number_field :max_age,:value=>60, :class=>'coupon-recommand-year' %>
-    </div>
-    <div class="field">
-      粉專關係條件：
-      <span class="coupon-recommand-fans">
-        <span class="m-t-1"> -->
-          <%#=f.radio_button 'relation', 0,:checked=>true%>
-          <%#=f.label :relation, "有追蹤粉專"%>
-<!-- ======= -->
   	<div class="background-white p-t-1 p-l-1 p-b-1 coupon-recommand">
       <h5 class="m-b-2">設定篩選條件</h5>
       <div class="field">
@@ -39,7 +18,7 @@
       </div>
       <div class="field">
         地區：
-        <%= f.text_field :location %>
+        <%= f.select :location,  options_for_select(city_array,f.object.location),{}, class: 'form-control' %>
       </div>
       <div class="field">
         年齡區間
@@ -61,7 +40,6 @@
             <%=f.radio_button 'relation', 0%>
             <%=f.label :relation, "有追蹤粉專"%>
           </span>
-<!-- >>>>>>> ce0213f925198b9077e5c00b7beac6969afb668c -->
         </span>
       </div>
     </div>
