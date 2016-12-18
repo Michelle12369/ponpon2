@@ -59,7 +59,7 @@ class Admin::CouponsController < Admin::BaseController
   # PATCH/PUT /admin/coupons/1.json
   #crop時會需要
   def update
-    @admin_coupon = Admin::Coupon.find(params[:id])
+    @admin_coupon = Coupon.find(params[:id])
     respond_to do |format|
       if @admin_coupon.update(admin_coupon_params)
         format.html { redirect_to admin_store_coupons_path, notice: 'Coupon was successfully updated.' }
