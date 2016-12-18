@@ -88,7 +88,7 @@ Rails.application.configure do
   #production 的 compile js
   config.assets.precompile += %w( coupons.coffee )
   config.assets.precompile += %w( stores.coffee )
-  config.assets.precompile += %w( Jcrop.gif )
+  config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif] 
 
   #設定mailer
   config.action_mailer.default_url_options = { :host => 'www.liveqoupon.com' }
