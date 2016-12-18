@@ -1,7 +1,6 @@
-<div class="background-white p-x-2 p-y-2">
-
 <h5 class="m-t-0 m-b-1">發放人數設定</h5>
-
+<div class="m-b-0 p-l-1 p-b-1"><%= link_to '優惠券發放管理',admin_store_coupons_path %> / <%= link_to '篩選',new_admin_store_coupon_search_path(@current_store,@coupon) %> / 發送</div>
+<div class="background-white p-x-2 p-y-2">
 <div>總人數：<%=@search.search_users(@current_store,@coupon).size%></div>
 
 <div>

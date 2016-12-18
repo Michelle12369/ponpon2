@@ -5,13 +5,9 @@ class HomeController < ApplicationController
 
   def front
     #正常寫法
-    #@stores_last=Admin::Store.includes(:coupons).where(store_status:"passed").last(3)
-    @stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(3)
-    #for活動用
-    # @coupons=Coupon.includes(:store).first(2)
-    # render :layout => "frontbar"
-    
-    
+    @stores_last=Admin::Store.includes(:coupons).where(store_status:"passed").last(3)
+    @stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(4)-Admin::Store.where(store_name:"小農橋")
+    render :layout => "frontbar"
   end
 
   def index
@@ -33,10 +29,8 @@ class HomeController < ApplicationController
 
   def offical
   #正常寫法
-    #@stores_last=Admin::Store.includes(:coupons).where(store_status:"passed").last(6)
-    @stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(3)
-    #for活動用
-    #@coupons=Coupon.includes(:store).first(2)
+    @stores_last=Admin::Store.includes(:coupons).where(store_status:"passed").last(3)
+    @stores_first=Admin::Store.includes(:coupons).where(store_status:"passed").first(4)-Admin::Store.where(store_name:"小農橋")
   end  
 
   def recommend

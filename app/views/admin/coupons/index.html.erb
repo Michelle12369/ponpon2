@@ -26,11 +26,12 @@
         <td><%= admin_coupon.descendants.where("used=?",true).size%></td>
         <td><%= admin_coupon.descendants.size%>/<%= admin_coupon.admin_coupon_limit%></td>
         <td class='coupon-control-table-button'><%= send_or_delete(admin_coupon)%></td>
-        <td class='coupon-control-table-button-info'><%= link_to '內容', admin_store_coupon_path(admin_coupon.store,admin_coupon) %></td>
+        <td class='coupon-control-table-button-info'><%= link_to '內容', admin_store_coupon_path(admin_coupon.store,admin_coupon) %>
+        </td>
         </tr>
       <% end %>
     <%else%>
-      <tr><td colspan="5"><%=render('shared/no_resource', resources: '任何優惠卷') %></td></tr>
+      <tr><td colspan="7"><%=render('shared/no_resource', resources: '任何優惠卷') %></td></tr>
     <%end%>
   </tbody>
 </table>

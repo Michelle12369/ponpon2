@@ -4,60 +4,50 @@
 </div>
 <div class="col-xs-12 part-orange-bg m-b-2 p-b-2 p-t-2">
 	<h5 class="text-xs-center p-b-1"><strong>熱門優惠</strong></h5>
-	<!-- <div class="card-deck-wrapper"> -->
+	<div class="card-deck-wrapper">
 	  	<div class="card-deck"> 
-	  	<!-- for活動用 -->
 			<%@stores_first.each do |store|%>
-			<%#@coupons.each do |coupon|%>
 				<div class="card">
-				<%= link_to  store_path(store) do%>
-				<%#= link_to  store_path(coupon.store) do%>
-						<%if store.coupons.present?%>
-							<%=image_tag store.coupons.last.root.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>
-							<%#=image_tag coupon.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>	
-							<div class="card-block text-xs-center">
-							<p class="m-b-0 card-text"><%=store.store_name%><%#=coupon.store.store_name%></p>
-							<h5 class="m-b-0 card-text"><%=store.coupons.last.root.coupon_title  %><%#=coupon.coupon_title  %></h5>
-							<p class="m-b-0 text-muted card-text"><%=store.store_city%><%#=coupon.store.store_city%></p>
-							<!-- </div> -->
-						<%end%>
-					</div> 
-				<%end%>
+					<%= link_to  store_path(store) do%>
+							<%if store.coupons.present?%>
+								<%=image_tag store.coupons.roots.last.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>	
+								<div class="card-block text-xs-center">
+								<p class="m-b-0 card-text"><%=store.store_name%></p>
+								<h5 class="m-b-0 card-text"><%=store.coupons.roots.last.coupon_title  %></h5>
+								<p class="m-b-0 text-muted card-text"><%=store.store_city%></p>
+								</div>
+							<%end%>
+					<%end%>
 				</div>
 			<%end%>
 		</div>
-	<!-- </div> -->
+	</div>
 	<div class="col-xs-12 text-xs-center">
 		<%= link_to "查看更多", food_path,class:"orange-btn-no orange-hover d-inline-block", style:"padding:5px 0"%>
 	</div>
+	
+	<div class="col-xs-12 m-b-2 p-b-2 p-t-2">
+		<h5 class="text-xs-center p-b-1"><strong>最新優惠</strong></h5>
+		<div class="card-deck-wrapper">
+		  	<div class="card-deck"> 
+				<%@stores_last.each do |store|%>
+					<div class="card">
+						<%= link_to  store_path(store) do%>
+								<%if store.coupons.present?%>
+									<%=image_tag store.coupons.roots.last.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>
+									<div class="card-block text-xs-center">
+										<p class="m-b-0 card-text"><%=store.store_name%></p>
+										<h5 class="m-b-0 card-text"><%=store.coupons.roots.last.coupon_title  %></h5>
+										<p class="m-b-0 text-muted card-text"><%=store.store_city%></p>
+									</div>	
+								<%end%>
+						<%end%>		
+					</div>	
+				<%end%>
+			</div>
+		</div>
+	</div>
 </div>
-
-<!-- <div class="col-xs-12 m-b-2 p-b-2 p-t-2"> -->
-	<!-- <h5 class="text-xs-center p-b-1"><strong>最新優惠</strong></h5> -->
-	<!-- <div class="card-deck-wrapper"> -->
-	  	<!-- <div class="card-deck"> 
-			<%#@stores_first.each do |store|%>
-				<div class="card">
-					<%#= link_to  store_path(store) do%>
-							<%#if store.coupons.present?%>
-								<%#=image_tag store.coupons.last.root.coupon_pic.thumb.url||'avatar2.jpg', class:'card-img-top' %>
-								<div class="card-block text-xs-center">
-									<p class="m-b-0 card-text"><%#=store.store_name%></p>
-									<h5 class="m-b-0 card-text"><%#=store.coupons.last.root.coupon_title  %></h5>
-									<p class="m-b-0 text-muted card-text"><%#=store.store_city%></p>
-								</div>	
-							<%#end%>
-					<%#end%>		
-				</div>	
-			<%#end%>
-		</div> -->
-	<!-- </div> -->
-<!-- </div> -->
-
-
-
-
-
 
 <div class="col-xs-12 m-b-2 p-b-3 p-t-3">
 	<h5 class="text-xs-center p-b-1"><strong>名人推薦</strong></h5>
