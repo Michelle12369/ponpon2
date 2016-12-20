@@ -41,11 +41,11 @@ class Admin::CouponsController < Admin::BaseController
       if @admin_coupon.save
         Admin::Coupon.sort_coupon(@admin_coupon,@store)
         format.html { 
-          if params[:coupon][:coupon_pic].present?
-            render :crop
-          else  
+          # if params[:coupon][:coupon_pic].present?
+            # render :crop
+          # else  
             redirect_to admin_store_coupons_path, notice: '已成功新增優惠卷'
-          end 
+          # end 
             }
         format.json { render :show, status: :created, location: @admin_coupon }
       else

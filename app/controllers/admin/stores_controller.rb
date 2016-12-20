@@ -44,11 +44,11 @@ class Admin::StoresController < Admin::BaseController
     respond_to do |format|
       if @admin_store.update(admin_store_params)
         format.html { 
-          if params[:admin_store][:store_cover_photo].present?
-            render :crop  ## Render the view for cropping
-          else
+          # if params[:admin_store][:store_cover_photo].present?
+            # render :crop  ## Render the view for cropping
+          # else
             redirect_to edit_admin_store_path, notice: '已更新店家資訊'
-          end 
+          # end 
         }
 
         format.json { render :show, status: :ok, location: @admin_store }

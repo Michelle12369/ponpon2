@@ -1,3 +1,6 @@
+<% content_for :javascript do %>
+  <%= javascript_include_tag "admin/stores" %>
+<% end %>
 <h5>裁切店家大頭貼</h5>
 <%= image_tag @admin_store.store_cover_photo.url, id: "cropbox"%>
 <h6>預覽</h6>
@@ -15,6 +18,3 @@
   </div>
 <% end %>
 
-<% content_for :javascript do %>
-  <%= javascript_include_tag "admin/stores" %>
-<% end %> 

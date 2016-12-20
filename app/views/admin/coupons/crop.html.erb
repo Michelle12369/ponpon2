@@ -1,5 +1,6 @@
-<%= javascript_include_tag "admin/coupons" %>
-
+<% content_for :javascript do %>
+  <%= javascript_include_tag "admin/coupons" %>
+<%end%>
 <h5>裁切優惠卷相片</h5>
 
 <%#for i in @admin_store.store_photo%>
